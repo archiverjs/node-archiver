@@ -1,35 +1,35 @@
-# archive [![Build Status](https://secure.travis-ci.org/ctalkington/node-archive.png?branch=master)](http://travis-ci.org/ctalkington/node-archive)
+# Archiver [![Build Status](https://secure.travis-ci.org/ctalkington/node-archiver.png?branch=master)](http://travis-ci.org/ctalkington/node-archiver)
 
 Creates Archives (ZIP) via Node Streams. Depends on Node's build-in zlib module for compression available since version 0.6.3.
 
 ## Install
 
 ```bash
-npm install archive
+npm install archiver
 ```
 
 ## API
 
 #### createZip(options)
 
-Creates an Archive ZIP object. Options are passed to zlib.
+Creates an Archiver ZIP object. Options are passed to zlib.
 
 #### archive.addFile(inputStream, options, callback)
 
-Adds a file to the Archive stream. At this moment, options must contain "name". If the "store" option is set to true, the file will be added uncompressed.
+Adds a file to the Archiver stream. At this moment, options must contain "name". If the "store" option is set to true, the file will be added uncompressed.
 
 #### archive.finalize(callback(written))
 
-Finalizes the Archive. When everything is done, callback is called with the total number of bytes in the archive.
+Finalizes the Archiver stream. When everything is done, callback is called with the total number of bytes in the archive.
 
 ## Example
 ```javascript
 var fs = require('fs');
 
-var archive = require('archive');
+var archiver = require('archiver');
 
 var out = fs.createWriteStream('out.zip');
-var zip = archive.createZip({ level: 1 });
+var zip = archiver.createZip({ level: 1 });
 
 zip.pipe(out);
 

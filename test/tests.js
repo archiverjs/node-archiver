@@ -1,13 +1,13 @@
 var crypto = require('crypto');
 
-var archive = require('../lib/archive');
+var archiver = require('../lib/archiver');
 
 module.exports = {
   buffer: function(test) {
     test.expect(1);
 
     var hash = crypto.createHash('sha1');
-    var zip = archive.createZip({level: 1});
+    var zip = archiver.createZip({level: 1});
 
     // create a buffer and fill it
     var buf = new Buffer(20000);
@@ -35,7 +35,7 @@ module.exports = {
     test.expect(1);
 
     var hash = crypto.createHash('sha1');
-    var zip = archive.createZip({level: 1});
+    var zip = archiver.createZip({level: 1});
 
     // create a buffer and fill it
     var buf = new Buffer(20000);
