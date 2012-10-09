@@ -1,0 +1,43 @@
+{
+  "name": "archive",
+  "version": "0.1.0",
+  "description": "Creates Archives (ZIP) via Node Streams.",
+
+  "homepage": "https://github.com/ctalkington/node-archive",
+  "author": {
+    "name": "Chris Talkington",
+    "url": "http://christalkington.com/"
+  },
+
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ctalkington/node-archive.git"
+  },
+
+  "bugs": {
+    "url": "https://github.com/ctalkington/node-archive/issues"
+  },
+
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/ctalkington/node-archive/blob/master/LICENSE-MIT"
+    }
+  ],
+
+  "main": "archive.js",
+  "engines": {
+    "node": ">= 0.6.3"
+  },
+  "scripts": {
+    "test": "nodeunit --reporter=minimal test/tests.js"
+  },
+
+  "dependencies": {},
+
+  "devDependencies": {
+    "nodeunit": "~0.7.4"
+  },
+
+  "keywords": ["archive", "archiver", "zip"]
+}
