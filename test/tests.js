@@ -16,7 +16,7 @@ module.exports = {
       buf.writeUInt8(i&255, i);
     }
 
-    zip.addFile(buf, {name: 'buffer.out', date: new Date('April 13, 2011 UTC')}, function() {
+    zip.addFile(buf, {name: 'buffer.out', date: new Date('April 13, 2011 CET')}, function() {
       zip.finalize();
     });
 
@@ -26,7 +26,7 @@ module.exports = {
 
     zip.on('end', function() {
       var digest = hash.digest('hex');
-      test.equals(digest, 'db7dab1aa8193fbd9fb0c2af99e091f485f60af1', 'data hex values should match.');
+      test.equals(digest, '5641d2b95f2cadaabcc22a7d646bfd41036c347d', 'data hex values should match.');
       test.done();
     });
   },
@@ -44,7 +44,7 @@ module.exports = {
       buf.writeUInt8(i&255, i);
     }
 
-    zip.addFile(buf, {name: 'buffer.out', date: new Date('April 13, 2011 UTC'), store: true}, function() {
+    zip.addFile(buf, {name: 'buffer.out', date: new Date('April 13, 2011 CET'), store: true}, function() {
       zip.finalize();
     });
 
@@ -54,7 +54,7 @@ module.exports = {
 
     zip.on('end', function() {
       var digest = hash.digest('hex');
-      test.equals(digest, '57b4c651df09406db0267094aa0d58485cb381e2', 'data hex values should match.');
+      test.equals(digest, 'a777c51ca558e9a2ff36f1f9b7fc70b95560df28', 'data hex values should match.');
       test.done();
     });
   }
