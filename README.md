@@ -18,7 +18,7 @@ Creates an Archiver ZIP object. Options are passed to zlib.
 
 #### archive.addFile(inputStream, options, callback)
 
-Adds a file to the Archiver stream. At this moment, options must contain "name". If the "store" option is set to true, the file will be added uncompressed.
+Adds a file to the Archiver stream. At this moment, options must contain `name`. If the `store` option is set to true, the file will be added uncompressed.
 
 #### archive.finalize(callback(written))
 
