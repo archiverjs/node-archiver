@@ -8,6 +8,8 @@ Creates Archives (ZIP) via Node Streams. Depends on Node's build-in zlib module 
 npm install archiver
 ```
 
+You can also use `npm install archiver@devel` to test upcoming versions.
+
 ## API
 
 #### createZip(options)
