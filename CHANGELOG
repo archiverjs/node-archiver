@@ -1,3 +1,8 @@
+v0.1.1:
+  date: 2012-11-14
+  changes:
+    - Break core and zip logic apart.
+    - Fix sub-directories parsing issue with some zip applications.
 v0.1.0:
   date: 2012-10-09
   changes:
