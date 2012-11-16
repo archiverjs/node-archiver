@@ -5,10 +5,10 @@ Creates Archives (ZIP) via Node Streams. Depends on Node's build-in zlib module 
 ## Install
 
 ```bash
-npm install archiver
+npm install archiver --save
 ```
 
-You can also use `npm install archiver@devel` to test upcoming versions.
+You can also use `npm install https://github.com/ctalkington/node-archiver/archive/master.tar.gz` to test upcoming versions.
 
 ## API
 
