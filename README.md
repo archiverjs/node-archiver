@@ -24,20 +24,48 @@ Adds a file to the Archiver stream. At this moment, options must contain `name`.
 
 Finalizes the Archiver stream. When everything is done, callback is called with the total number of bytes in the archive.
 
-## Example
-```javascript
+## Examples
+```js
 var fs = require('fs');
 
 var archiver = require('archiver');
 
 var out = fs.createWriteStream('out.zip');
-var zip = archiver.createZip({ level: 1 });
+var archive = archiver.createZip({ level: 1 });
 
-zip.pipe(out);
+archive.pipe(out);
 
-zip.addFile(fs.createReadStream('file1.js'), { name: 'file1.js' }, function() {
-  zip.addFile(fs.createReadStream('file2.js'), { name: 'file2.js' }, function() {
-    zip.finalize(function(written) { console.log(written + ' total bytes written'); });
+archive.addFile(fs.createReadStream('file1.js'), { name: 'file1.js' }, function() {
+  archive.addFile(fs.createReadStream('file2.js'), { name: 'file2.js' }, function() {
+    archive.finalize(function(written) { console.log(written + ' total bytes written'); });
+  });
+});
+```
+you can also use an [async](https://github.com/caolan/async) module like such:
+
+```js
+var fs = require('fs');
+
+var archiver = require('archiver');
+var async = require('async');
+
+var out = fs.createWriteStream('out.zip');
+var archive = archiver.createZip({ level: 1 });
+
+archive.pipe(out);
+
+archive.on('error', function(err) {
+  console.log(err);
+  // then handle exit process or such
+});
+
+async.forEachSeries(['file1.js', 'file2.js'], function(file, next) {
+  archive.addFile(fs.createReadStream(file), { name: file }, function() {
+    next();
+  });
+}, function(err) {
+  archive.finalize(function(written) {
+    console.log(written + ' total bytes written');
   });
 });
 ```
