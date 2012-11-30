@@ -12,9 +12,13 @@ You can also use `npm install https://github.com/ctalkington/node-archiver/archi
 
 ## API
 
+#### createTar(options)
+
+Creates an Archiver Tar object. *in testing*
+
 #### createZip(options)
 
-Creates an Archiver ZIP object. Options are passed to zlib.
+Creates an Archiver ZIP object.
 
 #### archive.addFile(inputStream, options, callback)
 

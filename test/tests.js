@@ -1,60 +1,191 @@
 var crypto = require('crypto');
+var fs = require('fs');
 
 var archiver = require('../lib/archiver');
 
+var fileOutput = true;
+
 module.exports = {
-  buffer: function(test) {
+  tarBuffer: function(test) {
     test.expect(1);
 
+    var actual;
+    var expected = 'fc9f19920f1ac82fca15f6b5d9f4d0bba4d4341f';
+
+    var tar = archiver.createTar();
+
     var hash = crypto.createHash('sha1');
-    var zip = archiver.createZip({level: 1});
+    var archive = archiver.createTar();
 
-    // create a buffer and fill it
-    var buf = new Buffer(20000);
-
-    for (var i = 0; i < 20000; i++) {
-      buf.writeUInt8(i&255, i);
+    if (fileOutput) {
+      var out = fs.createWriteStream('tmp/buffer.tar');
+      archive.pipe(out);
     }
 
-    zip.addFile(buf, {name: 'buffer.out', date: new Date('April 13, 2011 CET')}, function() {
-      zip.finalize();
+    var buffer = new Buffer(20000);
+
+    for (var i = 0; i < 20000; i++) {
+      buffer.writeUInt8(i&255, i);
+    }
+
+    archive.addFile(buffer, {name: 'buffer.txt', mtime: 1354279637}, function() {
+      archive.finalize();
     });
 
-    zip.on('data', function(data) {
+    archive.on('error', function(err) {
+      throw err;
+    });
+
+    archive.on('data', function(data) {
       hash.update(data);
     });
 
-    zip.on('end', function() {
-      var digest = hash.digest('hex');
-      test.equals(digest, '5641d2b95f2cadaabcc22a7d646bfd41036c347d', 'data hex values should match.');
+    archive.on('end', function() {
+      actual = hash.digest('hex');
+      test.equals(actual, expected, 'data hex values should match.');
       test.done();
     });
   },
 
-  store: function(test) {
-    test.expect(1);
+  tarString: function(test) {
+    var actual;
+    var expected = 'cce858ca0ed86f5ef3ca0fe790ac105551a54a8a';
+
+    var tar = archiver.createTar();
 
     var hash = crypto.createHash('sha1');
-    var zip = archiver.createZip({level: 1});
+    var archive = archiver.createTar();
 
-    // create a buffer and fill it
-    var buf = new Buffer(20000);
-
-    for (var i = 0; i < 20000; i++) {
-      buf.writeUInt8(i&255, i);
+    if (fileOutput) {
+      var out = fs.createWriteStream('tmp/string.tar');
+      archive.pipe(out);
     }
 
-    zip.addFile(buf, {name: 'buffer.out', date: new Date('April 13, 2011 CET'), store: true}, function() {
-      zip.finalize();
+    archive.addFile('string', {name: 'string.txt', mtime: 1354279637}, function() {
+      archive.finalize();
     });
 
-    zip.on('data', function(data) {
+    archive.on('error', function(err) {
+      throw err;
+    });
+
+    archive.on('data', function(data) {
       hash.update(data);
     });
 
-    zip.on('end', function() {
-      var digest = hash.digest('hex');
-      test.equals(digest, 'a777c51ca558e9a2ff36f1f9b7fc70b95560df28', 'data hex values should match.');
+    archive.on('end', function() {
+      actual = hash.digest('hex');
+      test.equals(actual, expected, 'data hex values should match.');
+      test.done();
+    });
+  },
+
+  zipBuffer: function(test) {
+    test.expect(1);
+
+    var actual;
+    var expected = 'e1f3b7b48a488f0aea0e1774a9a0dac7d5d3a642';
+
+    var hash = crypto.createHash('sha1');
+    var archive = archiver.createZip({level: 1});
+
+    if (fileOutput) {
+      var out = fs.createWriteStream('tmp/buffer.zip');
+      archive.pipe(out);
+    }
+
+    var buffer = new Buffer(20000);
+
+    for (var i = 0; i < 20000; i++) {
+      buffer.writeUInt8(i&255, i);
+    }
+
+    archive.addFile(buffer, {name: 'buffer.txt', lastModifiedDate: 1049430016}, function() {
+      archive.finalize();
+    });
+
+    archive.on('error', function(err) {
+      throw err;
+    });
+
+    archive.on('data', function(data) {
+      hash.update(data);
+    });
+
+    archive.on('end', function() {
+      actual = hash.digest('hex');
+      test.equals(actual, expected, 'data hex values should match.');
+      test.done();
+    });
+  },
+
+  zipStore: function(test) {
+    test.expect(1);
+
+    var actual;
+    var expected = '1ea58034c99816b8028d42a4d49eb4f626335462';
+
+    var hash = crypto.createHash('sha1');
+    var archive = archiver.createZip();
+
+    if (fileOutput) {
+      var out = fs.createWriteStream('tmp/store.zip');
+      archive.pipe(out);
+    }
+
+    // create a buffer and fill it
+    var buffer = new Buffer(20000);
+
+    for (var i = 0; i < 20000; i++) {
+      buffer.writeUInt8(i&255, i);
+    }
+
+    archive.addFile(buffer, {name: 'buffer.txt', lastModifiedDate: 1049430016, store: true}, function() {
+      archive.finalize();
+    });
+
+    archive.on('error', function(err) {
+      throw err;
+    });
+
+    archive.on('data', function(data) {
+      hash.update(data);
+    });
+
+    archive.on('end', function() {
+      actual = hash.digest('hex');
+      test.equals(actual, expected, 'data hex values should match.');
+      test.done();
+    });
+  },
+
+  zipString: function(test) {
+    test.expect(1);
+
+    var actual;
+    var expected = 'c639c2cf6e664dc00c06cb2ebb70ed2e38521946';
+
+    var hash = crypto.createHash('sha1');
+    var archive = archiver.createZip({level: 1});
+
+    var out = fs.createWriteStream('tmp/string.zip');
+    archive.pipe(out);
+
+    archive.addFile('string', {name: 'string.txt', lastModifiedDate: 1049430016}, function() {
+      archive.finalize();
+    });
+
+    archive.on('error', function(err) {
+      throw err;
+    });
+
+    archive.on('data', function(data) {
+      hash.update(data);
+    });
+
+    archive.on('end', function() {
+      actual = hash.digest('hex');
+      test.equals(actual, expected, 'data hex values should match.');
       test.done();
     });
   }
