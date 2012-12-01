@@ -12,67 +12,83 @@ You can also use `npm install https://github.com/ctalkington/node-archiver/archi
 
 ## API
 
-#### createTar(options)
+#### addFile(inputStream, data, callback)
 
-Creates an Archiver Tar object. *in testing*
+Adds a file to the Archiver stream.
+
+#### finalize(callback(written))
+
+Finalizes the Archiver stream. When everything is done, callback is called with the total number of bytes in the archive.
+
+## Zip
+
+### Methods
 
 #### createZip(options)
 
 Creates an Archiver ZIP object.
 
-#### archive.addFile(inputStream, options, callback)
+### Options
 
-Adds a file to the Archiver stream. At this moment, options must contain `name`. If the `store` option is set to true, the file will be added uncompressed.
+#### comment `string`
 
-#### archive.finalize(callback(written))
+Sets zip comment.
 
-Finalizes the Archiver stream. When everything is done, callback is called with the total number of bytes in the archive.
+#### zlib `object`
+
+Passed to node's [zlib](http://nodejs.org/api/zlib.html#zlib_options) module to control compression. Options may vary by node version.
+
+### File Data
+
+#### name `string` `required`
+
+Sets file name.
+
+#### date `string`
+
+Sets file date.
+
+#### store `boolean`
+
+If true, zip contents will be stored without compression.
+
+#### comment `string`
+
+Sets file comment.
+
+## Tar (beta)
+
+### Methods
+
+#### createTar(options)
+
+Creates an Archiver Tar object. *in testing*
+
+### Options
+
+#### recordsPerBlock `number`
+
+Sets number of records in a block, default is 20 (for advanced users only).
+
+### File Data
+
+#### name `string` `required`
+
+Sets file name.
+
+#### date `string`
+
+Sets file date.
 
 ## Examples
-```js
-var fs = require('fs');
 
-var archiver = require('archiver');
+Here are a few examples to get you started.
 
-var out = fs.createWriteStream('out.zip');
-var archive = archiver.createZip({ level: 1 });
+* [basic packing](https://github.com/ctalkington/node-archiver/blob/master/examples/pack.js)
+* [basic packing with aync module](https://github.com/ctalkington/node-archiver/blob/master/examples/pack-async.js)
+* [tar packing wtih gzip](https://github.com/ctalkington/node-archiver/blob/master/examples/pack-tar-gzip.js)
 
-archive.pipe(out);
-
-archive.addFile(fs.createReadStream('file1.js'), { name: 'file1.js' }, function() {
-  archive.addFile(fs.createReadStream('file2.js'), { name: 'file2.js' }, function() {
-    archive.finalize(function(written) { console.log(written + ' total bytes written'); });
-  });
-});
-```
-you can also use an [async](https://github.com/caolan/async) module like such:
-
-```js
-var fs = require('fs');
-
-var archiver = require('archiver');
-var async = require('async');
-
-var out = fs.createWriteStream('out.zip');
-var archive = archiver.createZip({ level: 1 });
-
-archive.pipe(out);
-
-archive.on('error', function(err) {
-  console.log(err);
-  // then handle exit process or such
-});
-
-async.forEachSeries(['file1.js', 'file2.js'], function(file, next) {
-  archive.addFile(fs.createReadStream(file), { name: file }, function() {
-    next();
-  });
-}, function(err) {
-  archive.finalize(function(written) {
-    console.log(written + ' total bytes written');
-  });
-});
-```
+Take a peek at the [examples](https://github.com/ctalkington/node-archiver/blob/master/example) folder for a complete listing.
 
 ## Contributing
 
