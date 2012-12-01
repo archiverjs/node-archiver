@@ -28,7 +28,9 @@
     "test": "nodeunit --reporter=minimal test/tests.js"
   },
   "dependencies": {
-    "lodash": "~0.10.0"
+    "lodash": "~0.10.0",
+    "rimraf": "~2.0.2",
+    "mkdirp": "~0.3.4"
   },
   "devDependencies": {
     "nodeunit": "~0.7.4"

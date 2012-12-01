@@ -1,9 +1,17 @@
 var crypto = require('crypto');
 var fs = require('fs');
 
+var mkdir = require('mkdirp');
+var rimraf = require('rimraf');
+
 var archiver = require('../lib/archiver');
 
-var fileOutput = true;
+var fileOutput = false;
+
+if (fileOutput) {
+  rimraf.sync('tmp');
+  mkdir.sync('tmp');
+}
 
 module.exports = {
   tarBuffer: function(test) {
@@ -119,6 +127,47 @@ module.exports = {
     });
   },
 
+  zipComments: function(test) {
+    test.expect(1);
+
+    var actual;
+    var expected = '738f94eb1174fee0ee7b8eed2b13178f646600f0';
+
+    var hash = crypto.createHash('sha1');
+    var archive = archiver.createZip({
+      comment: 'this is a zip comment'
+    });
+
+    if (fileOutput) {
+      var out = fs.createWriteStream('tmp/comments.zip');
+      archive.pipe(out);
+    }
+
+    var buffer = new Buffer(20000);
+
+    for (var i = 0; i < 20000; i++) {
+      buffer.writeUInt8(i&255, i);
+    }
+
+    archive.addFile(buffer, {name: 'buffer.txt', lastModifiedDate: 1049430016, comment: 'this is a file comment'}, function() {
+      archive.finalize();
+    });
+
+    archive.on('error', function(err) {
+      throw err;
+    });
+
+    archive.on('data', function(data) {
+      hash.update(data);
+    });
+
+    archive.on('end', function() {
+      actual = hash.digest('hex');
+      test.equals(actual, expected, 'data hex values should match.');
+      test.done();
+    });
+  },
+
   zipStore: function(test) {
     test.expect(1);
 
@@ -168,8 +217,10 @@ module.exports = {
     var hash = crypto.createHash('sha1');
     var archive = archiver.createZip({level: 1});
 
-    var out = fs.createWriteStream('tmp/string.zip');
-    archive.pipe(out);
+    if (fileOutput) {
+      var out = fs.createWriteStream('tmp/string.zip');
+      archive.pipe(out);
+    }
 
     archive.addFile('string', {name: 'string.txt', lastModifiedDate: 1049430016}, function() {
       archive.finalize();
