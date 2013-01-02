@@ -20,7 +20,7 @@ Adds a file to the Archiver stream.
 
 Finalizes the Archiver stream. When everything is done, callback is called with the total number of bytes in the archive.
 
-## ZIP
+## Zip
 
 ### Methods
 
@@ -56,7 +56,7 @@ If true, zip contents will be stored without compression.
 
 Sets file comment.
 
-## TAR (beta)
+## Tar (beta)
 
 ### Methods
 
@@ -85,7 +85,7 @@ Sets file date.
 Here are a few examples to get you started.
 
 * [basic packing](https://github.com/ctalkington/node-archiver/blob/master/examples/pack.js)
-* [basic packing with aync module](https://github.com/ctalkington/node-archiver/blob/master/examples/pack-async.js)
+* [basic packing with async module](https://github.com/ctalkington/node-archiver/blob/master/examples/pack-async.js)
 * [tar packing wtih gzip](https://github.com/ctalkington/node-archiver/blob/master/examples/pack-tar-gzip.js)
 
 Take a peek at the [examples](https://github.com/ctalkington/node-archiver/blob/master/example) folder for a complete listing.
