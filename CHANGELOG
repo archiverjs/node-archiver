@@ -1,6 +1,7 @@
 v0.2.1:
   date: 2013-01-04
   changes:
+    - refactor tests and use forceUTC so we can test with date objects.
     - add forceUTC option. helps with testing across timezones.
     - bugfix: zip date was using invalid function.
 v0.2.0:

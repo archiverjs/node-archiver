@@ -6,98 +6,27 @@ var rimraf = require('rimraf');
 
 var archiver = require('../lib/archiver');
 
-var fileOutput = false;
+var fileOutput = true;
 
-if (fileOutput) {
-  rimraf.sync('tmp');
-  mkdir.sync('tmp');
-}
+var date1 = new Date('Jan 03 2013 14:26:38 GMT');
 
 module.exports = {
-  tarBuffer: function(test) {
-    test.expect(1);
-
-    var actual;
-    var expected = 'fc9f19920f1ac82fca15f6b5d9f4d0bba4d4341f';
-
-    var tar = archiver.createTar();
-
-    var hash = crypto.createHash('sha1');
-    var archive = archiver.createTar();
-
-    if (fileOutput) {
-      var out = fs.createWriteStream('tmp/buffer.tar');
-      archive.pipe(out);
-    }
-
-    var buffer = new Buffer(20000);
-
-    for (var i = 0; i < 20000; i++) {
-      buffer.writeUInt8(i&255, i);
-    }
-
-    archive.addFile(buffer, {name: 'buffer.txt', mtime: 1354279637}, function() {
-      archive.finalize();
-    });
-
-    archive.on('error', function(err) {
-      throw err;
-    });
-
-    archive.on('data', function(data) {
-      hash.update(data);
-    });
-
-    archive.on('end', function() {
-      actual = hash.digest('hex');
-      test.equals(actual, expected, 'data hex values should match.');
-      test.done();
-    });
-  },
-
-  tarString: function(test) {
-    var actual;
-    var expected = 'cce858ca0ed86f5ef3ca0fe790ac105551a54a8a';
-
-    var tar = archiver.createTar();
-
-    var hash = crypto.createHash('sha1');
-    var archive = archiver.createTar();
-
-    if (fileOutput) {
-      var out = fs.createWriteStream('tmp/string.tar');
-      archive.pipe(out);
-    }
-
-    archive.addFile('string', {name: 'string.txt', mtime: 1354279637}, function() {
-      archive.finalize();
-    });
-
-    archive.on('error', function(err) {
-      throw err;
-    });
-
-    archive.on('data', function(data) {
-      hash.update(data);
-    });
-
-    archive.on('end', function() {
-      actual = hash.digest('hex');
-      test.equals(actual, expected, 'data hex values should match.');
-      test.done();
-    });
-  },
-
   zipBuffer: function(test) {
     test.expect(1);
 
     var actual;
-    var expected = 'e1f3b7b48a488f0aea0e1774a9a0dac7d5d3a642';
+    var expected = 'b18540ab929d83f8ed6d419e6f306fa381aa1f4e';
 
     var hash = crypto.createHash('sha1');
-    var archive = archiver.createZip({level: 1});
+    var archive = archiver.createZip({
+      zlib: {
+        level: 1
+      },
+      forceUTC: true
+    });
 
     if (fileOutput) {
+      rimraf.sync('tmp/buffer.zip');
       var out = fs.createWriteStream('tmp/buffer.zip');
       archive.pipe(out);
     }
@@ -108,7 +37,7 @@ module.exports = {
       buffer.writeUInt8(i&255, i);
     }
 
-    archive.addFile(buffer, {name: 'buffer.txt', lastModifiedDate: 1049430016}, function() {
+    archive.addFile(buffer, {name: 'buffer.txt', date: date1}, function() {
       archive.finalize();
     });
 
@@ -131,14 +60,16 @@ module.exports = {
     test.expect(1);
 
     var actual;
-    var expected = '738f94eb1174fee0ee7b8eed2b13178f646600f0';
+    var expected = 'b09223a2a00d21d84fd4d9a57a3a7fa451125146';
 
     var hash = crypto.createHash('sha1');
     var archive = archiver.createZip({
-      comment: 'this is a zip comment'
+      comment: 'this is a zip comment',
+      forceUTC: true
     });
 
     if (fileOutput) {
+      rimraf.sync('tmp/comments.zip');
       var out = fs.createWriteStream('tmp/comments.zip');
       archive.pipe(out);
     }
@@ -149,7 +80,7 @@ module.exports = {
       buffer.writeUInt8(i&255, i);
     }
 
-    archive.addFile(buffer, {name: 'buffer.txt', lastModifiedDate: 1049430016, comment: 'this is a file comment'}, function() {
+    archive.addFile(buffer, {name: 'buffer.txt', date: date1, comment: 'this is a file comment'}, function() {
       archive.finalize();
     });
 
@@ -172,12 +103,15 @@ module.exports = {
     test.expect(1);
 
     var actual;
-    var expected = '1ea58034c99816b8028d42a4d49eb4f626335462';
+    var expected = '09305770a3272cbcd7c151ee267cb1b0075dd29e';
 
     var hash = crypto.createHash('sha1');
-    var archive = archiver.createZip();
+    var archive = archiver.createZip({
+      forceUTC: true
+    });
 
     if (fileOutput) {
+      rimraf.sync('tmp/store.zip');
       var out = fs.createWriteStream('tmp/store.zip');
       archive.pipe(out);
     }
@@ -189,7 +123,7 @@ module.exports = {
       buffer.writeUInt8(i&255, i);
     }
 
-    archive.addFile(buffer, {name: 'buffer.txt', lastModifiedDate: 1049430016, store: true}, function() {
+    archive.addFile(buffer, {name: 'buffer.txt', date: date1, store: true}, function() {
       archive.finalize();
     });
 
@@ -212,17 +146,23 @@ module.exports = {
     test.expect(1);
 
     var actual;
-    var expected = 'c639c2cf6e664dc00c06cb2ebb70ed2e38521946';
+    var expected = '3de2c37ba3745618257f6816fe979ee565e24aa0';
 
     var hash = crypto.createHash('sha1');
-    var archive = archiver.createZip({level: 1});
+    var archive = archiver.createZip({
+      zlib: {
+        level: 1
+      },
+      forceUTC: true
+    });
 
     if (fileOutput) {
+      rimraf.sync('tmp/string.zip');
       var out = fs.createWriteStream('tmp/string.zip');
       archive.pipe(out);
     }
 
-    archive.addFile('string', {name: 'string.txt', lastModifiedDate: 1049430016}, function() {
+    archive.addFile('string', {name: 'string.txt', date: date1}, function() {
       archive.finalize();
     });
 
