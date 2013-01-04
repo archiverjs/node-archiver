@@ -15,12 +15,10 @@ module.exports = {
     test.expect(1);
 
     var actual;
-    var expected = 'f2d375454bd5630a062a2b787a48458a83fcb6ac';
+    var expected = 'e87af3cdd4b01bb72ebab46baa97ee1eb814a1d3';
 
     var hash = crypto.createHash('sha1');
-    var archive = archiver.createTar({
-      forceUTC: true
-    });
+    var archive = archiver.createTar();
 
     if (fileOutput) {
       rimraf.sync('tmp/buffer.tar');
@@ -55,12 +53,10 @@ module.exports = {
 
   tarString: function(test) {
     var actual;
-    var expected = '8c99caf67e153c62f2d69a40ff339b9b07775935';
+    var expected = '333f843838ba5ee7727b3cc8afa017cab3d70d72';
 
     var hash = crypto.createHash('sha1');
-    var archive = archiver.createTar({
-      forceUTC: true
-    });
+    var archive = archiver.createTar();
 
     if (fileOutput) {
       rimraf.sync('tmp/string.tar');

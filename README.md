@@ -70,10 +70,6 @@ Creates an Archiver Tar object. *in testing*
 
 ### Options
 
-#### forceUTC `boolean`
-
-If true, forces file date and time to UTC. Helps with testing across timezones.
-
 #### recordsPerBlock `number`
 
 Sets number of records in a block, default is 20 (for advanced users only).
