@@ -1,6 +1,6 @@
 {
   "name": "archiver",
-  "version": "0.2.1-alpha",
+  "version": "0.2.1",
   "description": "Creates Archives (ZIP) via Node Streams.",
   "homepage": "https://github.com/ctalkington/node-archiver",
   "author": {
