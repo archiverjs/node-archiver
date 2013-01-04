@@ -34,6 +34,10 @@ Creates an Archiver ZIP object.
 
 Sets zip comment.
 
+#### forceUTC `boolean`
+
+If true, forces file date and time to UTC. Helps with testing across timezones.
+
 #### zlib `object`
 
 Passed to node's [zlib](http://nodejs.org/api/zlib.html#zlib_options) module to control compression. Options may vary by node version.
@@ -65,6 +69,10 @@ Sets file comment.
 Creates an Archiver Tar object. *in testing*
 
 ### Options
+
+#### forceUTC `boolean`
+
+If true, forces file date and time to UTC. Helps with testing across timezones.
 
 #### recordsPerBlock `number`
 
