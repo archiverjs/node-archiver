@@ -6,7 +6,7 @@ var rimraf = require('rimraf');
 
 var archiver = require('../lib/archiver');
 
-var fileOutput = true;
+var fileOutput = false;
 
 var date1 = new Date('Jan 03 2013 14:26:38 GMT');
 
