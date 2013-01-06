@@ -11,7 +11,7 @@ var fileOutput = false;
 var date1 = new Date('Jan 03 2013 14:26:38 GMT');
 
 module.exports = {
-  tarBuffer: function(test) {
+  inputBuffer: function(test) {
     test.expect(1);
 
     var actual;
@@ -51,7 +51,39 @@ module.exports = {
     });
   },
 
-  tarString: function(test) {
+  inputStream: function(test) {
+    var actual;
+    var expected = '87114c90ae6f7813060c0e393d781408fa988288';
+
+    var hash = crypto.createHash('sha1');
+    var archive = archiver.createTar();
+
+    if (fileOutput) {
+      rimraf.sync('tmp/stream.tar');
+      var out = fs.createWriteStream('tmp/stream.tar');
+      archive.pipe(out);
+    }
+
+    archive.addFile(fs.createReadStream('tests/fixtures/file.txt'), {name: 'stream.txt', date: date1}, function() {
+      archive.finalize();
+    });
+
+    archive.on('error', function(err) {
+      throw err;
+    });
+
+    archive.on('data', function(data) {
+      hash.update(data);
+    });
+
+    archive.on('end', function() {
+      actual = hash.digest('hex');
+      test.equals(actual, expected, 'data hex values should match.');
+      test.done();
+    });
+  },
+
+  inputString: function(test) {
     var actual;
     var expected = '333f843838ba5ee7727b3cc8afa017cab3d70d72';
 
