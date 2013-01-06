@@ -10,6 +10,8 @@ var fileOutput = false;
 
 var date1 = new Date('Jan 03 2013 14:26:38 GMT');
 
+mkdir('tmp');
+
 module.exports = {
   featureComments: function(test) {
     test.expect(1);
@@ -146,7 +148,7 @@ module.exports = {
     test.expect(1);
 
     var actual;
-    var expected = '1f2c6eb835d029b446c1731a80d4a4f322bcffd0';
+    var expected = 'd7e3970142a06d4a87fbd6458284eeaf8f5de907';
 
     var hash = crypto.createHash('sha1');
     var archive = archiver.createZip({
@@ -162,7 +164,10 @@ module.exports = {
       archive.pipe(out);
     }
 
-    archive.addFile(fs.createReadStream('tests/fixtures/file.txt'), {name: 'stream.txt', date: date1}, function() {
+    rimraf.sync('tmp/stream.txt');
+    fs.writeFileSync('tmp/stream.txt', 'this is a text file');
+
+    archive.addFile(fs.createReadStream('tmp/stream.txt'), {name: 'stream.txt', date: date1}, function() {
       archive.finalize();
     });
 

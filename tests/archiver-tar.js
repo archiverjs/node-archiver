@@ -10,6 +10,8 @@ var fileOutput = false;
 
 var date1 = new Date('Jan 03 2013 14:26:38 GMT');
 
+mkdir('tmp');
+
 module.exports = {
   inputBuffer: function(test) {
     test.expect(1);
@@ -53,7 +55,7 @@ module.exports = {
 
   inputStream: function(test) {
     var actual;
-    var expected = '87114c90ae6f7813060c0e393d781408fa988288';
+    var expected = 'da02a931d670f725c0de20ef30b112b53d149a3d';
 
     var hash = crypto.createHash('sha1');
     var archive = archiver.createTar();
@@ -64,7 +66,10 @@ module.exports = {
       archive.pipe(out);
     }
 
-    archive.addFile(fs.createReadStream('tests/fixtures/file.txt'), {name: 'stream.txt', date: date1}, function() {
+    rimraf.sync('tmp/stream.txt');
+    fs.writeFileSync('tmp/stream.txt', 'this is a text file');
+
+    archive.addFile(fs.createReadStream('tmp/stream.txt'), {name: 'stream.txt', date: date1}, function() {
       archive.finalize();
     });
 
