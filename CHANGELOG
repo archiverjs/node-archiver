@@ -1,7 +1,7 @@
 v0.2.2:
-  date: 2013-01-30
+  date: 2013-01-05
   changes:
-    - (none yet)
+    - fix tar stream bug and add stream tests.
 v0.2.1:
   date: 2013-01-04
   changes:
