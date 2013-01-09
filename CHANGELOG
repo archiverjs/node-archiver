@@ -1,7 +1,8 @@
 v0.2.3:
   date: 2013-01-30
   changes:
-    - (none yet, in development)
+    - (in development)
+    - make tar recordSize configurable for advanced users.
 v0.2.2:
   date: 2013-01-05
   changes:

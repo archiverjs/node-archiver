@@ -70,6 +70,10 @@ Creates an Archiver Tar object. *in testing*
 
 ### Options
 
+#### recordSize `number`
+
+Sets the size (in bytes) of each record in a block, default is 512 (for advanced users only).
+
 #### recordsPerBlock `number`
 
 Sets number of records in a block, default is 20 (for advanced users only).
