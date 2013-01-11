@@ -2,6 +2,7 @@ v0.3.0:
   date: 2013-01-30
   changes:
     - (in development)
+    - emit proper error objects throughout.
     - replace error emitting on methods with callback.
     - add generic create method.
     - make tar recordSize configurable for advanced users.

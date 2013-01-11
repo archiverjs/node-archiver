@@ -8,7 +8,7 @@ var gzipper = zlib.createGzip();
 var archive = archiver.createTar();
 
 archive.on('error', function(err) {
-  console.log(err);
+  throw err;
 });
 
 archive.pipe(gzipper).pipe(out);

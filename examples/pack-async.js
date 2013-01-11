@@ -7,7 +7,7 @@ var out = fs.createWriteStream('out.zip');
 var archive = archiver.createZip();
 
 archive.on('error', function(err) {
-  console.log(err);
+  throw err;
 });
 
 archive.pipe(out);
