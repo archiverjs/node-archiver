@@ -10,27 +10,34 @@ npm install archiver --save
 
 You can also use `npm install https://github.com/ctalkington/node-archiver/archive/master.tar.gz` to test upcoming versions.
 
-## API
+
+## Core
+
+### Methods
 
 #### create(type, options)
 
 Creates an Archiver instance based on the type (ie zip/tar) passed.
 
-#### addFile(inputStream, data, callback(err))
-
-Adds a file to the Archiver stream.
-
-#### finalize(callback(err, written))
-
-Finalizes the Archiver stream. When everything is done, callback is called with the total number of bytes in the archive.
-
-## Zip
-
-### Methods
-
 #### createZip(options)
 
 Creates an Archiver Zip instance.
+
+#### createTar(options)
+
+Creates an Archiver Tar instance.
+
+### Instance Methods
+
+#### addFile(input, data, callback(err))
+
+Adds a file to the instance's stream. Input can be in the form of a text string, buffer, or stream. When instance's stream has received, processed, and emitted (as data) the input, callback is fired.
+
+#### finalize(callback(err, bytesWritten))
+
+Finalizes the instance's stream. When stream has closed, callback is fired.
+
+## Zip
 
 ### Options
 
@@ -65,12 +72,6 @@ If true, zip contents will be stored without compression.
 Sets file comment.
 
 ## Tar (beta)
-
-### Methods
-
-#### createTar(options)
-
-Creates an Archiver Tar instance. *in testing*
 
 ### Options
 
