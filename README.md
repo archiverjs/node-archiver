@@ -16,11 +16,11 @@ You can also use `npm install https://github.com/ctalkington/node-archiver/archi
 
 Creates an Archiver instance based on the type (ie zip/tar) passed.
 
-#### addFile(inputStream, data, callback)
+#### addFile(inputStream, data, callback(err))
 
 Adds a file to the Archiver stream.
 
-#### finalize(callback(written))
+#### finalize(callback(err, written))
 
 Finalizes the Archiver stream. When everything is done, callback is called with the total number of bytes in the archive.
 
