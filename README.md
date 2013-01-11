@@ -1,6 +1,6 @@
 # Archiver v0.3.0-alpha [![Build Status](https://secure.travis-ci.org/ctalkington/node-archiver.png?branch=master)](http://travis-ci.org/ctalkington/node-archiver)
 
-Creates Archives (ZIP, TAR) via Node Streams. Depends on Node's build-in zlib module for compression available since version 0.6.3.
+Creates Archives (Zip, Tar) via Node Streams. Depends on Node's build-in zlib module for compression available since version 0.6.3.
 
 ## Install
 
@@ -11,6 +11,10 @@ npm install archiver --save
 You can also use `npm install https://github.com/ctalkington/node-archiver/archive/master.tar.gz` to test upcoming versions.
 
 ## API
+
+#### create(type, options)
+
+Creates an Archiver instance based on the type (ie zip/tar) passed.
 
 #### addFile(inputStream, data, callback)
 
@@ -26,7 +30,7 @@ Finalizes the Archiver stream. When everything is done, callback is called with 
 
 #### createZip(options)
 
-Creates an Archiver ZIP object.
+Creates an Archiver Zip instance.
 
 ### Options
 
@@ -66,7 +70,7 @@ Sets file comment.
 
 #### createTar(options)
 
-Creates an Archiver Tar object. *in testing*
+Creates an Archiver Tar instance. *in testing*
 
 ### Options
 

@@ -1,7 +1,7 @@
 v0.3.0:
   date: 2013-01-30
   changes:
-    - (in development)
+    - add generic create method.
     - make tar recordSize configurable for advanced users.
 v0.2.2:
   date: 2013-01-05
