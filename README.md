@@ -30,11 +30,11 @@ Creates an Archiver Tar instance.
 
 #### addFile(input, data, callback(err))
 
-Adds a file to the instance's stream. Input can be in the form of a text string, buffer, or stream. When instance's stream has received, processed, and emitted (as data) the input, callback is fired.
+Adds a file to the instance. Input can be in the form of a text string, buffer, or stream. When the instance has received, processed, and emitted the input, the callback is fired.
 
 #### finalize(callback(err, bytesWritten))
 
-Finalizes the instance's stream. When stream has closed, callback is fired.
+Finalizes the instance. When the instance's stream has finished emitting, the callback is fired.
 
 ## Zip
 
@@ -60,7 +60,7 @@ Sets file name including internal path inside archive.
 
 #### date `string`
 
-Sets file date. This can be any valid date string or Date object. Defaults to current time in locale.
+Sets file date. This can be any valid date string or object. Defaults to current time in locale.
 
 #### store `boolean`
 
@@ -90,7 +90,7 @@ Sets file name including internal path inside archive.
 
 #### date `string`
 
-Sets file date. This can be any valid date string or Date object. Defaults to current time in locale.
+Sets file date. This can be any valid date string or object. Defaults to current time in locale.
 
 ## Examples
 
