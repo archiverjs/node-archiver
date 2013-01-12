@@ -10,7 +10,6 @@ npm install archiver --save
 
 You can also use `npm install https://github.com/ctalkington/node-archiver/archive/master.tar.gz` to test upcoming versions.
 
-
 ## Core
 
 ### Methods
@@ -57,7 +56,7 @@ Passed to node's [zlib](http://nodejs.org/api/zlib.html#zlib_options) module to 
 
 #### name `string` `required`
 
-Sets file name.
+Sets file name including internal path inside archive.
 
 #### date `string`
 
@@ -87,7 +86,7 @@ Sets number of records in a block, default is 20 (for advanced users only).
 
 #### name `string` `required`
 
-Sets file name.
+Sets file name including internal path inside archive.
 
 #### date `string`
 
@@ -95,13 +94,12 @@ Sets file date.
 
 ## Examples
 
-Here are a few examples to get you started.
+Here are a few examples to get you started. All examples use the [async module](https://github.com/caolan/async) to avoid deep nesting of callbacks.
 
 * [basic packing](https://github.com/ctalkington/node-archiver/blob/master/examples/pack.js)
-* [basic packing with async module](https://github.com/ctalkington/node-archiver/blob/master/examples/pack-async.js)
-* [tar packing wtih gzip](https://github.com/ctalkington/node-archiver/blob/master/examples/pack-tar-gzip.js)
+* [tar packing with gzip](https://github.com/ctalkington/node-archiver/blob/master/examples/pack-tgz.js)
 
-Take a peek at the [examples](https://github.com/ctalkington/node-archiver/blob/master/example) folder for a complete listing.
+Take a peek at the [examples](https://github.com/ctalkington/node-archiver/blob/master/examples) folder for a complete listing.
 
 ## Contributing
 
@@ -113,3 +111,9 @@ see [CHANGELOG](https://github.com/ctalkington/node-archiver/blob/master/CHANGEL
 
 ## Credits
 Originally inspired by Antoine van Wel's [node-zipstream](https://github.com/wellawaretech/node-zipstream).
+
+## Licensing
+
+This project's code is licensed under the MIT license.
+
+see [LICENSE-MIT](https://github.com/ctalkington/node-archiver/blob/master/LICENSE-MIT)

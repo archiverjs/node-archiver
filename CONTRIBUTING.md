@@ -9,6 +9,6 @@
 
 #### Tests
 
-* tests should be added to the nodeunit config in `test/tests.js`
+* tests should be added to the nodeunit configs in `tests/`
 * tests can be run with `npm test`
 * see existing tests for guidance

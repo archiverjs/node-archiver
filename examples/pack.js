@@ -1,6 +1,7 @@
 var fs = require('fs');
 
 var archiver = require('archiver');
+var async = require('async');
 
 var out = fs.createWriteStream('out.zip'); // or out.tar
 var archive = archiver.createZip(); // or createTar
@@ -11,22 +12,18 @@ archive.on('error', function(err) {
 
 archive.pipe(out);
 
-archive.addFile(fs.createReadStream('file1.js'), {name: 'file1.js'}, function(err) {
+async.forEach(['file1.js', 'file2.js'], function(file, next) {
+  archive.addFile(fs.createReadStream(file), { name: file }, next);
+}, function(err) {
   if (err) {
     throw err;
   }
 
-  archive.addFile(fs.createReadStream('file2.js'), {name: 'file2.js'}, function(err) {
+  archive.finalize(function(err, written) {
     if (err) {
       throw err;
     }
 
-    archive.finalize(function(err, written) {
-      if (err) {
-        throw err;
-      }
-
-      console.log(written + ' total bytes written');
-    });
+    console.log(written + ' total bytes written');
   });
 });

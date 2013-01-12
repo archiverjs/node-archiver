@@ -1,21 +1,21 @@
 var fs = require('fs');
+var zlib = require('zlib');
 
 var archiver = require('archiver');
 var async = require('async');
 
-var out = fs.createWriteStream('out.zip');
-var archive = archiver.createZip();
+var out = fs.createWriteStream('out.tar.gz');
+var gzipper = zlib.createGzip();
+var archive = archiver.createTar();
 
 archive.on('error', function(err) {
   throw err;
 });
 
-archive.pipe(out);
+archive.pipe(gzipper).pipe(out);
 
-async.forEachSeries(['file1.js', 'file2.js'], function(file, next) {
-  archive.addFile(fs.createReadStream(file), { name: file }, function(err) {
-    next(err);
-  });
+async.forEach(['file1.js', 'file2.js'], function(file, next) {
+  archive.addFile(fs.createReadStream(file), { name: file }, next);
 }, function(err) {
   if (err) {
     throw err;
