@@ -42,11 +42,11 @@ Finalizes the instance. When the instance's stream has finished emitting, the ca
 
 #### comment `string`
 
-Sets zip comment.
+Sets the zip comment.
 
 #### forceUTC `boolean`
 
-If true, forces file date and time to UTC. Helps with testing across timezones.
+If true, forces the file date and time to UTC. Helps with testing across timezones.
 
 #### zlib `object`
 
@@ -56,19 +56,19 @@ Passed to node's [zlib](http://nodejs.org/api/zlib.html#zlib_options) module to 
 
 #### name `string` `required`
 
-Sets file name including internal path inside archive.
+Sets the file name including internal path.
 
-#### date `string`
+#### date `string|Date`
 
-Sets file date. This can be any valid date string or object. Defaults to current time in locale.
+Sets the file date. This can be any valid date string or object. Defaults to current time in locale.
 
 #### store `boolean`
 
-If true, zip contents will be stored without compression.
+If true, file contents will be stored without compression.
 
 #### comment `string`
 
-Sets file comment.
+Sets the file comment.
 
 ## Tar (beta)
 
@@ -80,17 +80,17 @@ Sets the size (in bytes) of each record in a block, default is 512 (for advanced
 
 #### recordsPerBlock `number`
 
-Sets number of records in a block, default is 20 (for advanced users only).
+Sets the number of records in a block, default is 20 (for advanced users only).
 
 ### File Data
 
 #### name `string` `required`
 
-Sets file name including internal path inside archive.
+Sets the file name including internal path.
 
-#### date `string`
+#### date `string|Date`
 
-Sets file date. This can be any valid date string or object. Defaults to current time in locale.
+Sets the file date. This can be any valid date string or object. Defaults to current time in locale.
 
 ## Examples
 
