@@ -60,7 +60,7 @@ Sets file name including internal path inside archive.
 
 #### date `string`
 
-Sets file date.
+Sets file date. This can be any valid date string or Date object. Defaults to current time in locale.
 
 #### store `boolean`
 
@@ -90,7 +90,7 @@ Sets file name including internal path inside archive.
 
 #### date `string`
 
-Sets file date.
+Sets file date. This can be any valid date string or Date object. Defaults to current time in locale.
 
 ## Examples
 
@@ -103,17 +103,16 @@ Take a peek at the [examples](https://github.com/ctalkington/node-archiver/blob/
 
 ## Contributing
 
-see [CONTRIBUTING](https://github.com/ctalkington/node-archiver/blob/master/CONTRIBUTING.md)
+see [CONTRIBUTING](https://github.com/ctalkington/node-archiver/blob/master/CONTRIBUTING.md).
 
 ## Changelog
 
-see [CHANGELOG](https://github.com/ctalkington/node-archiver/blob/master/CHANGELOG)
+see [CHANGELOG](https://github.com/ctalkington/node-archiver/blob/master/CHANGELOG).
 
 ## Credits
+
 Originally inspired by Antoine van Wel's [node-zipstream](https://github.com/wellawaretech/node-zipstream).
 
 ## Licensing
 
-This project's code is licensed under the MIT license.
-
-see [LICENSE-MIT](https://github.com/ctalkington/node-archiver/blob/master/LICENSE-MIT)
+This project's code is licensed under the MIT license. see [LICENSE-MIT](https://github.com/ctalkington/node-archiver/blob/master/LICENSE-MIT).
