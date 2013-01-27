@@ -1,7 +1,7 @@
 v0.3.0:
-  date: 2013-01-30
+  date: 2013-01-27
   changes:
-    - (in development)
+    - use setImmediate when it exists. props @davglass. (GH #9)
     - emit proper error objects throughout.
     - replace error emitting on methods with callback.
     - add generic create method.
