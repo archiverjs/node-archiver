@@ -12,8 +12,8 @@ archive.on('error', function(err) {
 
 archive.pipe(out);
 
-async.forEach(['file1.js', 'file2.js'], function(file, next) {
-  archive.addFile(fs.createReadStream(file), { name: file }, next);
+async.forEachSeries(['file1.txt', 'file2.txt'], function(file, cb) {
+  archive.addFile(fs.createReadStream(file), { name: file }, cb);
 }, function(err) {
   if (err) {
     throw err;
