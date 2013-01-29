@@ -14,7 +14,7 @@ archive.on('error', function(err) {
 
 archive.pipe(gzipper).pipe(out);
 
-async.forEach(['file1.js', 'file2.js'], function(file, next) {
+async.forEachSeries(['file1.js', 'file2.js'], function(file, next) {
   archive.addFile(fs.createReadStream(file), { name: file }, next);
 }, function(err) {
   if (err) {
