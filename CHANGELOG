@@ -2,6 +2,7 @@ v0.4.0:
   date: 2013-02-30
   changes:
     - (in development; release date estimated)
+    - fix examples and make runnable out of box. props @danmilon. (GH #11)
 v0.3.0:
   date: 2013-01-27
   changes:
