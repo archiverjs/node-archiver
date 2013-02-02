@@ -29,7 +29,7 @@
   },
   "dependencies": {
     "lodash": "~0.10.0",
-    "rimraf": "~2.0.2",
+    "rimraf": "~2.1.2",
     "mkdirp": "~0.3.4"
   },
   "devDependencies": {
