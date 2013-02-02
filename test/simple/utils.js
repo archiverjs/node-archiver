@@ -21,15 +21,15 @@ function adjustByOffset(d) {
 }
 
 module.exports = {
-  octalDateTime: function(test) {
+  convertDateTimeDos: function(test) {
     test.expect(2);
 
-    var actual = util.octalDateTime(date1);
-    var expected = octal1;
+    var actual = adjustByOffset(util.convertDateTimeDos(dos1)).toUTCString();
+    var expected = date1.toUTCString();
     test.equal(actual, expected);
 
-    actual = util.octalDateTime(date2);
-    expected = octal2;
+    actual = adjustByOffset(util.convertDateTimeDos(dos2)).toUTCString();
+    expected = date2.toUTCString();
     test.equal(actual, expected);
 
     test.done();
@@ -63,15 +63,26 @@ module.exports = {
     test.done();
   },
 
-  convertDateTimeDos: function(test) {
+  octalDateTime: function(test) {
     test.expect(2);
 
-    var actual = adjustByOffset(util.convertDateTimeDos(dos1)).toUTCString();
-    var expected = date1.toUTCString();
+    var actual = util.octalDateTime(date1);
+    var expected = octal1;
     test.equal(actual, expected);
 
-    actual = adjustByOffset(util.convertDateTimeDos(dos2)).toUTCString();
-    expected = date2.toUTCString();
+    actual = util.octalDateTime(date2);
+    expected = octal2;
+    test.equal(actual, expected);
+
+    test.done();
+  },
+
+  sanitizeFilePath: function(test) {
+    test.expect(1);
+
+    var actual = util.sanitizeFilePath('\\this/path//file.txt');
+    var expected = 'this/path/file.txt';
+
     test.equal(actual, expected);
 
     test.done();

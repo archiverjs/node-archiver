@@ -2,6 +2,9 @@ v0.4.0:
   date: 2013-02-30
   changes:
     - (in development; release date estimated)
+    - removal of zlib options. now using zlib.deflateRaw helper.
+    - massive overhaul to processing flow, methods are async now too.
+    - use readable-stream with streams2-like api.
     - fix examples and make runnable out of box. props @danmilon. (GH #11)
 v0.3.0:
   date: 2013-01-27

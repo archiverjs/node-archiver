@@ -48,10 +48,6 @@ Sets the zip comment.
 
 If true, forces the file date and time to UTC. Helps with testing across timezones.
 
-#### zlib `object`
-
-Passed to node's [zlib](http://nodejs.org/api/zlib.html#zlib_options) module to control compression. Options may vary by node version.
-
 ### File Data
 
 #### name `string` `required`

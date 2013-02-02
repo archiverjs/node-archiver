@@ -20,7 +20,7 @@ exports.input = {
     test.expect(1);
 
     var actual;
-    var expected = 'b18540ab929d83f8ed6d419e6f306fa381aa1f4e';
+    var expected = '21186aba17dc54480f7daa86427fe0a066128bd3';
 
     var hasher = new HashStream();
     var archive = archiver.createZip({
@@ -48,20 +48,14 @@ exports.input = {
       test.done();
     });
 
-    archive.addFile(binaryBuffer(20000), {name: 'buffer.txt', date: date1}, function(err) {
-      if (err) {
-        throw err;
-      }
-
-      archive.finalize();
-    });
+    archive.addFile(binaryBuffer(20000), {name: 'buffer.txt', date: date1}).finalize();
   },
 
   stream: function(test) {
     test.expect(1);
 
     var actual;
-    var expected = 'd7e3970142a06d4a87fbd6458284eeaf8f5de907';
+    var expected = '588e21c54fce8e990bc0599d14257dd7ebdcde89';
 
     var hasher = new HashStream();
     var archive = archiver.createZip({
@@ -89,20 +83,14 @@ exports.input = {
       test.done();
     });
 
-    archive.addFile(fs.createReadStream('test/fixtures/test.txt'), {name: 'stream.txt', date: date1}, function(err) {
-      if (err) {
-        throw err;
-      }
-
-      archive.finalize();
-    });
+    archive.addFile(fs.createReadStream('test/fixtures/test.txt'), {name: 'stream.txt', date: date1}).finalize();
   },
 
   string: function(test) {
     test.expect(1);
 
     var actual;
-    var expected = '3de2c37ba3745618257f6816fe979ee565e24aa0';
+    var expected = '064110e4e3df1e44466195124b765ee5538f2e5a';
 
     var hasher = new HashStream();
     var archive = archiver.createZip({
@@ -130,13 +118,7 @@ exports.input = {
       test.done();
     });
 
-    archive.addFile('string', {name: 'string.txt', date: date1}, function(err) {
-      if (err) {
-        throw err;
-      }
-
-      archive.finalize();
-    });
+    archive.addFile('string', {name: 'string.txt', date: date1}).finalize();
   }
 };
 
@@ -145,7 +127,7 @@ exports.feature = {
     test.expect(1);
 
     var actual;
-    var expected = 'b09223a2a00d21d84fd4d9a57a3a7fa451125146';
+    var expected = '6ba862d08622c841b48f1a6b6e26bbaa8b891ab5';
 
     var hasher = new HashStream();
     var archive = archiver.createZip({
@@ -174,20 +156,14 @@ exports.feature = {
       test.done();
     });
 
-    archive.addFile(binaryBuffer(20000), {name: 'buffer.txt', date: date1, comment: 'this is a file comment'}, function(err) {
-      if (err) {
-        throw err;
-      }
-
-      archive.finalize();
-    });
+    archive.addFile(binaryBuffer(20000), {name: 'buffer.txt', date: date1, comment: 'this is a file comment'}).finalize();
   },
 
   store: function(test) {
     test.expect(1);
 
     var actual;
-    var expected = '09305770a3272cbcd7c151ee267cb1b0075dd29e';
+    var expected = '94e3afa8b5318d82cc9d2eda36562c31b67f1f4d';
 
     var hasher = new HashStream();
     var archive = archiver.createZip({
@@ -215,12 +191,6 @@ exports.feature = {
       test.done();
     });
 
-    archive.addFile(binaryBuffer(20000), {name: 'buffer.txt', date: date1, store: true}, function(err) {
-      if (err) {
-        throw err;
-      }
-
-      archive.finalize();
-    });
+    archive.addFile(binaryBuffer(20000), {name: 'buffer.txt', date: date1, store: true}).finalize();
   }
 };
