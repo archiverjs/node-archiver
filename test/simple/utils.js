@@ -1,4 +1,4 @@
-var util = require('../lib/util');
+var util = require('../../lib/util');
 
 var date1 = new Date('Jan 03 2013 14:26:38 GMT');
 var octal1 = 12071312436;

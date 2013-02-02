@@ -25,7 +25,7 @@
     "node": ">= 0.6.3"
   },
   "scripts": {
-    "test": "nodeunit tests"
+    "test": "nodeunit test/simple"
   },
   "dependencies": {
     "lodash": "~0.10.0",
