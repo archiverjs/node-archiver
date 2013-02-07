@@ -29,12 +29,12 @@
   },
   "dependencies": {
     "readable-stream": "~0.2.0",
-    "lodash": "~0.10.0",
-    "rimraf": "~2.1.2",
-    "mkdirp": "~0.3.4"
+    "lodash": "~0.10.0"
   },
   "devDependencies": {
-    "nodeunit": "~0.7.4"
+    "nodeunit": "~0.7.4",
+    "rimraf": "~2.1.2",
+    "mkdirp": "~0.3.4"
   },
   "keywords": [
     "archive",
