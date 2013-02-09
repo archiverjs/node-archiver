@@ -18,19 +18,11 @@ You can also use `npm install https://github.com/ctalkington/node-archiver/archi
 
 Creates an Archiver instance based on the type (ie zip/tar) passed.
 
-#### createZip(options)
-
-Creates an Archiver Zip instance.
-
-#### createTar(options)
-
-Creates an Archiver Tar instance.
-
 ### Instance Methods
 
-#### addFile(input, data, callback(err))
+#### append(input, data, callback(err))
 
-Adds a file to the instance. Input can be in the form of a text string, buffer, or stream. When the instance has received, processed, and emitted the input, the callback is fired.
+Appends a file to the instance. Input can be in the form of a text string, buffer, or stream. When the instance has received, processed, and emitted the input, the callback is fired.
 
 #### finalize(callback(err, bytesWritten))
 

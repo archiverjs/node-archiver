@@ -6,7 +6,7 @@ var async = require('async');
 
 var out = fs.createWriteStream('out.tar.gz');
 var gzipper = zlib.createGzip();
-var archive = archiver.createTar();
+var archive = archiver.create('tar');
 
 archive.on('error', function(err) {
   throw err;
@@ -15,7 +15,7 @@ archive.on('error', function(err) {
 archive.pipe(gzipper).pipe(out);
 
 async.forEachSeries(['file1.txt', 'file2.txt'], function(file, cb) {
-  archive.addFile(fs.createReadStream(file), { name: file }, cb);
+  archive.append(fs.createReadStream(file), { name: file }, cb);
 }, function(err) {
   if (err) {
     throw err;

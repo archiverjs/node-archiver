@@ -28,7 +28,7 @@ exports.input = {
       test.done();
     });
 
-    archive.addFile(binaryBuffer(20000), {name: 'buffer.txt', date: date1}).finalize();
+    archive.append(binaryBuffer(20000), {name: 'buffer.txt', date: date1}).finalize();
   },
 
   stream: function(test) {
@@ -44,7 +44,7 @@ exports.input = {
       test.done();
     });
 
-    archive.addFile(fs.createReadStream('test/fixtures/test.txt'), {name: 'stream.txt', date: date1}).finalize();
+    archive.append(fs.createReadStream('test/fixtures/test.txt'), {name: 'stream.txt', date: date1}).finalize();
   },
 
   string: function(test) {
@@ -60,6 +60,6 @@ exports.input = {
       test.done();
     });
 
-    archive.addFile('string', {name: 'string.txt', date: date1}).finalize();
+    archive.append('string', {name: 'string.txt', date: date1}).finalize();
   }
 };
