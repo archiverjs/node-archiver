@@ -1,6 +1,6 @@
 var crypto = require('crypto');
+var fs = require('fs');
 var inherits = require('util').inherits;
-
 var Stream = require('stream').Stream;
 
 function HashStream() {
@@ -24,6 +24,26 @@ HashStream.prototype.end = function() {
 };
 
 module.exports.HashStream = HashStream;
+
+function WriteHashStream(path, options) {
+  fs.WriteStream.call(this, path, options);
+
+  this.hash = crypto.createHash('sha1');
+  this.digest = null;
+
+  this.on('close', function() {
+    this.digest = this.hash.digest('hex');
+  });
+}
+
+inherits(WriteHashStream, fs.WriteStream);
+
+WriteHashStream.prototype.write = function(chunk) {
+  fs.WriteStream.prototype.write.call(this, chunk);
+  this.hash.update(chunk);
+};
+
+module.exports.WriteHashStream = WriteHashStream;
 
 function binaryBuffer(n) {
   var buffer = new Buffer(n);
