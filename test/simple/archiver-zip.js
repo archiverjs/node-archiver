@@ -27,7 +27,7 @@ exports.input = {
     archive.pipe(testStream);
 
     testStream.on('close', function() {
-      test.equals(testStream.digest, '21186aba17dc54480f7daa86427fe0a066128bd3', 'data hex values should match.');
+      test.equals(testStream.digest, 'b18540ab929d83f8ed6d419e6f306fa381aa1f4e', 'data hex values should match.');
       test.done();
     });
 
@@ -47,7 +47,7 @@ exports.input = {
     archive.pipe(testStream);
 
     testStream.on('close', function() {
-      test.equals(testStream.digest, '588e21c54fce8e990bc0599d14257dd7ebdcde89', 'data hex values should match.');
+      test.equals(testStream.digest, '7cf00d9442bf640be1a84cb6e96c24342349d953', 'data hex values should match.');
       test.done();
     });
 
@@ -70,7 +70,7 @@ exports.input = {
     archive.pipe(testStream);
 
     testStream.on('close', function() {
-      test.equals(testStream.digest, '064110e4e3df1e44466195124b765ee5538f2e5a', 'data hex values should match.');
+      test.equals(testStream.digest, '3de2c37ba3745618257f6816fe979ee565e24aa0', 'data hex values should match.');
       test.done();
     });
 
@@ -93,7 +93,7 @@ exports.feature = {
     archive.pipe(testStream);
 
     testStream.on('close', function() {
-      test.equals(testStream.digest, '6ba862d08622c841b48f1a6b6e26bbaa8b891ab5', 'data hex values should match.');
+      test.equals(testStream.digest, 'b09223a2a00d21d84fd4d9a57a3a7fa451125146', 'data hex values should match.');
       test.done();
     });
 
@@ -113,7 +113,7 @@ exports.feature = {
     archive.pipe(testStream);
 
     testStream.on('close', function() {
-      test.equals(testStream.digest, '94e3afa8b5318d82cc9d2eda36562c31b67f1f4d', 'data hex values should match.');
+      test.equals(testStream.digest, '09305770a3272cbcd7c151ee267cb1b0075dd29e', 'data hex values should match.');
       test.done();
     });
 
