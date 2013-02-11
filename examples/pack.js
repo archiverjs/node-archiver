@@ -12,7 +12,10 @@ archive.on('error', function(err) {
 
 archive.pipe(out);
 
-async.forEachSeries(['file1.txt', 'file2.txt'], function(file, cb) {
+var a = __dirname + '/file1.txt';
+var b = __dirname + '/file2.txt';
+
+async.forEachSeries([a, b], function(file, cb) {
   archive.append(fs.createReadStream(file), { name: file }, cb);
 }, function(err) {
   if (err) {
