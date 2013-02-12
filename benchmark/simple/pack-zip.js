@@ -8,14 +8,17 @@ var common = require('../common');
 
 var binaryBuffer = common.binaryBuffer;
 
+var BITS_IN_BYTE = 1024;
+var BITS_IN_MBYTE = BITS_IN_BYTE * 1024;
+
 var archive = archiver('zip');
 var file;
 
 if (!process.argv[2]) {
   mkdir.sync('tmp');
 
-  file = 'tmp/1mb.dat';
-  fs.writeFileSync(file, binaryBuffer(1024 * 1024));
+  file = 'tmp/10mb.dat';
+  fs.writeFileSync(file, binaryBuffer(BITS_IN_MBYTE * 10));
 } else {
   file = process.argv[2];
 }
