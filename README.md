@@ -82,7 +82,7 @@ Sets the file date. This can be any valid date string or object. Defaults to cur
 
 ## Examples
 
-Here are a few examples to get you started. All examples use the [async module](https://github.com/caolan/async) to avoid deep nesting of callbacks.
+Here are a few examples to get you started.
 
 * [basic packing](https://github.com/ctalkington/node-archiver/blob/master/examples/pack.js)
 * [tar packing with gzip](https://github.com/ctalkington/node-archiver/blob/master/examples/pack-tgz.js)

@@ -2,30 +2,28 @@ var fs = require('fs');
 var zlib = require('zlib');
 
 var archiver = require('archiver');
-var async = require('async');
 
-var out = fs.createWriteStream('out.tar.gz');
 var gzipper = zlib.createGzip();
-var archive = archiver.create('tar');
+var output = fs.createWriteStream(__dirname + '/example-output.tar.gz');
+var archive = archiver('tar');
 
 archive.on('error', function(err) {
   throw err;
 });
 
-archive.pipe(gzipper).pipe(out);
+archive.pipe(gzipper).pipe(output);
 
-async.forEachSeries(['file1.txt', 'file2.txt'], function(file, cb) {
-  archive.append(fs.createReadStream(file), { name: file }, cb);
-}, function(err) {
+var file1 = __dirname + '/fixtures/file1.txt';
+var file2 = __dirname + '/fixtures/file2.txt';
+
+archive
+  .addFile(fs.createReadStream(file1), { name: 'file1.txt' })
+  .addFile(fs.createReadStream(file2), { name: 'file2.txt' });
+
+archive.finalize(function(err, written) {
   if (err) {
     throw err;
   }
 
-  archive.finalize(function(err, written) {
-    if (err) {
-      throw err;
-    }
-
-    console.log(written + ' total bytes written');
-  });
+  console.log(written + ' total bytes written');
 });
