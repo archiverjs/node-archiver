@@ -4,7 +4,7 @@ var archiver = require('archiver');
 var async = require('async');
 
 var out = fs.createWriteStream('out.zip'); // or out.tar
-var archive = archiver.create('zip');
+var archive = archiver('zip');
 
 archive.on('error', function(err) {
   throw err;
