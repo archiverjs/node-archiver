@@ -28,8 +28,7 @@
     "test": "nodeunit test/simple"
   },
   "dependencies": {
-    "readable-stream": "~0.2.0",
-    "lodash": "~0.10.0"
+    "readable-stream": "~0.2.0"
   },
   "devDependencies": {
     "nodeunit": "~0.7.4",

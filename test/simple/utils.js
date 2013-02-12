@@ -63,6 +63,35 @@ module.exports = {
     test.done();
   },
 
+  defaults: function(test) {
+    test.expect(2);
+
+    var actual = util.defaults({value1: true}, {
+      value2: true
+    });
+
+    var expected = {
+      value1: true,
+      value2: true
+    };
+
+    test.deepEqual(actual, expected, 'should default when missing key');
+
+    actual = util.defaults({value3: null}, {
+      value3: true,
+      value4: true
+    });
+
+    expected = {
+      value3: true,
+      value4: true
+    };
+
+    test.deepEqual(actual, expected, 'should default key containing null value');
+
+    test.done();
+  },
+
   octalDateTime: function(test) {
     test.expect(2);
 

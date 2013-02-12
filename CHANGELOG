@@ -2,6 +2,7 @@ v0.4.0:
   date: 2013-02-30
   changes:
     - (in development; release date estimated)
+    - removal of lodash dependency.
     - removal of zlib options. now using zlib.deflateRaw helper.
     - massive overhaul to processing flow, methods are async now too.
     - use readable-stream with streams2-like api.
