@@ -19,7 +19,7 @@ exports.input = {
   buffer: function(test) {
     test.expect(1);
 
-    var archive = archiver.createTar();
+    var archive = archiver('tar');
     var testStream = new WriteHashStream('tmp/buffer.tar');
 
     archive.pipe(testStream);
@@ -29,13 +29,15 @@ exports.input = {
       test.done();
     });
 
-    archive.append(binaryBuffer(20000), {name: 'buffer.txt', date: date1}).finalize();
+    archive
+      .append(binaryBuffer(20000), {name: 'buffer.txt', date: date1})
+      .finalize();
   },
 
   stream: function(test) {
     test.expect(1);
 
-    var archive = archiver.createTar();
+    var archive = archiver('tar');
     var testStream = new WriteHashStream('tmp/stream.tar');
 
     archive.pipe(testStream);
@@ -45,13 +47,15 @@ exports.input = {
       test.done();
     });
 
-    archive.append(fs.createReadStream('test/fixtures/test.txt'), {name: 'stream.txt', date: date1}).finalize();
+    archive
+      .append(fs.createReadStream('test/fixtures/test.txt'), {name: 'stream.txt', date: date1})
+      .finalize();
   },
 
   string: function(test) {
     test.expect(1);
 
-    var archive = archiver.createTar();
+    var archive = archiver('tar');
     var testStream = new WriteHashStream('tmp/string.tar');
 
     archive.pipe(testStream);
@@ -61,7 +65,9 @@ exports.input = {
       test.done();
     });
 
-    archive.append('string', {name: 'string.txt', date: date1}).finalize();
+    archive
+      .append('string', {name: 'string.txt', date: date1})
+      .finalize();
   },
 
   multiple: function(test) {
