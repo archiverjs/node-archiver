@@ -2,6 +2,8 @@ v0.4.0:
   date: 2013-02-30
   changes:
     - (in development; release date estimated)
+    - basic benchmarks. props @danmilon. (GH #20)
+    - misc optimizations. props @visionmedia. (GH #17,19)
     - removal of lodash dependency.
     - removal of zlib options. now using zlib.deflateRaw helper.
     - massive overhaul to processing flow, methods are async now too.
