@@ -25,7 +25,8 @@
     "node": ">= 0.6.3"
   },
   "scripts": {
-    "test": "nodeunit test/simple"
+    "test": "nodeunit test/simple",
+    "bench": "node benchmark/simple/pack-zip.js"
   },
   "dependencies": {
     "readable-stream": "~0.2.0"
