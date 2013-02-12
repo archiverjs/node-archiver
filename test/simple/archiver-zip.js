@@ -26,7 +26,7 @@ exports.input = {
     archive.pipe(testStream);
 
     testStream.on('close', function() {
-      test.equals(testStream.digest, 'b18540ab929d83f8ed6d419e6f306fa381aa1f4e', 'data hex values should match.');
+      test.equals(testStream.digest, '9c14aaaab831cad774d0dfaf665ae6da8e33577c', 'data hex values should match.');
       test.done();
     });
 
@@ -47,7 +47,7 @@ exports.input = {
     archive.pipe(testStream);
 
     testStream.on('close', function() {
-      test.equals(testStream.digest, '7cf00d9442bf640be1a84cb6e96c24342349d953', 'data hex values should match.');
+      test.equals(testStream.digest, 'd7e3970142a06d4a87fbd6458284eeaf8f5de907', 'data hex values should match.');
       test.done();
     });
 
@@ -88,7 +88,7 @@ exports.input = {
     archive.pipe(testStream);
 
     testStream.on('close', function() {
-      test.equals(testStream.digest, 'failing', 'data hex values should match.');
+      test.equals(testStream.digest, 'dac10ec60ee700ea07a90bca3e6d1a8db2670a9b', 'data hex values should match.');
       test.done();
     });
 
@@ -97,31 +97,6 @@ exports.input = {
       .append(binaryBuffer(20000), {name: 'buffer.txt', date: date2})
       .append(fs.createReadStream('test/fixtures/test.txt'), {name: 'stream.txt', date: date2})
       .append(fs.createReadStream('test/fixtures/test.txt'), {name: 'stream-store.txt', date: date1, store: true})
-      .finalize();
-  }
-};
-
-exports.feature = {
-  comments: function(test) {
-    test.expect(1);
-
-    var hasher = new HashStream();
-    var archive = archiver.createZip({
-      comment: 'this is a zip comment',
-      forceUTC: true
-    });
-
-    var testStream = new WriteHashStream('tmp/comments.zip');
-
-    archive.pipe(testStream);
-
-    testStream.on('close', function() {
-      test.equals(testStream.digest, 'b09223a2a00d21d84fd4d9a57a3a7fa451125146', 'data hex values should match.');
-      test.done();
-    });
-
-    archive
-      .append(binaryBuffer(20000), {name: 'buffer.txt', date: date1, comment: 'this is a file comment'})
       .finalize();
   }
 };
@@ -168,6 +143,31 @@ exports.store = {
 
     archive
       .append(fs.createReadStream('test/fixtures/test.txt'), {name: 'stream.txt', date: date1, store: true})
+      .finalize();
+  }
+};
+
+exports.feature = {
+  comments: function(test) {
+    test.expect(1);
+
+    var hasher = new HashStream();
+    var archive = archiver.createZip({
+      comment: 'this is a zip comment',
+      forceUTC: true
+    });
+
+    var testStream = new WriteHashStream('tmp/comments.zip');
+
+    archive.pipe(testStream);
+
+    testStream.on('close', function() {
+      test.equals(testStream.digest, 'ea7911cbe2508682c2a17d30b366ac33527ba84f', 'data hex values should match.');
+      test.done();
+    });
+
+    archive
+      .append(binaryBuffer(20000), {name: 'buffer.txt', date: date1, comment: 'this is a file comment'})
       .finalize();
   }
 };

@@ -5,7 +5,6 @@ v0.4.0:
     - basic benchmarks. props @danmilon. (GH #20)
     - misc optimizations. props @visionmedia. (GH #17,19)
     - removal of lodash dependency.
-    - removal of zlib options. now using zlib.deflateRaw helper.
     - massive overhaul to processing flow, methods are async now too.
     - use readable-stream with streams2-like api.
     - fix examples and make runnable out of box. props @danmilon. (GH #11)
