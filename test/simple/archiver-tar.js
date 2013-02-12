@@ -11,6 +11,7 @@ var WriteHashStream = common.WriteHashStream;
 var binaryBuffer = common.binaryBuffer;
 
 var date1 = new Date('Jan 03 2013 14:26:38 GMT');
+var date2 = new Date('Feb 10 2013 10:24:42 GMT');
 
 mkdir.sync('tmp');
 
@@ -61,5 +62,25 @@ exports.input = {
     });
 
     archive.append('string', {name: 'string.txt', date: date1}).finalize();
+  },
+
+  multiple: function(test) {
+    test.expect(1);
+
+    var archive = archiver('tar');
+    var testStream = new WriteHashStream('tmp/multiple.tar');
+
+    archive.pipe(testStream);
+
+    testStream.on('close', function() {
+      test.equals(testStream.digest, 'failing', 'data hex values should match.');
+      test.done();
+    });
+
+    archive
+      .append('string', {name: 'string.txt', date: date1})
+      .append(binaryBuffer(20000), {name: 'buffer.txt', date: date2})
+      .append(fs.createReadStream('test/fixtures/test.txt'), {name: 'stream.txt', date: date1})
+      .finalize();
   }
 };
