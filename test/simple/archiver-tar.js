@@ -73,7 +73,7 @@ exports.input = {
     archive.pipe(testStream);
 
     testStream.on('close', function() {
-      test.equals(testStream.digest, 'failing', 'data hex values should match.');
+      test.equals(testStream.digest, '0f2cfcb20ebc1958c2a9e78ad9d969fb7cae19df', 'data hex values should match.');
       test.done();
     });
 
