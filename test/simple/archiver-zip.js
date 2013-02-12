@@ -17,8 +17,7 @@ exports.input = {
   buffer: function(test) {
     test.expect(1);
 
-    var hasher = new HashStream();
-    var archive = archiver.createZip({
+    var archive = archiver('zip', {
       forceUTC: true
     });
 
@@ -31,14 +30,15 @@ exports.input = {
       test.done();
     });
 
-    archive.append(binaryBuffer(20000), {name: 'buffer.txt', date: date1}).finalize();
+    archive
+      .append(binaryBuffer(20000), {name: 'buffer.txt', date: date1})
+      .finalize();
   },
 
   stream: function(test) {
     test.expect(1);
 
-    var hasher = new HashStream();
-    var archive = archiver.createZip({
+    var archive = archiver('zip', {
       forceUTC: true
     });
 
@@ -51,17 +51,15 @@ exports.input = {
       test.done();
     });
 
-    archive.append(fs.createReadStream('test/fixtures/test.txt'), {name: 'stream.txt', date: date1}).finalize();
+    archive
+      .append(fs.createReadStream('test/fixtures/test.txt'), {name: 'stream.txt', date: date1})
+      .finalize();
   },
 
   string: function(test) {
     test.expect(1);
 
-    var actual;
-    var expected = '';
-
-    var hasher = new HashStream();
-    var archive = archiver.createZip({
+    var archive = archiver('zip', {
       forceUTC: true
     });
 
@@ -74,7 +72,9 @@ exports.input = {
       test.done();
     });
 
-    archive.append('string', {name: 'string.txt', date: date1}).finalize();
+    archive
+      .append('string', {name: 'string.txt', date: date1})
+      .finalize();
   },
 
   multiple: function(test) {
@@ -95,7 +95,8 @@ exports.input = {
     archive
       .append('string', {name: 'string.txt', date: date1})
       .append(binaryBuffer(20000), {name: 'buffer.txt', date: date2})
-      .append(fs.createReadStream('test/fixtures/test.txt'), {name: 'stream.txt', date: date1, store: true})
+      .append(fs.createReadStream('test/fixtures/test.txt'), {name: 'stream.txt', date: date2})
+      .append(fs.createReadStream('test/fixtures/test.txt'), {name: 'stream-store.txt', date: date1, store: true})
       .finalize();
   }
 };
@@ -119,18 +120,22 @@ exports.feature = {
       test.done();
     });
 
-    archive.append(binaryBuffer(20000), {name: 'buffer.txt', date: date1, comment: 'this is a file comment'}).finalize();
-  },
+    archive
+      .append(binaryBuffer(20000), {name: 'buffer.txt', date: date1, comment: 'this is a file comment'})
+      .finalize();
+  }
+};
 
-  store: function(test) {
+exports.store = {
+  buffer: function(test) {
     test.expect(1);
 
     var hasher = new HashStream();
-    var archive = archiver.createZip({
+    var archive = archiver('zip', {
       forceUTC: true
     });
 
-    var testStream = new WriteHashStream('tmp/store.zip');
+    var testStream = new WriteHashStream('tmp/store-buffer.zip');
 
     archive.pipe(testStream);
 
@@ -139,6 +144,30 @@ exports.feature = {
       test.done();
     });
 
-    archive.append(binaryBuffer(20000), {name: 'buffer.txt', date: date1, store: true}).finalize();
+    archive
+      .append(binaryBuffer(20000), {name: 'buffer.txt', date: date1, store: true})
+      .finalize();
+  },
+
+  stream: function(test) {
+    test.expect(1);
+
+    var hasher = new HashStream();
+    var archive = archiver('zip', {
+      forceUTC: true
+    });
+
+    var testStream = new WriteHashStream('tmp/store-stream.zip');
+
+    archive.pipe(testStream);
+
+    testStream.on('close', function() {
+      test.equals(testStream.digest, '999f407f3796b551d91608349a06521b8f80f229', 'data hex values should match.');
+      test.done();
+    });
+
+    archive
+      .append(fs.createReadStream('test/fixtures/test.txt'), {name: 'stream.txt', date: date1, store: true})
+      .finalize();
   }
 };
