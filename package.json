@@ -33,7 +33,8 @@
   "devDependencies": {
     "nodeunit": "~0.7.4",
     "rimraf": "~2.1.2",
-    "mkdirp": "~0.3.4"
+    "mkdirp": "~0.3.4",
+    "stream-bench": "~0.1.2"
   },
   "keywords": [
     "archive",
