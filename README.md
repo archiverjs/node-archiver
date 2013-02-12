@@ -86,11 +86,6 @@ Sets the file date. This can be any valid date string or object. Defaults to cur
 
 ## Examples
 
-Here are a few examples to get you started.
-
-* [basic packing](https://github.com/ctalkington/node-archiver/blob/master/examples/pack.js)
-* [tar packing with gzip](https://github.com/ctalkington/node-archiver/blob/master/examples/pack-tgz.js)
-
 Take a peek at the [examples](https://github.com/ctalkington/node-archiver/blob/master/examples) folder for a complete listing.
 
 ## Contributing
