@@ -2,7 +2,7 @@ v0.4.0:
   date: 2013-02-30
   changes:
     - (in development; release date estimated)
-    - basic benchmarks. props @danmilon. (GH #20)
+    - basic benchmarks and optimizations. props @danmilon. (GH #20,21)
     - misc optimizations. props @visionmedia. (GH #17,19)
     - removal of lodash dependency.
     - massive overhaul to processing flow, methods are async now too.
