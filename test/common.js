@@ -3,28 +3,6 @@ var fs = require('fs');
 var inherits = require('util').inherits;
 var Stream = require('stream').Stream;
 
-function HashStream() {
-  Stream.call(this);
-
-  this.writable = true;
-
-  this.hash = crypto.createHash('sha1');
-  this.digest = null;
-}
-
-inherits(HashStream, Stream);
-
-HashStream.prototype.write = function(chunk) {
-  this.hash.update(chunk);
-};
-
-HashStream.prototype.end = function() {
-  this.digest = this.hash.digest('hex');
-  this.emit('close');
-};
-
-module.exports.HashStream = HashStream;
-
 function WriteHashStream(path, options) {
   fs.WriteStream.call(this, path, options);
 
@@ -39,8 +17,11 @@ function WriteHashStream(path, options) {
 inherits(WriteHashStream, fs.WriteStream);
 
 WriteHashStream.prototype.write = function(chunk) {
-  fs.WriteStream.prototype.write.call(this, chunk);
-  this.hash.update(chunk);
+  if (chunk) {
+    this.hash.update(chunk);
+  }
+
+  return fs.WriteStream.prototype.write.call(this, chunk);
 };
 
 module.exports.WriteHashStream = WriteHashStream;

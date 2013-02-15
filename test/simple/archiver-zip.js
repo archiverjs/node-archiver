@@ -105,7 +105,6 @@ exports.store = {
   buffer: function(test) {
     test.expect(1);
 
-    var hasher = new HashStream();
     var archive = archiver('zip', {
       forceUTC: true
     });
@@ -127,7 +126,6 @@ exports.store = {
   stream: function(test) {
     test.expect(1);
 
-    var hasher = new HashStream();
     var archive = archiver('zip', {
       forceUTC: true
     });
@@ -151,7 +149,6 @@ exports.feature = {
   comments: function(test) {
     test.expect(1);
 
-    var hasher = new HashStream();
     var archive = archiver.createZip({
       comment: 'this is a zip comment',
       forceUTC: true
