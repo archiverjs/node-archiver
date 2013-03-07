@@ -14,19 +14,23 @@ You can also use `npm install https://github.com/ctalkington/node-archiver/archi
 
 ### Methods
 
+#### Archiver(type, options)
+
+Convenience alias for `create`.
+
 #### create(type, options)
 
 Creates an Archiver instance based on the type (ie zip/tar) passed.
 
 ### Instance Methods
 
-#### append(input, data, callback(err))
-
-Appends a file to the instance. Input can be in the form of a text string, buffer, or stream. When the instance has received, processed, and emitted the input, the callback is fired.
-
 #### addFile(input, data, callback(err))
 
 Alias of `append` for compatibility that will be removed down the road.
+
+#### append(input, data, callback(err))
+
+Appends a file to the instance. Input can be in the form of a text string, buffer, or stream. When the instance has received, processed, and emitted the input, the callback is fired.
 
 #### finalize(callback(err, bytesWritten))
 
