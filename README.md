@@ -24,6 +24,10 @@ Creates an Archiver instance based on the type (ie zip/tar) passed.
 
 Appends a file to the instance. Input can be in the form of a text string, buffer, or stream. When the instance has received, processed, and emitted the input, the callback is fired.
 
+#### addFile(input, data, callback(err))
+
+Alias of `append` for compatibility that will be removed down the road.
+
 #### finalize(callback(err, bytesWritten))
 
 Finalizes the instance. When the instance's stream has finished emitting, the callback is fired.
