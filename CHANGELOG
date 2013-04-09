@@ -1,7 +1,13 @@
 v0.5.0:
-  date: 2013-03-15
+  date: 2013-XX-XX
   changes:
     - (in development; release date estimated)
+v0.4.2:
+  date: 2013-04-09
+  changes:
+    - rebased on Transform stream for internal pipe-ing.
+    - tweaks to internal header api.
+    - pause/resume only called when _ReadableState isn't available (ie node < 0.10).
 v0.4.1:
   date: 2013-03-13
   changes:
