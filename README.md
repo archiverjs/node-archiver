@@ -1,4 +1,4 @@
-# Archiver v0.4.1 [![Build Status](https://secure.travis-ci.org/ctalkington/node-archiver.png?branch=master)](http://travis-ci.org/ctalkington/node-archiver)
+# Archiver v0.4.2 [![Build Status](https://secure.travis-ci.org/ctalkington/node-archiver.png?branch=master)](http://travis-ci.org/ctalkington/node-archiver)
 
 Creates Archives (Zip, Tar) via Node Streams. Depends on Node's build-in zlib module for compression available since version 0.6.3.
 
@@ -70,7 +70,7 @@ If true, file contents will be stored without compression.
 
 Sets the file comment.
 
-## Tar (beta)
+## Tar
 
 ### Options
 
