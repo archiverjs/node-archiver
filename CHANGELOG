@@ -2,6 +2,11 @@ v0.5.0:
   date: 2013-XX-XX
   changes:
     - (in development; release date estimated)
+v0.4.4:
+  date: 2013-04-17
+  changes:
+    - default highWaterMark to 64kb.
+    - code cleanup.
 v0.4.2:
   date: 2013-04-09
   changes:
