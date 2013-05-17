@@ -25,7 +25,7 @@
     "node": ">= 0.6.3"
   },
   "scripts": {
-    "test": "mocha --reporter spec",
+    "test": "mocha --reporter dot",
     "bench": "node benchmark/simple/pack-zip.js"
   },
   "dependencies": {
