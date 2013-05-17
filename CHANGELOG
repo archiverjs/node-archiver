@@ -1,6 +1,7 @@
 v0.5.0:
   date: 2013-XX-XX
   changes:
+    - switch test suite to mocha. test overhaul.
     - (in development; release date estimated)
 v0.4.3:
   date: 2013-04-17
