@@ -4,12 +4,12 @@ var fs = require('fs');
 var assert = require('chai').assert;
 var mkdir = require('mkdirp');
 
-var archiver = require('../lib/archiver');
-
 var common = require('./helpers/common');
 var HashStream = common.HashStream;
 var WriteHashStream = common.WriteHashStream;
 var binaryBuffer = common.binaryBuffer;
+
+var archiver = require('../lib/archiver');
 
 var testDate = new Date('Jan 03 2013 14:26:38 GMT');
 var testDate2 = new Date('Feb 10 2013 10:24:42 GMT');
@@ -95,6 +95,7 @@ describe('archiver', function() {
           .finalize();
       });
     });
+
   });
 
 
@@ -185,7 +186,7 @@ describe('archiver', function() {
           forceUTC: true
         });
 
-        var testStream = new WriteHashStream('tmp/buffer.zip');
+        var testStream = new WriteHashStream('tmp/buffer-store.zip');
 
         testStream.on('close', function() {
           assert.equal(testStream.digest, '09305770a3272cbcd7c151ee267cb1b0075dd29e');
@@ -204,7 +205,7 @@ describe('archiver', function() {
           forceUTC: true
         });
 
-        var testStream = new WriteHashStream('tmp/stream.zip');
+        var testStream = new WriteHashStream('tmp/stream-store.zip');
 
         testStream.on('close', function() {
           assert.equal(testStream.digest, '999f407f3796b551d91608349a06521b8f80f229');
