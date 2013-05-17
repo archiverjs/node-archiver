@@ -131,7 +131,13 @@ describe('utils', function() {
       });
 
       it('should be an Buffer filled with zeros', function() {
-        assert.deepEqual(actual.toJSON(), [0, 0, 0, 0, 0]);
+        var actualArray = [];
+
+        for (var i = 0; i < actual.length ; i++) {
+          actualArray.push(actual[i]);
+        }
+
+        assert.deepEqual(actualArray, [0, 0, 0, 0, 0]);
       });
     });
 
