@@ -70,7 +70,7 @@ describe('utils', function() {
       });
 
       describe('#digest()', function() {
-        it('should return crc32 digest', function() {
+        it('should return digest of crc32', function() {
           var actual = crc32.createCRC32().update('testing checksum').digest();
 
           assert.equal(actual, -323269803);
@@ -80,7 +80,7 @@ describe('utils', function() {
     });
 
     describe('createCRC32()', function() {
-      it('should create new instance of CRC32', function() {
+      it('should return an instance of CRC32', function() {
         assert.instanceOf(crc32.createCRC32(), crc32.CRC32);
       });
     });
@@ -122,7 +122,7 @@ describe('utils', function() {
     describe('cleanBuffer(size)', function() {
       var actual = utils.cleanBuffer(5);
 
-      it('should return new instance of Buffer', function() {
+      it('should return an instance of Buffer', function() {
         assert.instanceOf(actual, Buffer);
       });
 
@@ -130,7 +130,7 @@ describe('utils', function() {
         assert.lengthOf(actual, 5);
       });
 
-      it('should be an Buffer filled with zeros', function() {
+      it('should be filled with zeros', function() {
         var actualArray = [];
 
         for (var i = 0; i < actual.length ; i++) {
@@ -142,7 +142,7 @@ describe('utils', function() {
     });
 
     describe('convertDateTimeDos(input)', function() {
-      it('should convert DOS input into Date instance', function() {
+      it('should convert DOS input into an instance of Date', function() {
         var actual = adjustDateByOffset(utils.convertDateTimeDos(testDateDosUTC), testTimezoneOffset);
 
         assert.deepEqual(actual, testDate);
@@ -150,22 +150,24 @@ describe('utils', function() {
     });
 
     describe('convertDateTimeOctal(input)', function() {
-      it('should convert octal input into Date instance', function() {
+      it('should convert octal input into an instance of Date', function() {
         assert.deepEqual(utils.convertDateTimeOctal(testDateOctal), testDate);
       });
     });
 
     describe('dateify(dateish)', function() {
-      it('should pass-through dateish Date', function() {
-        assert.deepEqual(utils.dateify(testDate), testDate, 'Date');
+      it('should return an instance of Date', function() {
+        assert.instanceOf(utils.dateify(testDate), Date);
+        assert.instanceOf(utils.dateify('Jan 03 2013 14:26:38 GMT'), Date);
+        assert.instanceOf(utils.dateify(null), Date);
       });
 
-      it('should convert dateish string to Date', function() {
-        assert.deepEqual(utils.dateify('Jan 03 2013 14:26:38 GMT'), testDate, 'date string');
+      it('should passthrough an instance of Date', function() {
+        assert.deepEqual(utils.dateify(testDate), testDate);
       });
 
-      it('should return new Date if not string or Date', function() {
-        assert.instanceOf(utils.dateify(null), Date, 'empty');
+      it('should convert dateish string to an instance of Date', function() {
+        assert.deepEqual(utils.dateify('Jan 03 2013 14:26:38 GMT'), testDate);
       });
     });
 
@@ -195,11 +197,11 @@ describe('utils', function() {
     });
 
     describe('dosDateTime(date, utc)', function() {
-      it.skip('should convert date to DOS representation', function() {
+      it.skip('should convert date into its DOS representation', function() {
         assert.deepEqual(utils.dosDateTime(testDate), testDateDos);
       });
 
-      it('should convert date (forcing UTC) to DOS representation', function() {
+      it('should convert date (forcing UTC) into its DOS representation', function() {
         assert.equal(utils.dosDateTime(testDate, true), testDateDosUTC);
       });
     });
@@ -211,13 +213,13 @@ describe('utils', function() {
     });
 
     describe('octalDateTime(date)', function() {
-      it('should convert date to octal representation', function() {
+      it('should convert date into its octal representation', function() {
         assert.equal(utils.octalDateTime(testDate), testDateOctal);
       });
     });
 
     describe('padNumber(number, bytes, base)', function() {
-      it('should pad number to specificed bytes', function() {
+      it('should pad number to specified bytes', function() {
         assert.equal(utils.padNumber(0, 7), '0000000');
       });
     });

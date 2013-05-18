@@ -13,7 +13,7 @@ var testDate = new Date('Jan 03 2013 14:26:38 GMT');
 describe('headers', function() {
 
   describe('tar', function() {
-    var testTarFileObj = {
+    var fileObj = {
       name: 'test.txt',
       date: testDate,
       comment: '',
@@ -30,7 +30,7 @@ describe('headers', function() {
     describe('#encode(type, object)', function() {
 
       describe('type->file', function() {
-        var actual = tar.encode('file', testTarFileObj);
+        var actual = tar.encode('file', fileObj);
 
         it('should return an instance of Buffer', function() {
           assert.instanceOf(actual, Buffer);
@@ -63,7 +63,7 @@ describe('headers', function() {
 
 
   describe('zip', function() {
-    var zipFileObj = {
+    var fileObj = {
       name: 'test.txt',
       date: testDate,
       comment: '',
@@ -118,7 +118,7 @@ describe('headers', function() {
     describe('#encode(type, object)', function() {
 
       describe('type->file', function() {
-        var actual = zip.encode('file', zipFileObj);
+        var actual = zip.encode('file', fileObj);
 
         it('should return an instance of Buffer', function() {
           assert.instanceOf(actual, Buffer);
