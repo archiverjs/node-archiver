@@ -6,6 +6,7 @@ var mkdir = require('mkdirp');
 
 var common = require('./helpers/common');
 var HashStream = common.HashStream;
+var UnBufferedStream = common.UnBufferedStream;
 var WriteHashStream = common.WriteHashStream;
 var binaryBuffer = common.binaryBuffer;
 
@@ -59,6 +60,30 @@ describe('archiver', function() {
         archive
           .append(fs.createReadStream('test/fixtures/test.txt'), { name: 'stream.txt', date: testDate })
           .finalize();
+      });
+
+      it('should append Stream sources with no buffer or pause method', function(done) {
+        var archive = archiver('tar');
+        var testStream = new WriteHashStream('tmp/stream-nobufferpause.tar');
+        var noBufferStream1 = new UnBufferedStream();
+        var noBufferStream2 = new UnBufferedStream();
+
+        testStream.on('close', function() {
+          assert.equal(testStream.digest, '76a580762b214851ec9c45a2915356b005ec068b');
+          done();
+        });
+
+        archive.pipe(testStream);
+
+        archive.append(noBufferStream1, { name: 'stream.txt', date: testDate });
+        archive.append(noBufferStream2, { name: 'stream2.txt', date: testDate });
+
+        noBufferStream1.emit('data', binaryBuffer(20000));
+        noBufferStream1.emit('end');
+        noBufferStream2.emit('data', binaryBuffer(15000));
+        noBufferStream2.emit('end');
+
+        archive.finalize();
       });
 
       it('should append string sources', function(done) {
@@ -138,6 +163,34 @@ describe('archiver', function() {
         archive
           .append(fs.createReadStream('test/fixtures/test.txt'), { name: 'stream.txt', date: testDate })
           .finalize();
+      });
+
+      it('should append Stream sources with no buffer or pause method', function(done) {
+        var archive = archiver('zip', {
+          forceUTC: true
+        });
+
+        var testStream = new WriteHashStream('tmp/stream-nobufferpause.zip');
+        var noBufferStream1 = new UnBufferedStream();
+        var noBufferStream2 = new UnBufferedStream();
+
+        testStream.on('close', function() {
+          assert.equal(testStream.digest, '26cce2ae9282d66c20501102b97ad014d836fcf1');
+          done();
+        });
+
+        archive.pipe(testStream);
+
+        archive.append(noBufferStream1, { name: 'stream.txt', date: testDate });
+        archive.append(noBufferStream2, { name: 'stream2.txt', date: testDate });
+
+        noBufferStream1.emit('data', binaryBuffer(15000));
+        noBufferStream1.emit('end');
+
+        noBufferStream2.emit('data', binaryBuffer(20000));
+        noBufferStream2.emit('end');
+
+        archive.finalize();
       });
 
       it('should append string sources', function(done) {

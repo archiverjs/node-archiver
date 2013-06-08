@@ -2,6 +2,7 @@ var crypto = require('crypto');
 var fs = require('fs');
 var inherits = require('util').inherits;
 
+var Stream = require('stream').Stream;
 var Readable = require('stream').Readable || require('readable-stream');
 var Writable = require('stream').Writable || require('readable-stream/writable');
 
@@ -59,6 +60,14 @@ DeadEndStream.prototype._write = function(chuck, encoding, callback) {
 };
 
 module.exports.DeadEndStream = DeadEndStream;
+
+function UnBufferedStream() {
+  this.readable = true;
+}
+
+inherits(UnBufferedStream, Stream);
+
+module.exports.UnBufferedStream = UnBufferedStream;
 
 function WriteHashStream(path, options) {
   fs.WriteStream.call(this, path, options);
