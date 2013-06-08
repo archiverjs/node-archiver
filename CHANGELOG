@@ -1,8 +1,12 @@
 v0.5.0:
   date: 2013-XX-XX
   changes:
-    - switch test suite to mocha. test overhaul.
     - (in development; release date estimated)
+v0.4.4:
+  date: 2013-06-08
+  changes:
+    - switch test suite to mocha. test overhaul.
+    - support streams without any buffer or pause method
 v0.4.3:
   date: 2013-04-17
   changes:
