@@ -171,7 +171,7 @@ describe('utils', function() {
       });
     });
 
-    describe('defaults(object)', function() {
+    describe('defaults(object, source)', function() {
       it('should default when object key is missing', function() {
         var actual = utils.defaults({ value1: true }, {
           value2: true
@@ -192,6 +192,35 @@ describe('utils', function() {
         assert.deepEqual(actual, {
           value1: true,
           value2: true
+        });
+      });
+
+      it('should not default when object value is zero', function() {
+        var actual = utils.defaults({ value1: 0 }, {
+          value1: 1
+        });
+
+        assert.deepEqual(actual, {
+          value1: 0
+        });
+      });
+
+      it('should support defaulting multiple levels', function() {
+        var actual = utils.defaults({
+          level1: {
+            value1: 0
+          }
+        }, {
+          level1: {
+            value2: 2
+          }
+        });
+
+        assert.deepEqual(actual, {
+          level1: {
+            value1: 0,
+            value2: 2
+          }
         });
       });
     });
