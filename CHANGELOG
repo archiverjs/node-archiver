@@ -2,6 +2,10 @@ v0.5.0:
   date: 2013-XX-XX
   changes:
     - (in development; release date estimated)
+v0.4.5:
+  date: 2013-06-25
+  changes:
+    - force STORE when compression level is zero. (GH #33)
 v0.4.4:
   date: 2013-06-08
   changes:
