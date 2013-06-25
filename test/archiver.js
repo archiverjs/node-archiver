@@ -291,6 +291,28 @@ describe('archiver', function() {
           .append(binaryBuffer(20000), {name: 'buffer.txt', date: testDate, comment: 'this is a file comment'})
           .finalize();
       });
+
+      it('should STORE files when compression level is zero', function(done) {
+        var archive = archiver('zip', {
+          forceUTC: true,
+          zlib: {
+            level: 0
+          }
+        });
+
+        var testStream = new WriteHashStream('tmp/store-level0.zip');
+
+        testStream.on('close', function() {
+          assert.equal(testStream.digest, '09305770a3272cbcd7c151ee267cb1b0075dd29e');
+          done();
+        });
+
+        archive.pipe(testStream);
+
+        archive
+          .append(binaryBuffer(20000), { name: 'buffer.txt', date: testDate })
+          .finalize();
+      });
     });
 
   });
