@@ -119,6 +119,27 @@ describe('archiver', function() {
           .append(fs.createReadStream('test/fixtures/test.txt'), { name: 'stream.txt', date: testDate })
           .finalize();
       });
+
+      it('should use prefix for deep paths', function(done) {
+        var archive = archiver('tar');
+        var testStream = new WriteHashStream('tmp/feature-prefix.tar');
+
+        testStream.on('close', function() {
+          assert.equal(testStream.digest, 'aeb2496b2bd7458931ba942dba2b4bf28cbc187c');
+          done();
+        });
+
+        archive.pipe(testStream);
+
+        var deepPath = 'vvmbtqhysigpregbdrc/pyqaznbelhppibmbykz/';
+        deepPath += 'qcbclwjhktiazmhnsjt/kpsgdfyfkarbvnlinrt/';
+        deepPath += 'holobndxfccyecblhcc/';
+        deepPath += deepPath;
+
+        archive
+          .append('deep path', { name: deepPath + 'file.txt', date: testDate })
+          .finalize();
+      });
     });
 
   });

@@ -15,6 +15,7 @@ describe('headers', function() {
 
   describe('tar', function() {
     var fileFixture = fs.readFileSync('test/fixtures/headers/tar-file.bin');
+    var filePrefixFixture = fs.readFileSync('test/fixtures/headers/tar-fileprefix.bin');
 
     describe('#encode(type, object)', function() {
 
@@ -22,7 +23,7 @@ describe('headers', function() {
         var actual = tar.encode('file', {
           name: 'test.txt',
           date: testDate,
-          mode: 664,
+          mode: 0644,
           size: 23,
           owner: 'test',
           group: 'test'
@@ -37,7 +38,24 @@ describe('headers', function() {
         });
 
         it('should match provided fixture', function() {
+          //fs.writeFileSync('test/fixtures/headers/tar-file.bin', actual);
           assert.deepEqual(actual.toString(), fileFixture.toString());
+        });
+
+        it('should use prefix for deep paths', function() {
+          var deepPath = 'vvmbtqhysigpregbdrc/pyqaznbelhppibmbykz/';
+          deepPath += 'qcbclwjhktiazmhnsjt/kpsgdfyfkarbvnlinrt/';
+          deepPath += 'holobndxfccyecblhcc/';
+          deepPath += deepPath;
+
+          var actual = tar.encode('file', {
+            name: deepPath + 'test.txt',
+            date: testDate,
+            size: 23
+          });
+
+          //fs.writeFileSync('test/fixtures/headers/tar-fileprefix.bin', actual);
+          assert.deepEqual(actual.toString(), filePrefixFixture.toString());
         });
       });
 
@@ -56,11 +74,11 @@ describe('headers', function() {
           assert.equal(actual.name, 'test.txt');
           assert.equal(actual.uid, 0);
           assert.equal(actual.gid, 0);
-          assert.equal(actual.mode, 664);
+          assert.equal(actual.mode, 420);
           assert.equal(actual.size, 23);
           assert.deepEqual(actual.date, testDate);
           assert.equal(actual.mtime, testDateEpoch);
-          assert.equal(actual.checksum, 5722);
+          assert.equal(actual.checksum, 5730);
           assert.equal(actual.type, '0');
           assert.equal(actual.linkName, '');
         });
@@ -74,27 +92,46 @@ describe('headers', function() {
           assert.equal(actual.devMinor, 0);
           assert.equal(actual.prefix, '');
         });
+      });
 
-        it('should match provided fixture', function() {
-          assert.deepEqual(actual, {
-            name: 'test.txt',
-            mode: 664,
-            uid: 0,
-            gid: 0,
-            size: 23,
-            date: testDate,
-            mtime: testDateEpoch,
-            checksum: 5722,
-            type: '0',
-            linkName: '',
-            ustar: true,
-            ustarVersion: '00',
-            owner: 'test',
-            group: 'test',
-            devMajor: 0,
-            devMinor: 0,
-            prefix: ''
-          });
+    });
+
+    describe('HeaderTarFile', function() {
+      var HeaderTarFile = tar.file;
+      var thing = new HeaderTarFile();
+
+      describe('#_parseNumeric(num, len)', function() {
+        it('should convert octal strings to numeric values', function() {
+          assert.equal(thing._parseNumeric('21'), 17);
+          assert.equal(thing._parseNumeric('0021'), 17);
+        });
+      });
+
+      describe('#_prepNumeric(num, len)', function() {
+        it('should convert numeric values to octal strings', function() {
+          assert.equal(thing._prepNumeric(17, 2), '21');
+
+        });
+
+        it('should zero pad when needed', function() {
+          assert.equal(thing._prepNumeric(17, 4), '0021');
+        });
+      });
+
+      describe('#_splitFilePath(filepath)', function() {
+        it('should split a filepath into a name and prefix', function() {
+          var deepPath = 'vvmbtqhysigpregbdrc/pyqaznbelhppibmbykz/';
+          deepPath += 'qcbclwjhktiazmhnsjt/kpsgdfyfkarbvnlinrt/';
+          deepPath += 'holobndxfccyecblhcc/';
+          deepPath += deepPath;
+
+          var actual = thing._splitFilePath(deepPath + 'file.txt');
+
+          assert.deepEqual(actual, [
+            "qcbclwjhktiazmhnsjt/kpsgdfyfkarbvnlinrt/holobndxfccyecblhcc/file.txt",
+            "vvmbtqhysigpregbdrc/pyqaznbelhppibmbykz/qcbclwjhktiazmhnsjt/kpsgdfyfkarbvnlinrt/" +
+            "holobndxfccyecblhcc/vvmbtqhysigpregbdrc/pyqaznbelhppibmbykz"
+          ]);
         });
       });
 
