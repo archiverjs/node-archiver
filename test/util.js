@@ -16,9 +16,10 @@ var utils = require('../lib/util');
 var testBuffer = binaryBuffer(20000);
 
 var testDate = new Date('Jan 03 2013 14:26:38 GMT');
-var testDateOctal = 12071312436;
 var testDateDos = 1109607251;
 var testDateDosUTC = 1109619539;
+var testDateEpoch = 1357223198;
+var testDateOctal = 12071312436;
 
 var testTimezoneOffset = testDate.getTimezoneOffset();
 
@@ -149,6 +150,12 @@ describe('utils', function() {
       });
     });
 
+    describe('convertDateTimeEpoch(input)', function() {
+      it('should convert epoch input into an instance of Date', function() {
+        assert.deepEqual(utils.convertDateTimeEpoch(testDateEpoch), testDate);
+      });
+    });
+
     describe('convertDateTimeOctal(input)', function() {
       it('should convert octal input into an instance of Date', function() {
         assert.deepEqual(utils.convertDateTimeOctal(testDateOctal), testDate);
@@ -232,6 +239,12 @@ describe('utils', function() {
 
       it('should convert date (forcing UTC) into its DOS representation', function() {
         assert.equal(utils.dosDateTime(testDate, true), testDateDosUTC);
+      });
+    });
+
+    describe('epochDateTime(date)', function() {
+      it('should convert date into its epoch representation', function() {
+        assert.equal(utils.epochDateTime(testDate), testDateEpoch);
       });
     });
 

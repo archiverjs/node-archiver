@@ -9,28 +9,24 @@ var tar = require('../lib/headers/tar');
 var zip = require('../lib/headers/zip');
 
 var testDate = new Date('Jan 03 2013 14:26:38 GMT');
+var testDateEpoch = 1357223198;
 
 describe('headers', function() {
 
   describe('tar', function() {
-    var fileObj = {
-      name: 'test.txt',
-      date: testDate,
-      comment: '',
-      gid: '0000000',
-      mode: '0000777',
-      mtime: '12071312436',
-      uid: '0000000',
-      type: '0',
-      size: '00000000023'
-    };
-
     var fileFixture = fs.readFileSync('test/fixtures/headers/tar-file.bin');
 
     describe('#encode(type, object)', function() {
 
       describe('type->file', function() {
-        var actual = tar.encode('file', fileObj);
+        var actual = tar.encode('file', {
+          name: 'test.txt',
+          date: testDate,
+          mode: 664,
+          size: 23,
+          owner: 'test',
+          group: 'test'
+        });
 
         it('should return an instance of Buffer', function() {
           assert.instanceOf(actual, Buffer);
@@ -41,7 +37,7 @@ describe('headers', function() {
         });
 
         it('should match provided fixture', function() {
-          assert.equal(actual.toString(), fileFixture.toString());
+          assert.deepEqual(actual.toString(), fileFixture.toString());
         });
       });
 
@@ -52,8 +48,53 @@ describe('headers', function() {
       describe('type->file', function() {
         var actual = tar.decode('file', fileFixture);
 
-        it('should match provided checksum', function() {
-          assert.equal(actual.checksum, '007425');
+        it('should return an object', function() {
+          assert.isObject(actual);
+        });
+
+        it('should properly decode pre-posix attributes', function() {
+          assert.equal(actual.name, 'test.txt');
+          assert.equal(actual.uid, 0);
+          assert.equal(actual.gid, 0);
+          assert.equal(actual.mode, 664);
+          assert.equal(actual.size, 23);
+          assert.deepEqual(actual.date, testDate);
+          assert.equal(actual.mtime, testDateEpoch);
+          assert.equal(actual.checksum, 5722);
+          assert.equal(actual.type, '0');
+          assert.equal(actual.linkName, '');
+        });
+
+        it('should properly decode ustar attributes', function() {
+          assert.equal(actual.ustar, true);
+          assert.equal(actual.ustarVersion, '00');
+          assert.equal(actual.owner, 'test');
+          assert.equal(actual.group, 'test');
+          assert.equal(actual.devMajor, 0);
+          assert.equal(actual.devMinor, 0);
+          assert.equal(actual.prefix, '');
+        });
+
+        it('should match provided fixture', function() {
+          assert.deepEqual(actual, {
+            name: 'test.txt',
+            mode: 664,
+            uid: 0,
+            gid: 0,
+            size: 23,
+            date: testDate,
+            mtime: testDateEpoch,
+            checksum: 5722,
+            type: '0',
+            linkName: '',
+            ustar: true,
+            ustarVersion: '00',
+            owner: 'test',
+            group: 'test',
+            devMajor: 0,
+            devMinor: 0,
+            prefix: ''
+          });
         });
       });
 
@@ -63,62 +104,30 @@ describe('headers', function() {
 
 
   describe('zip', function() {
-    var fileObj = {
-      name: 'test.txt',
-      date: testDate,
-      comment: '',
-      mode: null,
-      store: true,
-      lastModifiedDate: 1109619539,
-      versionMadeBy: 20,
-      versionNeededToExtract: 20,
-      flags: 2056,
-      compressionMethod: 0,
-      uncompressedSize: 0,
-      compressedSize: 0,
-      offset: 0
-    };
-
-    var fileDescriptorObj = {
-      crc32: 585446183,
-      uncompressedSize: 19,
-      compressedSize: 19,
-    };
-
-    var centralHeaderObj = {
-      name: 'test.txt',
-      date: testDate,
-      store: true,
-      comment: '',
-      mode: null,
-      lastModifiedDate: 1109619539,
-      versionMadeBy: 20,
-      versionNeededToExtract: 20,
-      flags: 2056,
-      compressionMethod: 0,
-      uncompressedSize: 19,
-      compressedSize: 19,
-      offset: 0,
-      crc32: 585446183
-    };
-
-    var centralFooterObj = {
-      directoryRecordsDisk: 1,
-      directoryRecords: 1,
-      directorySize: 56,
-      directoryOffset: 73,
-      comment: ''
-    };
-
     var fileFixture = fs.readFileSync('test/fixtures/headers/zip-file.bin');
     var fileDescriptorFixture = fs.readFileSync('test/fixtures/headers/zip-filedescriptor.bin');
-    var centralHeaderFixture = fs.readFileSync('test/fixtures/headers/zip-centralheader.bin');
+    var centralDirectoryFixture = fs.readFileSync('test/fixtures/headers/zip-centralheader.bin');
     var centralFooterFixture = fs.readFileSync('test/fixtures/headers/zip-centralfooter.bin');
 
     describe('#encode(type, object)', function() {
 
       describe('type->file', function() {
-        var actual = zip.encode('file', fileObj);
+        var actual = zip.encode('file', {
+          name: 'test.txt',
+          filenameLength: 8,
+          date: testDate,
+          comment: '',
+          mode: null,
+          store: true,
+          lastModifiedDate: 1109619539,
+          versionMadeBy: 20,
+          versionNeededToExtract: 20,
+          flags: 2056,
+          compressionMethod: 0,
+          uncompressedSize: 0,
+          compressedSize: 0,
+          offset: 0
+        });
 
         it('should return an instance of Buffer', function() {
           assert.instanceOf(actual, Buffer);
@@ -130,7 +139,11 @@ describe('headers', function() {
       });
 
       describe('type->fileDescriptor', function() {
-        var actual = zip.encode('fileDescriptor', fileDescriptorObj);
+        var actual = zip.encode('fileDescriptor', {
+          crc32: 585446183,
+          uncompressedSize: 19,
+          compressedSize: 19,
+        });
 
         it('should return an instance of Buffer', function() {
           assert.instanceOf(actual, Buffer);
@@ -141,20 +154,42 @@ describe('headers', function() {
         });
       });
 
-      describe('type->centralHeader', function() {
-        var actual = zip.encode('centralHeader', centralHeaderObj);
+      describe('type->centralDirectory', function() {
+        var actual = zip.encode('centralDirectory', {
+          name: 'test.txt',
+          filenameLength: 8,
+          date: testDate,
+          store: true,
+          comment: '',
+          mode: null,
+          lastModifiedDate: 1109619539,
+          versionMadeBy: 20,
+          versionNeededToExtract: 20,
+          flags: 2056,
+          compressionMethod: 0,
+          uncompressedSize: 19,
+          compressedSize: 19,
+          offset: 0,
+          crc32: 585446183
+        });
 
         it('should return an instance of Buffer', function() {
           assert.instanceOf(actual, Buffer);
         });
 
         it('should match provided fixture', function() {
-          assert.deepEqual(actual, centralHeaderFixture);
+          assert.deepEqual(actual, centralDirectoryFixture);
         });
       });
 
       describe('type->centralFooter', function() {
-        var actual = zip.encode('centralFooter', centralFooterObj);
+        var actual = zip.encode('centralFooter', {
+          directoryRecordsDisk: 1,
+          directoryRecords: 1,
+          centralDirectorySize: 56,
+          centralDirectoryOffset: 73,
+          comment: ''
+        });
 
         it('should return an instance of Buffer', function() {
           assert.instanceOf(actual, Buffer);
@@ -168,6 +203,102 @@ describe('headers', function() {
     });
 
     describe('#decode(type, buffer)', function() {
+
+      describe('type->file', function() {
+        var actual = zip.decode('file', fileFixture);
+
+        it('should return an object', function() {
+          assert.isObject(actual);
+        });
+
+        it('should match provided fixture', function() {
+          assert.deepEqual(actual, {
+            signature: 67324752,
+            versionNeededToExtract: 20,
+            flags: 2056,
+            compressionMethod: 0,
+            lastModifiedDate: 1109619539,
+            crc32: 0,
+            compressedSize: 0,
+            uncompressedSize: 0,
+            filenameLength: 8,
+            extraFieldLength: 0,
+            name: 'test.txt',
+            extraField: null
+          });
+        });
+      });
+
+      describe('type->fileDescriptor', function() {
+        var actual = zip.decode('fileDescriptor', fileDescriptorFixture);
+
+        it('should return an object', function() {
+          assert.isObject(actual);
+        });
+
+        it('should match provided fixture', function() {
+          assert.deepEqual(actual, {
+            signature: 134695760,
+            crc32: 585446183,
+            uncompressedSize: 19,
+            compressedSize: 19,
+          });
+        });
+      });
+
+      describe('type->centralDirectory', function() {
+        var actual = zip.decode('centralDirectory', centralDirectoryFixture);
+
+        it('should return an object', function() {
+          assert.isObject(actual);
+        });
+
+        it('should match provided fixture', function() {
+          assert.deepEqual(actual, {
+            signature: 33639248,
+            versionMadeBy: 20,
+            versionNeededToExtract: 20,
+            flags: 2056,
+            compressionMethod: 0,
+            lastModifiedDate: 1109619539,
+            crc32: 585446183,
+            compressedSize: 19,
+            uncompressedSize: 19,
+            filenameLength: 8,
+            extraFieldLength: 0,
+            commentLength: 0,
+            diskNumberStart: 0,
+            internalFileAttributes: 0,
+            externalFileAttributes: 0,
+            offset: 0,
+            name: 'test.txt',
+            extraField: null,
+            comment: null
+          });
+        });
+      });
+
+      describe('type->centralFooter', function() {
+        var actual = zip.decode('centralFooter', centralFooterFixture);
+
+        it('should return an object', function() {
+          assert.isObject(actual);
+        });
+
+        it('should match provided fixture', function() {
+          assert.deepEqual(actual, {
+            signature: 101010256,
+            diskNumber: 0,
+            diskNumberStart: 0,
+            directoryRecordsDisk: 1,
+            directoryRecords: 1,
+            centralDirectorySize: 56,
+            centralDirectoryOffset: 73,
+            commentLength: 0,
+            comment: null
+          });
+        });
+      });
 
     });
 
