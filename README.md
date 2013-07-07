@@ -10,29 +10,21 @@ npm install archiver --save
 
 You can also use `npm install https://github.com/ctalkington/node-archiver/archive/master.tar.gz` to test upcoming versions.
 
-## Core
+## Archiver
 
-### Methods
+#### #create(type, options)
 
-#### Archiver(type, options)
-
-Convenience alias for `create`.
-
-#### create(type, options)
-
-Creates an Archiver instance based on the type (ie zip/tar) passed.
+Creates an Archiver instance based on the type (ie zip/tar) passed. Can be passed to `Archiver` for convenience.
 
 ### Instance Methods
 
-#### addFile(input, data, callback(err))
-
-Alias of `append` for compatibility that will be removed down the road.
-
-#### append(input, data, callback(err))
+#### #append(input, data, callback(err))
 
 Appends a file to the instance. Input can be in the form of a text string, buffer, or stream. When the instance has received, processed, and emitted the input, the callback is fired.
 
-#### finalize(callback(err, bytesWritten))
+Replaces `#addFile` which is in the depreciation stage and set to be remove in next release.
+
+#### #finalize(callback(err, bytesWritten))
 
 Finalizes the instance. When the instance's stream has finished emitting, the callback is fired.
 
@@ -60,7 +52,7 @@ Sets the file name including internal path.
 
 #### date `string|Date`
 
-Sets the file date. This can be any valid date string or object. Defaults to current time in locale.
+Sets the file date. This can be any valid date string or instance. Defaults to current time in locale.
 
 #### store `boolean`
 
@@ -90,24 +82,17 @@ Sets the file name including internal path.
 
 #### date `string|Date`
 
-Sets the file date. This can be any valid date string or object. Defaults to current time in locale.
+Sets the file date. This can be any valid date string or instance. Defaults to current time in locale.
 
-## Examples
+## Things of Interest
 
-Take a peek at the [examples](https://github.com/ctalkington/node-archiver/blob/master/examples) folder for a complete listing.
-
-## Contributing
-
-see [CONTRIBUTING](https://github.com/ctalkington/node-archiver/blob/master/CONTRIBUTING.md).
-
-## Changelog
-
-see [CHANGELOG](https://github.com/ctalkington/node-archiver/blob/master/CHANGELOG).
+- [Examples](https://github.com/ctalkington/node-archiver/blob/master/examples)
+- [Changelog](https://github.com/ctalkington/node-archiver/blob/master/CHANGELOG)
+- [Contributing](https://github.com/ctalkington/node-archiver/blob/master/CONTRIBUTING.md)
+- [MIT License](https://github.com/ctalkington/node-archiver/blob/master/LICENSE-MIT)
 
 ## Credits
 
-Originally inspired by Antoine van Wel's [node-zipstream](https://github.com/wellawaretech/node-zipstream).
+Concept inspired by Antoine van Wel's [node-zipstream](https://github.com/wellawaretech/node-zipstream).
 
-## Licensing
-
-This project's code is licensed under the MIT license. see [LICENSE-MIT](https://github.com/ctalkington/node-archiver/blob/master/LICENSE-MIT).
+Tar inspired by isaacs's [node-tar](https://github.com/isaacs/node-tar).
