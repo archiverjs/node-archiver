@@ -2,6 +2,12 @@ v0.5.0:
   date: 2013-XX-XX
   changes:
     - (in development; release date estimated)
+v0.4.6:
+  date: 2013-07-07
+  changes:
+    - core: introduce _normalizeFileData internally to seperate logic a bit.
+    - headers: internal api updates.
+    - tar: use prefix when name is > 100 and <= 255 (GH #35)
 v0.4.5:
   date: 2013-06-25
   changes:
