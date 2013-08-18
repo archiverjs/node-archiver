@@ -334,6 +334,26 @@ describe('archiver', function() {
           .append(binaryBuffer(20000), { name: 'buffer.txt', date: testDate })
           .finalize();
       });
+
+      it('should properly handle accented characters in filenames', function(done) {
+        var archive = archiver('zip', {
+          forceUTC: true
+        });
+
+        var testStream = new WriteHashStream('tmp/accentedchars-filenames.zip');
+
+        testStream.on('close', function() {
+          assert.equal(testStream.digest, '69194ccb7175d7fcfcb06c8cb0ed2c429dadb9f9');
+          done();
+        });
+
+        archive.pipe(testStream);
+
+        archive
+          .append(binaryBuffer(20000), { name: 'àáâãäçèéêëìíîïñòóôõöùúûüýÿ.txt', date: testDate })
+          .append(binaryBuffer(20000), { name: 'ÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝ.txt', date: testDate2 })
+          .finalize();
+      });
     });
 
   });

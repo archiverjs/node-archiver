@@ -36,7 +36,8 @@
     "mocha": "~1.12.0",
     "rimraf": "~2.2.0",
     "mkdirp": "~0.3.5",
-    "stream-bench": "~0.1.2"
+    "stream-bench": "~0.1.2",
+    "iconv-lite" : "~0.2.11"
   },
   "keywords": [
     "archive",
