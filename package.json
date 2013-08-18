@@ -29,15 +29,15 @@
     "bench": "node benchmark/simple/pack-zip.js"
   },
   "dependencies": {
-    "readable-stream": "~1.0.2"
+    "readable-stream": "~1.0.2",
+    "iconv-lite" : "~0.2.11"
   },
   "devDependencies": {
     "chai": "~1.7.1",
     "mocha": "~1.12.0",
     "rimraf": "~2.2.0",
     "mkdirp": "~0.3.5",
-    "stream-bench": "~0.1.2",
-    "iconv-lite" : "~0.2.11"
+    "stream-bench": "~0.1.2"
   },
   "keywords": [
     "archive",
