@@ -2,6 +2,13 @@ v0.5.0:
   date: 2013-XX-XX
   changes:
     - (in development; release date estimated)
+v0.4.7:
+  date: 2013-08-18
+  changes:
+    - core: bit of queue handling tweaks.
+    - core: increase internal buffer size.
+    - zip: always convert filenames to utf8. (GH #41)
+    - zip: workaround race condition with deflate.pipe. thanks @inolen (GH #32)
 v0.4.6:
   date: 2013-07-07
   changes:
