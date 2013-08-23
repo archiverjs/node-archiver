@@ -1,5 +1,6 @@
 /*global before,describe,it */
 var fs = require('fs');
+var PassThrough = require('stream').PassThrough || require('readable-stream/passthrough');
 
 var assert = require('chai').assert;
 var mkdir = require('mkdirp');
@@ -22,7 +23,36 @@ describe('archiver', function() {
   });
 
 
-  describe('core', function() {
+  describe('Archiver', function() {
+    var ArchiverCore = require('../lib/archiver/core');
+
+    describe('#_normalizeSource(source)', function() {
+      var core = new ArchiverCore();
+
+      it('should normalize strings to an instanceOf Buffer', function() {
+        var normalized = core._normalizeSource('some string');
+
+        assert.instanceOf(normalized, Buffer);
+      });
+
+      it('should normalize older unbuffered streams', function() {
+        var noBufferStream = new UnBufferedStream();
+        var normalized = core._normalizeSource(noBufferStream);
+
+        assert.instanceOf(normalized, PassThrough);
+      });
+    });
+
+    describe('#_normalizeStream(source)', function() {
+      var core = new ArchiverCore();
+
+      it('should normalize older unbuffered streams', function() {
+        var noBufferStream = new UnBufferedStream();
+        var normalized = core._normalizeStream(noBufferStream);
+
+        assert.instanceOf(normalized, PassThrough);
+      });
+    });
 
   });
 
@@ -59,46 +89,6 @@ describe('archiver', function() {
 
         archive
           .append(fs.createReadStream('test/fixtures/test.txt'), { name: 'stream.txt', date: testDate })
-          .finalize();
-      });
-
-      it('should append Stream sources with no buffer or pause method', function(done) {
-        var archive = archiver('tar');
-        var testStream = new WriteHashStream('tmp/stream-nobufferpause.tar');
-        var noBufferStream1 = new UnBufferedStream();
-        var noBufferStream2 = new UnBufferedStream();
-
-        testStream.on('close', function() {
-          assert.equal(testStream.digest, '54a94b8b72eac5f6acf5c1ec84aa2e69969267ca');
-          done();
-        });
-
-        archive.pipe(testStream);
-
-        archive.append(noBufferStream1, { name: 'stream.txt', date: testDate });
-        archive.append(noBufferStream2, { name: 'stream2.txt', date: testDate });
-
-        noBufferStream1.emit('data', binaryBuffer(20000));
-        noBufferStream1.emit('end');
-        noBufferStream2.emit('data', binaryBuffer(15000));
-        noBufferStream2.emit('end');
-
-        archive.finalize();
-      });
-
-      it('should append string sources', function(done) {
-        var archive = archiver('tar');
-        var testStream = new WriteHashStream('tmp/string.tar');
-
-        testStream.on('close', function() {
-          assert.equal(testStream.digest, 'fb620048e1bceefb0be06d3f18ea00929951b105');
-          done();
-        });
-
-        archive.pipe(testStream);
-
-        archive
-          .append('string', {name: 'string.txt', date: testDate })
           .finalize();
       });
 
@@ -141,19 +131,21 @@ describe('archiver', function() {
           .finalize();
       });
 
-      it('should append zero length streams', function(done) {
+      it('should append zero length sources', function(done) {
         var archive = archiver('tar');
-        var testStream = new WriteHashStream('tmp/stream-zerolength.tar');
+        var testStream = new WriteHashStream('tmp/zerolength.tar');
 
         testStream.on('close', function() {
-          assert.equal(testStream.digest, '1106252d2d34dad2a6f32f9fa872bcbc2c67199c');
+          assert.equal(testStream.digest, '4f9f572817a1f34d0d33b949c959739965e50fa6');
           done();
         });
 
         archive.pipe(testStream);
 
         archive
-          .append(fs.createReadStream('test/fixtures/empty.txt'), { name: 'empty.txt', date: testDate })
+          .append('', { name: 'string.txt', date: testDate })
+          .append(new Buffer(0), { name: 'buffer.txt', date: testDate })
+          .append(fs.createReadStream('test/fixtures/empty.txt'), { name: 'stream.txt', date: testDate })
           .finalize();
       });
     });
@@ -199,53 +191,6 @@ describe('archiver', function() {
 
         archive
           .append(fs.createReadStream('test/fixtures/test.txt'), { name: 'stream.txt', date: testDate })
-          .finalize();
-      });
-
-      it('should append Stream sources with no buffer or pause method', function(done) {
-        var archive = archiver('zip', {
-          forceUTC: true
-        });
-
-        var testStream = new WriteHashStream('tmp/stream-nobufferpause.zip');
-        var noBufferStream1 = new UnBufferedStream();
-        var noBufferStream2 = new UnBufferedStream();
-
-        testStream.on('close', function() {
-          assert.equal(testStream.digest, '26cce2ae9282d66c20501102b97ad014d836fcf1');
-          done();
-        });
-
-        archive.pipe(testStream);
-
-        archive.append(noBufferStream1, { name: 'stream.txt', date: testDate });
-        archive.append(noBufferStream2, { name: 'stream2.txt', date: testDate });
-
-        noBufferStream1.emit('data', binaryBuffer(15000));
-        noBufferStream1.emit('end');
-
-        noBufferStream2.emit('data', binaryBuffer(20000));
-        noBufferStream2.emit('end');
-
-        archive.finalize();
-      });
-
-      it('should append string sources', function(done) {
-        var archive = archiver('zip', {
-          forceUTC: true
-        });
-
-        var testStream = new WriteHashStream('tmp/string.zip');
-
-        testStream.on('close', function() {
-          assert.equal(testStream.digest, '3de2c37ba3745618257f6816fe979ee565e24aa0');
-          done();
-        });
-
-        archive.pipe(testStream);
-
-        archive
-          .append('string', {name: 'string.txt', date: testDate })
           .finalize();
       });
 
@@ -368,6 +313,26 @@ describe('archiver', function() {
         archive
           .append(binaryBuffer(20000), { name: 'àáâãäçèéêëìíîïñòóôõöùúûüýÿ.txt', date: testDate })
           .append(binaryBuffer(20000), { name: 'ÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝ.txt', date: testDate2 })
+          .finalize();
+      });
+
+      it('should append zero length sources', function(done) {
+        var archive = archiver('zip', {
+          forceUTC: true
+        });
+        var testStream = new WriteHashStream('tmp/zerolength.zip');
+
+        testStream.on('close', function() {
+          assert.equal(testStream.digest, '638e64b5b5769d2ad989a153ace568a0279cf6b6');
+          done();
+        });
+
+        archive.pipe(testStream);
+
+        archive
+          .append('', { name: 'string.txt', date: testDate })
+          .append(new Buffer(0), { name: 'buffer.txt', date: testDate })
+          .append(fs.createReadStream('test/fixtures/empty.txt'), { name: 'stream.txt', date: testDate })
           .finalize();
       });
     });
