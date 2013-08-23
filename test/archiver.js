@@ -140,6 +140,22 @@ describe('archiver', function() {
           .append('deep path', { name: deepPath + 'file.txt', date: testDate })
           .finalize();
       });
+
+      it('should append zero length streams', function(done) {
+        var archive = archiver('tar');
+        var testStream = new WriteHashStream('tmp/stream-zerolength.tar');
+
+        testStream.on('close', function() {
+          assert.equal(testStream.digest, '1106252d2d34dad2a6f32f9fa872bcbc2c67199c');
+          done();
+        });
+
+        archive.pipe(testStream);
+
+        archive
+          .append(fs.createReadStream('test/fixtures/empty.txt'), { name: 'empty.txt', date: testDate })
+          .finalize();
+      });
     });
 
   });
