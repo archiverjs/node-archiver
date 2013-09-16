@@ -6,7 +6,7 @@ var output = fs.createWriteStream(__dirname + '/example-output.tar');
 var archive = archiver('tar');
 
 output.on('close', function() {
-  console.log('archiver has been finialized and output file descriptor has closed.');
+  console.log('archiver has been finalized and the output file descriptor has closed.');
 });
 
 archive.on('error', function(err) {
