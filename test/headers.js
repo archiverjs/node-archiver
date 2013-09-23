@@ -102,19 +102,13 @@ describe('headers', function() {
 
       describe('#_parseNumeric(num, len)', function() {
         it('should convert octal strings to numeric values', function() {
-          assert.equal(thing._parseNumeric('21'), 17);
-          assert.equal(thing._parseNumeric('0021'), 17);
+          assert.equal(thing._parseNumeric('00000021'), 17);
         });
       });
 
       describe('#_prepNumeric(num, len)', function() {
-        it('should convert numeric values to octal strings', function() {
-          assert.equal(thing._prepNumeric(17, 2), '21');
-
-        });
-
-        it('should zero pad when needed', function() {
-          assert.equal(thing._prepNumeric(17, 4), '0021');
+        it('should convert numeric values to octal strings, padding when needed', function() {
+          assert.equal(thing._prepNumeric(17, 7), '0000021');
         });
       });
 
