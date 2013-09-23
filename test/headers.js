@@ -78,7 +78,7 @@ describe('headers', function() {
           assert.equal(actual.size, 23);
           assert.deepEqual(actual.date, testDate);
           assert.equal(actual.mtime, testDateEpoch);
-          assert.equal(actual.checksum, 5730);
+          assert.equal(actual.checksum, 5490);
           assert.equal(actual.type, '0');
           assert.equal(actual.linkName, '');
         });
@@ -108,7 +108,7 @@ describe('headers', function() {
 
       describe('#_prepNumeric(num, len)', function() {
         it('should convert numeric values to octal strings, padding when needed', function() {
-          assert.equal(thing._prepNumeric(17, 7), '0000021');
+          assert.equal(thing._prepNumeric(17, 7), '000021\0');
         });
       });
 

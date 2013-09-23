@@ -65,7 +65,7 @@ describe('archiver', function() {
         var testStream = new WriteHashStream('tmp/buffer.tar');
 
         testStream.on('close', function() {
-          assert.equal(testStream.digest, '3a8a9ff17087129cc05dc88be86573ecf3f9ca56');
+          assert.equal(testStream.digest, 'bc84fec33e7a4f6c8777cabd0beba503a7bce331');
           done();
         });
 
@@ -81,7 +81,7 @@ describe('archiver', function() {
         var testStream = new WriteHashStream('tmp/stream.tar');
 
         testStream.on('close', function() {
-          assert.equal(testStream.digest, '3e3271c503deeba9abe5031df6bca636f1eb115b');
+          assert.equal(testStream.digest, 'b3bf662968c87989431a25b2f699eae213392e82');
           done();
         });
 
@@ -97,7 +97,7 @@ describe('archiver', function() {
         var testStream = new WriteHashStream('tmp/multiple.tar');
 
         testStream.on('close', function() {
-          assert.equal(testStream.digest, '1437ef391a7c2c0de180bddff21b98c2f9778331');
+          assert.equal(testStream.digest, '0c4e2a79d0d2c41ae5eb2e1e70d315a617583e4d');
           done();
         });
 
@@ -115,7 +115,7 @@ describe('archiver', function() {
         var testStream = new WriteHashStream('tmp/feature-prefix.tar');
 
         testStream.on('close', function() {
-          assert.equal(testStream.digest, 'aeb2496b2bd7458931ba942dba2b4bf28cbc187c');
+          assert.equal(testStream.digest, 'c1efbfbdc9a49979a6e02b4009003de533fcda48');
           done();
         });
 
@@ -136,7 +136,7 @@ describe('archiver', function() {
         var testStream = new WriteHashStream('tmp/zerolength.tar');
 
         testStream.on('close', function() {
-          assert.equal(testStream.digest, '4f9f572817a1f34d0d33b949c959739965e50fa6');
+          assert.equal(testStream.digest, 'f4f7b53f8ee4c7124298695bffbacfa9e9c0a99f');
           done();
         });
 
