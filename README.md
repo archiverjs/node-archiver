@@ -88,6 +88,7 @@ Sets the file date. This can be any valid date string or instance. Defaults to c
 
 - [Examples](https://github.com/ctalkington/node-archiver/blob/master/examples)
 - [Changelog](https://github.com/ctalkington/node-archiver/blob/master/CHANGELOG)
+- [Archive Formats](https://github.com/ctalkington/node-archiver/blob/master/formats)
 - [Contributing](https://github.com/ctalkington/node-archiver/blob/master/CONTRIBUTING.md)
 - [MIT License](https://github.com/ctalkington/node-archiver/blob/master/LICENSE-MIT)
 
