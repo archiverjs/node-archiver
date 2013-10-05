@@ -60,29 +60,27 @@ describe('utils', function() {
 
   describe('crc32', function() {
 
-    describe('CRC32', function() {
+    describe('crc32(data)', function() {
+      it('should initialize CRC32 instance based on data', function() {
+        var actual = crc32('testing checksum');
 
-      describe('#update(data)', function() {
-        it('should update crc32 based on data', function() {
-          var actual = crc32.createCRC32().update('testing checksum');
-
-          assert.equal(actual.crc, 323269802);
-        });
+        assert.equal(actual.crc, 323269802);
       });
-
-      describe('#digest()', function() {
-        it('should return digest of crc32', function() {
-          var actual = crc32.createCRC32().update('testing checksum').digest();
-
-          assert.equal(actual, -323269803);
-        });
-      });
-
     });
 
-    describe('createCRC32()', function() {
-      it('should return an instance of CRC32', function() {
-        assert.instanceOf(crc32.createCRC32(), crc32.CRC32);
+    describe('#update(data)', function() {
+      it('should update CRC32 based on data', function() {
+        var actual = crc32().update('testing checksum');
+
+        assert.equal(actual.crc, 323269802);
+      });
+    });
+
+    describe('#digest()', function() {
+      it('should return digest of CRC32', function() {
+        var actual = crc32().update('testing checksum').digest();
+
+        assert.equal(actual, -323269803);
       });
     });
 
