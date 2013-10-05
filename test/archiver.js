@@ -24,7 +24,7 @@ describe('archiver', function() {
 
 
   describe('Archiver', function() {
-    var ArchiverCore = require('../lib/archiver/core');
+    var ArchiverCore = require('../lib/modules/core');
 
     describe('#_normalizeSource(source)', function() {
       var core = new ArchiverCore();

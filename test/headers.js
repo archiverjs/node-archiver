@@ -5,8 +5,8 @@ var assert = require('chai').assert;
 
 var common = require('./helpers/common');
 
-var tar = require('../lib/headers/tar');
-var zip = require('../lib/headers/zip');
+var tar = require('../lib/modules/tar/headers');
+var zip = require('../lib/modules/zip/headers');
 
 var testDate = new Date('Jan 03 2013 14:26:38 GMT');
 var testDateEpoch = 1357223198;
