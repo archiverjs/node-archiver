@@ -4,7 +4,7 @@ var inherits = require('util').inherits;
 
 var Stream = require('stream').Stream;
 var Readable = require('stream').Readable || require('readable-stream');
-var Writable = require('stream').Writable || require('readable-stream/writable');
+var Writable = require('stream').Writable || require('readable-stream').Writable;
 
 function adjustDateByOffset(d, offset) {
   if (offset >= 1) {

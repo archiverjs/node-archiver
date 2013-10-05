@@ -29,7 +29,7 @@
     "bench": "node benchmark/simple/pack-zip.js"
   },
   "dependencies": {
-    "readable-stream": "~1.0.2",
+    "readable-stream": "~1.1.9",
     "iconv-lite" : "~0.2.11"
   },
   "devDependencies": {
