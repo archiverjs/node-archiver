@@ -1,4 +1,4 @@
-# Archiver v0.4.10 [![Build Status](https://secure.travis-ci.org/ctalkington/node-archiver.png?branch=master)](http://travis-ci.org/ctalkington/node-archiver)
+# Archiver v0.5.0-alpha [![Build Status](https://secure.travis-ci.org/ctalkington/node-archiver.png?branch=master)](http://travis-ci.org/ctalkington/node-archiver)
 
 Creates Archives (Zip, Tar) via Node Streams. Depends on Node's built-in zlib module for compression available since version 0.6.3.
 
@@ -22,7 +22,7 @@ Creates an Archiver instance based on the type (ie zip/tar) passed. Can be passe
 
 Appends a file to the instance. Input can be in the form of a text string, buffer, or stream. When the instance has received, processed, and emitted the input, the callback is fired.
 
-Replaces `#addFile` which is in the depreciation stage and set to be remove in next release.
+Replaced `#addFile` in v0.5.
 
 #### #finalize(callback(err, bytes))
 
