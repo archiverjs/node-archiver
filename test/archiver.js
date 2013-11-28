@@ -343,14 +343,14 @@ describe('archiver', function() {
         var testStream = new WriteHashStream('tmp/filemode.zip');
 
         testStream.on('close', function() {
-          assert.equal(testStream.digest, '1cafd189cbf9edf4562eadf23f2b922a5ba21d37');
+          assert.equal(testStream.digest, '7d9a67bf1d8a704d50e6eba86fd19f920457ec1f');
           done();
         });
 
         archive.pipe(testStream);
 
         archive
-          .append(binaryBuffer(20000), { name: 'buffer.txt', date: testDate, mode: 644 })
+          .append(binaryBuffer(20000), { name: 'buffer.txt', date: testDate, mode: 0644 })
           .finalize();
       });
     });
