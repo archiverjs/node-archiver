@@ -84,6 +84,10 @@ Sets the file name including internal path.
 
 Sets the file date. This can be any valid date string or instance. Defaults to current time in locale.
 
+#### mode `number`
+
+Sets the file permissions. (experimental)
+
 ## Things of Interest
 
 - [Examples](https://github.com/ctalkington/node-archiver/blob/master/examples)
