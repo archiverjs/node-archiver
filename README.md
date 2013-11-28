@@ -90,7 +90,7 @@ Sets the file date. This can be any valid date string or instance. Defaults to c
 
 #### mode `number`
 
-Sets the file permissions. (experimental)
+Sets the file permissions. Defaults to 0664.
 
 ## Things of Interest
 
