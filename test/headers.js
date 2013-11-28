@@ -148,7 +148,7 @@ describe('headers', function() {
           filenameLength: 8,
           date: testDate,
           comment: '',
-          mode: null,
+          mode: 644,
           store: true,
           lastModifiedDate: 1109619539,
           versionMadeBy: 20,
@@ -165,6 +165,7 @@ describe('headers', function() {
         });
 
         it('should match provided fixture', function() {
+          // fs.writeFileSync('test/fixtures/headers/zip-file.bin', actual);
           assert.deepEqual(actual, fileFixture);
         });
       });
@@ -181,6 +182,7 @@ describe('headers', function() {
         });
 
         it('should match provided fixture', function() {
+          // fs.writeFileSync('test/fixtures/headers/zip-filedescriptor.bin', actual);
           assert.deepEqual(actual, fileDescriptorFixture);
         });
       });
@@ -192,7 +194,7 @@ describe('headers', function() {
           date: testDate,
           store: true,
           comment: '',
-          mode: null,
+          mode: 644,
           lastModifiedDate: 1109619539,
           versionMadeBy: 20,
           versionNeededToExtract: 20,
@@ -209,6 +211,7 @@ describe('headers', function() {
         });
 
         it('should match provided fixture', function() {
+          // fs.writeFileSync('test/fixtures/headers/zip-centralheader.bin', actual);
           assert.deepEqual(actual, centralDirectoryFixture);
         });
       });
@@ -227,6 +230,7 @@ describe('headers', function() {
         });
 
         it('should match provided fixture', function() {
+          // fs.writeFileSync('test/fixtures/headers/zip-centralfooter.bin', actual);
           assert.deepEqual(actual, centralFooterFixture);
         });
       });
@@ -300,7 +304,7 @@ describe('headers', function() {
             commentLength: 0,
             diskNumberStart: 0,
             internalFileAttributes: 0,
-            externalFileAttributes: 0,
+            externalFileAttributes: 2189688832,
             offset: 0,
             name: 'test.txt',
             extraField: null,

@@ -335,6 +335,24 @@ describe('archiver', function() {
           .append(fs.createReadStream('test/fixtures/empty.txt'), { name: 'stream.txt', date: testDate })
           .finalize();
       });
+
+      it('should support setting file mode (permissions)', function(done) {
+        var archive = archiver('zip', {
+          forceUTC: true
+        });
+        var testStream = new WriteHashStream('tmp/filemode.zip');
+
+        testStream.on('close', function() {
+          assert.equal(testStream.digest, '1cafd189cbf9edf4562eadf23f2b922a5ba21d37');
+          done();
+        });
+
+        archive.pipe(testStream);
+
+        archive
+          .append(binaryBuffer(20000), { name: 'buffer.txt', date: testDate, mode: 644 })
+          .finalize();
+      });
     });
 
   });

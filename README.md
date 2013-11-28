@@ -62,6 +62,10 @@ If true, file contents will be stored without compression.
 
 Sets the file comment.
 
+#### mode `number`
+
+Sets the file permissions. (experimental)
+
 ## Tar
 
 ### Options
