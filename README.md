@@ -16,6 +16,10 @@ You can also use `npm install https://github.com/ctalkington/node-archiver/archi
 
 Creates an Archiver instance based on the type (ie zip/tar) passed. Can be passed to `Archiver` for convenience.
 
+#### #registerFormat(format, module)
+
+Registers an archive format. Format modules will be further documented once a formal spec is in place.
+
 ### Instance Methods
 
 #### #append(input, data, callback(err))
