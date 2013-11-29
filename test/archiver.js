@@ -296,7 +296,7 @@ describe('archiver', function() {
           .finalize();
       });
 
-      it('should properly handle accented characters in filenames', function(done) {
+      it('should properly utf8 encode characters in file names and comments', function(done) {
         var archive = archiver('zip', {
           forceUTC: true
         });
@@ -304,15 +304,15 @@ describe('archiver', function() {
         var testStream = new WriteHashStream('tmp/accentedchars-filenames.zip');
 
         testStream.on('close', function() {
-          assert.equal(testStream.digest, '69194ccb7175d7fcfcb06c8cb0ed2c429dadb9f9');
+          assert.equal(testStream.digest, '78983b5596afa4a7844e0fb16ba8adcdaecfa4fd');
           done();
         });
 
         archive.pipe(testStream);
 
         archive
-          .append(binaryBuffer(20000), { name: 'àáâãäçèéêëìíîïñòóôõöùúûüýÿ.txt', date: testDate })
-          .append(binaryBuffer(20000), { name: 'ÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝ.txt', date: testDate2 })
+          .append(binaryBuffer(20000), { name: 'àáâãäçèéêëìíîïñòóôõöùúûüýÿ.txt', date: testDate, comment: 'àáâãäçèéêëìíîïñòóôõöùúûüýÿ' })
+          .append(binaryBuffer(20000), { name: 'ÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝ.txt', date: testDate2, comment: 'ÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝ' })
           .finalize();
       });
 
