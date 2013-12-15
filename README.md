@@ -30,7 +30,7 @@ Replaced `#addFile` in v0.5.
 
 #### #directory(dirpath, callback(err))
 
-Appends a directory of files, recursively. Due to multiple appends taking place, the callback is only used if there is an error trying to read the directory. You can (and should) listen to the instance `error` event for all other errors.
+Appends a directory of files, recursively. Uses a lazystream wrapper to prevent issues with open file limits. Due to multiple appends taking place, the callback is only used if there is an error trying to read the directory. You can (and should) listen to the instance `error` event for all other errors.
 
 #### #file(filepath, callback(err))
 
