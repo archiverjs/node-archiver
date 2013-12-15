@@ -61,6 +61,21 @@ DeadEndStream.prototype._write = function(chuck, encoding, callback) {
 
 module.exports.DeadEndStream = DeadEndStream;
 
+function readJSON(filepath) {
+  var contents;
+
+  try {
+    contents = fs.readFileSync(String(filepath));
+    contents = JSON.parse(contents);
+  } catch(e) {
+    contents = null;
+  }
+
+  return contents;
+}
+
+module.exports.readJSON = readJSON;
+
 function UnBufferedStream() {
   this.readable = true;
 }
