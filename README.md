@@ -28,6 +28,14 @@ Appends a file to the instance. Input can be in the form of a text string, buffe
 
 Replaced `#addFile` in v0.5.
 
+#### #directory(dirpath, callback(err))
+
+Appends a directory of files, recursively. Due to multiple appends taking place, the callback is only used if there is an error trying to read the directory. You can (and should) listen to the instance `error` event for all other errors.
+
+#### #file(filepath, callback(err))
+
+Appends a file given its filepath. Uses a lazystream wrapper to prevent issues with open file limits.
+
 #### #finalize(callback(err, bytes))
 
 Finalizes the instance. When the instance's stream has finished emitting, the callback is fired. This generally doesn't correspond to the end of the destination stream; though a solution to track the destination stream may come in a future release.

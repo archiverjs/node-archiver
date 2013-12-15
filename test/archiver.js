@@ -1,6 +1,7 @@
 /*global before,describe,it */
 var fs = require('fs');
 var PassThrough = require('stream').PassThrough || require('readable-stream/passthrough');
+var WriteStream = fs.createWriteStream;
 
 var assert = require('chai').assert;
 var mkdir = require('mkdirp');
@@ -51,6 +52,72 @@ describe('archiver', function() {
         var normalized = core._normalizeStream(noBufferStream);
 
         assert.instanceOf(normalized, PassThrough);
+      });
+    });
+
+  });
+
+
+  describe('core', function() {
+
+    describe('#file', function() {
+      var actual;
+
+      before(function(done) {
+        var archive = archiver('json');
+        var testStream = new WriteStream('tmp/file.json');
+
+        testStream.on('close', function() {
+          actual = common.readJSON('tmp/file.json');
+          done();
+        });
+
+        archive.pipe(testStream);
+
+        archive
+          .file('test/fixtures/test.txt', { name: 'test.txt', date: testDate })
+          .file('test/fixtures/test.txt')
+          .finalize();
+      });
+
+      it('should append filepath', function() {
+        assert.propertyVal(actual[0], 'name', 'test.txt');
+        assert.propertyVal(actual[0], 'date', '2013-01-03T14:26:38.000Z');
+        assert.propertyVal(actual[0], 'crc32', 585446183);
+        assert.propertyVal(actual[0], 'size', 19);
+      });
+
+      it('should fallback to filepath/stat data', function() {
+        assert.propertyVal(actual[1], 'name', 'test/fixtures/test.txt');
+        assert.propertyVal(actual[1], 'crc32', 585446183);
+        assert.propertyVal(actual[1], 'size', 19);
+      });
+    });
+
+    describe('#directory', function() {
+      var actual;
+
+      before(function(done) {
+        var archive = archiver('json');
+        var testStream = new WriteStream('tmp/directory.json');
+
+        testStream.on('close', function() {
+          actual = common.readJSON('tmp/directory.json');
+          done();
+        });
+
+        archive.pipe(testStream);
+
+        archive
+          .directory('test/fixtures/directory')
+          .finalize();
+      });
+
+      it('should append directory of files', function() {
+        assert.lengthOf(actual, 3);
+        assert.propertyVal(actual[0], 'crc32', 1895789619);
+        assert.propertyVal(actual[1], 'crc32', 133711013);
+        assert.propertyVal(actual[2], 'crc32', -1628367585);
       });
     });
 
