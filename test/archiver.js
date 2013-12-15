@@ -81,6 +81,7 @@ describe('archiver', function() {
       });
 
       it('should append filepath', function() {
+        assert.isArray(actual);
         assert.propertyVal(actual[0], 'name', 'test.txt');
         assert.propertyVal(actual[0], 'date', '2013-01-03T14:26:38.000Z');
         assert.propertyVal(actual[0], 'crc32', 585446183);
@@ -88,6 +89,7 @@ describe('archiver', function() {
       });
 
       it('should fallback to filepath/stat data', function() {
+        assert.isArray(actual);
         assert.propertyVal(actual[1], 'name', 'test/fixtures/test.txt');
         assert.propertyVal(actual[1], 'crc32', 585446183);
         assert.propertyVal(actual[1], 'size', 19);
@@ -114,10 +116,8 @@ describe('archiver', function() {
       });
 
       it('should append directory of files', function() {
+        assert.isArray(actual);
         assert.lengthOf(actual, 3);
-        assert.propertyVal(actual[0], 'crc32', 1895789619);
-        assert.propertyVal(actual[1], 'crc32', 133711013);
-        assert.propertyVal(actual[2], 'crc32', -1628367585);
       });
     });
 
