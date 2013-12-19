@@ -33,8 +33,8 @@
     "iconv-lite" : "~0.2.11"
   },
   "devDependencies": {
-    "chai": "~1.7.1",
-    "mocha": "~1.12.0",
+    "chai": "~1.8.1",
+    "mocha": "~1.16.0",
     "rimraf": "~2.2.0",
     "mkdirp": "~0.3.5",
     "stream-bench": "~0.1.2"
