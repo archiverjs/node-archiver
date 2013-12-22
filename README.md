@@ -28,13 +28,20 @@ Appends an input source (text string, buffer, or stream) to the instance. When t
 
 Replaced `#addFile` in v0.5.
 
-#### bulk(mapping)
+#### bulk(mappings)
 
 Appends multiple files from passed array of src-dest file mappings, based on [Grunt's "Files Array" format](http://gruntjs.com/configuring-tasks#files-array-format). A lazystream wrapper is used to prevent issues with open file limits.
 
 [Globbing patterns](http://gruntjs.com/configuring-tasks#globbing-patterns) and [multiple properties](http://gruntjs.com/configuring-tasks#building-the-files-object-dynamically) are supported through use of the [file-utils](https://github.com/SBoudrias/file-utils) package, based on Grunt's file utilities. Please note that multiple src files to single dest file (ie concat) is not supported.
 
 The `data` property can be set (per src-dest mapping) to define file data for matched files.
+
+```js
+archive.bulk([
+  { src: ['mydir/**'], data: { date: new Date() } },
+  { expand: true, cwd: 'mydir', src: ['**'], dest: 'newdir' }
+]);
+```
 
 #### file(filepath, callback(err))
 
