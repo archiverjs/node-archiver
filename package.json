@@ -30,7 +30,8 @@
   },
   "dependencies": {
     "readable-stream": "~1.1.9",
-    "iconv-lite" : "~0.2.11"
+    "iconv-lite" : "~0.2.11",
+    "file-utils": "~0.1.5"
   },
   "devDependencies": {
     "chai": "~1.8.1",
