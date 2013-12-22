@@ -28,6 +28,12 @@ Appends an input source (text string, buffer, or stream) to the instance. When t
 
 Replaced `#addFile` in v0.5.
 
+```js
+archive.append('string', { name:'string.txt' });
+archive.append(new Buffer('string'), { name:'buffer.txt' });
+archive.append(fs.createReadStream('mydir/file.txt'), { name:'stream.txt' });
+```
+
 #### bulk(mappings)
 
 Appends multiple files from passed array of src-dest file mappings, based on [Grunt's "Files Array" format](http://gruntjs.com/configuring-tasks#files-array-format). A lazystream wrapper is used to prevent issues with open file limits.
@@ -43,9 +49,13 @@ archive.bulk([
 ]);
 ```
 
-#### file(filepath, callback(err))
+#### file(filepath, data, callback(err))
 
 Appends a file given its filepath. Uses a lazystream wrapper to prevent issues with open file limits.
+
+```js
+archive.file('mydir/file.txt', { name:'file.txt' });
+```
 
 #### finalize(callback(err, bytes))
 
