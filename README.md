@@ -12,35 +12,35 @@ You can also use `npm install https://github.com/ctalkington/node-archiver/archi
 
 ## Archiver
 
-#### #create(type, options)
+#### create(format, options)
 
-Creates an Archiver instance based on the type (ie zip/tar) passed. Can be passed to `Archiver` for convenience.
+Creates an Archiver instance based on the format (zip, tar, etc) passed. Parameters can be passed directly to `Archiver` constructor for convenience.
 
-#### #registerFormat(format, module)
+#### registerFormat(format, module)
 
-Registers an archive format. Format modules will be further documented once a formal spec is in place.
+Registers an archive format. Format modules are essentially transform streams with a few required methods. They will be further documented once a formal spec is in place.
 
 ### Instance Methods
 
-#### #append(input, data, callback(err))
+#### append(input, data, callback(err))
 
-Appends a file to the instance. Input can be in the form of a text string, buffer, or stream. When the instance has received, processed, and emitted the input, the callback is fired.
+Appends an input source (text string, buffer, or stream) to the instance. When the instance has received, processed, and emitted the input, the callback is fired.
 
 Replaced `#addFile` in v0.5.
 
-#### #bulk(mapping)
+#### bulk(mapping)
 
-Appends multiple files from passed array of src-dest file mappings, based on [Grunt's "Files Array" format](http://gruntjs.com/configuring-tasks#files-array-format). [Globbing Patterns](http://gruntjs.com/configuring-tasks#globbing-patterns) and [multiple properties](http://gruntjs.com/configuring-tasks#building-the-files-object-dynamically) are supported through use of the [file-utils](https://github.com/SBoudrias/file-utils) package, based on Grunt's file utilities. Please note that multiple src files to single dest file (ie concat) is not supported.
+Appends multiple files from passed array of src-dest file mappings, based on [Grunt's "Files Array" format](http://gruntjs.com/configuring-tasks#files-array-format). A lazystream wrapper is used to prevent issues with open file limits.
 
-The `data` property can be set per src-dest mapping to define file data for each matched file.
+[Globbing patterns](http://gruntjs.com/configuring-tasks#globbing-patterns) and [multiple properties](http://gruntjs.com/configuring-tasks#building-the-files-object-dynamically) are supported through use of the [file-utils](https://github.com/SBoudrias/file-utils) package, based on Grunt's file utilities. Please note that multiple src files to single dest file (ie concat) is not supported.
 
-A lazystream wrapper is used to prevent issues with open file limits.
+The `data` property can be set (per src-dest mapping) to define file data for matched files.
 
-#### #file(filepath, callback(err))
+#### file(filepath, callback(err))
 
 Appends a file given its filepath. Uses a lazystream wrapper to prevent issues with open file limits.
 
-#### #finalize(callback(err, bytes))
+#### finalize(callback(err, bytes))
 
 Finalizes the instance. When the instance's stream has finished emitting, the callback is fired. This generally doesn't correspond to the end of the destination stream; though a solution to track the destination stream may come in a future release.
 
