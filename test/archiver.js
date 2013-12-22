@@ -88,11 +88,9 @@ describe('archiver', function() {
         assert.propertyVal(actual[0], 'size', 19);
       });
 
-      it('should fallback to filepath/stat data', function() {
+      it('should fallback to filepath when no name is set', function() {
         assert.isArray(actual);
         assert.propertyVal(actual[1], 'name', 'test/fixtures/test.txt');
-        assert.propertyVal(actual[1], 'crc32', 585446183);
-        assert.propertyVal(actual[1], 'size', 19);
       });
     });
 
