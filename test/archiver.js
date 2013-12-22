@@ -94,26 +94,28 @@ describe('archiver', function() {
       });
     });
 
-    describe('#directory', function() {
+    describe('#bulk', function() {
       var actual;
 
       before(function(done) {
         var archive = archiver('json');
-        var testStream = new WriteStream('tmp/directory.json');
+        var testStream = new WriteStream('tmp/bulk.json');
 
         testStream.on('close', function() {
-          actual = common.readJSON('tmp/directory.json');
+          actual = common.readJSON('tmp/bulk.json');
           done();
         });
 
         archive.pipe(testStream);
 
         archive
-          .directory('test/fixtures/directory')
+          .bulk([
+            { expand: true, cwd: 'test/fixtures', src: 'directory/**' }
+          ])
           .finalize();
       });
 
-      it('should append directory of files', function() {
+      it('should append multiple files', function() {
         assert.isArray(actual);
         assert.lengthOf(actual, 3);
       });

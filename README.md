@@ -28,9 +28,13 @@ Appends a file to the instance. Input can be in the form of a text string, buffe
 
 Replaced `#addFile` in v0.5.
 
-#### #directory(dirpath, callback(err))
+#### #bulk(mapping)
 
-Appends a directory of files, recursively. Uses a lazystream wrapper to prevent issues with open file limits. Due to multiple appends taking place, the callback is only used if there is an error trying to read the directory. You can (and should) listen to the instance `error` event for all other errors.
+Appends multiple files from passed array of src-dest file mappings, based on [Grunt's "Files Array" format](http://gruntjs.com/configuring-tasks#files-array-format). [Globbing Patterns](http://gruntjs.com/configuring-tasks#globbing-patterns) and [multiple properties](http://gruntjs.com/configuring-tasks#building-the-files-object-dynamically) are supported through use of the [file-utils](https://github.com/SBoudrias/file-utils) package, based on Grunt's file utilities. Please note that multiple src files to single dest file (ie concat) is not supported.
+
+The `data` property can be set per src-dest mapping to define file data for each matched file.
+
+A lazystream wrapper is used to prevent issues with open file limits.
 
 #### #file(filepath, callback(err))
 

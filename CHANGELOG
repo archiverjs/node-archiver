@@ -1,7 +1,7 @@
 v0.5.0:
   date: 2013-12-XX
   changes:
-    - new file and directory helpers.
+    - new file() and bulk() helpers.
     - new json format module for testing.
     - experimental zip file mode support.
     - massive overhaul to become more modular.
