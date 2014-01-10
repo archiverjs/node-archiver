@@ -45,10 +45,6 @@ if (file === false) {
 
 console.log('zlib level: ' + level);
 
-archive
-  .addFile(fs.createReadStream(file), { name: 'large file' })
-  .finalize();
-
 var bench = streamBench({
   logReport: true,
   interval: 500,
@@ -56,3 +52,7 @@ var bench = streamBench({
 });
 
 archive.pipe(bench);
+
+archive
+  .file(file, { name: 'large file' })
+  .finalize();
