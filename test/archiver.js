@@ -44,17 +44,6 @@ describe('archiver', function() {
       });
     });
 
-    describe('#_normalizeStream(source)', function() {
-      var core = new ArchiverCore();
-
-      it('should normalize older unbuffered streams', function() {
-        var noBufferStream = new UnBufferedStream();
-        var normalized = core._normalizeStream(noBufferStream);
-
-        assert.instanceOf(normalized, PassThrough);
-      });
-    });
-
   });
 
 
