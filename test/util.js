@@ -9,7 +9,6 @@ var BinaryStream = common.BinaryStream;
 var DeadEndStream = common.DeadEndStream;
 
 var ChecksumStream = require('../lib/util/ChecksumStream');
-var DeflateRawChecksum = require('../lib/util/DeflateRawChecksum');
 var crc32 = require('../lib/util/crc32');
 var utils = require('../lib/util');
 
@@ -85,36 +84,6 @@ describe('utils', function() {
     });
 
   });
-
-
-  describe('DeflateRawChecksum', function() {
-    it('should checksum data while writing', function(done) {
-      var deflate = new DeflateRawChecksum();
-
-      deflate.on('end', function() {
-        assert.equal(deflate.digest, -270675091);
-
-        done();
-      });
-
-      deflate.write(testBuffer);
-      deflate.end();
-    });
-
-    it('should calculate data size while writing', function(done) {
-      var deflate = new DeflateRawChecksum();
-
-      deflate.on('end', function() {
-        assert.equal(deflate.rawSize, 20000);
-
-        done();
-      });
-
-      deflate.write(testBuffer);
-      deflate.end();
-    });
-  });
-
 
   describe('index', function() {
 
