@@ -15,7 +15,6 @@ var utils = require('../lib/util');
 var testBuffer = binaryBuffer(20000);
 
 var testDate = new Date('Jan 03 2013 14:26:38 GMT');
-var testDateDos = 1109607251;
 var testDateDosUTC = 1109619539;
 var testDateEpoch = 1357223198;
 var testDateOctal = 12071312436;
@@ -200,10 +199,6 @@ describe('utils', function() {
     });
 
     describe('dosDateTime(date, utc)', function() {
-      it.skip('should convert date into its DOS representation', function() {
-        assert.deepEqual(utils.dosDateTime(testDate), testDateDos);
-      });
-
       it('should convert date (forcing UTC) into its DOS representation', function() {
         assert.equal(utils.dosDateTime(testDate, true), testDateDosUTC);
       });
