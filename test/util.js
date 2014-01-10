@@ -9,6 +9,7 @@ var BinaryStream = common.BinaryStream;
 var DeadEndStream = common.DeadEndStream;
 
 var ChecksumStream = require('../lib/util/ChecksumStream');
+var DeflateRawChecksum = require('../lib/util/DeflateRawChecksum');
 var crc32 = require('../lib/util/crc32');
 var utils = require('../lib/util');
 
@@ -86,6 +87,35 @@ describe('utils', function() {
   });
 
 
+  describe('DeflateRawChecksum', function() {
+    it('should checksum data while writing', function(done) {
+      var deflate = new DeflateRawChecksum();
+
+      deflate.on('end', function() {
+        assert.equal(deflate.digest, -270675091);
+
+        done();
+      });
+
+      deflate.write(testBuffer);
+      deflate.end();
+    });
+
+    it('should calculate data size while writing', function(done) {
+      var deflate = new DeflateRawChecksum();
+
+      deflate.on('end', function() {
+        assert.equal(deflate.rawSize, 20000);
+
+        done();
+      });
+
+      deflate.write(testBuffer);
+      deflate.end();
+    });
+  });
+
+
   describe('index', function() {
 
     describe('cleanBuffer(size)', function() {
@@ -143,6 +173,60 @@ describe('utils', function() {
 
       it('should convert dateish string to an instance of Date', function() {
         assert.deepEqual(utils.dateify('Jan 03 2013 14:26:38 GMT'), testDate);
+      });
+    });
+
+    describe('defaults(object, source)', function() {
+      it('should default when object key is missing', function() {
+        var actual = utils.defaults({ value1: true }, {
+          value2: true
+        });
+
+        assert.deepEqual(actual, {
+          value1: true,
+          value2: true
+        });
+      });
+
+      it('should default when object key contains null value', function() {
+        var actual = utils.defaults({ value1: null }, {
+          value1: true,
+          value2: true
+        });
+
+        assert.deepEqual(actual, {
+          value1: true,
+          value2: true
+        });
+      });
+
+      it('should not default when object value is zero', function() {
+        var actual = utils.defaults({ value1: 0 }, {
+          value1: 1
+        });
+
+        assert.deepEqual(actual, {
+          value1: 0
+        });
+      });
+
+      it('should support defaulting multiple levels', function() {
+        var actual = utils.defaults({
+          level1: {
+            value1: 0
+          }
+        }, {
+          level1: {
+            value2: 2
+          }
+        });
+
+        assert.deepEqual(actual, {
+          level1: {
+            value1: 0,
+            value2: 2
+          }
+        });
       });
     });
 
