@@ -128,7 +128,7 @@ Sets the file permissions. Defaults to 0664.
 ## Things of Interest
 
 - [Examples](https://github.com/ctalkington/node-archiver/blob/master/examples)
-- [Changelog](https://github.com/ctalkington/node-archiver/blob/master/CHANGELOG)
+- [Changelog](https://github.com/ctalkington/node-archiver/releases)
 - [Archive Formats](https://github.com/ctalkington/node-archiver/blob/master/formats)
 - [Contributing](https://github.com/ctalkington/node-archiver/blob/master/CONTRIBUTING.md)
 - [MIT License](https://github.com/ctalkington/node-archiver/blob/master/LICENSE-MIT)
