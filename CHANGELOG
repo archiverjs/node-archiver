@@ -1,12 +1,13 @@
 v0.5.0:
-  date: 2013-12-XX
+  date: 2014-01-10
   changes:
+    - removal of node v0.6 support.
     - new file() and bulk() helpers.
     - new json format module for testing.
     - experimental zip file mode support.
     - massive overhaul to become more modular.
     - removal of addFile.
-    - (currently in alpha)
+    - and much more. check out git log.
 v0.4.10:
   date: 2013-09-28
   changes:
