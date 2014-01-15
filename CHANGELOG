@@ -1,3 +1,7 @@
+v0.5.1:
+  date: 2014-01-15
+  changes:
+    - adjust when module output is piped. (GH #57)
 v0.5.0:
   date: 2014-01-10
   changes:
