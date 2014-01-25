@@ -1,3 +1,8 @@
+v0.5.2:
+  date: 2014-01-24
+  changes:
+    - core: add experimental catchEarly option (GH #59)
+    - core: drop readable-stream to node v0.10 compatible version
 v0.5.1:
   date: 2014-01-15
   changes:
