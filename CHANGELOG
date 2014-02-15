@@ -3,6 +3,7 @@ v0.6.0:
   changes:
     - core: switch to events fully.
     - core: internal var cleanup.
+    - core: highWaterMark to 1MB.
     - core: add pointer() to get emitted byte length.
     - core: remove early exit detection as its served its initial purpose.
     - zip: global store option.
