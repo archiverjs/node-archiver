@@ -22,9 +22,9 @@ Registers an archive format. Format modules are essentially transform streams wi
 
 ### Instance Methods
 
-#### append(input, data, callback(err))
+#### append(input, data)
 
-Appends an input source (text string, buffer, or stream) to the instance. When the instance has received, processed, and emitted the input, the callback is fired.
+Appends an input source (text string, buffer, or stream) to the instance. When the instance has received, processed, and emitted the input, the `entry` event is fired.
 
 Replaced `#addFile` in v0.5.
 
@@ -49,17 +49,25 @@ archive.bulk([
 ]);
 ```
 
-#### file(filepath, data, callback(err))
+#### file(filepath, data)
 
-Appends a file given its filepath. Uses a lazystream wrapper to prevent issues with open file limits.
+Appends a file given its filepath. Uses a lazystream wrapper to prevent issues with open file limits. When the instance has received, processed, and emitted the file, the `entry` event is fired.
 
 ```js
 archive.file('mydir/file.txt', { name:'file.txt' });
 ```
 
-#### finalize(callback(err, bytes))
+#### finalize()
 
-Finalizes the instance. When the instance's stream has finished emitting, the callback is fired. This generally doesn't correspond to the end of the destination stream; though a solution to track the destination stream may come in a future release.
+Finalizes the instance. You should listen for the `end`/`close` of the destination stream to properly detect completion.
+
+## Events
+
+Each instance is a node `Transform` stream and inherits all its events. Events listed here are custom.
+
+#### entry
+
+Fired when the input has been received, processed, and emitted. Passes file data as first argument.
 
 ## Zip
 
