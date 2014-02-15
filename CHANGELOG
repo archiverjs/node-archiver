@@ -1,3 +1,9 @@
+v0.6.0:
+  date: 2014-02-15
+  changes:
+    - core: switch to events fully.
+    - core: internal var cleanup.
+    - core: add pointer() to get emitted byte length.
 v0.5.2:
   date: 2014-01-24
   changes:
