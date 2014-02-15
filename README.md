@@ -61,6 +61,10 @@ archive.file('mydir/file.txt', { name:'file.txt' });
 
 Finalizes the instance. You should listen for the `end`/`close` of the destination stream to properly detect completion.
 
+#### pointer()
+
+Returns the current byte length emitted by archiver. Use this in your end callback to log generated size.
+
 ## Events
 
 Each instance is a node `Transform` stream and inherits all its events. Events listed here are custom.
