@@ -85,6 +85,10 @@ Sets the zip comment.
 
 If true, forces the file date and time to UTC. Helps with testing across timezones.
 
+#### store `boolean`
+
+If true, all file contents will be archived without compression.
+
 #### zlib `object`
 
 Passed to node's [zlib](http://nodejs.org/api/zlib.html#zlib_options) module to control compression. Options may vary by node version.
@@ -101,7 +105,7 @@ Sets the file date. This can be any valid date string or instance. Defaults to c
 
 #### store `boolean`
 
-If true, file contents will be stored without compression.
+If true, file contents will be archived without compression.
 
 #### comment `string`
 
