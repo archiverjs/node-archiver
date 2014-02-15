@@ -4,6 +4,7 @@ v0.6.0:
     - core: switch to events fully.
     - core: internal var cleanup.
     - core: add pointer() to get emitted byte length.
+    - core: remove early exit detection as its served its initial purpose.
     - zip: global store option.
 v0.5.2:
   date: 2014-01-24
