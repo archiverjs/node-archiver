@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "readable-stream": "~1.0.24",
-    "zip-stream": "~0.1.0",
+    "zip-stream": "~0.2.0",
     "lazystream": "~0.1.0",
     "file-utils": "~0.1.5",
     "lodash": "~2.4.1"
