@@ -1,4 +1,4 @@
-# Archiver v0.6.0 [![Build Status](https://secure.travis-ci.org/ctalkington/node-archiver.png?branch=master)](http://travis-ci.org/ctalkington/node-archiver)
+# Archiver v0.6.1 [![Build Status](https://secure.travis-ci.org/ctalkington/node-archiver.png?branch=master)](http://travis-ci.org/ctalkington/node-archiver)
 
 Creates Archives (Zip, Tar) via Node Streams.
 

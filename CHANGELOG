@@ -1,3 +1,7 @@
+v0.6.1:
+  date: 2014-02-16
+  changes:
+    - bugfixes and small tweaks. see git log.
 v0.6.0:
   date: 2014-02-15
   changes:
