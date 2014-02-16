@@ -59,7 +59,7 @@ archive.file('mydir/file.txt', { name:'file.txt' });
 
 #### finalize()
 
-Finalizes the instance. You should listen for the `end`/`close` of the destination stream to properly detect completion.
+Finalizes the instance. You should listen for the `end`/`close`/`finish` of the destination stream to properly detect completion.
 
 #### pointer()
 
@@ -87,7 +87,7 @@ If true, forces the file date and time to UTC. Helps with testing across timezon
 
 #### store `boolean`
 
-If true, all file contents will be archived without compression.
+If true, all file contents will be archived without compression by default.
 
 #### zlib `object`
 
