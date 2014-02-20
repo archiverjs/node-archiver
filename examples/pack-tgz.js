@@ -8,7 +8,7 @@ var output = fs.createWriteStream(__dirname + '/example-output.tar.gz');
 var archive = archiver('tar');
 
 output.on('close', function() {
-  console.log(archive.pointer() + ' total bytes');
+  console.log(archive.pointer + ' total bytes');
   console.log('archiver has been finalized and the output file descriptor has closed.');
 });
 
