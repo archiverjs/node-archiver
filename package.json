@@ -40,7 +40,8 @@
     "mocha": "~1.16.0",
     "rimraf": "~2.2.0",
     "mkdirp": "~0.3.5",
-    "stream-bench": "~0.1.2"
+    "stream-bench": "~0.1.2",
+    "async": "~0.2.10"
   },
   "keywords": [
     "archive",
