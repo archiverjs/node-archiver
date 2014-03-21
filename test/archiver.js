@@ -1,10 +1,12 @@
 /*global before,describe,it */
 var fs = require('fs');
+var zlib = require('zlib');
 var PassThrough = require('stream').PassThrough || require('readable-stream/passthrough');
 var WriteStream = fs.createWriteStream;
 
 var assert = require('chai').assert;
 var mkdir = require('mkdirp');
+var async = require('async');
 
 var common = require('./helpers/common');
 var HashStream = common.HashStream;
@@ -203,6 +205,77 @@ describe('archiver', function() {
           .append(new Buffer(0), { name: 'buffer.txt', date: testDate })
           .append(fs.createReadStream('test/fixtures/empty.txt'), { name: 'stream.txt', date: testDate })
           .finalize();
+      });
+    });
+
+    describe('#gzip', function() {
+      it('should gzip the tar archive', function(done) {
+        var archive = archiver('tar', { gzip: true });
+        var testStream = new WriteHashStream('tmp/multiple.tar.gz');
+
+        testStream.on('close', function() {
+          assert.equal(testStream.digest, '3219ba9c6ffa3ec5f62179ec201bfafea43e32c3');
+          done();
+        });
+
+        archive.pipe(testStream);
+
+        archive
+          .append('string', { name: 'string.txt', date: testDate })
+          .append(binaryBuffer(20000), { name: 'buffer.txt', date: testDate2 })
+          .append(fs.createReadStream('test/fixtures/test.txt'), { name: 'stream.txt', date: testDate })
+          .finalize();
+      });
+
+      it('should match internal gzip digest with external gzip digest', function(done) {
+
+        // Gzip inside of node-archiver using the gzip helper
+        var gzipInternal = function(asynCallback) {
+
+          var archive = archiver('tar', { gzip: true });
+          var testStream = new WriteHashStream('tmp/multiple.tar.gz');
+
+          testStream.on('close', function() {
+            asynCallback(null, testStream.digest);
+          });
+
+          archive.pipe(testStream);
+
+          archive
+            .append('string', { name: 'string.txt', date: testDate })
+            .append(binaryBuffer(20000), { name: 'buffer.txt', date: testDate2 })
+            .append(fs.createReadStream('test/fixtures/test.txt'), { name: 'stream.txt', date: testDate })
+            .finalize();
+        };
+
+        // Gzip outside of node-archiver by piping to a zlib stream
+        var gzipExternal = function(asynCallback) {
+          var archive = archiver('tar');
+          var gzipper = zlib.createGzip();
+          var testStream = new WriteHashStream('tmp/multiple.tar.gz');
+
+          testStream.on('close', function() {
+            asynCallback(null, testStream.digest);
+          });
+
+          archive.pipe(gzipper).pipe(testStream);
+
+          archive
+            .append('string', { name: 'string.txt', date: testDate })
+            .append(binaryBuffer(20000), { name: 'buffer.txt', date: testDate2 })
+            .append(fs.createReadStream('test/fixtures/test.txt'), { name: 'stream.txt', date: testDate })
+            .finalize();
+        };
+
+        async.parallel({
+          internalDigest: gzipInternal,
+          externalDigest: gzipExternal
+        },
+        function(err, results) {
+          // Compare the digest of the gzip helper (internal) to the zlib stream (external)
+          assert(results.internalDigest, results.externalDigest);
+          done();
+        });
       });
     });
 
