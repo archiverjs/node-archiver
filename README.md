@@ -127,6 +127,10 @@ Sets the size (in bytes) of each record in a block, default is 512 (for advanced
 
 Sets the number of records in a block, default is 20 (for advanced users only).
 
+#### gzip `boolean`
+
+Compresses the tar archive using gzip, default is false.
+
 ### File Data
 
 #### name `string` `required`
