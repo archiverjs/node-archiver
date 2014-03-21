@@ -272,7 +272,7 @@ describe('archiver', function() {
           externalDigest: gzipExternal
         },
         function(err, results) {
-          // Compare the digest of the gzip helper (internal) to the zlib stream(external)
+          // Compare the digest of the gzip helper (internal) to the zlib stream (external)
           assert(results.internalDigest, results.externalDigest);
           done();
         });
