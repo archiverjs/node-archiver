@@ -267,7 +267,7 @@ describe('archiver', function() {
             .finalize();
         };
 
-        async.series({
+        async.parallel({
           internalDigest: gzipInternal,
           externalDigest: gzipExternal
         },
