@@ -2,6 +2,8 @@
 
 Creates Archives (Zip, Tar) via Node Streams.
 
+[![NPM](https://nodei.co/npm/archiver.png)](https://nodei.co/npm/archiver/)
+
 ## Install
 
 ```bash
