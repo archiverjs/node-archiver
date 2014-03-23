@@ -131,6 +131,10 @@ Sets the number of records in a block, default is 20 (for advanced users only).
 
 Compresses the tar archive using gzip, default is false.
 
+#### gzipOptions `object`
+
+Passed to node's [zlib](http://nodejs.org/api/zlib.html#zlib_options) module to control compression. Options may vary by node version.
+
 ### File Data
 
 #### name `string` `required`
