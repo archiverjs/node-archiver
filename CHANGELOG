@@ -1,3 +1,7 @@
+v0.7.0:
+  date: 2014-03-22
+  changes:
+    - tar: gzip helper (GH #65)
 v0.6.1:
   date: 2014-02-16
   changes:
