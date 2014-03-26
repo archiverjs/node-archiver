@@ -159,6 +159,19 @@ describe('utils', function() {
       });
     });
 
+    describe('normalizeFilesArray(data)', function() {
+      it('should deep clone the object when expanding paths', function() {
+        var data = {};
+        var files = utils.normalizeFilesArray([ {
+          expand: true,
+          cwd: 'test/fixtures',
+          src: 'directory/**',
+          data: data
+        } ]);
+        assert.deepEqual(files, utils._.uniq(files, false, 'data'));
+      });
+    });
+
     describe('octalDateTime(date)', function() {
       it('should convert date into its octal representation', function() {
         assert.equal(utils.octalDateTime(testDate), testDateOctal);
