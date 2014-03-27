@@ -1,3 +1,11 @@
+v0.7.1:
+  date: 2014-03-27
+  changes:
+    - core: catch module errors and bubble them up the chain.
+    - core: create new extended data object in bulk loop to prevent data corruption. (GH #67)
+    - tar: catch compressor errors and bubble them up the chain.
+    - zip: pass `on` calls to underlying engine.
+    - other small tweaks. see git log.
 v0.7.0:
   date: 2014-03-22
   changes:
