@@ -99,7 +99,7 @@ describe('archiver', function() {
 
         archive
           .bulk([
-            { expand: true, cwd: 'test/fixtures', src: 'directory/**' }
+            { expand: true, cwd: 'test/fixtures', src: 'directory/**', data: { prop: 'value' } }
           ])
           .finalize();
       });
@@ -107,6 +107,13 @@ describe('archiver', function() {
       it('should append multiple files', function() {
         assert.isArray(actual);
         assert.lengthOf(actual, 3);
+        assert.propertyVal(actual[0], 'name', 'directory/level0.txt');
+        assert.propertyVal(actual[1], 'name', 'directory/subdir/level1.txt');
+        assert.propertyVal(actual[2], 'name', 'directory/subdir/subsub/level2.txt');
+      });
+
+      it('should support passing data property', function() {
+        assert.propertyVal(actual[0], 'prop', 'value');
       });
     });
 
