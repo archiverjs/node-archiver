@@ -9,7 +9,6 @@ var BinaryStream = common.BinaryStream;
 var DeadEndStream = common.DeadEndStream;
 
 var ChecksumStream = require('../lib/util/ChecksumStream');
-var crc32 = require('../lib/util/crc32');
 var utils = require('../lib/util');
 
 var testBuffer = binaryBuffer(20000);
@@ -29,7 +28,7 @@ describe('utils', function() {
       var deadend = new DeadEndStream();
 
       checksum.on('end', function() {
-        assert.equal(checksum.digest, -270675091);
+        assert.equal(checksum.digest, 4024292205);
 
         done();
       });
@@ -52,34 +51,6 @@ describe('utils', function() {
       checksum.pipe(deadend);
       binary.pipe(checksum);
     });
-  });
-
-  describe('crc32', function() {
-
-    describe('crc32(data)', function() {
-      it('should initialize CRC32 instance based on data', function() {
-        var actual = crc32('testing checksum');
-
-        assert.equal(actual.crc, 323269802);
-      });
-    });
-
-    describe('#update(data)', function() {
-      it('should update CRC32 based on data', function() {
-        var actual = crc32().update('testing checksum');
-
-        assert.equal(actual.crc, 323269802);
-      });
-    });
-
-    describe('#digest()', function() {
-      it('should return digest of CRC32', function() {
-        var actual = crc32().update('testing checksum').digest();
-
-        assert.equal(actual, -323269803);
-      });
-    });
-
   });
 
   describe('index', function() {

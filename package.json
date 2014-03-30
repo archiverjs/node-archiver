@@ -29,6 +29,7 @@
     "bench": "node benchmark/simple/pack-zip.js"
   },
   "dependencies": {
+    "buffer-crc32": "~0.2.1",
     "readable-stream": "~1.0.24",
     "zip-stream": "~0.2.0",
     "lazystream": "~0.1.0",
