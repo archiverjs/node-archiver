@@ -99,20 +99,19 @@ describe('archiver', function() {
 
         archive
           .bulk([
-            { expand: true, cwd: 'test/fixtures', src: 'directory/**', data: { prop: 'value' } }
+            { expand: true, cwd: 'test/fixtures/directory/', src: '**', data: { prop: 'value' } }
           ])
           .finalize();
       });
 
       it('should append multiple entries', function() {
         assert.isArray(actual);
-        assert.lengthOf(actual, 6);
-        assert.propertyVal(actual[0], 'name', 'directory/');
-        assert.propertyVal(actual[1], 'name', 'directory/level0.txt');
-        assert.propertyVal(actual[2], 'name', 'directory/subdir/');
-        assert.propertyVal(actual[3], 'name', 'directory/subdir/level1.txt');
-        assert.propertyVal(actual[4], 'name', 'directory/subdir/subsub/');
-        assert.propertyVal(actual[5], 'name', 'directory/subdir/subsub/level2.txt');
+        assert.lengthOf(actual, 5);
+        assert.propertyVal(actual[0], 'name', 'level0.txt');
+        assert.propertyVal(actual[1], 'name', 'subdir/');
+        assert.propertyVal(actual[2], 'name', 'subdir/level1.txt');
+        assert.propertyVal(actual[3], 'name', 'subdir/subsub/');
+        assert.propertyVal(actual[4], 'name', 'subdir/subsub/level2.txt');
       });
 
       it('should support passing data properties', function() {
