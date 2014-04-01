@@ -104,15 +104,18 @@ describe('archiver', function() {
           .finalize();
       });
 
-      it('should append multiple files', function() {
+      it('should append multiple entries', function() {
         assert.isArray(actual);
-        assert.lengthOf(actual, 3);
-        assert.propertyVal(actual[0], 'name', 'directory/level0.txt');
-        assert.propertyVal(actual[1], 'name', 'directory/subdir/level1.txt');
-        assert.propertyVal(actual[2], 'name', 'directory/subdir/subsub/level2.txt');
+        assert.lengthOf(actual, 6);
+        assert.propertyVal(actual[0], 'name', 'directory/');
+        assert.propertyVal(actual[1], 'name', 'directory/level0.txt');
+        assert.propertyVal(actual[2], 'name', 'directory/subdir/');
+        assert.propertyVal(actual[3], 'name', 'directory/subdir/level1.txt');
+        assert.propertyVal(actual[4], 'name', 'directory/subdir/subsub/');
+        assert.propertyVal(actual[5], 'name', 'directory/subdir/subsub/level2.txt');
       });
 
-      it('should support passing data property', function() {
+      it('should support passing data properties', function() {
         assert.propertyVal(actual[0], 'prop', 'value');
       });
     });
@@ -209,6 +212,22 @@ describe('archiver', function() {
           .append('', { name: 'string.txt', date: testDate })
           .append(new Buffer(0), { name: 'buffer.txt', date: testDate })
           .append(fs.createReadStream('test/fixtures/empty.txt'), { name: 'stream.txt', date: testDate })
+          .finalize();
+      });
+
+      it("should support directory entries", function(done) {
+        var archive = archiver('tar');
+        var testStream = new WriteHashStream('tmp/type-directory.tar');
+
+        testStream.on('close', function() {
+          assert.equal(testStream.digest, '4e2986ce5df27dbfb36c8cc05825c66906af084d');
+          done();
+        });
+
+        archive.pipe(testStream);
+
+        archive
+          .append(null, { name: 'directory/', date: testDate })
           .finalize();
       });
     });
