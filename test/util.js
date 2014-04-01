@@ -156,6 +156,13 @@ describe('utils', function() {
       });
     });
 
+    describe('trailingSlashIt(str)', function() {
+      it('should add trailing when missing', function() {
+        assert.equal(utils.trailingSlashIt('this/path/dir'), 'this/path/dir/');
+        assert.equal(utils.trailingSlashIt('this/path/dir/'), 'this/path/dir/');
+      });
+    });
+
     describe('unixifyPath(filepath)', function() {
       it('should unixify filepath', function() {
         assert.equal(utils.unixifyPath('this\\path\\file.txt'), 'this/path/file.txt');
