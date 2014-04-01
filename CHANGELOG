@@ -1,3 +1,7 @@
+v0.8.1:
+  date: 2014-04-01
+  changes:
+    - core: fix edge case in bulk() where the dot representing the current directory would be included.
 v0.8.0:
   date: 2014-04-01
   changes:
