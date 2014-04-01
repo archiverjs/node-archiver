@@ -1,3 +1,10 @@
+v0.8.0:
+  date: 2014-04-01
+  changes:
+    - initial directory entry support.
+    - normalize null sources to empty buffer.
+    - crc32: replace with buffer-crc32.
+    - other small tweaks. see git log.
 v0.7.1:
   date: 2014-03-27
   changes:

@@ -1,4 +1,4 @@
-# Archiver v0.7.1 [![Build Status](https://travis-ci.org/ctalkington/node-archiver.svg?branch=master)](https://travis-ci.org/ctalkington/node-archiver)
+# Archiver v0.8.0 [![Build Status](https://travis-ci.org/ctalkington/node-archiver.svg?branch=master)](https://travis-ci.org/ctalkington/node-archiver)
 
 Creates Archives (Zip, Tar) via Node Streams.
 
@@ -139,7 +139,7 @@ Compresses the tar archive using gzip, default is false.
 
 Passed to node's [zlib](http://nodejs.org/api/zlib.html#zlib_options) module to control compression. Options may vary by node version.
 
-### Eile Data
+### Entry Data
 
 #### name `string` `required`
 
@@ -151,7 +151,7 @@ Sets the entry date. This can be any valid date string or instance. Defaults to 
 
 #### mode `number`
 
-Sets the entry permissions. Defaults to 0664.
+Sets the entry permissions. Defaults to octal 0664.
 
 ## Things of Interest
 
