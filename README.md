@@ -24,6 +24,8 @@ Registers an archive format. Format modules are essentially transform streams wi
 
 ### Instance Methods
 
+Inherits [Transform Stream](http://nodejs.org/api/stream.html#stream_class_stream_transform) methods.
+
 #### append(input, data)
 
 Appends an input source (text string, buffer, or stream) to the instance. When the instance has received, processed, and emitted the input, the `entry` event is fired.
@@ -38,11 +40,11 @@ archive.append(fs.createReadStream('mydir/file.txt'), { name:'stream.txt' });
 
 #### bulk(mappings)
 
-Appends multiple files from passed array of src-dest file mappings, based on [Grunt's "Files Array" format](http://gruntjs.com/configuring-tasks#files-array-format). A lazystream wrapper is used to prevent issues with open file limits.
+Appends multiple entries from passed array of src-dest mappings, based on [Grunt's "Files Array" format](http://gruntjs.com/configuring-tasks#files-array-format). A lazystream wrapper is used to prevent issues with open file limits.
 
 [Globbing patterns](http://gruntjs.com/configuring-tasks#globbing-patterns) and [multiple properties](http://gruntjs.com/configuring-tasks#building-the-files-object-dynamically) are supported through use of the [file-utils](https://github.com/SBoudrias/file-utils) package, based on Grunt's file utilities. Please note that multiple src files to single dest file (ie concat) is not supported.
 
-The `data` property can be set (per src-dest mapping) to define file data for matched files.
+The `data` property can be set (per src-dest mapping) to define data for matched entries.
 
 ```js
 archive.bulk([
@@ -69,11 +71,11 @@ Returns the current byte length emitted by archiver. Use this in your end callba
 
 ## Events
 
-Each instance is a node `Transform` stream and inherits all its events. Events listed here are custom.
+Inherits [Transform Stream](http://nodejs.org/api/stream.html#stream_class_stream_transform) events.
 
 #### entry
 
-Fired when the input has been received, processed, and emitted. Passes file data as first argument.
+Fired when the input has been received, processed, and emitted. Passes entry data as first argument.
 
 ## Zip
 
@@ -85,37 +87,37 @@ Sets the zip comment.
 
 #### forceUTC `boolean`
 
-If true, forces the file date and time to UTC. Helps with testing across timezones.
+If true, forces the entry date to UTC. Helps with testing across timezones.
 
 #### store `boolean`
 
-If true, all file contents will be archived without compression by default.
+If true, all entry contents will be archived without compression by default.
 
 #### zlib `object`
 
 Passed to node's [zlib](http://nodejs.org/api/zlib.html#zlib_options) module to control compression. Options may vary by node version.
 
-### File Data
+### Entry Data
 
 #### name `string` `required`
 
-Sets the file name including internal path.
+Sets the entry name including internal path.
 
 #### date `string|Date`
 
-Sets the file date. This can be any valid date string or instance. Defaults to current time in locale.
+Sets the entry date. This can be any valid date string or instance. Defaults to current time in locale.
 
 #### store `boolean`
 
-If true, file contents will be archived without compression.
+If true, entry contents will be archived without compression.
 
 #### comment `string`
 
-Sets the file comment.
+Sets the entry comment.
 
 #### mode `number`
 
-Sets the file permissions. (experimental)
+Sets the entry permissions. (experimental)
 
 ## Tar
 
@@ -137,19 +139,19 @@ Compresses the tar archive using gzip, default is false.
 
 Passed to node's [zlib](http://nodejs.org/api/zlib.html#zlib_options) module to control compression. Options may vary by node version.
 
-### File Data
+### Eile Data
 
 #### name `string` `required`
 
-Sets the file name including internal path.
+Sets the entry name including internal path.
 
 #### date `string|Date`
 
-Sets the file date. This can be any valid date string or instance. Defaults to current time in locale.
+Sets the entry date. This can be any valid date string or instance. Defaults to current time in locale.
 
 #### mode `number`
 
-Sets the file permissions. Defaults to 0664.
+Sets the entry permissions. Defaults to 0664.
 
 ## Things of Interest
 

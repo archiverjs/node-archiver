@@ -157,9 +157,9 @@ describe('utils', function() {
     });
 
     describe('trailingSlashIt(str)', function() {
-      it('should add trailing when missing', function() {
-        assert.equal(utils.trailingSlashIt('this/path/dir'), 'this/path/dir/');
-        assert.equal(utils.trailingSlashIt('this/path/dir/'), 'this/path/dir/');
+      it('should add trailing slash when missing', function() {
+        assert.equal(utils.trailingSlashIt('this/path'), 'this/path/');
+        assert.equal(utils.trailingSlashIt('this/path/'), 'this/path/');
       });
     });
 
