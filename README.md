@@ -153,16 +153,21 @@ Sets the entry date. This can be any valid date string or instance. Defaults to 
 
 Sets the entry permissions. Defaults to octal 0664.
 
+## Libraries
+
+Archiver makes use of several libraries/modules to avoid duplication of efforts.
+
+- [zip-stream](https://npmjs.org/package/zip-stream)
+
 ## Things of Interest
 
 - [Examples](https://github.com/ctalkington/node-archiver/blob/master/examples)
 - [Changelog](https://github.com/ctalkington/node-archiver/releases)
-- [Archive Formats](https://github.com/ctalkington/node-archiver/blob/master/formats)
 - [Contributing](https://github.com/ctalkington/node-archiver/blob/master/CONTRIBUTING.md)
 - [MIT License](https://github.com/ctalkington/node-archiver/blob/master/LICENSE-MIT)
 
 ## Credits
 
-Concept inspired by Antoine van Wel's [node-zipstream](https://github.com/wellawaretech/node-zipstream).
+Concept inspired by Antoine van Wel's [node-zipstream](https://npmjs.org/package/zipstream).
 
 Tar inspired by isaacs's [node-tar](https://github.com/isaacs/node-tar).
