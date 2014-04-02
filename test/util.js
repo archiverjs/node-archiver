@@ -13,7 +13,8 @@ var utils = require('../lib/util');
 
 var testBuffer = binaryBuffer(20000);
 
-var testDate = new Date('Jan 03 2013 14:26:38 GMT');
+var testDateString = 'Jan 03 2013 14:26:38 GMT';
+var testDate = new Date(testDateString);
 var testDateEpoch = 1357223198;
 var testDateOctal = 12071312436;
 
@@ -55,32 +56,10 @@ describe('utils', function() {
 
   describe('index', function() {
 
-    describe('cleanBuffer(size)', function() {
-      var actual = utils.cleanBuffer(5);
-
-      it('should return an instance of Buffer', function() {
-        assert.instanceOf(actual, Buffer);
-      });
-
-      it('should have a length of size', function() {
-        assert.lengthOf(actual, 5);
-      });
-
-      it('should be filled with zeros', function() {
-        var actualArray = [];
-
-        for (var i = 0; i < actual.length ; i++) {
-          actualArray.push(actual[i]);
-        }
-
-        assert.deepEqual(actualArray, [0, 0, 0, 0, 0]);
-      });
-    });
-
     describe('dateify(dateish)', function() {
       it('should return an instance of Date', function() {
         assert.instanceOf(utils.dateify(testDate), Date);
-        assert.instanceOf(utils.dateify('Jan 03 2013 14:26:38 GMT'), Date);
+        assert.instanceOf(utils.dateify(testDateString), Date);
         assert.instanceOf(utils.dateify(null), Date);
       });
 
@@ -89,7 +68,7 @@ describe('utils', function() {
       });
 
       it('should convert dateish string to an instance of Date', function() {
-        assert.deepEqual(utils.dateify('Jan 03 2013 14:26:38 GMT'), testDate);
+        assert.deepEqual(utils.dateify(testDateString), testDate);
       });
     });
 
@@ -109,18 +88,6 @@ describe('utils', function() {
     describe('isStream(source)', function() {
       it('should return true if source is a stream', function() {
         assert.ok(utils.isStream(new DeadEndStream()));
-      });
-    });
-
-    describe('padNumber(number, bytes, base)', function() {
-      it('should pad number to specified bytes', function() {
-        assert.equal(utils.padNumber(0, 7), '0000000');
-      });
-    });
-
-    describe('repeat(pattern, count)', function() {
-      it('should repeat pattern by count', function() {
-        assert.equal(utils.repeat('x', 4), 'xxxx');
       });
     });
 
