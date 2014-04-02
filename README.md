@@ -165,9 +165,3 @@ Archiver makes use of several libraries/modules to avoid duplication of efforts.
 - [Changelog](https://github.com/ctalkington/node-archiver/releases)
 - [Contributing](https://github.com/ctalkington/node-archiver/blob/master/CONTRIBUTING.md)
 - [MIT License](https://github.com/ctalkington/node-archiver/blob/master/LICENSE-MIT)
-
-## Credits
-
-Concept inspired by Antoine van Wel's [node-zipstream](https://npmjs.org/package/zipstream).
-
-Tar inspired by isaacs's [node-tar](https://github.com/isaacs/node-tar).
