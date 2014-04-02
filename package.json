@@ -31,6 +31,7 @@
   "dependencies": {
     "buffer-crc32": "~0.2.1",
     "readable-stream": "~1.0.24",
+    "tar-stream": "~0.3.0",
     "zip-stream": "~0.3.0",
     "lazystream": "~0.1.0",
     "file-utils": "~0.1.5",

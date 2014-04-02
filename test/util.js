@@ -77,18 +77,6 @@ describe('utils', function() {
       });
     });
 
-    describe('convertDateTimeEpoch(input)', function() {
-      it('should convert epoch input into an instance of Date', function() {
-        assert.deepEqual(utils.convertDateTimeEpoch(testDateEpoch), testDate);
-      });
-    });
-
-    describe('convertDateTimeOctal(input)', function() {
-      it('should convert octal input into an instance of Date', function() {
-        assert.deepEqual(utils.convertDateTimeOctal(testDateOctal), testDate);
-      });
-    });
-
     describe('dateify(dateish)', function() {
       it('should return an instance of Date', function() {
         assert.instanceOf(utils.dateify(testDate), Date);
@@ -118,21 +106,9 @@ describe('utils', function() {
       });
     });
 
-    describe('epochDateTime(date)', function() {
-      it('should convert date into its epoch representation', function() {
-        assert.equal(utils.epochDateTime(testDate), testDateEpoch);
-      });
-    });
-
     describe('isStream(source)', function() {
       it('should return true if source is a stream', function() {
         assert.ok(utils.isStream(new DeadEndStream()));
-      });
-    });
-
-    describe('octalDateTime(date)', function() {
-      it('should convert date into its octal representation', function() {
-        assert.equal(utils.octalDateTime(testDate), testDateOctal);
       });
     });
 

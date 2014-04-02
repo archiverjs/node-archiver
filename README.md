@@ -123,14 +123,6 @@ Sets the entry permissions. (experimental)
 
 ### Options
 
-#### recordSize `number`
-
-Sets the size (in bytes) of each record in a block, default is 512 (for advanced users only).
-
-#### recordsPerBlock `number`
-
-Sets the number of records in a block, default is 20 (for advanced users only).
-
 #### gzip `boolean`
 
 Compresses the tar archive using gzip, default is false.

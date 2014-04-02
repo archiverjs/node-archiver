@@ -18,11 +18,9 @@ var testDate = new Date('Jan 03 2013 14:26:38 GMT');
 var testDate2 = new Date('Feb 10 2013 10:24:42 GMT');
 
 describe('archiver', function() {
-
   before(function() {
     mkdir.sync('tmp');
   });
-
 
   describe('Archiver', function() {
     var ArchiverCore = require('../lib/modules/core');
@@ -46,9 +44,7 @@ describe('archiver', function() {
 
   });
 
-
   describe('core', function() {
-
     describe('#file', function() {
       var actual;
 
@@ -118,119 +114,5 @@ describe('archiver', function() {
         assert.propertyVal(actual[0], 'prop', 'value');
       });
     });
-
   });
-
-
-  describe('tar', function() {
-
-    describe('#append', function() {
-      it('should append Buffer sources', function(done) {
-        var archive = archiver('tar');
-        var testStream = new WriteHashStream('tmp/buffer.tar');
-
-        testStream.on('close', function() {
-          assert.equal(testStream.digest, 'bc84fec33e7a4f6c8777cabd0beba503a7bce331');
-          done();
-        });
-
-        archive.pipe(testStream);
-
-        archive
-          .append(binaryBuffer(20000), { name: 'buffer.txt', date: testDate })
-          .finalize();
-      });
-
-      it('should append Stream sources', function(done) {
-        var archive = archiver('tar');
-        var testStream = new WriteHashStream('tmp/stream.tar');
-
-        testStream.on('close', function() {
-          assert.equal(testStream.digest, 'b3bf662968c87989431a25b2f699eae213392e82');
-          done();
-        });
-
-        archive.pipe(testStream);
-
-        archive
-          .append(fs.createReadStream('test/fixtures/test.txt'), { name: 'stream.txt', date: testDate })
-          .finalize();
-      });
-
-      it('should append multiple sources', function(done) {
-        var archive = archiver('tar');
-        var testStream = new WriteHashStream('tmp/multiple.tar');
-
-        testStream.on('close', function() {
-          assert.equal(testStream.digest, '0c4e2a79d0d2c41ae5eb2e1e70d315a617583e4d');
-          done();
-        });
-
-        archive.pipe(testStream);
-
-        archive
-          .append('string', { name: 'string.txt', date: testDate })
-          .append(binaryBuffer(20000), { name: 'buffer.txt', date: testDate2 })
-          .append(fs.createReadStream('test/fixtures/test.txt'), { name: 'stream.txt', date: testDate })
-          .finalize();
-      });
-
-      it('should use prefix for deep paths', function(done) {
-        var archive = archiver('tar');
-        var testStream = new WriteHashStream('tmp/feature-prefix.tar');
-
-        testStream.on('close', function() {
-          assert.equal(testStream.digest, 'c1efbfbdc9a49979a6e02b4009003de533fcda48');
-          done();
-        });
-
-        archive.pipe(testStream);
-
-        var deepPath = 'vvmbtqhysigpregbdrc/pyqaznbelhppibmbykz/';
-        deepPath += 'qcbclwjhktiazmhnsjt/kpsgdfyfkarbvnlinrt/';
-        deepPath += 'holobndxfccyecblhcc/';
-        deepPath += deepPath;
-
-        archive
-          .append('deep path', { name: deepPath + 'file.txt', date: testDate })
-          .finalize();
-      });
-
-      it('should append zero length sources', function(done) {
-        var archive = archiver('tar');
-        var testStream = new WriteHashStream('tmp/zerolength.tar');
-
-        testStream.on('close', function() {
-          assert.equal(testStream.digest, 'f4f7b53f8ee4c7124298695bffbacfa9e9c0a99f');
-          done();
-        });
-
-        archive.pipe(testStream);
-
-        archive
-          .append('', { name: 'string.txt', date: testDate })
-          .append(new Buffer(0), { name: 'buffer.txt', date: testDate })
-          .append(fs.createReadStream('test/fixtures/empty.txt'), { name: 'stream.txt', date: testDate })
-          .finalize();
-      });
-
-      it("should support directory entries", function(done) {
-        var archive = archiver('tar');
-        var testStream = new WriteHashStream('tmp/type-directory.tar');
-
-        testStream.on('close', function() {
-          assert.equal(testStream.digest, '4e2986ce5df27dbfb36c8cc05825c66906af084d');
-          done();
-        });
-
-        archive.pipe(testStream);
-
-        archive
-          .append(null, { name: 'directory/', date: testDate })
-          .finalize();
-      });
-    });
-
-  });
-
 });
