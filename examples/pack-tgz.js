@@ -1,11 +1,13 @@
 var fs = require('fs');
-var zlib = require('zlib');
-
 var archiver = require('archiver');
 
-var gzipper = zlib.createGzip();
 var output = fs.createWriteStream(__dirname + '/example-output.tar.gz');
-var archive = archiver('tar');
+var archive = archiver('tar', {
+  gzip: true,
+  gzipOptions: {
+    level: 1
+  }
+});
 
 output.on('close', function() {
   console.log(archive.pointer() + ' total bytes');
@@ -16,7 +18,7 @@ archive.on('error', function(err) {
   throw err;
 });
 
-archive.pipe(gzipper).pipe(output);
+archive.pipe(output);
 
 var file1 = __dirname + '/fixtures/file1.txt';
 var file2 = __dirname + '/fixtures/file2.txt';
