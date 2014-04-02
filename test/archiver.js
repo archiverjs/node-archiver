@@ -22,28 +22,6 @@ describe('archiver', function() {
     mkdir.sync('tmp');
   });
 
-  describe('Archiver', function() {
-    var ArchiverCore = require('../lib/modules/core');
-
-    describe('#_normalizeSource(source)', function() {
-      var core = new ArchiverCore();
-
-      it('should normalize strings to an instanceOf Buffer', function() {
-        var normalized = core._normalizeSource('some string');
-
-        assert.instanceOf(normalized, Buffer);
-      });
-
-      it('should normalize older unbuffered streams', function() {
-        var noBufferStream = new UnBufferedStream();
-        var normalized = core._normalizeSource(noBufferStream);
-
-        assert.instanceOf(normalized, PassThrough);
-      });
-    });
-
-  });
-
   describe('core', function() {
     describe('#file', function() {
       var actual;

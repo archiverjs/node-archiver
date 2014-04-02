@@ -1,12 +1,14 @@
 /*global describe,it */
 var fs = require('fs');
 var assert = require('chai').assert;
+var PassThrough = require('stream').PassThrough || require('readable-stream/passthrough');
 
 var common = require('./helpers/common');
 var adjustDateByOffset = common.adjustDateByOffset;
 var binaryBuffer = common.binaryBuffer;
 var BinaryStream = common.BinaryStream;
 var DeadEndStream = common.DeadEndStream;
+var UnBufferedStream = common.UnBufferedStream;
 
 var ChecksumStream = require('../lib/util/ChecksumStream');
 var utils = require('../lib/util');
@@ -88,6 +90,21 @@ describe('utils', function() {
     describe('isStream(source)', function() {
       it('should return true if source is a stream', function() {
         assert.ok(utils.isStream(new DeadEndStream()));
+      });
+    });
+
+    describe('normalizeInputSource(source)', function() {
+      it('should normalize strings to an instanceOf Buffer', function() {
+        var normalized = utils.normalizeInputSource('some string');
+
+        assert.instanceOf(normalized, Buffer);
+      });
+
+      it('should normalize older unbuffered streams', function() {
+        var noBufferStream = new UnBufferedStream();
+        var normalized = utils.normalizeInputSource(noBufferStream);
+
+        assert.instanceOf(normalized, PassThrough);
       });
     });
 
