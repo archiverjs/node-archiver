@@ -1,6 +1,6 @@
 # Archiver v0.8.1 [![Build Status](https://travis-ci.org/ctalkington/node-archiver.svg?branch=master)](https://travis-ci.org/ctalkington/node-archiver)
 
-Creates Archives (Zip, Tar) via Node Streams.
+a streaming interface for archive generation
 
 [![NPM](https://nodei.co/npm/archiver.png)](https://nodei.co/npm/archiver/)
 

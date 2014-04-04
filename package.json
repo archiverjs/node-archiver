@@ -1,7 +1,7 @@
 {
   "name": "archiver",
   "version": "0.8.1",
-  "description": "Creates Archives (ZIP) via Node Streams.",
+  "description": "a streaming interface for archive generation",
   "homepage": "https://github.com/ctalkington/node-archiver",
   "author": {
     "name": "Chris Talkington",
@@ -47,6 +47,7 @@
   "keywords": [
     "archive",
     "archiver",
+    "stream",
     "zip",
     "tar"
   ]
