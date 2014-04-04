@@ -1,7 +1,8 @@
 /*global describe,it */
 var fs = require('fs');
 var assert = require('chai').assert;
-var PassThrough = require('stream').PassThrough || require('readable-stream/passthrough');
+
+var PassThrough = require('readable-stream').PassThrough;
 
 var common = require('./helpers/common');
 var adjustDateByOffset = common.adjustDateByOffset;
