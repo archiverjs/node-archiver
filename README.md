@@ -150,6 +150,7 @@ Sets the entry permissions. Defaults to octal 0664.
 Archiver makes use of several libraries/modules to avoid duplication of efforts.
 
 - [zip-stream](https://npmjs.org/package/zip-stream)
+- [tar-stream](https://npmjs.org/package/tar-stream)
 
 ## Things of Interest
 
