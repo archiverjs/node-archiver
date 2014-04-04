@@ -2,6 +2,9 @@
 var fs = require('fs');
 var assert = require('chai').assert;
 
+var Stream = require('stream').Stream;
+var Readable = require('readable-stream').Readable;
+var Writable = require('readable-stream').Writable;
 var PassThrough = require('readable-stream').PassThrough;
 
 var common = require('./helpers/common');
@@ -89,7 +92,19 @@ describe('utils', function() {
     });
 
     describe('isStream(source)', function() {
+      it('should return false if source is not a stream', function() {
+        assert.notOk(utils.isStream('string'));
+        assert.notOk(utils.isStream(new Buffer(2)));
+      });
+
       it('should return true if source is a stream', function() {
+        assert.ok(utils.isStream(new Stream()));
+
+        assert.ok(utils.isStream(new Readable()));
+        assert.ok(utils.isStream(new Writable()));
+        assert.ok(utils.isStream(new PassThrough()));
+
+        assert.ok(utils.isStream(new UnBufferedStream()));
         assert.ok(utils.isStream(new DeadEndStream()));
       });
     });
