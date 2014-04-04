@@ -117,7 +117,7 @@ Sets the entry comment.
 
 #### mode `number`
 
-Sets the entry permissions. (experimental)
+Sets the entry permissions. Defaults to octal 0755 (directory) or 0644 (file).
 
 ## Tar
 
@@ -143,7 +143,7 @@ Sets the entry date. This can be any valid date string or instance. Defaults to 
 
 #### mode `number`
 
-Sets the entry permissions. Defaults to octal 0664.
+Sets the entry permissions. Defaults to octal 0755 (directory) or 0644 (file).
 
 ## Libraries
 
