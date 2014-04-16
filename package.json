@@ -50,5 +50,9 @@
     "stream",
     "zip",
     "tar"
+  ],
+  "files": [
+    "lib",
+    "LICENSE-MIT"
   ]
 }
