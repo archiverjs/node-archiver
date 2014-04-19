@@ -7,12 +7,12 @@ var Readable = require('readable-stream').Readable;
 var Writable = require('readable-stream').Writable;
 var PassThrough = require('readable-stream').PassThrough;
 
-var common = require('./helpers/common');
-var adjustDateByOffset = common.adjustDateByOffset;
-var binaryBuffer = common.binaryBuffer;
-var BinaryStream = common.BinaryStream;
-var DeadEndStream = common.DeadEndStream;
-var UnBufferedStream = common.UnBufferedStream;
+var helpers = require('./helpers');
+var adjustDateByOffset = helpers.adjustDateByOffset;
+var binaryBuffer = helpers.binaryBuffer;
+var BinaryStream = helpers.BinaryStream;
+var DeadEndStream = helpers.DeadEndStream;
+var UnBufferedStream = helpers.UnBufferedStream;
 
 var ChecksumStream = require('../lib/util/ChecksumStream');
 var utils = require('../lib/util');

@@ -6,11 +6,11 @@ var WriteStream = fs.createWriteStream;
 var assert = require('chai').assert;
 var mkdir = require('mkdirp');
 
-var common = require('./helpers/common');
-var HashStream = common.HashStream;
-var UnBufferedStream = common.UnBufferedStream;
-var WriteHashStream = common.WriteHashStream;
-var binaryBuffer = common.binaryBuffer;
+var helpers = require('./helpers');
+var HashStream = helpers.HashStream;
+var UnBufferedStream = helpers.UnBufferedStream;
+var WriteHashStream = helpers.WriteHashStream;
+var binaryBuffer = helpers.binaryBuffer;
 
 var archiver = require('../lib/archiver');
 
@@ -33,7 +33,7 @@ describe('archiver', function() {
         var testStream = new WriteStream('tmp/append.json');
 
         testStream.on('close', function() {
-          actual = common.readJSON('tmp/append.json');
+          actual = helpers.readJSON('tmp/append.json');
           done();
         });
 
@@ -85,7 +85,7 @@ describe('archiver', function() {
         var testStream = new WriteStream('tmp/file.json');
 
         testStream.on('close', function() {
-          actual = common.readJSON('tmp/file.json');
+          actual = helpers.readJSON('tmp/file.json');
           done();
         });
 
@@ -119,7 +119,7 @@ describe('archiver', function() {
         var testStream = new WriteStream('tmp/bulk.json');
 
         testStream.on('close', function() {
-          actual = common.readJSON('tmp/bulk.json');
+          actual = helpers.readJSON('tmp/bulk.json');
           done();
         });
 
