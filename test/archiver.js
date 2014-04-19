@@ -1,6 +1,6 @@
 /*global before,describe,it */
 var fs = require('fs');
-var PassThrough = require('stream').PassThrough || require('readable-stream/passthrough');
+var PassThrough = require('readable-stream').PassThrough;
 var WriteStream = fs.createWriteStream;
 
 var assert = require('chai').assert;
