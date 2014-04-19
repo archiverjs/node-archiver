@@ -1,3 +1,12 @@
+v0.9.0:
+  date: 2014-04-18
+  changes:
+    - restrict files published to npm. (GH #71)
+    - replace implementation of tar with tar-stream to avoid duplication of efforts. (GH #63)
+    - always use readable-stream for consistency.
+    - more functionality tests. (more format specific ones coming soon)
+    - updated documentation and examples.
+    - other misc cleanup and tweaks. see git log.
 v0.8.1:
   date: 2014-04-01
   changes:
