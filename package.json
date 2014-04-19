@@ -38,7 +38,7 @@
     "tar-stream": "~0.3.0",
     "zip-stream": "~0.3.0",
     "lazystream": "~0.1.0",
-    "file-utils": "~0.1.5",
+    "file-utils": "~0.2.0",
     "lodash": "~2.4.1"
   },
   "devDependencies": {
@@ -54,5 +54,9 @@
     "stream",
     "zip",
     "tar"
+  ],
+  "files": [
+    "lib",
+    "LICENSE-MIT"
   ]
 }
