@@ -36,6 +36,7 @@ Replaced `#addFile` in v0.5.
 archive.append('string', { name:'string.txt' });
 archive.append(new Buffer('string'), { name:'buffer.txt' });
 archive.append(fs.createReadStream('mydir/file.txt'), { name:'stream.txt' });
+archive.append(null, { name:'dir/' });
 ```
 
 #### bulk(mappings)
