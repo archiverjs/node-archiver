@@ -14,7 +14,6 @@ var BinaryStream = helpers.BinaryStream;
 var DeadEndStream = helpers.DeadEndStream;
 var UnBufferedStream = helpers.UnBufferedStream;
 
-var ChecksumStream = require('../lib/util/ChecksumStream');
 var utils = require('../lib/util');
 
 var testBuffer = binaryBuffer(20000);
@@ -27,38 +26,6 @@ var testDateOctal = 12071312436;
 var testTimezoneOffset = testDate.getTimezoneOffset();
 
 describe('utils', function() {
-
-  describe('ChecksumStream', function() {
-    it('should checksum data while transforming data', function(done) {
-      var binary = new BinaryStream(20000);
-      var checksum = new ChecksumStream();
-      var deadend = new DeadEndStream();
-
-      checksum.on('end', function() {
-        assert.equal(checksum.digest, 4024292205);
-
-        done();
-      });
-
-      checksum.pipe(deadend);
-      binary.pipe(checksum);
-    });
-
-    it('should calculate data size while transforming data', function(done) {
-      var binary = new BinaryStream(20000);
-      var checksum = new ChecksumStream();
-      var deadend = new DeadEndStream();
-
-      checksum.on('end', function() {
-        assert.equal(checksum.rawSize, 20000);
-
-        done();
-      });
-
-      checksum.pipe(deadend);
-      binary.pipe(checksum);
-    });
-  });
 
   describe('index', function() {
 
