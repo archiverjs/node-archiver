@@ -15,6 +15,21 @@ archive.bulk([
 ]);
 ```
 
+### Expand Properties
+When you want to process many individual files, a few additional properties may be used to build a files list dynamically.
+
+`expand` Set to `true` to enable the following options:
+
+* `cwd` All `src` matches are relative to (but don't include) this path.
+* `src` Pattern(s) to match, relative to the `cwd`.
+* `dest` Destination path prefix.
+* `ext` Replace any existing extension with this value in generated `dest` paths.
+* `extDot` Used to indicate where the period indicating the extension is located. Can take either `'first'` (extension begins after the first period in the file name) or `'last'` (extension begins after the last period), and is set by default to `'first'`
+* `flatten` Remove all path parts from generated `dest` paths.
+* `rename` This function is called for each matched `src` file, (after extension renaming and flattening). The `dest`
+and matched `src` path are passed in, and this function must return a new `dest` value.  If the same `dest` is returned
+more than once, each `src` which used it will be added to an array of sources for it.
+
 ### Globbing patterns
 It is often impractical to specify all source filepaths individually, so `bulk()` supports filename expansion (also know as globbing) via the built-in [node-glob][] and [minimatch][] libraries.
 
@@ -58,24 +73,8 @@ For example:
 
 For more on glob pattern syntax, see the [node-glob][] and [minimatch][] documentation.
 
-*Please note, unlike [gruntjs](), that multiple src files to single dest file (ie concat) is not supported by `bulk()`.*
-
-### Expand Properties
-When you want to process many individual files, a few additional properties may be used to build a files list dynamically.
-
-`expand` Set to `true` to enable the following options:
-
-* `cwd` All `src` matches are relative to (but don't include) this path.
-* `src` Pattern(s) to match, relative to the `cwd`.
-* `dest` Destination path prefix.
-* `ext` Replace any existing extension with this value in generated `dest` paths.
-* `extDot` Used to indicate where the period indicating the extension is located. Can take either `'first'` (extension begins after the first period in the file name) or `'last'` (extension begins after the last period), and is set by default to `'first'`
-* `flatten` Remove all path parts from generated `dest` paths.
-* `rename` This function is called for each matched `src` file, (after extension renaming and flattening). The `dest`
-and matched `src` path are passed in, and this function must return a new `dest` value.  If the same `dest` is returned
-more than once, each `src` which used it will be added to an array of sources for it.
-
-_special thanks to [gruntjs]() team for the logic and docs behind the `bulk()` feature._
+*unlike [gruntjs](), multiple src files to single dest file (ie concat) is not supported by `bulk()`.*
+*special thanks to [gruntjs]() team for the logic and docs behind the `bulk()` feature.*
 
 [gruntjs]: http://gruntjs.com
 [node-glob]: https://github.com/isaacs/node-glob
