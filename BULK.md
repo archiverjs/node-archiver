@@ -53,7 +53,7 @@ For more on glob pattern syntax, see the [node-glob][] and [minimatch][] documen
 
 *Please note, unlike [gruntjs](), that multiple src files to single dest file (ie concat) is not supported by `bulk`.*
 
-### Additonal Properties
+### Additional Properties
 When you want to process many individual files, a few additional properties may be used to build a files list dynamically.
 
 `expand` Set to `true` to enable the following options:
