@@ -43,7 +43,7 @@ archive.append(null, { name:'dir/' });
 
 Appends multiple entries from passed array of src-dest mappings, based on [Grunt's "Files Array" format](https://github.com/ctalkington/node-archiver/blob/master/BULK.md#files-array-format). A lazystream wrapper is used to prevent issues with open file limits.
 
-[Globbing patterns](https://github.com/ctalkington/node-archiver/blob/master/BULK.md#globbing-patterns) and [multiple properties](https://github.com/ctalkington/node-archiver/blob/master/BULK.md#additional-properties) are supported through use of the [file-utils](https://github.com/SBoudrias/file-utils) package, based on Grunt's file utilities. Please note that multiple src files to single dest file (ie concat) is not supported.
+[Globbing patterns](https://github.com/ctalkington/node-archiver/blob/master/BULK.md#globbing-patterns) are supported through use of the [file-utils](https://github.com/SBoudrias/file-utils) package, based on Grunt's file utilities. Please note that multiple src files to single dest file (ie concat) is not supported.
 
 The `data` property can be set (per src-dest mapping) to define data for matched entries.
 

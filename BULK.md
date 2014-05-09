@@ -1,6 +1,16 @@
 ### Files Array Format
 This form supports multiple src-dest file mappings per-target, while also allowing additional properties per mapping.
 
+Format supports `src` and `dest` and a few additional properties:
+
+* `filter` Either a valid [fs.Stats method name](http://nodejs.org/docs/latest/api/fs.html#fs_class_fs_stats) or a function that is passed the matched `src` filepath and returns `true` or `false`.
+* `nonull` If set to `true` then the operation will include non-matching patterns. Combined with grunt's `--verbose` flag, this option can help debug file path issues.
+* `dot` Allow patterns to match filenames starting with a period, even if the pattern does not explicitly have a period in that spot.
+* `matchBase` If set, patterns without slashes will be matched against the basename of the path if it contains slashes. For example, a?b would match the path `/xyz/123/acb`, but not `/xyz/acb/123`.
+* `expand` Process a dynamic src-dest file mapping, see [Expand Properties](BULK.md#expand-properties) for more information.
+* Other properties will be passed into the underlying libs as matching options. See the [node-glob][] and [minimatch][] documentation for more options.
+
+
 ```js
 archive.bulk([
   {src: ['src/bb.js', 'src/bbb.js'], dest: 'dest/b/', nonull: true},
@@ -53,7 +63,7 @@ For more on glob pattern syntax, see the [node-glob][] and [minimatch][] documen
 
 *Please note, unlike [gruntjs](), that multiple src files to single dest file (ie concat) is not supported by `bulk`.*
 
-### Additional Properties
+### Expand Properties
 When you want to process many individual files, a few additional properties may be used to build a files list dynamically.
 
 `expand` Set to `true` to enable the following options:
