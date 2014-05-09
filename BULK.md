@@ -47,17 +47,14 @@ For example:
 {src: ['foo/*.js', '!foo/bar.js'], dest: ...}
 // All files in alpha order, but with bar.js at the end.
 {src: ['foo/*.js', '!foo/bar.js', 'foo/bar.js'], dest: ...}
-
-// Templates may be used in filepaths or glob patterns:
-{src: ['src/<%= basename %>.js'], dest: 'build/<%= basename %>.min.js'}
-// But they may also reference file lists defined elsewhere in the config:
-{src: ['foo/*.js', '<%= jshint.all.src %>'], dest: ...}
 ```
 
 For more on glob pattern syntax, see the [node-glob][] and [minimatch][] documentation.
 
+*Please note, unlike [gruntjs](), that multiple src files to single dest file (ie concat) is not supported by `bulk`.*
+
 ### Additonal Properties
-When you want to process many individual files, a few additional properties may be used to build a files list dynamically. These properties may be specified in both "Compact" and "Files Array" mapping formats.
+When you want to process many individual files, a few additional properties may be used to build a files list dynamically.
 
 `expand` Set to `true` to enable the following options:
 
