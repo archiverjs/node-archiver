@@ -1,5 +1,5 @@
 ### Files Array Format
-This format supports multiple src-dest file mappings per-target, while also allowing additional properties per mapping:
+This format supports multiple src-dest file mappings, while also allowing additional properties per mapping:
 
 * `filter` Either a valid [fs.Stats method name](http://nodejs.org/docs/latest/api/fs.html#fs_class_fs_stats) or a function that is passed the matched `src` filepath and returns `true` or `false`.
 * `nonull` If set to `true` then the operation will include non-matching patterns.
@@ -7,7 +7,6 @@ This format supports multiple src-dest file mappings per-target, while also allo
 * `matchBase` If set, patterns without slashes will be matched against the basename of the path if it contains slashes. For example, a?b would match the path `/xyz/123/acb`, but not `/xyz/acb/123`.
 * `expand` Process a dynamic src-dest file mapping, see [Expand Properties](BULK.md#expand-properties) for more information.
 * Other properties will be passed into the underlying libs as matching options. See the [node-glob][] and [minimatch][] documentation for more options.
-
 
 ```js
 archive.bulk([
@@ -17,7 +16,7 @@ archive.bulk([
 ```
 
 ### Globbing patterns
-It is often impractical to specify all source filepaths individually, so `bulk` supports filename expansion (also know as globbing) via the built-in [node-glob][] and [minimatch][] libraries.
+It is often impractical to specify all source filepaths individually, so `bulk()` supports filename expansion (also know as globbing) via the built-in [node-glob][] and [minimatch][] libraries.
 
 While this isn't a comprehensive tutorial on globbing patterns, know that in a filepath:
 
@@ -29,7 +28,7 @@ While this isn't a comprehensive tutorial on globbing patterns, know that in a f
 
 All most people need to know is that `foo/*.js` will match all files ending with `.js` in the `foo/` subdirectory, but `foo/**/*.js` will match all files ending with `.js` in the `foo/` subdirectory _and all of its subdirectories_.
 
-Also, in order to simplify otherwise complicated globbing patterns, `bulk` allows arrays of file paths or globbing patterns to be specified. Patterns are processed in-order, with `!`-prefixed matches excluding matched files from the result set. The result set is uniqued.
+Also, in order to simplify otherwise complicated globbing patterns, `bulk()` allows arrays of file paths or globbing patterns to be specified. Patterns are processed in-order, with `!`-prefixed matches excluding matched files from the result set. The result set is uniqued.
 
 For example:
 
@@ -59,7 +58,7 @@ For example:
 
 For more on glob pattern syntax, see the [node-glob][] and [minimatch][] documentation.
 
-*Please note, unlike [gruntjs](), that multiple src files to single dest file (ie concat) is not supported by `bulk`.*
+*Please note, unlike [gruntjs](), that multiple src files to single dest file (ie concat) is not supported by `bulk()`.*
 
 ### Expand Properties
 When you want to process many individual files, a few additional properties may be used to build a files list dynamically.
@@ -76,7 +75,7 @@ When you want to process many individual files, a few additional properties may 
 and matched `src` path are passed in, and this function must return a new `dest` value.  If the same `dest` is returned
 more than once, each `src` which used it will be added to an array of sources for it.
 
-_special thanks to [gruntjs]() team for the logic and docs behind the `bulk` feature._
+_special thanks to [gruntjs]() team for the logic and docs behind the `bulk()` feature._
 
 [gruntjs]: http://gruntjs.com
 [node-glob]: https://github.com/isaacs/node-glob
