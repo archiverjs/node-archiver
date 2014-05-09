@@ -1,7 +1,5 @@
 ### Files Array Format
-This form supports multiple src-dest file mappings per-target, while also allowing additional properties per mapping.
-
-Format supports `src` and `dest` and a few additional properties:
+This format supports multiple src-dest file mappings per-target, while also allowing additional properties per mapping:
 
 * `filter` Either a valid [fs.Stats method name](http://nodejs.org/docs/latest/api/fs.html#fs_class_fs_stats) or a function that is passed the matched `src` filepath and returns `true` or `false`.
 * `nonull` If set to `true` then the operation will include non-matching patterns. Combined with grunt's `--verbose` flag, this option can help debug file path issues.
