@@ -1,12 +1,5 @@
-### Files Array Format
-This format supports multiple src-dest file mappings, while also allowing additional properties per mapping:
-
-* `filter` Either a valid [fs.Stats method name](http://nodejs.org/docs/latest/api/fs.html#fs_class_fs_stats) or a function that is passed the matched `src` filepath and returns `true` or `false`.
-* `nonull` If set to `true` then the operation will include non-matching patterns.
-* `dot` Allow patterns to match filenames starting with a period, even if the pattern does not explicitly have a period in that spot.
-* `matchBase` If set, patterns without slashes will be matched against the basename of the path if it contains slashes. For example, a?b would match the path `/xyz/123/acb`, but not `/xyz/acb/123`.
-* `expand` Process a dynamic src-dest file mapping, see [Expand Properties](BULK.md#expand-properties) for more information.
-* Other properties will be passed into the underlying libs as matching options. See the [node-glob][] and [minimatch][] documentation for more options.
+### Basic Usage
+This feature supports multiple src-dest file mappings, while also allowing additional properties per mapping:
 
 ```js
 archive.bulk([
@@ -15,7 +8,18 @@ archive.bulk([
 ]);
 ```
 
-### Expand Properties
+### Supported Properties
+
+#### Files Array Format
+
+* `filter` Either a valid [fs.Stats method name](http://nodejs.org/docs/latest/api/fs.html#fs_class_fs_stats) or a function that is passed the matched `src` filepath and returns `true` or `false`.
+* `nonull` If set to `true` then the operation will include non-matching patterns.
+* `dot` Allow patterns to match filenames starting with a period, even if the pattern does not explicitly have a period in that spot.
+* `matchBase` If set, patterns without slashes will be matched against the basename of the path if it contains slashes. For example, a?b would match the path `/xyz/123/acb`, but not `/xyz/acb/123`.
+* `expand` Process a dynamic src-dest file mapping, see [Expand Properties](BULK.md#expand-properties) for more information.
+* Other properties will be passed into the underlying libs as matching options. See the [node-glob][] and [minimatch][] documentation for more options.
+
+#### Expand Properties
 When you want to process many individual files, a few additional properties may be used to build a files list dynamically.
 
 `expand` Set to `true` to enable the following options:

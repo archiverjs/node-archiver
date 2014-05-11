@@ -41,9 +41,9 @@ archive.append(null, { name:'dir/' });
 
 #### bulk(mappings)
 
-Appends multiple entries from passed array of src-dest mappings, based on [Grunt's "Files Array" format](https://github.com/ctalkington/node-archiver/blob/master/BULK.md#files-array-format). A lazystream wrapper is used to prevent issues with open file limits.
+Appends multiple entries from passed array of src-dest mappings. A lazystream wrapper is used to prevent issues with open file limits.
 
-[Globbing patterns](https://github.com/ctalkington/node-archiver/blob/master/BULK.md#globbing-patterns) are supported through use of the [file-utils](https://github.com/SBoudrias/file-utils) package, based on Grunt's file utilities. Please note that multiple src files to single dest file (ie concat) is not supported.
+Globbing patterns are supported through use of the [file-utils](https://github.com/SBoudrias/file-utils) package. Please note that multiple src files to single dest file (ie concat) is not supported.
 
 The `data` property can be set (per src-dest mapping) to define data for matched entries.
 
@@ -54,9 +54,11 @@ archive.bulk([
 ]);
 ```
 
+For more detail on this feature, please see [BULK.md](https://github.com/ctalkington/node-archiver/blob/master/BULK.md).
+
 #### file(filepath, data)
 
-Appends a file given its filepath. Uses a lazystream wrapper to prevent issues with open file limits. When the instance has received, processed, and emitted the file, the `entry` event is fired.
+Appends a file given its filepath using a lazystream wrapper to prevent issues with open file limits. When the instance has received, processed, and emitted the file, the `entry` event is fired.
 
 ```js
 archive.file('mydir/file.txt', { name:'file.txt' });
