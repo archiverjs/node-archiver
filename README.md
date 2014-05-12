@@ -1,4 +1,4 @@
-# Archiver v0.9.1 [![Build Status](https://travis-ci.org/ctalkington/node-archiver.svg?branch=master)](https://travis-ci.org/ctalkington/node-archiver)
+# Archiver v0.10.0-alpha [![Build Status](https://travis-ci.org/ctalkington/node-archiver.svg?branch=master)](https://travis-ci.org/ctalkington/node-archiver)
 
 a streaming interface for archive generation
 
