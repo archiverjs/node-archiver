@@ -117,8 +117,8 @@ describe('archiver', function() {
         assert.isArray(actual);
         assert.propertyVal(actual[2], 'name', 'test/fixtures/executable.sh');
         assert.propertyVal(actual[2], 'mode', 509);
-        assert.propertyVal(actual[2], 'crc32', 637329683);
-        assert.propertyVal(actual[2], 'size', 17);
+        assert.propertyVal(actual[2], 'crc32', 3957348457);
+        assert.propertyVal(actual[2], 'size', 11);
       });
     });
 
