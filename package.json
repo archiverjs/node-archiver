@@ -43,7 +43,7 @@
   },
   "devDependencies": {
     "chai": "~1.9.1",
-    "mocha": "~1.18.2",
+    "mocha": "~1.20.1",
     "rimraf": "~2.2.8",
     "mkdirp": "~0.5.0",
     "stream-bench": "~0.1.2"
