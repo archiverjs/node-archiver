@@ -33,6 +33,7 @@
     "bench": "node benchmark/simple/pack-zip.js"
   },
   "dependencies": {
+    "async": "~0.9.0",
     "buffer-crc32": "~0.2.1",
     "glob": "~3.2.6",
     "lazystream": "~0.1.0",
