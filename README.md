@@ -66,7 +66,7 @@ archive.file('mydir/file.txt', { name:'file.txt' });
 
 #### finalize()
 
-Finalizes the instance. You should listen for the `end`/`close`/`finish` of the destination stream to properly detect completion.
+Finalizes the instance and prevents further writing to archive structure. You should then listen for the `end`/`close`/`finish` of the destination stream to properly detect completion.
 
 #### pointer()
 
