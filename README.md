@@ -66,7 +66,7 @@ archive.file('mydir/file.txt', { name:'file.txt' });
 
 #### finalize()
 
-Finalizes the instance and prevents further appending to the archive structure. You should be listening for the `end`, `close`, or `finish` event of the destination stream (before calling this) to properly detect stream completion. Otherwise, you will most likely end up with data corruption.
+Finalizes the instance and prevents further appending to the archive structure. Calling this is required to get the valid zip archive and for destination stream to be closed. Notice that <code>end</code>, <code>close</code> or <code>finish</code> events on the destination stream may fire right after <code>finalize</code> call so you should set listeners on them before call to properly detect stream completion.
 
 #### pointer()
 
