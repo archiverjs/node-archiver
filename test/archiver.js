@@ -24,6 +24,10 @@ var win32 = process.platform === 'win32';
 describe('archiver', function() {
   before(function() {
     mkdir.sync('tmp');
+
+    if ( !win32 ) {
+      fs.chmodSync('test/fixtures/executable.sh', 0777);
+    }
   });
 
   describe('core', function() {
@@ -96,7 +100,7 @@ describe('archiver', function() {
         archive
           .file('test/fixtures/test.txt', { name: 'test.txt', date: testDate })
           .file('test/fixtures/test.txt')
-          .file('test/fixtures/executable.sh', { mode: win32 ? 0775 : null })
+          .file('test/fixtures/executable.sh', { mode: win32 ? 0777 : null })
           .finalize();
       });
 
@@ -116,7 +120,7 @@ describe('archiver', function() {
       it('should fallback to file stats when applicable', function() {
         assert.isArray(actual);
         assert.propertyVal(actual[2], 'name', 'test/fixtures/executable.sh');
-        assert.propertyVal(actual[2], 'mode', 509);
+        assert.propertyVal(actual[2], 'mode', 511);
         assert.propertyVal(actual[2], 'crc32', 3957348457);
         assert.propertyVal(actual[2], 'size', 11);
       });
