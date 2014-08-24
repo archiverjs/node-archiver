@@ -159,6 +159,7 @@ Archiver makes use of several libraries/modules to avoid duplication of efforts.
 
 ## Things of Interest
 
+- [Source Docs (coming soon)](http://docsrc.com/archiver/)
 - [Examples](https://github.com/ctalkington/node-archiver/blob/master/examples)
 - [Changelog](https://github.com/ctalkington/node-archiver/releases)
 - [Contributing](https://github.com/ctalkington/node-archiver/blob/master/CONTRIBUTING.md)
