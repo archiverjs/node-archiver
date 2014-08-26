@@ -120,6 +120,8 @@ Sets the entry comment.
 
 Sets the entry permissions. Defaults to octal 0755 (directory) or 0644 (file).
 
+When using the `bulk` or `file` methods, fs stat data is used as the default value.
+
 ## Tar
 
 ### Options
@@ -145,6 +147,8 @@ Sets the entry date. This can be any valid date string or instance. Defaults to 
 #### mode `number`
 
 Sets the entry permissions. Defaults to octal 0755 (directory) or 0644 (file).
+
+When using the `bulk` or `file` methods, fs stat data is used as the default value.
 
 ## Libraries
 
