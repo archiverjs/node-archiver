@@ -108,6 +108,8 @@ Sets the entry name including internal path.
 
 Sets the entry date. This can be any valid date string or instance. Defaults to current time in locale.
 
+When using the `bulk` or `file` methods, fs stat data is used as the default value.
+
 #### store `boolean`
 
 If true, entry contents will be archived without compression.
@@ -143,6 +145,8 @@ Sets the entry name including internal path.
 #### date `string|Date`
 
 Sets the entry date. This can be any valid date string or instance. Defaults to current time in locale.
+
+When using the `bulk` or `file` methods, fs stat data is used as the default value.
 
 #### mode `number`
 
