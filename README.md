@@ -90,10 +90,6 @@ Fired when the input has been received, processed, and emitted. Passes entry dat
 
 Sets the zip comment.
 
-#### forceUTC `boolean`
-
-If true, forces the entry date to UTC. Helps with testing across timezones.
-
 #### store `boolean`
 
 If true, all entry contents will be archived without compression by default.
