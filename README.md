@@ -26,6 +26,10 @@ Registers an archive format. Format modules are essentially transform streams wi
 
 Inherits [Transform Stream](http://nodejs.org/api/stream.html#stream_class_stream_transform) methods.
 
+#### abort()
+
+Aborts the archiving process by clearing the remaining queue and ending open streams. The instance will remain available in a read-only state.
+
 #### append(input, data)
 
 Appends an input source (text string, buffer, or stream) to the instance. When the instance has received, processed, and emitted the input, the `entry` event is fired.
