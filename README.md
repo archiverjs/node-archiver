@@ -128,6 +128,10 @@ Sets the entry permissions. Defaults to octal 0755 (directory) or 0644 (file).
 
 When using the `bulk` or `file` methods, fs stat data is used as the default value.
 
+#### stats `fs.Stats`
+
+Sets the fs stat data for this entry. This allows for reduction of fs stat calls when stat data is already known.
+
 ## Tar
 
 ### Options
@@ -157,6 +161,10 @@ When using the `bulk` or `file` methods, fs stat data is used as the default val
 Sets the entry permissions. Defaults to octal 0755 (directory) or 0644 (file).
 
 When using the `bulk` or `file` methods, fs stat data is used as the default value.
+
+#### stats `fs.Stats`
+
+Sets the fs stat data for this entry. This allows for reduction of fs stat calls when stat data is already known.
 
 ## Libraries
 
