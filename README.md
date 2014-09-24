@@ -94,6 +94,10 @@ Fired when the input has been received, processed, and emitted. Passes entry dat
 
 Sets the zip comment.
 
+#### statConcurrency `number`
+
+Sets the number of workers used to process the internal fs stat queue. Defaults to 4.
+
 #### store `boolean`
 
 If true, all entry contents will be archived without compression by default.
@@ -143,6 +147,10 @@ Compresses the tar archive using gzip, default is false.
 #### gzipOptions `object`
 
 Passed to node's [zlib](http://nodejs.org/api/zlib.html#zlib_options) module to control compression. Options may vary by node version.
+
+#### statConcurrency `number`
+
+Sets the number of workers used to process the internal fs stat queue. Defaults to 4.
 
 ### Entry Data
 
