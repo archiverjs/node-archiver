@@ -28,7 +28,7 @@ Inherits [Transform Stream](http://nodejs.org/api/stream.html#stream_class_strea
 
 #### abort()
 
-Aborts the archiving process by clearing the remaining queue and ending open streams. The instance will remain available in a read-only state.
+Aborts the archiving process by clearing the remaining queue. The instance will remain available in a read-only state.
 
 #### append(input, data)
 
