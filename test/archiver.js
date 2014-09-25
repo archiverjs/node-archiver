@@ -186,6 +186,7 @@ describe('archiver', function() {
       });
 
       it('should support passing data properties', function() {
+        assert.property(entries, 'level0.txt');
         assert.propertyVal(entries['level0.txt'], 'prop', 'value');
       });
     });
