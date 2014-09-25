@@ -25,7 +25,7 @@ describe('archiver', function() {
   before(function() {
     mkdir.sync('tmp');
 
-    if ( !win32 ) {
+    if (!win32) {
       fs.chmodSync('test/fixtures/executable.sh', 0777);
     }
   });
@@ -33,6 +33,7 @@ describe('archiver', function() {
   describe('core', function() {
     describe('#append', function() {
       var actual;
+      var entries = {};
 
       before(function(done) {
         var archive = archiver('json');
@@ -40,6 +41,11 @@ describe('archiver', function() {
 
         testStream.on('close', function() {
           actual = helpers.readJSON('tmp/append.json');
+
+          actual.forEach(function(entry) {
+            entries[entry.name] = entry;
+          });
+
           done();
         });
 
@@ -52,39 +58,45 @@ describe('archiver', function() {
           .finalize();
       });
 
-      it('should append buffer', function() {
+      it('should append multiple entries', function() {
         assert.isArray(actual);
-        assert.propertyVal(actual[0], 'name', 'buffer.txt');
-        assert.propertyVal(actual[0], 'type', 'file');
-        assert.propertyVal(actual[0], 'date', '2013-01-03T14:26:38.000Z');
-        assert.propertyVal(actual[0], 'mode', 420);
-        assert.propertyVal(actual[0], 'crc32', 3893830384);
-        assert.propertyVal(actual[0], 'size', 16384);
+        assert.lengthOf(actual, 3);
+      });
+
+      it('should append buffer', function() {
+        assert.property(entries, 'buffer.txt');
+        assert.propertyVal(entries['buffer.txt'], 'name', 'buffer.txt');
+        assert.propertyVal(entries['buffer.txt'], 'type', 'file');
+        assert.propertyVal(entries['buffer.txt'], 'date', '2013-01-03T14:26:38.000Z');
+        assert.propertyVal(entries['buffer.txt'], 'mode', 420);
+        assert.propertyVal(entries['buffer.txt'], 'crc32', 3893830384);
+        assert.propertyVal(entries['buffer.txt'], 'size', 16384);
       });
 
       it('should append stream', function() {
-        assert.isArray(actual);
-        assert.propertyVal(actual[1], 'name', 'stream.txt');
-        assert.propertyVal(actual[1], 'type', 'file');
-        assert.propertyVal(actual[1], 'date', '2013-01-03T14:26:38.000Z');
-        assert.propertyVal(actual[1], 'mode', 420);
-        assert.propertyVal(actual[1], 'crc32', 585446183);
-        assert.propertyVal(actual[1], 'size', 19);
+        assert.property(entries, 'stream.txt');
+        assert.propertyVal(entries['stream.txt'], 'name', 'stream.txt');
+        assert.propertyVal(entries['stream.txt'], 'type', 'file');
+        assert.propertyVal(entries['stream.txt'], 'date', '2013-01-03T14:26:38.000Z');
+        assert.propertyVal(entries['stream.txt'], 'mode', 420);
+        assert.propertyVal(entries['stream.txt'], 'crc32', 585446183);
+        assert.propertyVal(entries['stream.txt'], 'size', 19);
       });
 
       it('should append directory', function() {
-        assert.isArray(actual);
-        assert.propertyVal(actual[2], 'name', 'directory/');
-        assert.propertyVal(actual[2], 'type', 'directory');
-        assert.propertyVal(actual[2], 'date', '2013-01-03T14:26:38.000Z');
-        assert.propertyVal(actual[2], 'mode', 493);
-        assert.propertyVal(actual[2], 'crc32', 0);
-        assert.propertyVal(actual[2], 'size', 0);
+        assert.property(entries, 'directory/');
+        assert.propertyVal(entries['directory/'], 'name', 'directory/');
+        assert.propertyVal(entries['directory/'], 'type', 'directory');
+        assert.propertyVal(entries['directory/'], 'date', '2013-01-03T14:26:38.000Z');
+        assert.propertyVal(entries['directory/'], 'mode', 493);
+        assert.propertyVal(entries['directory/'], 'crc32', 0);
+        assert.propertyVal(entries['directory/'], 'size', 0);
       });
     });
 
     describe('#file', function() {
       var actual;
+      var entries = {};
 
       before(function(done) {
         var archive = archiver('json');
@@ -92,6 +104,11 @@ describe('archiver', function() {
 
         testStream.on('close', function() {
           actual = helpers.readJSON('tmp/file.json');
+
+          actual.forEach(function(entry) {
+            entries[entry.name] = entry;
+          });
+
           done();
         });
 
@@ -104,30 +121,35 @@ describe('archiver', function() {
           .finalize();
       });
 
-      it('should append filepath', function() {
+      it('should append multiple entries', function() {
         assert.isArray(actual);
-        assert.propertyVal(actual[0], 'name', 'test.txt');
-        assert.propertyVal(actual[0], 'date', '2013-01-03T14:26:38.000Z');
-        assert.propertyVal(actual[0], 'crc32', 585446183);
-        assert.propertyVal(actual[0], 'size', 19);
+        assert.lengthOf(actual, 3);
+      });
+
+      it('should append filepath', function() {
+        assert.property(entries, 'test.txt');
+        assert.propertyVal(entries['test.txt'], 'name', 'test.txt');
+        assert.propertyVal(entries['test.txt'], 'date', '2013-01-03T14:26:38.000Z');
+        assert.propertyVal(entries['test.txt'], 'crc32', 585446183);
+        assert.propertyVal(entries['test.txt'], 'size', 19);
       });
 
       it('should fallback to filepath when no name is set', function() {
-        assert.isArray(actual);
-        assert.propertyVal(actual[1], 'name', 'test/fixtures/test.txt');
+        assert.property(entries, 'test/fixtures/test.txt');
       });
 
       it('should fallback to file stats when applicable', function() {
-        assert.isArray(actual);
-        assert.propertyVal(actual[2], 'name', 'test/fixtures/executable.sh');
-        assert.propertyVal(actual[2], 'mode', 511);
-        assert.propertyVal(actual[2], 'crc32', 3957348457);
-        assert.propertyVal(actual[2], 'size', 11);
+        assert.property(entries, 'test/fixtures/executable.sh');
+        assert.propertyVal(entries['test/fixtures/executable.sh'], 'name', 'test/fixtures/executable.sh');
+        assert.propertyVal(entries['test/fixtures/executable.sh'], 'mode', 511);
+        assert.propertyVal(entries['test/fixtures/executable.sh'], 'crc32', 3957348457);
+        assert.propertyVal(entries['test/fixtures/executable.sh'], 'size', 11);
       });
     });
 
     describe('#bulk', function() {
       var actual;
+      var entries = {};
 
       before(function(done) {
         var archive = archiver('json');
@@ -135,6 +157,11 @@ describe('archiver', function() {
 
         testStream.on('close', function() {
           actual = helpers.readJSON('tmp/bulk.json');
+
+          actual.forEach(function(entry) {
+            entries[entry.name] = entry;
+          });
+
           done();
         });
 
@@ -150,15 +177,16 @@ describe('archiver', function() {
       it('should append multiple entries', function() {
         assert.isArray(actual);
         assert.lengthOf(actual, 5);
-        assert.propertyVal(actual[0], 'name', 'level0.txt');
-        assert.propertyVal(actual[1], 'name', 'subdir/');
-        assert.propertyVal(actual[2], 'name', 'subdir/level1.txt');
-        assert.propertyVal(actual[3], 'name', 'subdir/subsub/');
-        assert.propertyVal(actual[4], 'name', 'subdir/subsub/level2.txt');
+
+        assert.property(entries, 'level0.txt');
+        assert.property(entries, 'subdir/');
+        assert.property(entries, 'subdir/level1.txt');
+        assert.property(entries, 'subdir/subsub/');
+        assert.property(entries, 'subdir/subsub/level2.txt');
       });
 
       it('should support passing data properties', function() {
-        assert.propertyVal(actual[0], 'prop', 'value');
+        assert.propertyVal(entries['level0.txt'], 'prop', 'value');
       });
     });
   });
