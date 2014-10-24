@@ -1,6 +1,6 @@
 {
   "name": "archiver",
-  "version": "0.11.0",
+  "version": "0.12.0",
   "description": "a streaming interface for archive generation",
   "homepage": "https://github.com/ctalkington/node-archiver",
   "author": {
