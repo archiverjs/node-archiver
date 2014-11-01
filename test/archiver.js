@@ -58,10 +58,11 @@ describe('archiver', function() {
 
     describe('#append', function() {
       var actual;
+      var archive;
       var entries = {};
 
       before(function(done) {
-        var archive = archiver('json');
+        archive = archiver('json');
         var testStream = new WriteStream('tmp/append.json');
 
         testStream.on('close', function() {
@@ -121,10 +122,11 @@ describe('archiver', function() {
 
     describe('#file', function() {
       var actual;
+      var archive;
       var entries = {};
 
       before(function(done) {
-        var archive = archiver('json');
+        archive = archiver('json');
         var testStream = new WriteStream('tmp/file.json');
 
         testStream.on('close', function() {
@@ -174,10 +176,11 @@ describe('archiver', function() {
 
     describe('#bulk', function() {
       var actual;
+      var archive;
       var entries = {};
 
       before(function(done) {
-        var archive = archiver('json');
+        archive = archiver('json');
         var testStream = new WriteStream('tmp/bulk.json');
 
         testStream.on('close', function() {
