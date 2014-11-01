@@ -31,6 +31,31 @@ describe('archiver', function() {
   });
 
   describe('core', function() {
+    describe('#abort', function() {
+      var archive;
+
+      before(function(done) {
+        archive = archiver('json');
+        var testStream = new WriteStream('tmp/abort.json');
+
+        archive.on('end', function() {
+          done();
+        });
+
+        archive.pipe(testStream);
+
+        archive
+          .append(testBuffer, { name: 'buffer.txt', date: testDate })
+          .append(fs.createReadStream('test/fixtures/test.txt'), { name: 'stream.txt', date: testDate })
+          .abort();
+      });
+
+      it('should have a state of aborted', function() {
+        assert.property(archive, '_state');
+        assert.propertyVal(archive._state, 'aborted', true);
+      });
+    });
+
     describe('#append', function() {
       var actual;
       var entries = {};
