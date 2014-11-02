@@ -30,6 +30,8 @@ Inherits [Transform Stream](http://nodejs.org/api/stream.html#stream_class_strea
 
 Aborts the archiving process by clearing the remaining queue. The instance will remain available in a read-only state.
 
+*Any unconsumed stream sources will be left in an undrained state.*
+
 #### append(input, data)
 
 Appends an input source (text string, buffer, or stream) to the instance. When the instance has received, processed, and emitted the input, the `entry` event is fired.
