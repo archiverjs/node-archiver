@@ -38,7 +38,7 @@ describe('archiver', function() {
         archive = archiver('json');
         var testStream = new WriteStream('tmp/abort.json');
 
-        archive.on('end', function() {
+        testStream.on('close', function() {
           done();
         });
 
@@ -47,6 +47,7 @@ describe('archiver', function() {
         archive
           .append(testBuffer, { name: 'buffer.txt', date: testDate })
           .append(fs.createReadStream('test/fixtures/test.txt'), { name: 'stream.txt', date: testDate })
+          .file('test/fixtures/test.txt')
           .abort();
       });
 
