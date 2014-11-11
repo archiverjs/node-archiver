@@ -107,7 +107,7 @@ Sets the number of workers used to process the internal fs stat queue. Defaults 
 
 #### store `boolean`
 
-If true, all entry contents will be archived without compression by default.
+If true, all entries will be archived without compression. Defaults to `false`.
 
 #### zlib `object`
 
@@ -127,7 +127,7 @@ When using the `bulk` or `file` methods, fs stat data is used as the default val
 
 #### store `boolean`
 
-If true, entry contents will be archived without compression.
+If true, this entry will be archived without compression. Defaults to global `store` option.
 
 #### comment `string`
 
