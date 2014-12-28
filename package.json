@@ -44,10 +44,12 @@
   },
   "devDependencies": {
     "chai": "~1.10.0",
-    "mocha": "~2.0.1",
+    "mocha": "~2.1.0",
     "rimraf": "~2.2.8",
     "mkdirp": "~0.5.0",
-    "stream-bench": "~0.1.2"
+    "stream-bench": "~0.1.2",
+    "tar": "~1.0.3",
+    "unzip2": "~0.2.0"
   },
   "keywords": [
     "archive",
