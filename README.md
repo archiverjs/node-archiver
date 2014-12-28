@@ -14,9 +14,10 @@ You can also use `npm install https://github.com/ctalkington/node-archiver/archi
 
 ## Archiver
 
+#### Archiver(format, options)
 #### create(format, options)
 
-Creates an Archiver instance based on the format (zip, tar, etc) passed. Parameters can be passed directly to `Archiver` constructor for convenience.
+Creates an Archiver instance based on the format (zip, tar, etc) passed.
 
 #### registerFormat(format, module)
 
@@ -180,6 +181,10 @@ When using the `bulk` or `file` methods, fs stat data is used as the default val
 #### stats `fs.Stats`
 
 Sets the fs stat data for this entry. This allows for reduction of fs stat calls when stat data is already known.
+
+## Custom Formats
+
+Archiver ships with out of the box support for TAR and ZIP archives. You can register additional formats with `registerFormat`.
 
 ## Libraries
 
