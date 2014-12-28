@@ -95,7 +95,7 @@ Inherits [Transform Stream](http://nodejs.org/api/stream.html#stream_class_strea
 
 #### entry
 
-Fired when the input has been received, processed, and emitted. Passes entry data as first argument.
+Fired when the entry's input has been processed and appended to the archive. Passes entry data as first argument.
 
 ## Zip
 
