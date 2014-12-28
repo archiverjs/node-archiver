@@ -58,7 +58,7 @@ archive.append(null, { name:'dir/' });
 
 Appends multiple entries from passed array of src-dest mappings. A [lazystream](https://github.com/jpommerening/node-lazystream) wrapper is used to prevent issues with open file limits.
 
-Globbing patterns are supported through use of the bundled [file-utils](https://github.com/SBoudrias/file-utils) module. Please note that multiple src files to single dest file (ie concat) is not supported.
+Globbing patterns are supported through use of the bundled [file-utils](https://github.com/SBoudrias/file-utils) module.
 
 The `data` property can be set (per src-dest mapping) to define data for matched entries.
 

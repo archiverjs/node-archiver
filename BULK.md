@@ -20,6 +20,7 @@ archive.bulk([
 * Other properties will be passed into the underlying libs as matching options. See the [node-glob][] and [minimatch][] documentation for more options.
 
 #### Expand Properties
+
 When you want to process many individual files, a few additional properties may be used to build a files list dynamically.
 
 `expand` Set to `true` to enable the following options:
@@ -35,6 +36,7 @@ and matched `src` path are passed in, and this function must return a new `dest`
 more than once, each `src` which used it will be added to an array of sources for it.
 
 ### Globbing patterns
+
 It is often impractical to specify all source filepaths individually, so `bulk()` supports filename expansion (also know as globbing) via the built-in [node-glob][] and [minimatch][] libraries.
 
 While this isn't a comprehensive tutorial on globbing patterns, know that in a filepath:
@@ -78,13 +80,14 @@ For example:
 For more on glob pattern syntax, see the [node-glob][] and [minimatch][] documentation.
 
 ### Notes
-Some properties/logic may need extended testing as the `bulk()` is very much a patchwork of code from [gruntjs]().
 
-The following is known not to work:
+Some properties/logic may need extended testing as this feature is very much a patchwork of code from [gruntjs]().
 
-* multiple src files to single dest file (ie concat)
+Some logic still uses sync code (ie filter) which is poorly suited for server use.
 
-*special thanks to [gruntjs]() team for the logic and docs behind the `bulk()` feature.*
+Please note that multiple src files to single dest file (ie concat) is not supported.
+
+*special thanks to [gruntjs]() team for the logic and docs behind this feature.*
 
 [gruntjs]: http://gruntjs.com
 [node-glob]: https://github.com/isaacs/node-glob
