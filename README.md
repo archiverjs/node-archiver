@@ -14,13 +14,9 @@ You can also use `npm install https://github.com/ctalkington/node-archiver/archi
 
 ## Archiver
 
-#### Archiver(format, options)
-
-Creates an Archiver instance based on the format (zip, tar, etc) passed.
-
 #### create(format, options)
 
-Creates an Archiver instance based on the format (zip, tar, etc) passed.
+Creates an Archiver instance based on the format (zip, tar, etc) passed. Parameters can be passed directly to `Archiver` constructor for convenience.
 
 #### registerFormat(format, module)
 
