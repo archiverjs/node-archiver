@@ -121,6 +121,44 @@ describe('archiver', function() {
       });
     });
 
+    describe('#directory', function() {
+      var actual;
+      var archive;
+      var entries = {};
+
+      before(function(done) {
+        archive = archiver('json');
+        var testStream = new WriteStream('tmp/directory.json');
+
+        testStream.on('close', function() {
+          actual = helpers.readJSON('tmp/directory.json');
+
+          actual.forEach(function(entry) {
+            entries[entry.name] = entry;
+          });
+
+          done();
+        });
+
+        archive.pipe(testStream);
+
+        archive
+          .directory('test/fixtures/directory', false)
+          .finalize();
+      });
+
+      it('should append multiple entries', function() {
+        assert.isArray(actual);
+        assert.lengthOf(actual, 5);
+
+        assert.property(entries, 'test/fixtures/directory/level0.txt');
+        assert.property(entries, 'test/fixtures/directory/subdir/');
+        assert.property(entries, 'test/fixtures/directory/subdir/level1.txt');
+        assert.property(entries, 'test/fixtures/directory/subdir/subsub/');
+        assert.property(entries, 'test/fixtures/directory/subdir/subsub/level2.txt');
+      });
+    });
+
     describe('#file', function() {
       var actual;
       var archive;

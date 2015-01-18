@@ -67,6 +67,10 @@ archive.bulk([
 
 For more detail on this feature, please see [BULK.md](https://github.com/ctalkington/node-archiver/blob/master/BULK.md).
 
+#### directory(dirpath)
+
+Appends a directory, recusively, given its dirpath.
+
 #### file(filepath, data)
 
 Appends a file given its filepath using a [lazystream](https://github.com/jpommerening/node-lazystream) wrapper to prevent issues with open file limits. When the instance has received, processed, and emitted the file, the `entry` event is fired.
