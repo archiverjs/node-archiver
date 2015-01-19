@@ -27,6 +27,7 @@ describe('archiver', function() {
 
     if (!win32) {
       fs.chmodSync('test/fixtures/executable.sh', 0777);
+      fs.chmodSync('test/fixtures/directory/subdir/', 0755);
     }
   });
 
@@ -255,6 +256,10 @@ describe('archiver', function() {
       it('should support passing data properties', function() {
         assert.property(entries, 'level0.txt');
         assert.propertyVal(entries['level0.txt'], 'prop', 'value');
+      });
+
+      it('should retain directory permissions', function() {
+        assert.propertyVal(entries['subdir/'], 'mode', win32 ? 438 : 493);
       });
     });
   });
