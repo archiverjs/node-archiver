@@ -67,9 +67,9 @@ archive.bulk([
 
 For more detail on this feature, please see [BULK.md](https://github.com/ctalkington/node-archiver/blob/master/BULK.md).
 
-#### directory(dirpath [, destpath, data])
+#### directory(dirpath[, destpath, data])
 
-Appends a directory, recusively, given its dirpath. This is meant to be a simplier approach to something previously only possible with `bulk`. The use of `destpath` allows one to define a custom destination path within the resulting archive and `data` allows for setting default data for each entry found.
+Appends a directory and its files, recusively, given its dirpath. This is meant to be a simplier approach to something previously only possible with `bulk`. The use of `destpath` allows one to define a custom destination path within the resulting archive and `data` allows for setting data on each entry appended.
 
 ```js
 // mydir/ -> archive.zip/mydir/
