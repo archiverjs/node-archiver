@@ -69,7 +69,7 @@ For more detail on this feature, please see [BULK.md](https://github.com/ctalkin
 
 #### directory(dirpath [, destpath, data])
 
-Appends a directory, recusively, given its dirpath. Data to define data for matched entries.
+Appends a directory, recusively, given its dirpath. This is meant to be simplier approach to something previously only possible with `bulk`. The use of `destpath` allows one to define a custom destination path within the resulting archive and `data` allows for setting default data for each entry found.
 
 ```js
 // mydir/ -> archive.zip/mydir/
