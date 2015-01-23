@@ -72,13 +72,13 @@ For more detail on this feature, please see [BULK.md](https://github.com/ctalkin
 Appends a directory and its files, recusively, given its dirpath. This is meant to be a simplier approach to something previously only possible with `bulk`. The use of `destpath` allows one to define a custom destination path within the resulting archive and `data` allows for setting data on each entry appended.
 
 ```js
-// mydir/ -> archive.zip/mydir/
+// mydir/ -> archive.ext/mydir/
 archive.directory('mydir');
 
-// mydir/ -> archive.zip/abc/
+// mydir/ -> archive.ext/abc/
 archive.directory('mydir', 'abc');
 
-// mydir/ -> archive.zip/
+// mydir/ -> archive.ext/
 archive.directory('mydir', false, { date: new Date() });
 ```
 
