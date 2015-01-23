@@ -67,12 +67,19 @@ archive.bulk([
 
 For more detail on this feature, please see [BULK.md](https://github.com/ctalkington/node-archiver/blob/master/BULK.md).
 
-#### directory(dirpath)
+#### directory(dirpath [, destpath, data])
 
-Appends a directory, recusively, given its dirpath.
+Appends a directory, recusively, given its dirpath. Data to define data for matched entries.
 
 ```js
+// mydir/ -> archive.zip/mydir/
 archive.directory('mydir');
+
+// mydir/ -> archive.zip/abc/
+archive.directory('mydir', 'abc');
+
+// mydir/ -> archive.zip/
+archive.directory('mydir', false, { date: new Date() });
 ```
 
 #### file(filepath, data)

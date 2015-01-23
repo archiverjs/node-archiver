@@ -144,19 +144,27 @@ describe('archiver', function() {
         archive.pipe(testStream);
 
         archive
-          .directory('test/fixtures/directory', false)
+          .directory('test/fixtures/directory', null, { date: testDate })
+          .directory('test/fixtures/directory', 'directory')
           .finalize();
       });
 
       it('should append multiple entries', function() {
         assert.isArray(actual);
-        assert.lengthOf(actual, 5);
 
         assert.property(entries, 'test/fixtures/directory/level0.txt');
         assert.property(entries, 'test/fixtures/directory/subdir/');
         assert.property(entries, 'test/fixtures/directory/subdir/level1.txt');
         assert.property(entries, 'test/fixtures/directory/subdir/subsub/');
         assert.property(entries, 'test/fixtures/directory/subdir/subsub/level2.txt');
+        assert.propertyVal(entries['test/fixtures/directory/level0.txt'], 'date', '2013-01-03T14:26:38.000Z');
+        assert.propertyVal(entries['test/fixtures/directory/subdir/'], 'date', '2013-01-03T14:26:38.000Z');
+
+        assert.property(entries, 'directory/level0.txt');
+        assert.property(entries, 'directory/subdir/');
+        assert.property(entries, 'directory/subdir/level1.txt');
+        assert.property(entries, 'directory/subdir/subsub/');
+        assert.property(entries, 'directory/subdir/subsub/level2.txt');
       });
     });
 
