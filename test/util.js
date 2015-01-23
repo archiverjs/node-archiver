@@ -114,6 +114,20 @@ describe('utils', function() {
       });
     });
 
+    describe('walkdir(dirpath, base, callback)', function() {
+      it('should walk a directory', function(done) {
+        utils.walkdir('test/fixtures/directory', function(err, results) {
+          if (err) {
+            return done(err);
+          }
+
+          assert.isArray(results);
+
+          done();
+        });
+      });
+    });
+
   });
 
 });
