@@ -97,7 +97,6 @@ describe('plugins', function() {
         testStream.on('close', function(entry) {
           yauzl.open('tmp/plugin-zip-append.zip', function(err, zip) {
             zip.on('entry', function(entry) {
-              console.log(entry);
               actual.push(entry.fileName);
               entries[entry.fileName] = entry;
             });
