@@ -3,7 +3,8 @@ var fs = require('fs');
 var assert = require('chai').assert;
 var mkdir = require('mkdirp');
 var tar = require('tar');
-var unzip = require('unzip2');
+var yauzl = require('yauzl');
+var WriteStream = fs.createWriteStream;
 
 var archiver = require('../lib/archiver');
 var helpers = require('./helpers');
@@ -91,16 +92,20 @@ describe('plugins', function() {
 
       before(function(done) {
         archive = archiver('zip');
-        var testStream = unzip.Parse();
+        var testStream = new WriteStream('tmp/plugin-zip-append.zip');
 
-        testStream.on('entry', function(entry) {
-          actual.push(entry.path);
-          entries[entry.path] = entry;
-          entry.autodrain();
-        });
+        testStream.on('close', function(entry) {
+          yauzl.open('tmp/plugin-zip-append.zip', function(err, zip) {
+            zip.on('entry', function(entry) {
+              console.log(entry);
+              actual.push(entry.fileName);
+              entries[entry.fileName] = entry;
+            });
 
-        testStream.on('close', function() {
-          done();
+            zip.on('close', function() {
+              done();
+            });
+          });
         });
 
         archive.pipe(testStream);
@@ -119,22 +124,17 @@ describe('plugins', function() {
 
       it('should append buffer', function() {
         assert.property(entries, 'buffer.txt');
-        assert.propertyVal(entries['buffer.txt'], 'path', 'buffer.txt');
-        assert.propertyVal(entries['buffer.txt'], 'type', 'File');
-        assert.propertyVal(entries['buffer.txt'], 'size', 16384);
+        assert.propertyVal(entries['buffer.txt'], 'uncompressedSize', 16384);
       });
 
       it('should append stream', function() {
         assert.property(entries, 'stream.txt');
-        assert.propertyVal(entries['stream.txt'], 'path', 'stream.txt');
-        assert.propertyVal(entries['stream.txt'], 'type', 'File');
-        assert.propertyVal(entries['stream.txt'], 'size', 19);
+        assert.propertyVal(entries['stream.txt'], 'uncompressedSize', 19);
       });
 
       it('should append directory', function() {
         assert.property(entries, 'directory/');
-        assert.propertyVal(entries['directory/'], 'path', 'directory/');
-        assert.propertyVal(entries['directory/'], 'type', 'Directory');
+        assert.propertyVal(entries['directory/'], 'uncompressedSize', 0);
       });
     });
   });
