@@ -151,7 +151,7 @@ describe('plugins', function() {
       assert.propertyVal(entries['executable.sh'], 'externalFileAttributes', 2180972576);
       assert.equal((entries['executable.sh'].externalFileAttributes >>> 16) & 0xFFF, 511);
 
-      assert.propertyVal(entries['directory/subdir/'], 'externalFileAttributes', win32 ? 28704784 : 32309264 );
+      assert.propertyVal(entries['directory/subdir/'], 'externalFileAttributes', win32 ? 1102446608 : 1106051088);
       assert.equal((entries['directory/subdir/'].externalFileAttributes >>> 16) & 0xFFF, win32 ? 438 : 493);
     });
 
