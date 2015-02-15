@@ -2,22 +2,22 @@
   "name": "archiver",
   "version": "0.14.2",
   "description": "a streaming interface for archive generation",
-  "homepage": "https://github.com/ctalkington/node-archiver",
+  "homepage": "https://github.com/archiverjs/node-archiver",
   "author": {
     "name": "Chris Talkington",
     "url": "http://christalkington.com/"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ctalkington/node-archiver.git"
+    "url": "https://github.com/archiverjs/node-archiver.git"
   },
   "bugs": {
-    "url": "https://github.com/ctalkington/node-archiver/issues"
+    "url": "https://github.com/archiverjs/node-archiver/issues"
   },
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/ctalkington/node-archiver/blob/master/LICENSE-MIT"
+      "url": "https://github.com/archiverjs/node-archiver/blob/master/LICENSE-MIT"
     }
   ],
   "main": "lib/archiver.js",

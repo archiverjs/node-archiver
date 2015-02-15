@@ -1,4 +1,4 @@
-# Archiver v0.14.2 [![Build Status](https://travis-ci.org/ctalkington/node-archiver.svg?branch=master)](https://travis-ci.org/ctalkington/node-archiver)
+# Archiver v0.14.2 [![Build Status](https://travis-ci.org/archiverjs/node-archiver.svg?branch=master)](https://travis-ci.org/archiverjs/node-archiver)
 
 a streaming interface for archive generation
 
@@ -10,7 +10,7 @@ a streaming interface for archive generation
 npm install archiver --save
 ```
 
-You can also use `npm install https://github.com/ctalkington/node-archiver/archive/master.tar.gz` to test upcoming versions.
+You can also use `npm install https://github.com/archiverjs/node-archiver/archive/master.tar.gz` to test upcoming versions.
 
 ## Archiver
 
@@ -65,7 +65,7 @@ archive.bulk([
 ]);
 ```
 
-For more detail on this feature, please see [BULK.md](https://github.com/ctalkington/node-archiver/blob/master/BULK.md).
+For more detail on this feature, please see [BULK.md](https://github.com/archiverjs/node-archiver/blob/master/BULK.md).
 
 #### directory(dirpath[, destpath, data])
 
@@ -209,8 +209,7 @@ Archiver makes use of several libraries/modules to avoid duplication of efforts.
 
 ## Things of Interest
 
-- [Source Docs (coming soon)](https://docsrc.com/archiver/)
-- [Examples](https://github.com/ctalkington/node-archiver/blob/master/examples)
-- [Changelog](https://github.com/ctalkington/node-archiver/releases)
-- [Contributing](https://github.com/ctalkington/node-archiver/blob/master/CONTRIBUTING.md)
-- [MIT License](https://github.com/ctalkington/node-archiver/blob/master/LICENSE-MIT)
+- [Examples](https://github.com/archiverjs/node-archiver/blob/master/examples)
+- [Changelog](https://github.com/archiverjs/node-archiver/releases)
+- [Contributing](https://github.com/archiverjs/node-archiver/blob/master/CONTRIBUTING.md)
+- [MIT License](https://github.com/archiverjs/node-archiver/blob/master/LICENSE-MIT)
