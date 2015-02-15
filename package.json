@@ -1,6 +1,6 @@
 {
   "name": "archiver",
-  "version": "0.14.2",
+  "version": "0.14.3",
   "description": "a streaming interface for archive generation",
   "homepage": "https://github.com/archiverjs/node-archiver",
   "author": {
