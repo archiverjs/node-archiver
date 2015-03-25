@@ -57,5 +57,8 @@
     "stream",
     "zip",
     "tar"
-  ]
+  ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  }
 }
