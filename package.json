@@ -22,8 +22,7 @@
   ],
   "main": "lib/archiver.js",
   "files": [
-    "lib",
-    "LICENSE-MIT"
+    "lib"
   ],
   "engines": {
     "node": ">= 0.10.0"
