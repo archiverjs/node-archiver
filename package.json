@@ -27,6 +27,9 @@
     "bench": "node benchmark/simple/pack-zip.js"
   },
   "dependencies": {
+    "archiver-json": "~0.0.1",
+    "archiver-tar": "~0.0.1",
+    "archiver-zip": "~0.0.1",
     "async": "~0.9.0",
     "buffer-crc32": "~0.2.1",
     "glob": "~4.3.0",
