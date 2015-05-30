@@ -12,7 +12,7 @@ var UnBufferedStream = helpers.UnBufferedStream;
 var WriteHashStream = helpers.WriteHashStream;
 var binaryBuffer = helpers.binaryBuffer;
 
-var archiver = require('../lib/archiver');
+var archiver = require('../');
 
 var testBuffer = binaryBuffer(1024 * 16);
 

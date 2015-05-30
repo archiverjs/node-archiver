@@ -6,7 +6,7 @@ var tar = require('tar');
 var yauzl = require('yauzl');
 var WriteStream = fs.createWriteStream;
 
-var archiver = require('../lib/archiver');
+var archiver = require('../');
 var helpers = require('./helpers');
 var binaryBuffer = helpers.binaryBuffer;
 
