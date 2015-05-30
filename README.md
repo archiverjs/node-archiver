@@ -18,10 +18,6 @@ You can also use `npm install https://github.com/archiverjs/node-archiver/archiv
 
 Creates an Archiver instance based on the format (zip, tar, etc) passed. Parameters can be passed directly to `Archiver` constructor for convenience.
 
-#### registerFormat(format, module)
-
-Registers an archive format. Format modules are essentially transform streams with a few required methods. They will be further documented once a formal spec is in place.
-
 ### Instance Methods
 
 Inherits [Transform Stream](http://nodejs.org/api/stream.html#stream_class_stream_transform) methods.

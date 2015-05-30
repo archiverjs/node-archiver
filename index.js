@@ -40,7 +40,7 @@ vending.registerFormat = function(format, module) {
   }
 
   formats[format] = module;
-}
+};
 
 vending.registerFormat('zip', require('./lib/plugins/zip'));
 vending.registerFormat('tar', require('./lib/plugins/tar'));
