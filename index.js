@@ -14,9 +14,19 @@ var vending = module.exports = function(format, options) {
   return vending.create(format, options);
 };
 
-module.exports.registerFormat = registerFormat;
+vending.create = function(format, options) {
+  if (formats[format]) {
+    var instance = new Archiver(format, options);
+    instance.setFormat(format);
+    instance.setModule(new formats[format](options));
 
-function registerFormat(format, module) {
+    return instance;
+  } else {
+    throw new Error('create(' + format + '): format not registered');
+  }
+};
+
+vending.registerFormat = function(format, module) {
   if (formats[format]) {
     throw new Error('register(' + format + '): format already registered');
   }
@@ -32,18 +42,6 @@ function registerFormat(format, module) {
   formats[format] = module;
 }
 
-vending.create = function(format, options) {
-  if (formats[format]) {
-    var instance = new Archiver(format, options);
-    instance.setFormat(format);
-    instance.setModule(new formats[format](options));
-
-    return instance;
-  } else {
-    throw new Error('create(' + format + '): format not registered');
-  }
-};
-
-registerFormat('zip', require('./lib/plugins/zip'));
-registerFormat('tar', require('./lib/plugins/tar'));
-registerFormat('json', require('./lib/plugins/json'));
+vending.registerFormat('zip', require('./lib/plugins/zip'));
+vending.registerFormat('tar', require('./lib/plugins/tar'));
+vending.registerFormat('json', require('./lib/plugins/json'));
