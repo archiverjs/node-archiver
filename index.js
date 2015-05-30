@@ -8,12 +8,42 @@
 
 var Archiver = require('./lib/core');
 
-module.exports = Archiver;
+var formats = {};
 
-module.exports.create = function(format, options) {
-  return new Archiver(format, options);
+var vending = module.exports = function(format, options) {
+  return vending.create(format, options);
 };
 
-module.exports.registerFormat = function(format, module) {
-  throw new Error('registerFormat is no longer supported.');
+module.exports.registerFormat = registerFormat;
+
+function registerFormat(format, module) {
+  if (formats[format]) {
+    throw new Error('register(' + format + '): format already registered');
+  }
+
+  if (typeof module !== 'function') {
+    throw new Error('register(' + format + '): format module invalid');
+  }
+
+  if (typeof module.prototype.append !== 'function' || typeof module.prototype.finalize !== 'function') {
+    throw new Error('register(' + format + '): format module missing methods');
+  }
+
+  formats[format] = module;
+}
+
+vending.create = function(format, options) {
+  if (formats[format]) {
+    var instance = new Archiver(format, options);
+    instance.setFormat(format);
+    instance.setModule(new formats[format](options));
+
+    return instance;
+  } else {
+    throw new Error('create(' + format + '): format not registered');
+  }
 };
+
+registerFormat('zip', require('./lib/plugins/zip'));
+registerFormat('tar', require('./lib/plugins/tar'));
+registerFormat('json', require('./lib/plugins/json'));
