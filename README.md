@@ -1,4 +1,4 @@
-# Archiver v0.14.4 [![Build Status](https://travis-ci.org/archiverjs/node-archiver.svg?branch=master)](https://travis-ci.org/archiverjs/node-archiver)
+# Archiver v0.15.0-1 [![Build Status](https://travis-ci.org/archiverjs/node-archiver.svg?branch=master)](https://travis-ci.org/archiverjs/node-archiver)
 
 a streaming interface for archive generation
 
