@@ -62,9 +62,15 @@ The `data` property can be set (per src-dest mapping) to define data for matched
 ```js
 archive.bulk([
   { src: ['mydir/**'], data: { date: new Date() } },
+  { src: ['mydir/**'], data: function(data) {
+    data.date = new Date();
+    return data;
+  }},
   { expand: true, cwd: 'mydir', src: ['**'], dest: 'newdir' }
 ]);
 ```
+
+As of v0.15, the `data` property can also be a function that receives data for each matched entry and is expected to return it after making any desired adjustments.
 
 For more detail on this feature, please see [BULK.md](https://github.com/archiverjs/node-archiver/blob/master/BULK.md).
 
@@ -81,7 +87,13 @@ archive.directory('mydir', 'abc');
 
 // mydir/ -> archive.ext/
 archive.directory('mydir', false, { date: new Date() });
+archive.directory('mydir', false, function(data) {
+  data.date = new Date();
+  return data;
+});
 ```
+
+As of v0.15, the `data` property can also be a function that receives data for each entry and is expected to return it after making any desired adjustments.
 
 #### file(filepath, data)
 

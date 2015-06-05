@@ -145,7 +145,10 @@ describe('archiver', function() {
 
         archive
           .directory('test/fixtures/directory', null, { date: testDate })
-          .directory('test/fixtures/directory', 'directory')
+          .directory('test/fixtures/directory', 'directory', function(data) {
+            data.funcProp = true;
+            return data;
+          })
           .finalize();
       });
 
@@ -165,6 +168,10 @@ describe('archiver', function() {
         assert.property(entries, 'directory/subdir/level1.txt');
         assert.property(entries, 'directory/subdir/subsub/');
         assert.property(entries, 'directory/subdir/subsub/level2.txt');
+      });
+
+      it('should support setting data properties via function', function() {
+        assert.propertyVal(entries['directory/level0.txt'], 'funcProp', true);
       });
     });
 
@@ -245,25 +252,39 @@ describe('archiver', function() {
 
         archive
           .bulk([
-            { expand: true, cwd: 'test/fixtures/directory/', src: '**', data: { prop: 'value' } }
+            { expand: true, cwd: 'test/fixtures/directory/', src: '**', data: { prop: 'value' } },
+            { expand: true, cwd: 'test/fixtures/directory/', src: '**', dest: 'directory/', data: function(data) {
+              data.funcProp = true;
+              return data;
+            }},
           ])
           .finalize();
       });
 
       it('should append multiple entries', function() {
         assert.isArray(actual);
-        assert.lengthOf(actual, 5);
 
         assert.property(entries, 'level0.txt');
         assert.property(entries, 'subdir/');
         assert.property(entries, 'subdir/level1.txt');
         assert.property(entries, 'subdir/subsub/');
         assert.property(entries, 'subdir/subsub/level2.txt');
+
+        assert.property(entries, 'directory/level0.txt');
+        assert.property(entries, 'directory/subdir/');
+        assert.property(entries, 'directory/subdir/level1.txt');
+        assert.property(entries, 'directory/subdir/subsub/');
+        assert.property(entries, 'directory/subdir/subsub/level2.txt');
       });
 
-      it('should support passing data properties', function() {
+      it('should support setting data properties', function() {
         assert.property(entries, 'level0.txt');
         assert.propertyVal(entries['level0.txt'], 'prop', 'value');
+      });
+
+      it('should support setting data properties via function', function() {
+        assert.property(entries, 'directory/level0.txt');
+        assert.propertyVal(entries['directory/level0.txt'], 'funcProp', true);
       });
 
       it('should retain directory permissions', function() {
