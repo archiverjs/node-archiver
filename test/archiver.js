@@ -288,7 +288,7 @@ describe('archiver', function() {
       });
 
       it('should retain directory permissions', function() {
-        assert.propertyVal(entries['subdir/'], 'mode', win32 ? 438 : 493);
+        assert.propertyVal(entries['subdir/'], 'mode', win32 ? 511 : 493);
       });
     });
   });
