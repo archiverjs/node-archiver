@@ -10,17 +10,22 @@ a streaming interface for archive generation
 npm install archiver --save
 ```
 
-You can also use `npm install https://github.com/archiverjs/node-archiver/archive/master.tar.gz` to test upcoming versions.
+## Usage
 
-## Archiver
+```js
+var archiver = require('archiver');
+var archive = archiver.create('zip', {}); // or archiver('zip', {});
+```
+
+## API
+
+#### Transform
+
+Inherits [Transform Stream](http://nodejs.org/api/stream.html#stream_class_stream_transform) methods.
 
 #### create(format, options)
 
 Creates an Archiver instance based on the format (zip, tar, etc) passed. Parameters can be passed directly to `Archiver` constructor for convenience.
-
-### Instance Methods
-
-Inherits [Transform Stream](http://nodejs.org/api/stream.html#stream_class_stream_transform) methods.
 
 #### abort()
 
@@ -95,6 +100,10 @@ Finalizes the instance and prevents further appending to the archive structure (
 #### pointer()
 
 Returns the current byte length emitted by archiver. Use this in your end callback to log generated size.
+
+#### use(plugin)
+
+Add a plugin to the middleware stack. Currently this is designed for passing the module to use (replaces registerFormat/setFormat/setModule)
 
 ## Events
 
