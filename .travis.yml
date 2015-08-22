@@ -4,3 +4,5 @@ node_js:
   - "iojs"
   - "0.12"
   - "0.10"
+matrix:
+  fast_finish: true
