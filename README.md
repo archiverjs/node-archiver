@@ -215,7 +215,11 @@ Sets the fs stat data for this entry. This allows for reduction of fs stat calls
 
 ## Custom Formats
 
-Archiver ships with out of the box support for TAR and ZIP archives. You can register additional formats with `registerFormat`.
+Archiver ships with out of the box support for TAR and ZIP archives.
+
+You can register additional formats with `registerFormat`.
+
+_Formats will be changing in the next few releases to implement a middleware approach._
 
 ## Libraries
 
