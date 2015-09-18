@@ -76,7 +76,7 @@ For more detail on this feature, please see [BULK.md](https://github.com/archive
 
 #### directory(dirpath[, destpath, data])
 
-Appends a directory and its files, recusively, given its dirpath. This is meant to be a simplier approach to something previously only possible with `bulk`. The use of `destpath` allows one to define a custom destination path within the resulting archive and `data` allows for setting data on each entry appended.
+Appends a directory and its files, recursively, given its dirpath. This is meant to be a simplier approach to something previously only possible with `bulk`. The use of `destpath` allows one to define a custom destination path within the resulting archive and `data` allows for setting data on each entry appended.
 
 ```js
 // mydir/ -> archive.ext/mydir/
