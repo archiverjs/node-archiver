@@ -213,6 +213,10 @@ When using the `bulk` or `file` methods, fs stat data is used as the default val
 
 Sets the fs stat data for this entry. This allows for reduction of fs stat calls when stat data is already known.
 
+#### sanitizeName `boolean`
+
+If true will sanitize the Entry Data name before appending to the archive, otherwise assumes the name has already been sanitized by the caller.  Defaults to true.
+
 ## Custom Formats
 
 Archiver ships with out of the box support for TAR and ZIP archives.
