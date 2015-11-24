@@ -1,7 +1,7 @@
 sudo: false
 language: node_js
 node_js:
-  - "iojs"
+  - "4.0"
   - "0.12"
   - "0.10"
 matrix:
