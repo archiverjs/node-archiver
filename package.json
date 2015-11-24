@@ -28,17 +28,17 @@
     "bench": "node benchmark/simple/pack-zip.js"
   },
   "dependencies": {
-    "async": "~1.4.2",
+    "async": "~1.5.0",
     "buffer-crc32": "~0.2.1",
-    "glob": "~5.0.0",
+    "glob": "~6.0.0",
     "lazystream": "~0.1.0",
     "lodash": "~3.10.0",
-    "readable-stream": "~1.0.26",
+    "readable-stream": "~2.0.0",
     "tar-stream": "~1.3.1",
-    "zip-stream": "~0.6.0"
+    "zip-stream": "~0.7.0"
   },
   "devDependencies": {
-    "chai": "~3.3.0",
+    "chai": "~3.4.0",
     "mocha": "~2.3.3",
     "rimraf": "~2.4.2",
     "mkdirp": "~0.5.0",
