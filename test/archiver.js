@@ -291,5 +291,45 @@ describe('archiver', function() {
         assert.propertyVal(entries['subdir/'], 'mode', 493);
       });
     });
+
+    describe('#src', function() {
+      var actual;
+      var archive;
+      var entries = {};
+
+      before(function(done) {
+        archive = archiver('json');
+        var testStream = new WriteStream('tmp/src.json');
+
+        testStream.on('close', function() {
+          actual = helpers.readJSON('tmp/src.json');
+
+          actual.forEach(function(entry) {
+            entries[entry.name] = entry;
+          });
+
+          done();
+        });
+
+        archive.pipe(testStream);
+
+        archive
+          .src('test/fixtures/test.txt', null, { stats: null })
+          .src('test/fixtures/empty.txt', null, { stats: null })
+          .src('test/fixtures/executable.sh', null, { stats: null })
+          .src('test/fixtures/directory/**/*', { ignore: 'test/fixtures/directory/subdir/**/*', nodir: true, stat: false }, { stats: null })
+          .finalize();
+      });
+
+      it('should append multiple entries', function() {
+        assert.isArray(actual);
+        assert.lengthOf(actual, 4);
+      });
+
+      it('should not append "subdir"', function() {
+        assert.equal(JSON.stringify(entries).indexOf('subdir'), -1);
+      });
+    });
+
   });
 });
