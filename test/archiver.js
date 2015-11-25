@@ -314,20 +314,24 @@ describe('archiver', function() {
         archive.pipe(testStream);
 
         archive
-          .src('test/fixtures/test.txt', null, { stats: null })
-          .src('test/fixtures/empty.txt', null, { stats: null })
-          .src('test/fixtures/executable.sh', null, { stats: null })
-          .src('test/fixtures/directory/**/*', { ignore: 'test/fixtures/directory/subdir/**/*', nodir: true, stat: false }, { stats: null })
+          .src('test/fixtures/**/*', {
+            ignore: 'test/fixtures/empty.txt',
+          })
           .finalize();
       });
 
       it('should append multiple entries', function() {
         assert.isArray(actual);
-        assert.lengthOf(actual, 4);
+        assert.lengthOf(actual, 8);
       });
 
-      it('should not append "subdir"', function() {
-        assert.equal(JSON.stringify(entries).indexOf('subdir'), -1);
+      it('should exclude "empty.txt"', function() {
+        assert.equal(JSON.stringify(entries).indexOf('empty.txt'), -1);
+      });
+
+      it('should set name correctly', function() {
+        assert.propertyVal(entries['test.txt'], 'name', 'test.txt');
+        assert.propertyVal(entries['directory/'], 'name', 'directory/');
       });
     });
 
