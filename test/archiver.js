@@ -292,17 +292,17 @@ describe('archiver', function() {
       });
     });
 
-    describe('#src', function() {
+    describe('#glob', function() {
       var actual;
       var archive;
       var entries = {};
 
       before(function(done) {
         archive = archiver('json');
-        var testStream = new WriteStream('tmp/src.json');
+        var testStream = new WriteStream('tmp/glob.json');
 
         testStream.on('close', function() {
-          actual = helpers.readJSON('tmp/src.json');
+          actual = helpers.readJSON('tmp/glob.json');
 
           actual.forEach(function(entry) {
             entries[entry.name] = entry;
@@ -314,10 +314,10 @@ describe('archiver', function() {
         archive.pipe(testStream);
 
         archive
-          .src('test/fixtures/test.txt', null, { stats: null })
-          .src('test/fixtures/empty.txt', null, { stats: null })
-          .src('test/fixtures/executable.sh', null, { stats: null })
-          .src('test/fixtures/directory/**/*', { ignore: 'test/fixtures/directory/subdir/**/*', nodir: true, stat: false }, { stats: null })
+          .glob('test/fixtures/test.txt', null, { stats: null })
+          .glob('test/fixtures/empty.txt', null, { stats: null })
+          .glob('test/fixtures/executable.sh', null, { stats: null })
+          .glob('test/fixtures/directory/**/*', { ignore: 'test/fixtures/directory/subdir/**/*', nodir: true, stat: false }, { stats: null })
           .finalize();
       });
 
