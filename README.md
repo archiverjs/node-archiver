@@ -53,6 +53,8 @@ archive.append(null, { name:'dir/' });
 
 #### bulk(mappings)
 
+*As of v0.19, it is recommended to use the asynchronous [glob](#globpattern-options-data) method especially in server environments.*
+
 Appends multiple entries from passed array of src-dest mappings. A [lazystream](https://github.com/jpommerening/node-lazystream) wrapper is used to prevent issues with open file limits.
 
 Globbing patterns are supported through use of the bundled [file-utils](https://github.com/SBoudrias/file-utils) module.
