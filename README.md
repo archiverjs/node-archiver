@@ -103,6 +103,14 @@ Appends a file given its filepath using a [lazystream](https://github.com/jpomme
 archive.file('mydir/file.txt', { name:'file.txt' });
 ```
 
+#### src(pattern, options, data)
+
+Appends multiple files that match a [glob pattern](https://github.com/isaacs/node-glob#glob-primer). Supports passing [glob options](https://github.com/isaacs/node-glob#options) as a second parameter and entry data as a third parameter.
+
+```js
+archive.src('directory/**/*', { nodir: true }, { date: new Date() });
+```
+
 #### finalize()
 
 Finalizes the instance and prevents further appending to the archive structure (queue will continue til drained). The `end`, `close` or `finish` events on the destination stream may fire right after calling this method so you should set listeners beforehand to properly detect stream completion.
