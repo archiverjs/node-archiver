@@ -148,14 +148,17 @@ describe('plugins', function() {
     });
 
     it('should allow for custom unix mode', function() {
+      assert.property(entries, 'executable.sh');
       assert.propertyVal(entries['executable.sh'], 'externalFileAttributes', 2180972576);
       assert.equal((entries['executable.sh'].externalFileAttributes >>> 16) & 0xFFF, 511);
 
+      assert.property(entries, 'directory/subdir/');
       assert.propertyVal(entries['directory/subdir/'], 'externalFileAttributes', 1106051088);
       assert.equal((entries['directory/subdir/'].externalFileAttributes >>> 16) & 0xFFF, 493);
     });
 
     it('should allow for entry comments', function() {
+      assert.property(entries, 'buffer.txt');
       assert.propertyVal(entries['buffer.txt'], 'fileComment', 'entry comment');
     });
 

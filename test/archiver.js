@@ -171,6 +171,7 @@ describe('archiver', function() {
       });
 
       it('should support setting data properties via function', function() {
+        assert.property(entries, 'directory/level0.txt');
         assert.propertyVal(entries['directory/level0.txt'], 'funcProp', true);
       });
     });
@@ -288,6 +289,7 @@ describe('archiver', function() {
       });
 
       it('should retain directory permissions', function() {
+        assert.property(entries, 'subdir/');
         assert.propertyVal(entries['subdir/'], 'mode', 493);
       });
     });
