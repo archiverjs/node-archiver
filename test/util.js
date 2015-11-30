@@ -95,9 +95,11 @@ describe('utils', function() {
       it('should sanitize filepath', function() {
         assert.equal(utils.sanitizePath('\\this/path//file.txt'), 'this/path/file.txt');
         assert.equal(utils.sanitizePath('/this/path/file.txt'), 'this/path/file.txt');
-        assert.equal(utils.sanitizePath('c:\\this\\path\\file.txt'), 'c/this/path/file.txt');
         assert.equal(utils.sanitizePath('./this\\path\\file.txt'), 'this/path/file.txt');
         assert.equal(utils.sanitizePath('../this\\path\\file.txt'), 'this/path/file.txt');
+
+        assert.equal(utils.sanitizePath('c:\\this\\path\\file.txt'), 'this/path/file.txt');
+        assert.equal(utils.sanitizePath('\\\\server\\share\\'), 'server/share/');
       });
     });
 
