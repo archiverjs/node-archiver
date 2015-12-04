@@ -12,9 +12,8 @@ app.get('/', function(req, res) {
   });
 
   //on stream closed we can end the request
-  res.on('close', function() {
+  archive.on('end', function() {
     console.log('Archive wrote %d bytes', archive.pointer());
-    return res.status(200).send('OK').end();
   });
 
   //set the archive name
@@ -26,7 +25,13 @@ app.get('/', function(req, res) {
   var files = [__dirname + '/fixtures/file1.txt', __dirname + '/fixtures/file2.txt'];
 
   for(var i in files) {
-    archive.append(fs.createReadStream(files[i]), { name: p.basename(files[i]) });
+    archive.file(files[i], { name: p.basename(files[i]) });
+  }
+
+  var directories = [__dirname + '/fixtures/somedir']
+
+  for(var i in directories) {
+    archive.directory(directories[i], directories[i].replace(__dirname + '/fixtures', ''));
   }
 
   archive.finalize();
