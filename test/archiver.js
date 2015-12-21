@@ -319,7 +319,7 @@ describe('archiver', function() {
           .glob('test/fixtures/test.txt', null, { stats: null })
           .glob('test/fixtures/empty.txt', null, { stats: null })
           .glob('test/fixtures/executable.sh', null, { stats: null })
-          .glob('test/fixtures/directory/**/*', { ignore: 'test/fixtures/directory/subdir/**/*', nodir: true, stat: false }, { stats: null })
+          .glob('**/*', { cwd: 'test/fixtures/directory/',ignore: 'subdir/**/*', nodir: true, stat: false }, { stats: null })
           .finalize();
       });
 
