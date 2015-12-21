@@ -326,7 +326,6 @@ describe('archiver', function() {
 
       it('should append multiple entries', function() {
         assert.isArray(actual);
-        console.log(entries);
 
         assert.property(entries, 'test/fixtures/test.txt');
         assert.property(entries, 'test/fixtures/executable.sh');
