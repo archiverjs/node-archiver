@@ -32,6 +32,17 @@ describe('archiver', function() {
   });
 
   describe('core', function() {
+    var archive = archiver('json');
+
+    describe('#_normalizeEntryData', function() {
+      it('should support prefix of the entry name', function() {
+        var prefix1 = archive._normalizeEntryData({ name: 'entry.txt', prefix: 'prefix/' });
+        assert.propertyVal(prefix1, 'name', 'prefix/entry.txt');
+
+        var prefix2 = archive._normalizeEntryData({ name: 'entry.txt', prefix: '' });
+        assert.propertyVal(prefix2, 'name', 'entry.txt');
+      });
+    });
   });
 
   describe('api', function() {
