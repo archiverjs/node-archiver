@@ -319,17 +319,23 @@ describe('archiver', function() {
           .glob('test/fixtures/test.txt', null, { stats: null })
           .glob('test/fixtures/empty.txt', null, { stats: null })
           .glob('test/fixtures/executable.sh', null, { stats: null })
-          .glob('**/*', { cwd: 'test/fixtures/directory/',ignore: 'subdir/**/*', nodir: true, stat: false }, { stats: null })
+          .glob('test/fixtures/directory/**/*', { ignore: 'test/fixtures/directory/subdir/**/*', nodir: true }, { stats: null })
+          .glob('**/*', { cwd: 'test/fixtures/directory/subdir/' }, { stats: null })
           .finalize();
       });
 
       it('should append multiple entries', function() {
         assert.isArray(actual);
-        assert.lengthOf(actual, 4);
-      });
+        console.log(entries);
 
-      it('should not append "subdir"', function() {
-        assert.equal(JSON.stringify(entries).indexOf('subdir'), -1);
+        assert.property(entries, 'test/fixtures/test.txt');
+        assert.property(entries, 'test/fixtures/executable.sh');
+        assert.property(entries, 'test/fixtures/empty.txt');
+
+        assert.property(entries, 'test/fixtures/directory/level0.txt');
+
+        assert.property(entries, 'level1.txt');
+        assert.property(entries, 'subsub/level2.txt');
       });
     });
 
