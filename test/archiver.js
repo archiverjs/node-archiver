@@ -13,6 +13,7 @@ var WriteHashStream = helpers.WriteHashStream;
 var binaryBuffer = helpers.binaryBuffer;
 
 var archiver = require('../');
+var ArchiverCore = require('./lib/core');
 
 var testBuffer = binaryBuffer(1024 * 16);
 
@@ -32,6 +33,9 @@ describe('archiver', function() {
   });
 
   describe('core', function() {
+  });
+
+  describe('api', function() {
     describe('#abort', function() {
       var archive;
 
