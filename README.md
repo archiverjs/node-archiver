@@ -2,8 +2,6 @@
 
 a streaming interface for archive generation
 
-[![NPM](https://nodei.co/npm/archiver.png)](https://nodei.co/npm/archiver/)
-
 ## Install
 
 ```bash
