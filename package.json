@@ -25,6 +25,7 @@
   },
   "scripts": {
     "test": "mocha --reporter dot",
+    "gendocs": "jsdoc -c jsdoc.json",
     "bench": "node benchmark/simple/pack-zip.js"
   },
   "dependencies": {
@@ -38,6 +39,7 @@
     "zip-stream": "~0.8.0"
   },
   "devDependencies": {
+    "jsdoc": "~3.4.0",
     "chai": "~3.4.0",
     "mocha": "~2.3.3",
     "rimraf": "~2.4.2",
