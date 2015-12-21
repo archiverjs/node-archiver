@@ -316,11 +316,11 @@ describe('archiver', function() {
         archive.pipe(testStream);
 
         archive
-          .glob('test/fixtures/test.txt', null, { stats: null })
-          .glob('test/fixtures/empty.txt', null, { stats: null })
-          .glob('test/fixtures/executable.sh', null, { stats: null })
-          .glob('test/fixtures/directory/**/*', { ignore: 'test/fixtures/directory/subdir/**/*', nodir: true }, { stats: null })
-          .glob('**/*', { cwd: 'test/fixtures/directory/subdir/' }, { stats: null })
+          .glob('test/fixtures/test.txt', null )
+          .glob('test/fixtures/empty.txt', null )
+          .glob('test/fixtures/executable.sh', null )
+          .glob('test/fixtures/directory/**/*', { ignore: 'test/fixtures/directory/subdir/**/*', nodir: true })
+          .glob('**/*', { cwd: 'test/fixtures/directory/subdir/' })
           .finalize();
       });
 
