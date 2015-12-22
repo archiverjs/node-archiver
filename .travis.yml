@@ -1,8 +1,16 @@
 sudo: false
 language: node_js
 node_js:
-  - "4.0"
-  - "0.12"
-  - "0.10"
+- '4.0'
+- '0.12'
+- '0.10'
 matrix:
   fast_finish: true
+env:
+  global:
+    GH_REPO: github.com/archiverjs/website.git
+    GH_REPO_BRANCH: master
+    GH_REPO_DOCSDIR: docs
+    secure: EKToLBZ66qitO7xrRmytgO0Rm53AVw3IevMtmRVvZ+8tCrwXUmkmGgY5E1aPa3fvtaZPZjtSQGOzSuJ0CR01Ktr70UzkC6YLhbw6IAEwU/AaHmQiHVBoJQTTxgZEk1Mku94M3m8IoZSVky98ShzfLU/cBJfmb3Lb7v4RgJGvTB0=
+after_success:
+- bash ./deploy.sh

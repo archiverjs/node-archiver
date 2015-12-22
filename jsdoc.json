@@ -6,7 +6,7 @@
   },
   "opts": {
     "recurse": true,
-    "destination": "../archiver-website/docs/",
+    "destination": "tmp/jsdoc/",
     "template": "node_modules/minami"
   },
   "plugins": [
