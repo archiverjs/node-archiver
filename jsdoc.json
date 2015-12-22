@@ -1,12 +1,13 @@
 {
   "source": {
-    "include": ["lib", "package.json", "README.md"],
+    "include": ["readme.md", "index.js", "lib"],
     "includePattern": ".js$",
-    "excludePattern": "(node_modules/|docs)"
+    "excludePattern": "(node_modules/)"
   },
   "opts": {
     "recurse": true,
-    "destination": "docs/"
+    "destination": "../archiver-website/docs/",
+    "template": "node_modules/minami"
   },
   "plugins": [
     "plugins/markdown"

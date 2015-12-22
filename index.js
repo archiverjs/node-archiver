@@ -1,16 +1,16 @@
 /**
- * node-archiver
+ * Archiver Vending
  *
- * Copyright (c) 2015 Chris Talkington.
- * Licensed under the MIT license.
- * https://github.com/archiverjs/node-archiver/blob/master/LICENSE
+ * @module archiver/vending
+ * @license [MIT]{@link https://github.com/archiverjs/node-archiver/blob/master/LICENSE}
+ * @copyright (c) 2012-2014 Chris Talkington, contributors.
  */
 
 var Archiver = require('./lib/core');
 
 var formats = {};
 
-var vending = module.exports = function(format, options) {
+var vending = function(format, options) {
   return vending.create(format, options);
 };
 
@@ -45,3 +45,5 @@ vending.registerFormat = function(format, module) {
 vending.registerFormat('zip', require('./lib/plugins/zip'));
 vending.registerFormat('tar', require('./lib/plugins/tar'));
 vending.registerFormat('json', require('./lib/plugins/json'));
+
+module.exports = vending;
