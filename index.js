@@ -1,19 +1,33 @@
 /**
  * Archiver Vending
  *
- * @module archiver/vending
+ * @ignore
  * @license [MIT]{@link https://github.com/archiverjs/node-archiver/blob/master/LICENSE}
  * @copyright (c) 2012-2014 Chris Talkington, contributors.
  */
-
 var Archiver = require('./lib/core');
 
 var formats = {};
 
+/**
+ * Dispenses a new Archiver instance.
+ *
+ * @constructor
+ * @param  {String} format The archive format to use.
+ * @param  {Object} options See [Archiver]{@link Archiver}
+ * @return {Archiver}
+ */
 var vending = function(format, options) {
   return vending.create(format, options);
 };
 
+/**
+ * Creates a new Archiver instance.
+ *
+ * @param  {String} format The archive format to use.
+ * @param  {Object} options See [Archiver]{@link Archiver}
+ * @return {Archiver}
+ */
 vending.create = function(format, options) {
   if (formats[format]) {
     var instance = new Archiver(format, options);
@@ -26,6 +40,13 @@ vending.create = function(format, options) {
   }
 };
 
+/**
+ * Registers a format for use with archiver.
+ *
+ * @param  {String} format The name of the format.
+ * @param  {Function} module The function for archiver to interact with.
+ * @return void
+ */
 vending.registerFormat = function(format, module) {
   if (formats[format]) {
     throw new Error('register(' + format + '): format already registered');
