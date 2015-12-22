@@ -25,7 +25,7 @@
   },
   "scripts": {
     "test": "mocha --reporter dot",
-    "jsdoc": "jsdoc -c jsdoc.json readme.md",
+    "jsdoc": "jsdoc -c jsdoc.json README.md",
     "bench": "node benchmark/simple/pack-zip.js"
   },
   "dependencies": {
