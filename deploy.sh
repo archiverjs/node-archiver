@@ -1,9 +1,6 @@
 #!/bin/bash
 set -e
 
-echo -n $TRAVIS_REPO_SLUG
-echo -n $TRAVIS_NODE_VERSION
-
 if [ "$TRAVIS_REPO_SLUG" != "archiverjs/node-archiver" ] || [ "$TRAVIS_PULL_REQUEST" == "true" ]; then
   exit 0
 fi
