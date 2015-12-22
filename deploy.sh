@@ -1,5 +1,4 @@
 #!/bin/bash
-set -e
 
 if [ "$TRAVIS_REPO_SLUG" != "archiverjs/node-archiver" ] || [ "$TRAVIS_PULL_REQUEST" == "true" ]; then
   exit 0
@@ -9,8 +8,13 @@ if [ "$TRAVIS_BRANCH" != "master" ] || [ "$TRAVIS_NODE_VERSION" != "4.0" ]; then
   exit 0
 fi
 
-if [ -z "$GH_REPO" ] || [ -z "$GH_SECRET_TOKEN" ]; then
-  echo "Missing required environment variables to run deploy."
+if [ -z "$GH_REPO" ]; then
+  echo "ENV:GH_REPO:MISSING"
+  exit 1
+fi
+
+if [ -z "$GH_SECRET_TOKEN" ]; then
+  echo "ENV:GH_SECRET_TOKEN:MISSING"
   exit 1
 fi
 
@@ -38,7 +42,7 @@ GH_REPO_TMPNAME_STAGED = "${GH_REPO_TMPNAME}-staging"
 
 echo -e "Running jsdoc...\n"
 npm run-script jsdoc
-cp -R tmp/jsdoc $HOME/${GH_REPO_TMPNAME_STAGED}
+cp -R tmp/jsdoc $HOME/$GH_REPO_TMPNAME_STAGED
 
 echo -e "Publishing jsdoc...\n"
 
