@@ -19,26 +19,26 @@ if [ -z "$GH_SECRET_TOKEN" ]; then
 fi
 
 if [ -z "$GH_USER_EMAIL" ]; then
-  GH_USER_EMAIL = "travis@travis-ci.org"
+  GH_USER_EMAIL="travis@travis-ci.org"
 fi
 
 if [ -z "$GH_USER_NAME" ]; then
-  GH_USER_NAME = "travis-ci"
+  GH_USER_NAME="travis-ci"
 fi
 
 if [ -z "$GH_REPO_BRANCH" ]; then
-  GH_REPO_BRANCH = "master"
+  GH_REPO_BRANCH="master"
 fi
 
 if [ -z "$GH_REPO_DOCSDIR" ]; then
-  GH_REPO_BRANCH = "docs"
+  GH_REPO_BRANCH="docs"
 fi
 
 if [ -z "$GH_REPO_TMPNAME" ]; then
-  GH_REPO_TMPNAME = "jsdoc-deploy"
+  GH_REPO_TMPNAME="jsdoc-deploy"
 fi
 
-GH_REPO_TMPNAME_STAGED = "${GH_REPO_TMPNAME}-staging"
+GH_REPO_TMPNAME_STAGED="${GH_REPO_TMPNAME}-staging"
 
 echo -e "Running jsdoc...\n"
 npm run-script jsdoc
