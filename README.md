@@ -39,4 +39,4 @@ Archiver makes use of several libraries/modules to avoid duplication of efforts.
 - [Examples](https://github.com/archiverjs/node-archiver/blob/master/examples)
 - [Changelog](https://github.com/archiverjs/node-archiver/releases)
 - [Contributing](https://github.com/archiverjs/node-archiver/blob/master/CONTRIBUTING.md)
-- [MIT License](https://github.com/archiverjs/node-archiver/blob/master/LICENSE-MIT)
+- [MIT License](https://github.com/archiverjs/node-archiver/blob/master/LICENSE)
