@@ -7,7 +7,7 @@
   "opts": {
     "recurse": true,
     "destination": "tmp/jsdoc/",
-    "template": "node_modules/minami"
+    "template": "node_modules/archiver-jsdoc-theme"
   },
   "plugins": [
     "plugins/markdown"
