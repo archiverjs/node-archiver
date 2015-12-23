@@ -15,6 +15,9 @@
   "templates": {
     "default": {
       "includeDate": false
+    },
+    "archiver": {
+      "projectName": "Archiver"
     }
   }
 }
