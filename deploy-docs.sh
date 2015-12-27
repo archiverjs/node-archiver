@@ -57,8 +57,8 @@ cd $GH_REPO_TMPNAME
 git rm -rf ./$GH_REPO_DOCSDIR
 cp -Rf $HOME/$GH_REPO_TMPNAME_STAGED ./$GH_REPO_DOCSDIR
 git add -f .
-git commit -m "deploy($TRAVIS_REPO_SLUG): latest jsdoc on successful travis build $TRAVIS_BUILD_NUMBER."
+git commit -m "deploy(jsdocs): $TRAVIS_REPO_SLUG travis build $TRAVIS_BUILD_NUMBER."
 git push -fq origin $GH_REPO_BRANCH > /dev/null
 
-echo -e "Published jsdoc.\n"
+echo -e "Published jsdocs.\n"
 
