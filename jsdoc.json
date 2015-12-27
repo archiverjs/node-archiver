@@ -1,13 +1,14 @@
 {
   "source": {
-    "include": ["README.md", "CHANGELOG.md", "index.js", "lib"],
+    "include": ["README.md", "index.js", "lib"],
     "includePattern": ".js$",
     "excludePattern": "(node_modules/)"
   },
   "opts": {
     "recurse": true,
     "destination": "tmp/jsdoc/",
-    "template": "node_modules/archiver-jsdoc-theme"
+    "template": "node_modules/archiver-jsdoc-theme",
+    "changelog": "CHANGELOG.md"
   },
   "plugins": [
     "plugins/markdown"
@@ -17,7 +18,8 @@
       "includeDate": false
     },
     "archiver": {
-      "projectName": "Archiver"
+      "projectName": "Archiver",
+      "htmlTitleSuffix": "Archiver Documentation"
     }
   }
 }
