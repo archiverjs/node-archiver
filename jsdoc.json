@@ -19,7 +19,8 @@
     },
     "archiver": {
       "projectName": "Archiver",
-      "htmlTitleSuffix": "Archiver Documentation"
+      "htmlTitleSuffix": "Archiver Documentation",
+      "googleTagManager": "GTM-M6N9BH"
     }
   }
 }
