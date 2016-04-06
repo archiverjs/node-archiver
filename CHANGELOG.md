@@ -1,5 +1,10 @@
 ## Changelog
 
+**1.0.0** — <small>_April 5, 2016_</small> — [Diff](https://github.com/archiverjs/node-archiver/compare/0.21.0...1.0.0)
+
+- version unification across many archiver packages.
+- dependencies upgraded and now using semver caret (^).
+
 **0.21.0** — <small>_December 21, 2015_</small> — [Diff](https://github.com/archiverjs/node-archiver/compare/0.20.0...0.21.0)
 
 - core: add support for `entry.prefix`. update some internals to use it.
