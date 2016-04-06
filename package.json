@@ -1,6 +1,6 @@
 {
   "name": "archiver",
-  "version": "0.21.0",
+  "version": "1.0.0",
   "description": "a streaming interface for archive generation",
   "homepage": "https://github.com/archiverjs/node-archiver",
   "author": {
@@ -29,14 +29,14 @@
     "bench": "node benchmark/simple/pack-zip.js"
   },
   "dependencies": {
-    "archiver-utils": "^0.3.0",
+    "archiver-utils": "^1.0.0",
     "async": "^1.5.0",
     "buffer-crc32": "^0.2.1",
     "glob": "^7.0.0",
     "lodash": "^4.8.0",
     "readable-stream": "^2.0.0",
     "tar-stream": "^1.5.0",
-    "zip-stream": "^0.8.0"
+    "zip-stream": "^1.0.0"
   },
   "devDependencies": {
     "archiver-jsdoc-theme": "^1.0.0",

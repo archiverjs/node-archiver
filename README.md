@@ -1,4 +1,4 @@
-# Archiver v0.21.0
+# Archiver v1.0.0
 
 [![Build Status](https://travis-ci.org/archiverjs/node-archiver.svg?branch=master)](https://travis-ci.org/archiverjs/node-archiver) [![Build status](https://ci.appveyor.com/api/projects/status/38kqu3yp159nodxe/branch/master?svg=true)](https://ci.appveyor.com/project/ctalkington/node-archiver/branch/master)
 
@@ -19,7 +19,7 @@ var archiver = require('archiver');
 var archive = archiver.create('zip', {}); // or archiver('zip', {});
 ```
 
-## Custom Formats
+## Formats
 
 Archiver ships with out of the box support for TAR and ZIP archives.
 
