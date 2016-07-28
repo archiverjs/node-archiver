@@ -1,5 +1,10 @@
 ## Changelog
 
+**1.0.1** — <small>_July 27, 2016_</small> — [Diff](https://github.com/archiverjs/node-archiver/compare/1.0.0...1.0.1)
+
+- minor doc fixes.
+- dependencies upgraded.
+
 **1.0.0** — <small>_April 5, 2016_</small> — [Diff](https://github.com/archiverjs/node-archiver/compare/0.21.0...1.0.0)
 
 - version unification across many archiver packages.
