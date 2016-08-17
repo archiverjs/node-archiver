@@ -29,7 +29,7 @@
     "bench": "node benchmark/simple/pack-zip.js"
   },
   "dependencies": {
-    "archiver-utils": "^1.0.0",
+    "archiver-utils": "git://github.com/gregoryalexander/archiver-utils.git#walkDirFix",
     "async": "^2.0.0",
     "buffer-crc32": "^0.2.1",
     "glob": "^7.0.0",
