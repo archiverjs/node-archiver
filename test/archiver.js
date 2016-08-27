@@ -42,6 +42,13 @@ describe('archiver', function() {
         var prefix2 = archive._normalizeEntryData({ name: 'entry.txt', prefix: '' });
         assert.propertyVal(prefix2, 'name', 'entry.txt');
       });
+
+      it('should support special bits on unix', function () {
+        if (!win32) {
+          var mode = archive._normalizeEntryData({ name: 'executable.sh', mode: fs.statSync('test/fixtures/executable.sh').mode });
+          assert.propertyVal(mode, 'mode', 511);
+        }
+      });
     });
   });
 
