@@ -18,7 +18,9 @@
       "includeDate": false
     },
     "archiver": {
+      "titleAltText": "Archiver",
       "projectName": "Archiver",
+      "htmlTitleHome": "Archiver Documentation",
       "htmlTitleSuffix": "Archiver Documentation",
       "googleTagManager": "GTM-M6N9BH"
     }
