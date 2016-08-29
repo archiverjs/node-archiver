@@ -1,5 +1,10 @@
 ## Changelog
 
+**1.1.0** — <small> August 29, 2016_</small> — [Diff](https://github.com/archiverjs/node-archiver/compare/1.0.1...1.1.0)
+
+- minor doc fixes.
+- bump deps to ensure latest versions are used.
+
 **1.0.1** — <small>_July 27, 2016_</small> — [Diff](https://github.com/archiverjs/node-archiver/compare/1.0.0...1.0.1)
 
 - minor doc fixes.
