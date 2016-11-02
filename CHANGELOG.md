@@ -1,5 +1,9 @@
 ## Changelog
 
+**1.2.0** — <small> November 2, 2016_</small> — [Diff](https://github.com/archiverjs/node-archiver/compare/1.1.0...1.2.0)
+
+- Add a `process.emitWarning` for `deprecated` (#202)
+
 **1.1.0** — <small> August 29, 2016_</small> — [Diff](https://github.com/archiverjs/node-archiver/compare/1.0.1...1.1.0)
 
 - minor doc fixes.
