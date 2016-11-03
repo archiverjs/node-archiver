@@ -50,6 +50,9 @@ archive.append('string cheese!', { name: 'file2.txt' });
 var buffer3 = new Buffer('buff it!');
 archive.append(buffer3, { name: 'file3.txt' });
 
+// append files from a file
+archive.file('file1.txt', { name: 'file4.txt' });
+
 // append files from a directory
 archive.directory('subdir/');
 
