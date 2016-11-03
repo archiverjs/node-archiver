@@ -50,7 +50,13 @@ archive.append('string cheese!', { name: 'file2.txt' });
 var buffer3 = new Buffer('buff it!');
 archive.append(buffer3, { name: 'file3.txt' });
 
-// finalize the archive (ie we done appending files but streams have to finish yet)
+// append files from a directory
+archive.directory('subdir/');
+
+// append files from a glob pattern
+archive.glob('subdir/*.txt');
+
+// finalize the archive (ie we are done appending files but streams have to finish yet)
 archive.finalize();
 ```
 
