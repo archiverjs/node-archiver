@@ -1,5 +1,10 @@
 ## Changelog
 
+**1.2.1** — <small> December 13, 2016_</small> — [Diff](https://github.com/archiverjs/node-archiver/compare/1.2.0...1.2.1)
+
+- fix bulk warning spam (#208)
+- updated mocha (#205)
+
 **1.2.0** — <small> November 2, 2016_</small> — [Diff](https://github.com/archiverjs/node-archiver/compare/1.1.0...1.2.0)
 
 - Add a `process.emitWarning` for `deprecated` (#202)
