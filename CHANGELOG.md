@@ -1,7 +1,8 @@
 ## Changelog
 
-**1.2.1** — <small> December 13, 2016_</small> — [Diff](https://github.com/archiverjs/node-archiver/compare/1.2.0...1.2.1)
+**1.3.0** — <small> December 13, 2016_</small> — [Diff](https://github.com/archiverjs/node-archiver/compare/1.2.0...1.3.0)
 
+- improve `directory` and `glob` methods to use events rather than callbacks. (#203)
 - fix bulk warning spam (#208)
 - updated mocha (#205)
 
