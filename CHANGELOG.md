@@ -1,16 +1,16 @@
 ## Changelog
 
-**1.3.0** — <small> December 13, 2016_</small> — [Diff](https://github.com/archiverjs/node-archiver/compare/1.2.0...1.3.0)
+**1.3.0** — <small> December 13, 2016 </small> — [Diff](https://github.com/archiverjs/node-archiver/compare/1.2.0...1.3.0)
 
 - improve `directory` and `glob` methods to use events rather than callbacks. (#203)
 - fix bulk warning spam (#208)
 - updated mocha (#205)
 
-**1.2.0** — <small> November 2, 2016_</small> — [Diff](https://github.com/archiverjs/node-archiver/compare/1.1.0...1.2.0)
+**1.2.0** — <small> November 2, 2016 </small> — [Diff](https://github.com/archiverjs/node-archiver/compare/1.1.0...1.2.0)
 
 - Add a `process.emitWarning` for `deprecated` (#202)
 
-**1.1.0** — <small> August 29, 2016_</small> — [Diff](https://github.com/archiverjs/node-archiver/compare/1.0.1...1.1.0)
+**1.1.0** — <small> August 29, 2016 </small> — [Diff](https://github.com/archiverjs/node-archiver/compare/1.0.1...1.1.0)
 
 - minor doc fixes.
 - bump deps to ensure latest versions are used.
