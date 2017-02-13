@@ -22,7 +22,7 @@ var archiver = require('archiver');
 // create a file to stream archive data to.
 var output = fs.createWriteStream(__dirname + '/example.zip');
 var archive = archiver('zip', {
-    store: true // Sets the compression method to STORE.
+    zlib: { level: 9 } // Sets the compression level.
 });
 
 // listen for all archive data to be written
