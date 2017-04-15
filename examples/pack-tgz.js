@@ -10,7 +10,7 @@ var archive = archiver('tar', {
 });
 
 output.on('close', function() {
-  console.log(archive.pointer() + ' total bytes');
+  console.log(archive.archiver.pointer + ' total bytes');
   console.log('archiver has been finalized and the output file descriptor has closed.');
 });
 
