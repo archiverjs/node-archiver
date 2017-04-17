@@ -49,13 +49,14 @@ describe('plugins', function() {
       archive
         .append(testBuffer, { name: 'buffer.txt', date: testDate })
         .append(fs.createReadStream('test/fixtures/test.txt'), { name: 'stream.txt', date: testDate })
-        .append(null, { name: 'directory/', date: testDate })
+        .append(null, { name: 'folder/', date: testDate })
+        .directory('test/fixtures/directory', 'directory')
         .finalize();
     });
 
     it('should append multiple entries', function() {
       assert.isArray(actual);
-      assert.lengthOf(actual, 3);
+      assert.lengthOf(actual, 9);
     });
 
     it('should append buffer', function() {
@@ -74,12 +75,18 @@ describe('plugins', function() {
       assert.propertyVal(entries['stream.txt'].props, 'size', 19);
     });
 
-    it('should append directory', function() {
-      assert.property(entries, 'directory/');
-      assert.propertyVal(entries['directory/'].props, 'path', 'directory/');
-      assert.propertyVal(entries['directory/'].props, 'type', '5');
-      assert.propertyVal(entries['directory/'].props, 'mode', 493);
-      assert.propertyVal(entries['directory/'].props, 'size', 0);
+    it('should append folder', function() {
+      assert.property(entries, 'folder/');
+      assert.propertyVal(entries['folder/'].props, 'path', 'folder/');
+      assert.propertyVal(entries['folder/'].props, 'type', '5');
+      assert.propertyVal(entries['folder/'].props, 'mode', 493);
+      assert.propertyVal(entries['folder/'].props, 'size', 0);
+    });
+
+    it('should append via directory', function() {
+      assert.property(entries, 'directory/subdir/level1.txt');
+      assert.property(entries, 'directory/subdir/level0link.txt');
+      assert.propertyVal(entries['directory/subdir/level0link.txt'].props, 'linkpath', '../level0.txt');
     });
   });
 

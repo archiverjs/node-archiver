@@ -179,6 +179,7 @@ describe('archiver', function() {
         assert.property(entries, 'test/fixtures/directory/level0.txt');
         assert.property(entries, 'test/fixtures/directory/subdir/');
         assert.property(entries, 'test/fixtures/directory/subdir/level1.txt');
+        assert.property(entries, 'test/fixtures/directory/subdir/level0link.txt');
         assert.property(entries, 'test/fixtures/directory/subdir/subsub/');
         assert.property(entries, 'test/fixtures/directory/subdir/subsub/level2.txt');
         assert.propertyVal(entries['test/fixtures/directory/level0.txt'], 'date', '2013-01-03T14:26:38.000Z');
@@ -187,6 +188,7 @@ describe('archiver', function() {
         assert.property(entries, 'directory/level0.txt');
         assert.property(entries, 'directory/subdir/');
         assert.property(entries, 'directory/subdir/level1.txt');
+        assert.property(entries, 'directory/subdir/level0link.txt');
         assert.property(entries, 'directory/subdir/subsub/');
         assert.property(entries, 'directory/subdir/subsub/level2.txt');
       });
