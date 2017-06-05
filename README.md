@@ -63,6 +63,19 @@ archive.glob('subdir/*.txt');
 archive.finalize();
 ```
 
+### Creating a simple archive 
+
+```js
+var fs = require('fs')
+var toDisk = fs.createWriteStream('myarchive.tar')
+
+archiver
+  .directory('some/dir/on/disk', '/')
+  .file('dontforgetme.txt', '/iwont')
+  .finalize()
+  .pipe(toDisk)
+```
+
 ## Formats
 
 Archiver ships with out of the box support for TAR and ZIP archives.
