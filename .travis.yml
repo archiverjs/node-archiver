@@ -4,8 +4,6 @@ node_js:
   - 8
   - 6
   - 4
-  - '0.12'
-  - '0.10'
 matrix:
   fast_finish: true
 env:
