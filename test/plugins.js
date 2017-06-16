@@ -33,11 +33,25 @@ describe('plugins', function() {
 
     before(function(done) {
       archive = archiver('tar');
-      var testStream = tar.Parse();
+      var testStream = new tar.Parse();
 
       testStream.on('entry', function(entry) {
         actual.push(entry.path);
-        entries[entry.path] = entry;
+        entries[entry.path] = {
+          type: entry.type,
+          path: entry.path,
+          mode: entry.mode,
+          uid: entry.uid,
+          gid: entry.gid,
+          uname: entry.uname,
+          gname: entry.gname,
+          size: entry.size,
+          mtime: entry.mtime,
+          atime: entry.atime,
+          ctime: entry.ctime,
+          linkpath: entry.linkpath
+        };
+        entry.resume();
       });
 
       testStream.on('end', function() {
@@ -62,31 +76,32 @@ describe('plugins', function() {
 
     it('should append buffer', function() {
       assert.property(entries, 'buffer.txt');
-      assert.propertyVal(entries['buffer.txt'].props, 'path', 'buffer.txt');
-      assert.propertyVal(entries['buffer.txt'].props, 'type', '0');
-      assert.propertyVal(entries['buffer.txt'].props, 'mode', 420);
-      assert.propertyVal(entries['buffer.txt'].props, 'size', 16384);
+      assert.propertyVal(entries['buffer.txt'], 'path', 'buffer.txt');
+      assert.propertyVal(entries['buffer.txt'], 'type', 'File');
+      assert.propertyVal(entries['buffer.txt'], 'mode', 420);
+      assert.propertyVal(entries['buffer.txt'], 'size', 16384);
     });
 
     it('should append stream', function() {
       assert.property(entries, 'stream.txt');
-      assert.propertyVal(entries['stream.txt'].props, 'path', 'stream.txt');
-      assert.propertyVal(entries['stream.txt'].props, 'type', '0');
-      assert.propertyVal(entries['stream.txt'].props, 'mode', 420);
-      assert.propertyVal(entries['stream.txt'].props, 'size', 19);
+      assert.propertyVal(entries['stream.txt'], 'path', 'stream.txt');
+      assert.propertyVal(entries['stream.txt'], 'type', 'File');
+      assert.propertyVal(entries['stream.txt'], 'mode', 420);
+      assert.propertyVal(entries['stream.txt'], 'size', 19);
     });
 
     it('should append folder', function() {
       assert.property(entries, 'folder/');
-      assert.propertyVal(entries['folder/'].props, 'path', 'folder/');
-      assert.propertyVal(entries['folder/'].props, 'type', '5');
-      assert.propertyVal(entries['folder/'].props, 'mode', 493);
-      assert.propertyVal(entries['folder/'].props, 'size', 0);
+      assert.propertyVal(entries['folder/'], 'path', 'folder/');
+      assert.propertyVal(entries['folder/'], 'type', 'Directory');
+      assert.propertyVal(entries['folder/'], 'mode', 493);
+      assert.propertyVal(entries['folder/'], 'size', 0);
     });
 
     it('should append manual symlink', function() {
         assert.property(entries, 'manual-link.txt');
-        assert.propertyVal(entries['manual-link.txt'].props, 'linkpath', 'manual-link-target.txt');
+        assert.propertyVal(entries['manual-link.txt'], 'type', 'SymbolicLink');
+        assert.propertyVal(entries['manual-link.txt'], 'linkpath', 'manual-link-target.txt');
     });
 
     it('should append via directory', function() {
@@ -94,7 +109,7 @@ describe('plugins', function() {
       assert.property(entries, 'directory/subdir/level0link.txt');
 
       if (!win32) {
-          assert.propertyVal(entries['directory/subdir/level0link.txt'].props, 'linkpath', '../level0.txt');
+          assert.propertyVal(entries['directory/subdir/level0link.txt'], 'linkpath', '../level0.txt');
       }
     });
   });
@@ -136,7 +151,7 @@ describe('plugins', function() {
 
     it('should append multiple entries', function() {
       assert.isArray(actual);
-      assert.lengthOf(actual, win32 ? 9 : 8);
+      assert.lengthOf(actual, 9);
     });
 
     it('should append buffer', function() {
@@ -165,7 +180,7 @@ describe('plugins', function() {
 
     it.skip('should append manual symlink', function() {
         assert.property(entries, 'manual-link.txt');
-        assert.propertyVal(entries['manual-link.txt'].props, 'linkpath', 'manual-link-target.txt');
+        assert.propertyVal(entries['manual-link.txt'], 'linkpath', 'manual-link-target.txt');
     });
 
     it('should allow for custom unix mode', function() {
