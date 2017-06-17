@@ -53,8 +53,11 @@ archive.append(buffer3, { name: 'file3.txt' });
 // append a file
 archive.file('file1.txt', { name: 'file4.txt' });
 
-// append files from a directory
-archive.directory('subdir/');
+// append files from a sub-directory and naming it `new-subdir` within the archive
+archive.directory('subdir/', 'new-subdir');
+
+// append files from a sub-directory, putting its contents at the root of archive
+archive.directory('subdir/', false);
 
 // append files from a glob pattern
 archive.glob('subdir/*.txt');
