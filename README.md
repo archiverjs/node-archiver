@@ -47,7 +47,7 @@ archive.append(fs.createReadStream(file1), { name: 'file1.txt' });
 archive.append('string cheese!', { name: 'file2.txt' });
 
 // append a file from buffer
-var buffer3 = new Buffer('buff it!');
+var buffer3 = new Buffer.from('buff it!');
 archive.append(buffer3, { name: 'file3.txt' });
 
 // append a file
