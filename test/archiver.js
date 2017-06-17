@@ -66,6 +66,11 @@ describe('archiver', function() {
 
         archive.pipe(testStream);
 
+        archive.on('progress', function(progress) {
+          assert.property(progress, 'total')
+          assert.property(progress, 'size')
+        })
+
         archive
           .append(testBuffer, { name: 'buffer.txt', date: testDate })
           .append(fs.createReadStream('test/fixtures/test.txt'), { name: 'stream.txt', date: testDate })
