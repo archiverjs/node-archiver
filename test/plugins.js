@@ -146,12 +146,13 @@ describe('plugins', function() {
         .append(fs.createReadStream('test/fixtures/test.txt'), { name: 'stream.txt', date: testDate })
         .file('test/fixtures/executable.sh', { name: 'executable.sh', mode: win32 ? 0777 : null })
         .directory('test/fixtures/directory', 'directory')
+        .symlink('manual-link.txt', 'manual-link-target.txt')
         .finalize();
     });
 
     it('should append multiple entries', function() {
       assert.isArray(actual);
-      assert.lengthOf(actual, 9);
+      assert.lengthOf(actual, 10);
     });
 
     it('should append buffer', function() {
@@ -178,9 +179,11 @@ describe('plugins', function() {
       assert.propertyVal(entries['directory/subdir/level1.txt'], 'crc32', 133711013);
     });
 
-    it.skip('should append manual symlink', function() {
+    it('should append manual symlink', function() {
         assert.property(entries, 'manual-link.txt');
-        assert.propertyVal(entries['manual-link.txt'], 'linkpath', 'manual-link-target.txt');
+        console.log(entries['manual-link.txt'])
+        assert.propertyVal(entries['manual-link.txt'], 'crc32', 1121667014);
+        assert.propertyVal(entries['manual-link.txt'], 'externalFileAttributes', 2684354592);
     });
 
     it('should allow for custom unix mode', function() {
