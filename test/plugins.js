@@ -181,7 +181,6 @@ describe('plugins', function() {
 
     it('should append manual symlink', function() {
         assert.property(entries, 'manual-link.txt');
-        console.log(entries['manual-link.txt'])
         assert.propertyVal(entries['manual-link.txt'], 'crc32', 1121667014);
         assert.propertyVal(entries['manual-link.txt'], 'externalFileAttributes', 2684354592);
     });
