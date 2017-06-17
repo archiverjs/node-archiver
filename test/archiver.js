@@ -361,5 +361,24 @@ describe('archiver', function() {
       });
     });
 
+    describe('#promise', function() {
+      var archive;
+
+      it('should use a promise', function(done) {
+        archive = archiver('json');
+        var testStream = new WriteStream('tmp/append.json');
+
+        archive.pipe(testStream);
+
+        archive
+          .append(testBuffer, { name: 'buffer.txt', date: testDate })
+          .append(fs.createReadStream('test/fixtures/test.txt'), { name: 'stream.txt', date: testDate })
+          .append(null, { name: 'directory/', date: testDate })
+          .finalize()
+          .then(function() {
+            done()
+          })
+      });
+    })
   });
 });
