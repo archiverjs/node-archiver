@@ -302,7 +302,7 @@ describe('archiver', function() {
 
       it('should use a promise', function(done) {
         archive = archiver('json');
-        var testStream = new WriteStream('tmp/append.json');
+        var testStream = new WriteStream('tmp/promise.json');
 
         archive.pipe(testStream);
 
@@ -315,6 +315,27 @@ describe('archiver', function() {
             done()
           })
       });
-    })
+    });
+
+    describe('#errors', function() {
+        var archive;
+
+        it('should allow continue on stat failing', function(done) {
+            archive = archiver('json');
+            var testStream = new WriteStream('tmp/errors-stat.json');
+
+            testStream.on('close', function() {
+                done();
+            });
+
+            archive.pipe(testStream);
+
+            archive
+              .file('test/fixtures/test.txt')
+              .file('test/fixtures/test-missing.txt')
+              .file('test/fixtures/empty.txt')
+              .finalize()
+        });
+    });
   });
 });
