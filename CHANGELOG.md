@@ -1,16 +1,27 @@
 ## Changelog
 
-**1.3.0** — <small> December 13, 2016 </small> — [Diff](https://github.com/archiverjs/node-archiver/compare/1.2.0...1.3.0)
+**2.0.0** — <small>_July 5th, 2017_</small> — [Diff](https://github.com/archiverjs/node-archiver/compare/1.3.0...2.0.0)
+
+- feature: support for symlinks. (#228)
+- feature: support for promises on `finalize`. (#248)
+- feature: addition of `symlink` method for programmatically creating symlinks within an archive.
+- change: emit `warning` instead of `error` when stat fails and the process can still continue.
+- change: errors and warnings now contain extended data (where available) and have standardized error codes (#256)
+- change: removal of deprecated `bulk` functionality. (#249)
+- change: removal of internal  `_entries` property in favor of `progress` event. (#247)
+- change: support for node v0.4+ only. node v0.10 and v0.12 support has been dropped. (#241)
+
+**1.3.0** — <small>_December 13, 2016_</small> — [Diff](https://github.com/archiverjs/node-archiver/compare/1.2.0...1.3.0)
 
 - improve `directory` and `glob` methods to use events rather than callbacks. (#203)
 - fix bulk warning spam (#208)
 - updated mocha (#205)
 
-**1.2.0** — <small> November 2, 2016 </small> — [Diff](https://github.com/archiverjs/node-archiver/compare/1.1.0...1.2.0)
+**1.2.0** — <small>_November 2, 2016_</small> — [Diff](https://github.com/archiverjs/node-archiver/compare/1.1.0...1.2.0)
 
 - Add a `process.emitWarning` for `deprecated` (#202)
 
-**1.1.0** — <small> August 29, 2016 </small> — [Diff](https://github.com/archiverjs/node-archiver/compare/1.0.1...1.1.0)
+**1.1.0** — <small>_August 29, 2016_</small> — [Diff](https://github.com/archiverjs/node-archiver/compare/1.0.1...1.1.0)
 
 - minor doc fixes.
 - bump deps to ensure latest versions are used.
