@@ -166,6 +166,7 @@ describe('archiver', function() {
 
         archive
           .directory('test/fixtures/directory', null, { date: testDate })
+          .directory('test/fixtures/directory', 'Win\\DS\\', { date: testDate })
           .directory('test/fixtures/directory', 'directory', function(data) {
             data.funcProp = true;
             return data;
@@ -196,6 +197,10 @@ describe('archiver', function() {
       it('should support setting data properties via function', function() {
         assert.property(entries, 'directory/level0.txt');
         assert.propertyVal(entries['directory/level0.txt'], 'funcProp', true);
+      });
+
+      it('should handle windows path separators in prefix', function() {
+        assert.property(entries, 'Win/DS/level0.txt');
       });
     });
 
