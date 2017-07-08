@@ -9,7 +9,7 @@
 - change: errors and warnings now contain extended data (where available) and have standardized error codes (#256)
 - change: removal of deprecated `bulk` functionality. (#249)
 - change: removal of internal  `_entries` property in favor of `progress` event. (#247)
-- change: support for node v0.4+ only. node v0.10 and v0.12 support has been dropped. (#241)
+- change: support for node v4.0+ only. node v0.10 and v0.12 support has been dropped. (#241)
 
 **1.3.0** — <small>_December 13, 2016_</small> — [Diff](https://github.com/archiverjs/node-archiver/compare/1.2.0...1.3.0)
 
