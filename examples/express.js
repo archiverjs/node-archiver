@@ -1,7 +1,6 @@
 var app = require('express')();
 var archiver = require('archiver');
 var p = require('path');
-var fs = require('fs');
 
 app.get('/', function(req, res) {
 
