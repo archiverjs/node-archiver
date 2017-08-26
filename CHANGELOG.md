@@ -1,5 +1,9 @@
 ## Changelog
 
+**2.0.2** — <small>_August 25th, 2017_</small> — [Diff](https://github.com/archiverjs/node-archiver/compare/2.0.1...2.0.2)
+
+- docs: fix changelog date.
+
 **2.0.1** — <small>_August 25th, 2017_</small> — [Diff](https://github.com/archiverjs/node-archiver/compare/2.0.0...2.0.1)
 
 - bugfix: add const to entryData in glob callback (#261)
