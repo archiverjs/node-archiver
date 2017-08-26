@@ -1,5 +1,10 @@
 ## Changelog
 
+**2.0.1** — <small>_July 5th, 2017_</small> — [Diff](https://github.com/archiverjs/node-archiver/compare/2.0.0...2.0.1)
+
+- bugfix: add const to entryData in glob callback (#261)
+- other: coding style fixes (#263)
+
 **2.0.0** — <small>_July 5th, 2017_</small> — [Diff](https://github.com/archiverjs/node-archiver/compare/1.3.0...2.0.0)
 
 - feature: support for symlinks. (#228)
