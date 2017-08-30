@@ -168,6 +168,10 @@ describe('archiver', function() {
           .directory('test/fixtures/directory', null, { date: testDate })
           .directory('test/fixtures/directory', 'Win\\DS\\', { date: testDate })
           .directory('test/fixtures/directory', 'directory', function(data) {
+            if (data.name === 'ignore.txt') {
+              return false;
+            }
+
             data.funcProp = true;
             return data;
           })
@@ -198,7 +202,11 @@ describe('archiver', function() {
         assert.property(entries, 'directory/level0.txt');
         assert.propertyVal(entries['directory/level0.txt'], 'funcProp', true);
       });
-      
+
+      it('should support ignoring matches via function', function() {
+        assert.notProperty(entries, 'directory/ignore.txt');
+      });
+
       it('should find dot files', function() {
         assert.property(entries, 'directory/.dotfile');
       });
