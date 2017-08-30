@@ -198,6 +198,10 @@ describe('archiver', function() {
         assert.property(entries, 'directory/level0.txt');
         assert.propertyVal(entries['directory/level0.txt'], 'funcProp', true);
       });
+      
+      it('should find dot files', function() {
+        assert.property(entries, 'directory/.dotfile');
+      });
 
       it('should handle windows path separators in prefix', function() {
         assert.property(entries, 'Win/DS/level0.txt');
