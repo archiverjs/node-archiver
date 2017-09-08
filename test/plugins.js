@@ -29,7 +29,7 @@ describe('plugins', function() {
     }
 
     var stat = fs.lstatSync('test/fixtures/directory/subdir/level0link.txt');
-    console.log([stat.isSymlink(), stat])
+    console.log([stat.isSymbolicLink(), stat])
   });
 
   after(function() {
