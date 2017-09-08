@@ -124,9 +124,11 @@ describe('plugins', function() {
         this.skip();
       }
 
+      assert.property(entries, 'directory/subdir/level0link.txt');
       assert.propertyVal(entries['directory/subdir/level0link.txt'], 'type', 'SymbolicLink');
       assert.propertyVal(entries['directory/subdir/level0link.txt'], 'linkpath', '../level0.txt');
 
+      assert.property(entries, 'directory/subdir/subsublink');
       assert.propertyVal(entries['directory/subdir/subsublink'], 'type', 'SymbolicLink');
       assert.propertyVal(entries['directory/subdir/subsublink'], 'linkpath', 'subsub');
     });
