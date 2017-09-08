@@ -23,7 +23,7 @@ describe('plugins', function() {
     if (!win32) {
       fs.chmodSync('test/fixtures/executable.sh', 0777);
       fs.chmodSync('test/fixtures/directory/subdir/', 0755);
-      fs.symlinkSync('test/fixtures/directory/subdir/level0link.txt', 'test/fixtures/directory/level0.txt');
+      fs.symlinkSync('test/fixtures/directory/level0.txt', 'test/fixtures/directory/subdir/level0link.txt');
     } else {
       fs.writeFileSync('test/fixtures/directory/subdir/level0link.txt', '../level0.txt');
     }
