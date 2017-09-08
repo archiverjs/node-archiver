@@ -109,6 +109,7 @@ describe('plugins', function() {
       assert.property(entries, 'directory/subdir/level0link.txt');
 
       if (!win32) {
+          assert.propertyVal(entries['directory/subdir/level0link.txt'], 'type', 'SymbolicLink');
           assert.propertyVal(entries['directory/subdir/level0link.txt'], 'linkpath', '../level0.txt');
       }
     });
