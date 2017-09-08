@@ -32,6 +32,8 @@ describe('archiver', function() {
     } else {
       fs.writeFileSync('test/fixtures/directory/subdir/level0link.txt', '../level0.txt');
     }
+
+    console.log(fs.lstatSync('test/fixtures/directory/subdir/level0link.txt'))
   });
 
   after(function() {
