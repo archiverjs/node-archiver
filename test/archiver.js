@@ -29,7 +29,7 @@ describe('archiver', function() {
       fs.chmodSync('test/fixtures/executable.sh', 0777);
       fs.chmodSync('test/fixtures/directory/subdir/', 0755);
       fs.symlinkSync('test/fixtures/directory/level0.txt', 'test/fixtures/directory/subdir/level0link.txt');
-      fs.symlinkSync('test/fixtures/directory/subdir/subsub', 'test/fixtures/directory/subdir/subsublink');
+      fs.symlinkSync('test/fixtures/directory/subdir/subsub/', 'test/fixtures/directory/subdir/subsublink');
     } else {
       fs.writeFileSync('test/fixtures/directory/subdir/level0link.txt', '../level0.txt');
       fs.writeFileSync('test/fixtures/directory/subdir/subsublink', 'subsub');

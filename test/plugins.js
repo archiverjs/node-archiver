@@ -24,7 +24,7 @@ describe('plugins', function() {
       fs.chmodSync('test/fixtures/executable.sh', 0777);
       fs.chmodSync('test/fixtures/directory/subdir/', 0755);
       fs.symlinkSync('test/fixtures/directory/level0.txt', 'test/fixtures/directory/subdir/level0link.txt');
-      fs.symlinkSync('test/fixtures/directory/subdir/subsub', 'test/fixtures/directory/subdir/directorylink');
+      fs.symlinkSync('test/fixtures/directory/subdir/subsub/', 'test/fixtures/directory/subdir/directorylink');
     } else {
       fs.writeFileSync('test/fixtures/directory/subdir/level0link.txt', '../level0.txt');
       fs.writeFileSync('test/fixtures/directory/subdir/subsublink', 'subsub');
@@ -109,9 +109,9 @@ describe('plugins', function() {
     });
 
     it('should append manual symlink', function() {
-        assert.property(entries, 'manual-link.txt');
-        assert.propertyVal(entries['manual-link.txt'], 'type', 'SymbolicLink');
-        assert.propertyVal(entries['manual-link.txt'], 'linkpath', 'manual-link-target.txt');
+      assert.property(entries, 'manual-link.txt');
+      assert.propertyVal(entries['manual-link.txt'], 'type', 'SymbolicLink');
+      assert.propertyVal(entries['manual-link.txt'], 'linkpath', 'manual-link-target.txt');
     });
 
     it('should append via directory', function() {
@@ -120,15 +120,15 @@ describe('plugins', function() {
     });
 
     it('should retain symlinks via directory', function() {
-        if (!win32) {
-            assert.propertyVal(entries['directory/subdir/level0link.txt'], 'type', 'SymbolicLink');
-            assert.propertyVal(entries['directory/subdir/level0link.txt'], 'linkpath', '../level0.txt');
+      if (win32) {
+        this.skip();
+      }
 
-            assert.propertyVal(entries['directory/subdir/subsublink'], 'type', 'SymbolicLink');
-            assert.propertyVal(entries['directory/subdir/subsublink'], 'linkpath', 'subsub');
-        } else {
-            this.skip();
-        }
+      assert.propertyVal(entries['directory/subdir/level0link.txt'], 'type', 'SymbolicLink');
+      assert.propertyVal(entries['directory/subdir/level0link.txt'], 'linkpath', '../level0.txt');
+
+      assert.propertyVal(entries['directory/subdir/subsublink'], 'type', 'SymbolicLink');
+      assert.propertyVal(entries['directory/subdir/subsublink'], 'linkpath', 'subsub');
     });
   });
 
