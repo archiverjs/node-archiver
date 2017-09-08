@@ -32,9 +32,6 @@ describe('archiver', function() {
     } else {
       fs.writeFileSync('test/fixtures/directory/subdir/level0link.txt', '../level0.txt');
     }
-
-    var stat = fs.lstatSync('test/fixtures/directory/subdir/level0link.txt');
-    console.log([stat.isSymbolicLink(), stat])
   });
 
   after(function() {
