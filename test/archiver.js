@@ -187,6 +187,7 @@ describe('archiver', function() {
 
       it('should append multiple entries', function() {
         assert.isArray(actual);
+        console.log(actual);
 
         assert.property(entries, 'test/fixtures/directory/level0.txt');
         assert.property(entries, 'test/fixtures/directory/subdir/');
