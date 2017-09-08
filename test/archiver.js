@@ -32,7 +32,7 @@ describe('archiver', function() {
       fs.symlinkSync('test/fixtures/directory/subdir/subsub', 'test/fixtures/directory/subdir/subsublink');
     } else {
       fs.writeFileSync('test/fixtures/directory/subdir/level0link.txt', '../level0.txt');
-      fs.writeFileSync('test/fixtures/directory/subdir/directorylink', 'subsub');
+      fs.writeFileSync('test/fixtures/directory/subdir/subsublink', 'subsub');
     }
   });
 
