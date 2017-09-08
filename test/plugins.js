@@ -28,7 +28,8 @@ describe('plugins', function() {
       fs.writeFileSync('test/fixtures/directory/subdir/level0link.txt', '../level0.txt');
     }
 
-    console.log(fs.lstatSync('test/fixtures/directory/subdir/level0link.txt'))
+    var stat = fs.lstatSync('test/fixtures/directory/subdir/level0link.txt');
+    console.log([stat.isSymlink(), stat])
   });
 
   after(function() {
