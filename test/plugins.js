@@ -27,13 +27,13 @@ describe('plugins', function() {
       fs.symlinkSync('test/fixtures/directory/subdir/subsub', 'test/fixtures/directory/subdir/directorylink');
     } else {
       fs.writeFileSync('test/fixtures/directory/subdir/level0link.txt', '../level0.txt');
-      fs.writeFileSync('test/fixtures/directory/subdir/directorylink', 'subsub');
+      fs.writeFileSync('test/fixtures/directory/subdir/subsublink', 'subsub');
     }
   });
 
   after(function() {
     fs.unlinkSync('test/fixtures/directory/subdir/level0link.txt');
-    fs.unlinkSync('test/fixtures/directory/subdir/directorylink');
+    fs.unlinkSync('test/fixtures/directory/subdir/subsublink');
   });
 
   describe('tar', function() {
@@ -117,11 +117,18 @@ describe('plugins', function() {
     it('should append via directory', function() {
       assert.property(entries, 'directory/subdir/level1.txt');
       assert.property(entries, 'directory/subdir/level0link.txt');
+    });
 
-      if (!win32) {
-          assert.propertyVal(entries['directory/subdir/level0link.txt'], 'type', 'SymbolicLink');
-          assert.propertyVal(entries['directory/subdir/level0link.txt'], 'linkpath', '../level0.txt');
-      }
+    it('should retain symlinks via directory', function() {
+        if (!win32) {
+            assert.propertyVal(entries['directory/subdir/level0link.txt'], 'type', 'SymbolicLink');
+            assert.propertyVal(entries['directory/subdir/level0link.txt'], 'linkpath', '../level0.txt');
+
+            assert.propertyVal(entries['directory/subdir/subsublink'], 'type', 'SymbolicLink');
+            assert.propertyVal(entries['directory/subdir/subsublink'], 'linkpath', 'subsub');
+        } else {
+            this.skip();
+        }
     });
   });
 

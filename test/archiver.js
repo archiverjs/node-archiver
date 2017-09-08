@@ -29,7 +29,7 @@ describe('archiver', function() {
       fs.chmodSync('test/fixtures/executable.sh', 0777);
       fs.chmodSync('test/fixtures/directory/subdir/', 0755);
       fs.symlinkSync('test/fixtures/directory/level0.txt', 'test/fixtures/directory/subdir/level0link.txt');
-      fs.symlinkSync('test/fixtures/directory/subdir/subsub', 'test/fixtures/directory/subdir/directorylink');
+      fs.symlinkSync('test/fixtures/directory/subdir/subsub', 'test/fixtures/directory/subdir/subsublink');
     } else {
       fs.writeFileSync('test/fixtures/directory/subdir/level0link.txt', '../level0.txt');
       fs.writeFileSync('test/fixtures/directory/subdir/directorylink', 'subsub');
@@ -38,7 +38,7 @@ describe('archiver', function() {
 
   after(function() {
     fs.unlinkSync('test/fixtures/directory/subdir/level0link.txt');
-    fs.unlinkSync('test/fixtures/directory/subdir/directorylink');
+    fs.unlinkSync('test/fixtures/directory/subdir/subsublink');
   });
 
   describe('core', function() {
@@ -225,8 +225,8 @@ describe('archiver', function() {
       });
 
       it('should retain directory symlink', function() {
-        assert.property(entries, 'test/fixtures/directory/subdir/directorylink');
-        assert.property(entries, 'directory/subdir/directorylink');
+        assert.property(entries, 'test/fixtures/directory/subdir/subsublink');
+        assert.property(entries, 'directory/subdir/subsublink');
       });
 
       it('should handle windows path separators in prefix', function() {
