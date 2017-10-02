@@ -341,6 +341,23 @@ describe('archiver', function() {
               .file('test/fixtures/empty.txt')
               .finalize()
         });
+
+        it('should emit errors on missing directories', function(done) {
+            archive = archiver('json');
+            var testStream = new WriteStream('tmp/errors-stat.json');
+
+            archive.on('error', function (err) {
+                assert.typeOf(err, 'error')
+                assert.equal(err.code, 'ENOENT')
+                done();
+            })
+
+            archive.pipe(testStream);
+
+            archive
+                .directory('test/fixtures/missing-directory', false)
+                .finalize()
+        });
     });
   });
 });
