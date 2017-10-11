@@ -28,7 +28,17 @@ describe('archiver', function() {
     if (!win32) {
       fs.chmodSync('test/fixtures/executable.sh', 0777);
       fs.chmodSync('test/fixtures/directory/subdir/', 0755);
+      fs.symlinkSync('test/fixtures/directory/level0.txt', 'test/fixtures/directory/subdir/level0link.txt');
+      fs.symlinkSync('test/fixtures/directory/subdir/subsub/', 'test/fixtures/directory/subdir/subsublink');
+    } else {
+      fs.writeFileSync('test/fixtures/directory/subdir/level0link.txt', '../level0.txt');
+      fs.writeFileSync('test/fixtures/directory/subdir/subsublink', 'subsub');
     }
+  });
+
+  after(function() {
+    fs.unlinkSync('test/fixtures/directory/subdir/level0link.txt');
+    fs.unlinkSync('test/fixtures/directory/subdir/subsublink');
   });
 
   describe('core', function() {
@@ -168,6 +178,10 @@ describe('archiver', function() {
           .directory('test/fixtures/directory', null, { date: testDate })
           .directory('test/fixtures/directory', 'Win\\DS\\', { date: testDate })
           .directory('test/fixtures/directory', 'directory', function(data) {
+            if (data.name === 'ignore.txt') {
+              return false;
+            }
+
             data.funcProp = true;
             return data;
           })
@@ -180,7 +194,6 @@ describe('archiver', function() {
         assert.property(entries, 'test/fixtures/directory/level0.txt');
         assert.property(entries, 'test/fixtures/directory/subdir/');
         assert.property(entries, 'test/fixtures/directory/subdir/level1.txt');
-        assert.property(entries, 'test/fixtures/directory/subdir/level0link.txt');
         assert.property(entries, 'test/fixtures/directory/subdir/subsub/');
         assert.property(entries, 'test/fixtures/directory/subdir/subsub/level2.txt');
         assert.propertyVal(entries['test/fixtures/directory/level0.txt'], 'date', '2013-01-03T14:26:38.000Z');
@@ -189,7 +202,6 @@ describe('archiver', function() {
         assert.property(entries, 'directory/level0.txt');
         assert.property(entries, 'directory/subdir/');
         assert.property(entries, 'directory/subdir/level1.txt');
-        assert.property(entries, 'directory/subdir/level0link.txt');
         assert.property(entries, 'directory/subdir/subsub/');
         assert.property(entries, 'directory/subdir/subsub/level2.txt');
       });
@@ -197,6 +209,24 @@ describe('archiver', function() {
       it('should support setting data properties via function', function() {
         assert.property(entries, 'directory/level0.txt');
         assert.propertyVal(entries['directory/level0.txt'], 'funcProp', true);
+      });
+
+      it('should support ignoring matches via function', function() {
+        assert.notProperty(entries, 'directory/ignore.txt');
+      });
+
+      it('should find dot files', function() {
+        assert.property(entries, 'directory/.dotfile');
+      });
+
+      it('should retain symlinks', function() {
+        assert.property(entries, 'test/fixtures/directory/subdir/level0link.txt');
+        assert.property(entries, 'directory/subdir/level0link.txt');
+      });
+
+      it('should retain directory symlink', function() {
+        assert.property(entries, 'test/fixtures/directory/subdir/subsublink');
+        assert.property(entries, 'directory/subdir/subsublink');
       });
 
       it('should handle windows path separators in prefix', function() {
