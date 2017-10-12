@@ -1,9 +1,14 @@
 ## Changelog
 
+**2.1.0** — <small>_October 12th, 2017_</small> — [Diff](https://github.com/archiverjs/node-archiver/compare/2.0.3...2.1.0)
+
+- refactor: `directory` now uses glob behind the scenes. should fix some directory recursion issues. (#267, #275)
+- docs: more info in quick start. (#284)
+
 **2.0.3** — <small>_August 25th, 2017_</small> — [Diff](https://github.com/archiverjs/node-archiver/compare/2.0.2...2.0.3)
 
 - bugfix: revert #261 due to potential issues with editing entryData in special cases.
-- bugfix: add var to entryData in glob callback (GH#273)
+- bugfix: add var to entryData in glob callback (#273)
 
 **2.0.2** — <small>_August 25th, 2017_</small> — [Diff](https://github.com/archiverjs/node-archiver/compare/2.0.1...2.0.2)
 
