@@ -22,7 +22,7 @@ var archiver = require('archiver');
 // create a file to stream archive data to.
 var output = fs.createWriteStream(__dirname + '/example.zip');
 var archive = archiver('zip', {
-    zlib: { level: 9 } // Sets the compression level.
+  zlib: { level: 9 } // Sets the compression level.
 });
 
 // listen for all archive data to be written
@@ -42,10 +42,10 @@ output.on('end', function() {
 // good practice to catch warnings (ie stat failures and other non-blocking errors)
 archive.on('warning', function(err) {
   if (err.code === 'ENOENT') {
-      // log warning
+    // log warning
   } else {
-      // throw error
-      throw err;
+    // throw error
+    throw err;
   }
 });
 
