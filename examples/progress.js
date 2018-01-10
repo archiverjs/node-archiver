@@ -1,7 +1,6 @@
 var archiver = require('../');
 var tmp = require('os').tmpdir();
 var async = require('async');
-var p = require('path');
 var fs = require('fs');
 
 // You can change this by something bigger!
