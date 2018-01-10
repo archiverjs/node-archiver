@@ -1,5 +1,10 @@
 ## Changelog
 
+**2.1.1** — <small>_January 10th, 2018_</small> — [Diff](https://github.com/archiverjs/node-archiver/compare/2.1.0...2.1.1)
+
+- bugfix: fix relative symlink paths (#293)
+- other: coding style fixes (#294)
+
 **2.1.0** — <small>_October 12th, 2017_</small> — [Diff](https://github.com/archiverjs/node-archiver/compare/2.0.3...2.1.0)
 
 - refactor: `directory` now uses glob behind the scenes. should fix some directory recursion issues. (#267, #275)
