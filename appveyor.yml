@@ -2,11 +2,10 @@ environment:
   matrix:
     - nodejs_version: '8'
     - nodejs_version: '6'
-    - nodejs_version: '4'
 install:
   - ps: Install-Product node $env:nodejs_version
   - set CI=true
-  - [ "$env:nodejs_version" != "4" ] && npm -g install npm@latest
+  - npm -g install npm@latest
   - set PATH=%APPDATA%\npm;%PATH%
   - npm install
 matrix:
