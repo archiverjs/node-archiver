@@ -1,5 +1,13 @@
 ## Changelog
 
+**2.2.0-wip** - <small>_August 10th, 2018_</small> — [Diff](https://github.com/archiverjs/node-archiver/compare/2.1.1...2.2.0)
+
+- bugfix: use stats in tar.js and core.js (#326)
+- other: switch to specialized lodash.assign npm module (#335)
+- other: Avoid using deprecated Buffer constructor (#312)
+- other: Remove unnecessary return and fix indentation (#297)
+- test: now targeting node v10
+
 **2.1.1** — <small>_January 10th, 2018_</small> — [Diff](https://github.com/archiverjs/node-archiver/compare/2.1.0...2.1.1)
 
 - bugfix: fix relative symlink paths (#293)
