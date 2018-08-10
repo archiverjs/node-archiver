@@ -1,6 +1,6 @@
 ## Changelog
 
-**2.2.0-wip** - <small>_August 10th, 2018_</small> — [Diff](https://github.com/archiverjs/node-archiver/compare/2.1.1...2.2.0)
+**2.2.0-wip** - <small>_August 10th, 2018_</small> — [Diff](https://github.com/archiverjs/node-archiver/compare/2.1.1...master)
 
 - bugfix: use stats in tar.js and core.js (#326)
 - other: switch to specialized lodash.assign npm module (#335)
