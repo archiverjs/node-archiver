@@ -4,6 +4,7 @@
 
 - breaking: follow node LTS, remove support for versions under 6. (#339)
 - bugfix: use stats in tar.js and core.js (#326)
+- other: update to zip-stream@2
 - other: remove lodash npm module usage (#335, #339)
 - other: Avoid using deprecated Buffer constructor (#312)
 - other: Remove unnecessary return and fix indentation (#297)
