@@ -1,38 +1,39 @@
 ## Changelog
 
-**2.2.0-wip** - <small>_August 10th, 2018_</small> — [Diff](https://github.com/archiverjs/node-archiver/compare/2.1.1...master)
+**3.0.0-wip** - <small>_August 22, 2018_</small> — [Diff](https://github.com/archiverjs/node-archiver/compare/2.1.1...master)
 
+- breaking: follow node LTS, remove support for versions under 6. (#339)
 - bugfix: use stats in tar.js and core.js (#326)
-- other: switch to specialized lodash.assign npm module (#335)
+- other: remove lodash npm module usage (#335, #339)
 - other: Avoid using deprecated Buffer constructor (#312)
 - other: Remove unnecessary return and fix indentation (#297)
 - test: now targeting node v10 (#320)
 
-**2.1.1** — <small>_January 10th, 2018_</small> — [Diff](https://github.com/archiverjs/node-archiver/compare/2.1.0...2.1.1)
+**2.1.1** — <small>_January 10, 2018_</small> — [Diff](https://github.com/archiverjs/node-archiver/compare/2.1.0...2.1.1)
 
 - bugfix: fix relative symlink paths (#293)
 - other: coding style fixes (#294)
 
-**2.1.0** — <small>_October 12th, 2017_</small> — [Diff](https://github.com/archiverjs/node-archiver/compare/2.0.3...2.1.0)
+**2.1.0** — <small>_October 12, 2017_</small> — [Diff](https://github.com/archiverjs/node-archiver/compare/2.0.3...2.1.0)
 
 - refactor: `directory` now uses glob behind the scenes. should fix some directory recursion issues. (#267, #275)
 - docs: more info in quick start. (#284)
 
-**2.0.3** — <small>_August 25th, 2017_</small> — [Diff](https://github.com/archiverjs/node-archiver/compare/2.0.2...2.0.3)
+**2.0.3** — <small>_August 25, 2017_</small> — [Diff](https://github.com/archiverjs/node-archiver/compare/2.0.2...2.0.3)
 
 - bugfix: revert #261 due to potential issues with editing entryData in special cases.
 - bugfix: add var to entryData in glob callback (#273)
 
-**2.0.2** — <small>_August 25th, 2017_</small> — [Diff](https://github.com/archiverjs/node-archiver/compare/2.0.1...2.0.2)
+**2.0.2** — <small>_August 25, 2017_</small> — [Diff](https://github.com/archiverjs/node-archiver/compare/2.0.1...2.0.2)
 
 - docs: fix changelog date.
 
-**2.0.1** — <small>_August 25th, 2017_</small> — [Diff](https://github.com/archiverjs/node-archiver/compare/2.0.0...2.0.1)
+**2.0.1** — <small>_August 25, 2017_</small> — [Diff](https://github.com/archiverjs/node-archiver/compare/2.0.0...2.0.1)
 
 - bugfix: add const to entryData in glob callback (#261)
 - other: coding style fixes (#263)
 
-**2.0.0** — <small>_July 5th, 2017_</small> — [Diff](https://github.com/archiverjs/node-archiver/compare/1.3.0...2.0.0)
+**2.0.0** — <small>_July 5, 2017_</small> — [Diff](https://github.com/archiverjs/node-archiver/compare/1.3.0...2.0.0)
 
 - feature: support for symlinks. (#228)
 - feature: support for promises on `finalize`. (#248)
