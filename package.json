@@ -21,7 +21,7 @@
     "lib"
   ],
   "engines": {
-    "node": ">= 4"
+    "node": ">= 6"
   },
   "scripts": {
     "test": "mocha --reporter dot",
@@ -33,7 +33,6 @@
     "async": "^2.0.0",
     "buffer-crc32": "^0.2.1",
     "glob": "^7.0.0",
-    "lodash.assign": "^4.2.0",
     "readable-stream": "^2.0.0",
     "tar-stream": "^1.5.0",
     "zip-stream": "^1.2.0"
