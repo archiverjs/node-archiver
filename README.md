@@ -4,7 +4,7 @@
 
 a streaming interface for archive generation
 
-Visit the [API documentation](http://archiverjs.com/) for a list of all methods available.
+Visit the [API documentation](https://www.archiverjs.com/) for a list of all methods available.
 
 ## Install
 
