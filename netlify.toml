@@ -2,3 +2,9 @@
 [[redirects]]
   from = "/docs/*"
   to = "/:splat"
+
+[[redirects]]
+  from = "/zip-stream/*"
+  to = "https://zipstreamjs.netlify.com/:splat"
+  status = 200
+  
