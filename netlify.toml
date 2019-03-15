@@ -1,0 +1,4 @@
+[Settings]
+[[redirects]]
+  from = "/docs/*"
+  to = "/:splat"
