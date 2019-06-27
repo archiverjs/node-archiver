@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "archiver-utils": "^2.0.0",
-    "async": "^2.0.0",
+    "async": "^2.6.2",
     "buffer-crc32": "^0.2.1",
     "glob": "^7.0.0",
     "readable-stream": "^3.0.0",
