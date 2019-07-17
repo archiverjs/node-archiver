@@ -22,7 +22,7 @@ directorySize(directory, function(err, totalSize) {
   });
 
   archive.on('progress', function(progress) {
-    var percent = 100 - ((totalSize - progress.fs.processedBytes) / totalSize) * 100;
+    var percent = progress.fs.processedBytes / totalSize * 100;
 
     console.log('%s / %s (%d %)', bytesToSize(progress.fs.processedBytes), prettyTotalSize, percent);
   })
