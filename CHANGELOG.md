@@ -1,10 +1,13 @@
 ## Changelog
 
+**3.0.2** - <small>_July 19, 2019_</small> — [Diff](https://github.com/archiverjs/node-archiver/compare/3.0.1...3.0.2)
+
+- other: update dependencies
+
 **3.0.1** - <small>_July 19, 2019_</small> — [Diff](https://github.com/archiverjs/node-archiver/compare/3.0.0...3.0.1)
 
 - other: update dependencies
 - docs: now deployed using netlify
-
 
 **3.0.0** - <small>_August 22, 2018_</small> — [Diff](https://github.com/archiverjs/node-archiver/compare/2.1.1...3.0.0)
 
