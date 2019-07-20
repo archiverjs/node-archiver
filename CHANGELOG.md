@@ -1,6 +1,6 @@
 ## Changelog
 
-**3.0.2** - <small>_July 19, 2019_</small> — [Diff](https://github.com/archiverjs/node-archiver/compare/3.0.2...3.0.3)
+**3.0.3** - <small>_July 19, 2019_</small> — [Diff](https://github.com/archiverjs/node-archiver/compare/3.0.2...3.0.3)
 
 - test: now targeting node v12
 - other: update zip-stream@2.0.0
