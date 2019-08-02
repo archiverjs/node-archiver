@@ -1,5 +1,9 @@
 ## Changelog
 
+**3.1.1** - <small>_August 2, 2019_</small> — [Diff](https://github.com/archiverjs/node-archiver/compare/3.1.0...3.1.1)
+
+- update zip-stream to v2.1.2
+
 **3.1.0** - <small>_August 2, 2019_</small> — [Diff](https://github.com/archiverjs/node-archiver/compare/3.0.3...3.1.0)
 
 - update zip-stream to v2.1.0
