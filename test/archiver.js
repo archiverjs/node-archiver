@@ -371,6 +371,23 @@ describe('archiver', function() {
               .file('test/fixtures/empty.txt')
               .finalize()
         });
+
+        it('should allow continue on with several stat failings', function(done) {
+          archive = archiver('json');
+          var testStream = new WriteStream('tmp/errors-stat.json');
+
+          testStream.on('close', function() {
+              done();
+          });
+
+          archive.pipe(testStream);
+
+          archive.file('test/fixtures/test.txt');
+          for (var i = 1; i <= 20; i++)
+            archive.file('test/fixtures/test-missing.txt');
+
+          archive.finalize()
+      });        
     });
   });
 });
