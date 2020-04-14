@@ -1,7 +1,5 @@
 # Archiver
 
-[![Build Status](https://travis-ci.org/archiverjs/node-archiver.svg?branch=master)](https://travis-ci.org/archiverjs/node-archiver) [![Build status](https://ci.appveyor.com/api/projects/status/38kqu3yp159nodxe/branch/master?svg=true)](https://ci.appveyor.com/project/ctalkington/node-archiver/branch/master)
-
 a streaming interface for archive generation
 
 Visit the [API documentation](https://www.archiverjs.com/) for a list of all methods available.
@@ -91,4 +89,4 @@ Archiver ships with out of the box support for TAR and ZIP archives.
 
 You can register additional formats with `registerFormat`.
 
-_Formats will be changing in the next few releases to implement a middleware approach._
+_Formats will be changing in the future to implement a middleware approach._

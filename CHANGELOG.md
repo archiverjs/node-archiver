@@ -1,6 +1,6 @@
 ## Changelog
 
-**3.1.1** - <small>_April 14, 2020_</small> — [Diff](https://github.com/archiverjs/node-archiver/compare/3.1.1...4.0.0)
+**4.0.0** - <small>_April 14, 2020_</small> — [Diff](https://github.com/archiverjs/node-archiver/compare/3.1.1...4.0.0)
 
 - breaking: slowly catch up with node LTS, remove support for versions under 8.
 - update multiple deps.
