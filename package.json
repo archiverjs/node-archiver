@@ -41,7 +41,7 @@
     "archiver-jsdoc-theme": "^1.1.1",
     "chai": "^4.2.0",
     "jsdoc": "^3.6.3",
-    "mkdirp": "^0.5.0",
+    "mkdirp": "^1.0.4",
     "mocha": "^6.2.0",
     "rimraf": "^2.6.3",
     "stream-bench": "^0.1.2",
