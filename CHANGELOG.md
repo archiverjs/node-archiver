@@ -1,5 +1,9 @@
 ## Changelog
 
+**4.0.1** - <small>_April 14, 2020_</small> — [Diff](https://github.com/archiverjs/node-archiver/compare/4.0.0...4.0.1)
+
+- update to zip-stream@^3.0.1
+
 **4.0.0** - <small>_April 14, 2020_</small> — [Diff](https://github.com/archiverjs/node-archiver/compare/3.1.1...4.0.0)
 
 - breaking: slowly catch up with node LTS, remove support for versions under 8.
