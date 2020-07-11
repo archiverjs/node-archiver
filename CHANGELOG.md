@@ -1,5 +1,9 @@
 ## Changelog
 
+**4.0.2** - <small>_July 11, 2020_</small> — [Diff](https://github.com/archiverjs/node-archiver/compare/4.0.1...4.0.2)
+
+- update to async@^3.2.0 (#420)
+
 **4.0.1** - <small>_April 14, 2020_</small> — [Diff](https://github.com/archiverjs/node-archiver/compare/4.0.0...4.0.1)
 
 - update to zip-stream@^3.0.1
