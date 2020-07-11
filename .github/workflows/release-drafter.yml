@@ -1,4 +1,15 @@
-template: |
-  ## What’s Changed
+name: Release Drafter
 
-  $CHANGES
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  update_release_draft:
+    name: Update Release Draft
+    runs-on: ubuntu-latest
+    steps:
+      - uses: release-drafter/release-drafter@v5
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
