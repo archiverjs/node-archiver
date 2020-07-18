@@ -35,7 +35,7 @@
     "glob": "^7.1.6",
     "readable-stream": "^3.6.0",
     "tar-stream": "^2.1.2",
-    "zip-stream": "^3.0.1"
+    "zip-stream": "^4.0.0"
   },
   "devDependencies": {
     "archiver-jsdoc-theme": "^1.1.1",
