@@ -3,7 +3,7 @@ var fs = require('fs');
 var mkdir = require('mkdirp');
 var streamBench = require('stream-bench');
 
-var archiver = require('../../lib/archiver');
+var archiver = require('../../');
 var common = require('../common');
 
 var binaryBuffer = common.binaryBuffer;
