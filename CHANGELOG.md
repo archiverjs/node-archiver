@@ -3,6 +3,16 @@
 **5.0.0** - <small>_July 22, 2020_</small> — [Diff](https://github.com/archiverjs/node-archiver/compare/4.0.2...5.0.0)
 
 * breaking: absolute path glob patterns are no longer supported: use cwd option instead.
+* Replaced glob with readdir-glob to be memory efficient (#433) @Yqnn
+* Bump zip-stream from 4.0.0 to 4.0.2 (#431) @dependabot
+* Bump zip-stream from 3.0.1 to 4.0.0 (#430) @dependabot
+* Bump mocha from 6.2.3 to 8.0.1 (#424) @dependabot
+* Bump tar from 4.4.13 to 6.0.2 (#426) @dependabot
+* Bump tar-stream from 2.1.2 to 2.1.3 (#427) @dependabot
+* Bump rimraf from 2.7.1 to 3.0.2 (#425) @dependabot
+* Bump actions/setup-node from v1 to v2.1.0 (#428) @dependabot
+* Bump actions/checkout from v1 to v2.3.1 (#429) @dependabot
+* Bump lodash from 4.17.15 to 4.17.19 (#423) @dependabot
 
 **4.0.2** - <small>_July 11, 2020_</small> — [Diff](https://github.com/archiverjs/node-archiver/compare/4.0.1...4.0.2)
 
