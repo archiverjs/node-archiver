@@ -1,5 +1,9 @@
 ## Changelog
 
+**5.0.0** - <small>_July 22, 2020_</small> — [Diff](https://github.com/archiverjs/node-archiver/compare/4.0.2...5.0.0)
+
+* breaking: absolute path glob patterns are no longer supported: use cwd option instead.
+
 **4.0.2** - <small>_July 11, 2020_</small> — [Diff](https://github.com/archiverjs/node-archiver/compare/4.0.1...4.0.2)
 
 - update to async@^3.2.0 (#420)
