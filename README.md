@@ -1,6 +1,6 @@
 # Archiver
 
-a streaming interface for archive generation
+A streaming interface for archive generation
 
 Visit the [API documentation](https://www.archiverjs.com/) for a list of all methods available.
 
@@ -14,12 +14,12 @@ npm install archiver --save
 
 ```js
 // require modules
-var fs = require('fs');
-var archiver = require('archiver');
+const fs = require('fs');
+const archiver = require('archiver');
 
 // create a file to stream archive data to.
-var output = fs.createWriteStream(__dirname + '/example.zip');
-var archive = archiver('zip', {
+const output = fs.createWriteStream(__dirname + '/example.zip');
+const archive = archiver('zip', {
   zlib: { level: 9 } // Sets the compression level.
 });
 
@@ -56,14 +56,14 @@ archive.on('error', function(err) {
 archive.pipe(output);
 
 // append a file from stream
-var file1 = __dirname + '/file1.txt';
+const file1 = __dirname + '/file1.txt';
 archive.append(fs.createReadStream(file1), { name: 'file1.txt' });
 
 // append a file from string
 archive.append('string cheese!', { name: 'file2.txt' });
 
 // append a file from buffer
-var buffer3 = Buffer.from('buff it!');
+const buffer3 = Buffer.from('buff it!');
 archive.append(buffer3, { name: 'file3.txt' });
 
 // append a file
