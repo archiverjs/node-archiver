@@ -1,4 +1,21 @@
+categories:
+  - title: "Breaking Changes"
+    labels:
+      - "breaking change"
+  - title: "Features"
+    labels:
+      - "enhancement"
+  - title: "Bug Fixes"
+    labels:
+      - "bug"
+  - title: "Maintenance"
+    labels:
+      - "ci/cd"
+      - "dependencies"
+      - "maintenance"
+      - "tooling"
+change-template: "- $TITLE (#$NUMBER)"
+name-template: "$NEXT_PATCH_VERSION"
+tag-template: "$NEXT_PATCH_VERSION"
 template: |
-  ## What’s Changed
-
   $CHANGES
