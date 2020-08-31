@@ -153,6 +153,44 @@ describe('archiver', function() {
       });
     });
 
+    describe('#options.noTimestamp', function() {
+      var actual;
+      var archive;
+      var entries = {};
+
+      before(function(done) {
+        archive = archiver('json', { noTimestamps: true });
+        var testStream = new WriteStream('tmp/append.json');
+
+        testStream.on('close', function() {
+          actual = helpers.readJSON('tmp/append.json');
+
+          actual.forEach(function(entry) {
+            entries[entry.name] = entry;
+          });
+
+          done();
+        });
+
+        archive.pipe(testStream);
+
+        archive
+          .append(testBuffer, { name: 'buffer.txt', date: testDate })
+          .append(fs.createReadStream('test/fixtures/test.txt'), { name: 'stream.txt', date: testDate })
+          .finalize();
+      });
+
+      it('should reset date to zero for buffer', function() {
+        assert.property(entries, 'buffer.txt');
+        assert.propertyVal(entries['buffer.txt'], 'date', '1970-01-01T00:00:00.000Z');
+      });
+
+      it('should reset date to zero for buffer for stream', function() {
+        assert.property(entries, 'stream.txt');
+        assert.propertyVal(entries['stream.txt'], 'date', '1970-01-01T00:00:00.000Z');
+      });
+    });
+
     describe('#directory', function() {
       var actual;
       var archive;
