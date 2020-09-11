@@ -12,6 +12,7 @@ categories:
     labels:
       - "ci/cd"
       - "dependencies"
+      - "documentation"
       - "maintenance"
       - "tooling"
 change-template: "- $TITLE (#$NUMBER)"
