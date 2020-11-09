@@ -167,6 +167,7 @@ describe('plugins', function() {
         .file('test/fixtures/executable.sh', { name: 'executable.sh', mode: win32 ? 0777 : null })
         .directory('test/fixtures/directory', 'directory')
         .symlink('manual-link.txt', 'manual-link-target.txt')
+        .symlink('dir-symlink-test/nested/symlink-to-subsub/', '../../directory/subdir/subsub/')
         .finalize();
     });
 
@@ -203,6 +204,12 @@ describe('plugins', function() {
         assert.property(entries, 'manual-link.txt');
         assert.propertyVal(entries['manual-link.txt'], 'crc32', 1121667014);
         assert.propertyVal(entries['manual-link.txt'], 'externalFileAttributes', 2684354592);
+    });
+
+    it('should append manual directory symlink', function() {
+      assert.property(entries, 'dir-symlink-test/nested/symlink-to-subsub');
+      assert.propertyVal(entries['dir-symlink-test/nested/symlink-to-subsub'], 'externalFileAttributes', 2733834272);
+      assert.equal((entries['dir-symlink-test/nested/symlink-to-subsub'].externalFileAttributes >>> 16) & 0xFFF, 755);
     });
 
     it('should allow for custom unix mode', function() {
