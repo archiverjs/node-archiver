@@ -390,4 +390,41 @@ describe('archiver', function() {
       });        
     });
   });
+
+  describe('#symlink', function() {
+    var actual;
+    var archive;
+    var entries = {};
+
+    before(function(done) {
+      archive = archiver('json');
+      var testStream = new WriteStream('tmp/symlink.json');
+
+      testStream.on('close', function() {
+        actual = helpers.readJSON('tmp/symlink.json');
+
+        actual.forEach(function(entry) {
+          entries[entry.name] = entry;
+        });
+
+        done();
+      });
+
+      archive.pipe(testStream);
+
+      archive
+        .append("file-a", { name: "file-a" })
+        .symlink("directory-a/symlink-to-file-a", "../file-a")
+        .symlink("directory-b/directory-c/symlink-to-directory-a", "../../directory-a", 493)
+        .finalize();
+    });
+
+    it('should append multiple entries', () => {
+      assert.isArray(actual);
+      assert.property(entries, 'file-a');
+      assert.property(entries, 'directory-a/symlink-to-file-a');
+      assert.property(entries, 'directory-b/directory-c/symlink-to-directory-a');
+      assert.propertyVal(entries['directory-b/directory-c/symlink-to-directory-a'], 'mode', 493);
+    });
+  });
 });
