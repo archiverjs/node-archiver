@@ -63,6 +63,20 @@ vending.registerFormat = function(format, module) {
   formats[format] = module;
 };
 
+/**
+ * Check if the format is already registered.
+ * 
+ * @param {String} format the name of the format.
+ * @return boolean
+ */
+vending.isRegisteredFormat = function (format) {
+  if (formats[format]) {
+    return true;
+  }
+  
+  return false;
+};
+
 vending.registerFormat('zip', require('./lib/plugins/zip'));
 vending.registerFormat('tar', require('./lib/plugins/tar'));
 vending.registerFormat('json', require('./lib/plugins/json'));
