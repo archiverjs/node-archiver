@@ -1,5 +1,46 @@
 ## Changelog
 
+**5.1.0** - <small>_November 19, 2020_</small> — [Diff](https://github.com/archiverjs/node-archiver/compare/5.0.2...5.1.0)
+
+Features
+
+- Add mode parameter to symlink (#469)
+- Add isRegisteredFormat method (#462)
+
+Bug Fixes
+
+- Fix glob() `options` parameter's link (#453)
+
+Maintenance
+
+- Bump archiver-jsdoc-theme from 1.1.1 to 1.1.3 (#472)
+- Bump zip-stream from 4.0.2 to 4.0.4 (#473)
+- Bump jsdoc from 3.6.5 to 3.6.6 (#452)
+- Bump readdir-glob from 1.0.0 to 1.1.1 (#460)
+- Bump mocha from 8.1.3 to 8.2.1 (#465)
+- Bump actions/setup-node from v2.1.1 to v2.1.2 (#459)
+- Bump actions/checkout from v2.3.2 to v2.3.4 (#466)
+
+**5.0.2** - <small>_September 11, 2020_</small> — [Diff](https://github.com/archiverjs/node-archiver/compare/5.0.1...5.0.2)
+
+Maintenance
+
+* Force bump tar-stream from 2.1.2 to 2.1.4 (#450)
+
+**5.0.1** - <small>_September 10, 2020_</small> — [Diff](https://github.com/archiverjs/node-archiver/compare/5.0.0...5.0.1)
+
+Maintenance
+
+- Bump tar-stream from 2.1.3 to 2.1.4 (#448)
+- Update docs (#441)
+- Bump mocha from 8.1.1 to 8.1.3 (#444)
+- Bump tar from 6.0.2 to 6.0.5 (#439)
+- Bump mocha from 8.1.0 to 8.1.1 (#437)
+- Bump actions/checkout from v2.3.1 to v2.3.2 (#438)
+- Bump mocha from 8.0.1 to 8.1.0 (#436)
+- Bump actions/setup-node from v2.1.0 to v2.1.1 (#432)
+- Bump jsdoc from 3.6.4 to 3.6.5 (#434)
+
 **5.0.0** - <small>_July 22, 2020_</small> — [Diff](https://github.com/archiverjs/node-archiver/compare/4.0.2...5.0.0)
 
 * breaking: absolute path glob patterns are no longer supported: use cwd option instead.
