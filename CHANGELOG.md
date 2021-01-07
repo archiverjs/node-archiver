@@ -1,5 +1,17 @@
 ## Changelog
 
+**5.2.0** - <small>_January 6, 2021_</small> — [Diff](https://github.com/archiverjs/node-archiver/compare/5.1.0...5.2.0)
+
+## Features
+
+- Finalize should always return a promise (#480)
+
+## Maintenance
+
+- Fix finalize method jsdoc return type (#482)
+- Bump actions/setup-node from v2.1.2 to v2.1.3 (#479)
+- Update README.md (#478)
+
 **5.1.0** - <small>_November 19, 2020_</small> — [Diff](https://github.com/archiverjs/node-archiver/compare/5.0.2...5.1.0)
 
 Features
