@@ -1,6 +1,6 @@
 ---
 id: "archiver"
-title: ""
+title: "Archiver API"
 ---
 
 ## The `Archiver` class
@@ -17,7 +17,7 @@ new Archiver(format, options)
 ### `Archiver.prototype.abort`
 
 ```js
-abort()
+abort() → {this}
 ```
 
 Aborts the archiving process, taking a best-effort approach, by:
@@ -31,7 +31,17 @@ It will NOT drain any remaining sources.
 
 ### `Archiver.prototype.append`
 
-TBD
+```js
+append(source, data) → {this}
+```
+
+Appends an input source (text string, buffer, or stream) to the instance.
+
+When the instance has received, processed, and emitted the input, the entry event is fired.
+
+##### Parameters
+- `source` - Buffer | Stream | String
+- `data` - EntryData
 
 ### `Archiver.prototype.directory`
 
