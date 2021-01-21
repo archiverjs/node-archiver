@@ -19,7 +19,7 @@ const features = [
   },
   {
     title: 'Focus on What Matters',
-    imageUrl: img/logo.svg',
+    imageUrl: 'img/logo.svg',
     description: (
       <>
         Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
