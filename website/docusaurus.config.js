@@ -18,7 +18,7 @@ module.exports = {
       items: [
         {
           to: 'docs/quickstart',
-          label: 'Quickstart',
+          label: 'Docs',
           position: 'left',
         },
         {
@@ -40,8 +40,12 @@ module.exports = {
           title: 'Docs',
           items: [
             {
-              label: 'Style Guide',
-              to: 'docs/',
+              label: 'Get Started',
+              to: 'docs/quickstart',
+            },
+            {
+              label: 'API Reference',
+              to: 'docs/archiver',
             },
           ],
         },
