@@ -46,32 +46,96 @@ When the instance has received, processed, and emitted the input, the entry even
 
 ### `directory`
 
+```js
+directory(dirpath, destpath, data) → {this}
+```
+
+Appends a directory and its files, recursively, given its dirpath.
+
+##### Parameters
+
 TBD
 
 ### `file`
+
+```js
+file(filepath, data) → {this}
+```
+
+TBD
+
+##### Parameters
 
 TBD
 
 ### `finalize`
 
+```js
+finalize() → {Promise}
+```
+
+TBD
+
+##### Parameters
+
 TBD
 
 ### `glob`
+
+```js
+glob(pattern, options, data) → {this}
+```
+
+TBD
+
+##### Parameters
 
 TBD
 
 ### `pointer`
 
+```js
+pointer() → {Number}
+```
+
+TBD
+
+##### Parameters
+
 TBD
 
 ### `setFormat`
+
+```js
+setFormat(format) → {this}
+```
+
+TBD
+
+##### Parameters
 
 TBD
 
 ### `setModule`
 
+```js
+setModule(module) → {this}
+```
+
+TBD
+
+##### Parameters
+
 TBD
 
 ### `symlink`
+
+```js
+symlink(filepath, target, mode) → {this}
+```
+
+TBD
+
+##### Parameters
 
 TBD
