@@ -1,4 +1,8 @@
 [Settings]
+[context.new-docs]
+  command = "cd website && npm run build"
+  base = "website/build"
+
 [[redirects]]
   from = "/docs/*"
   to = "/:splat"
