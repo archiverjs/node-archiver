@@ -22,6 +22,11 @@ module.exports = {
           position: 'left',
         },
         {
+          to: "docs/archiver",
+          label: "API",
+          position: "left",
+        },
+        {
           href: 'https://github.com/archiverjs/node-archiver/',
           label: 'GitHub',
           position: 'right',
