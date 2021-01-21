@@ -7,7 +7,7 @@ module.exports = {
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
   organizationName: 'archiverjs', // Usually your GitHub org/user name.
-  projectName: 'archiver', // Usually your repo name.
+  projectName: 'node-archiver', // Usually your repo name.
   themeConfig: {
     navbar: {
       title: 'Archiver',
@@ -24,7 +24,7 @@ module.exports = {
         },
         {to: 'blog', label: 'Blog', position: 'left'},
         {
-          href: 'https://github.com/archiverjs/node-archiver',
+          href: 'https://github.com/archiverjs/node-archiver/',
           label: 'GitHub',
           position: 'right',
         },
@@ -55,7 +55,7 @@ module.exports = {
             },
             {
               label: 'GitHub',
-              href: 'https://github.com/archiverjs/node-archiver',
+              href: 'https://github.com/archiverjs/node-archiver/',
             },
           ],
         },
