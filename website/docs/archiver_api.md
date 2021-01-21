@@ -1,7 +1,7 @@
 ---
 id: "archiver"
 title: "Archiver API"
-sidebar_title: "API"
+sidebar_label: "Archiver"
 ---
 
 ## The `Archiver` class
