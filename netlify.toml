@@ -2,7 +2,7 @@
 [context.new-docs]
   command = "npm run build"
   base = "website"
-  publish = "build"
+  publish = "website/build"
 
 [context.new-docs.environment]
   NODE_VERSION = "14"
