@@ -1,6 +1,7 @@
 ---
 id: "archiver"
 title: "Archiver API"
+sidebar_title: "API"
 ---
 
 ## The `Archiver` class
@@ -14,7 +15,7 @@ new Archiver(format, options)
 - `format` - The archive format to use.
 - `options` - CoreOptions | TransformOptions
 
-### `Archiver.prototype.abort`
+### `abort`
 
 ```js
 abort() → {this}
@@ -29,7 +30,7 @@ Aborts the archiving process, taking a best-effort approach, by:
 
 It will NOT drain any remaining sources.
 
-### `Archiver.prototype.append`
+### `append`
 
 ```js
 append(source, data) → {this}
@@ -43,34 +44,34 @@ When the instance has received, processed, and emitted the input, the entry even
 - `source` - Buffer | Stream | String
 - `data` - EntryData
 
-### `Archiver.prototype.directory`
+### `directory`
 
 TBD
 
-### `Archiver.prototype.file`
+### `file`
 
 TBD
 
-### `Archiver.prototype.finalize`
+### `finalize`
 
 TBD
 
-### `Archiver.prototype.glob`
+### `glob`
 
 TBD
 
-### `Archiver.prototype.pointer`
+### `pointer`
 
 TBD
 
-### `Archiver.prototype.setFormat`
+### `setFormat`
 
 TBD
 
-### `Archiver.prototype.setModule`
+### `setModule`
 
 TBD
 
-### `Archiver.prototype.symlink`
+### `symlink`
 
 TBD
