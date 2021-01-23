@@ -11,9 +11,10 @@ new Archiver(format, options)
 ```
 
 ### constructor
+
 ##### Parameters
-- `format` - The archive format to use.
-- `options` - CoreOptions | TransformOptions
+- `format` - `String` -  The archive format to use.
+- `options` - `CoreOptions | TransformOptions`
 
 ### `abort`
 
@@ -41,8 +42,9 @@ Appends an input source (text string, buffer, or stream) to the instance.
 When the instance has received, processed, and emitted the input, the entry event is fired.
 
 ##### Parameters
-- `source` - Buffer | Stream | String
-- `data` - EntryData
+
+- `source` - `Buffer | Stream | String` - The input source.
+- `data` - `EntryData`
 
 ### `directory`
 
@@ -54,7 +56,9 @@ Appends a directory and its files, recursively, given its dirpath.
 
 ##### Parameters
 
-TBD
+- `dirpath` - `String` - The source directory path.
+- `destpath` - `String` - The destination path within the archive.
+- `data` - `EntryData`
 
 ### `file`
 
@@ -62,11 +66,14 @@ TBD
 file(filepath, data) → {this}
 ```
 
-TBD
+Appends a file given its filepath using a [lazystream](https://github.com/jpommerening/node-lazystream) wrapper to prevent issues with open file limits.
+
+When the instance has received, processed, and emitted the file, the entry event is fired.
 
 ##### Parameters
 
-TBD
+- `filepath` - `String` - The source filepath.
+- `data` - `EntryData`
 
 ### `finalize`
 
@@ -74,11 +81,14 @@ TBD
 finalize() → {Promise}
 ```
 
-TBD
+Finalizes the instance and prevents further appending to the archive structure (queue will continue til drained).
+
+The `end`, `close` or `finish` events on the destination stream may fire right after calling this method so you should set listeners beforehand to properly detect stream completion.
+
 
 ##### Parameters
 
-TBD
+None
 
 ### `glob`
 
@@ -86,11 +96,13 @@ TBD
 glob(pattern, options, data) → {this}
 ```
 
-TBD
+Appends multiple files that match a glob pattern.
 
 ##### Parameters
 
-TBD
+- `pattern` - `String` - The [glob pattern](https://github.com/isaacs/minimatch) to match.
+- `options` - `Object` - See [node-readdir-glob](https://github.com/yqnn/node-readdir-glob#options).
+- `data` - `EntryData`
 
 ### `pointer`
 
@@ -98,11 +110,11 @@ TBD
 pointer() → {Number}
 ```
 
-TBD
+Returns the current length (in bytes) that has been emitted.
 
 ##### Parameters
 
-TBD
+None
 
 ### `setFormat`
 
@@ -110,11 +122,11 @@ TBD
 setFormat(format) → {this}
 ```
 
-TBD
+Sets the module format name used for archiving.
 
 ##### Parameters
 
-TBD
+- `format` - `String` - The name of the format.
 
 ### `setModule`
 
@@ -122,11 +134,11 @@ TBD
 setModule(module) → {this}
 ```
 
-TBD
+Sets the module used for archiving.
 
 ##### Parameters
 
-TBD
+- `module` - `Function` - The function for archiver to interact with.
 
 ### `symlink`
 
@@ -134,8 +146,12 @@ TBD
 symlink(filepath, target, mode) → {this}
 ```
 
-TBD
+Appends a symlink to the instance.
+
+This does NOT interact with filesystem and is used for programmatically creating symlinks.
 
 ##### Parameters
 
-TBD
+- `filepath` - `String` - The symlink path (within archive).
+- `target` - `String` - The target path (within archive).
+- `mode` - `Number` - The entry permissions.
