@@ -4,16 +4,20 @@ title: "Archive Formats"
 sidebar_label: "Archive Formats"
 ---
 
-## Archive Formats
+## Built-in Formats
 
 Archiver supports the following formats out of the box.
 
 ### ZIP
 
+TBD
+
 ### TAR
 
-### Custom Formats
+TBD
 
-Archiver also support the registration of custom archive formats.
+## Custom Formats
+
+Archiver also supports the registration of custom archive formats.
 
 The [API] (/docs/archiver#registerFormat) for this is rather simple at this point but may change over time.
