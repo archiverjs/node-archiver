@@ -16,19 +16,19 @@ ZipStream is available on [npm](https://www.npmjs.com/package/zip-stream).
 
 `$ npm install zip-stream`
 
-## `ZipStream` Class
+## ZipStream Class
 
 ```js
 new ZipStream(options)
 ```
 
-### constructor
+### Methods
+
+#### constructor
 
 ##### Parameters
 
 - `options` - `Object`
-
-### Methods
 
 #### `entry`
 
@@ -43,3 +43,25 @@ entry(source, data, callback) → {this}
 - `source` - `Buffer | Stream | String`
 - `data` - `Object`
 - `callback` - `Function`
+
+#### `finalize`
+
+```js
+finalize() → {void}
+```
+
+Finalizes the instance and prevents further appending to the archive structure (queue will continue til drained).
+
+##### Parameters
+
+None
+
+#### `getBytesWritten`
+
+```js
+getBytesWritten() → {Number}
+```
+
+##### Parameters
+
+None
