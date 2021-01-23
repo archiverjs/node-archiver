@@ -1,6 +1,6 @@
 module.exports = {
   docs: {
-    "Getting Started": ["quickstart"],
+    "Getting Started": ["quickstart", "archive-formats"],
     "API Reference": ["archiver"],
   },
 };
