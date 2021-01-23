@@ -176,7 +176,6 @@ This does NOT interact with filesystem and is used for programmatically creating
 - `target` - String - The target path (within archive).
 - `mode` - Number - The entry permissions.
 
-
 ## Format Registration
 
 ### registerFormat
@@ -192,7 +191,7 @@ Registers a format for use with archiver.
 - `format` - String - The name of the format.
 - `module` - Function - The function for archiver to interact with.
 
-###### module
+##### module
 
 ```js
 module(options)
@@ -204,7 +203,7 @@ The `module` function should consist of the following:
 - a `module.prototype.append` function.
 - a `module.prototype.finalize` function.
 
-###### module.append
+###### module.prototype.append
 
 ```js
 module.prototype.append(source, data, callback) {
@@ -215,10 +214,10 @@ module.prototype.append(source, data, callback) {
 }
 ```
 
-###### module.finalize
+###### module.prototype.finalize
 
 ```js
-module.prototype.finalize()
+module.prototype.finalize() {}
 ```
 
 ---
