@@ -51,18 +51,18 @@ module.exports = {
               label: 'API Reference',
               to: 'docs/archiver',
             },
-            {
-              label: 'ZipStream',
-              to: 'zipstream',
-            },
           ],
         },
         {
           title: 'More',
           items: [
             {
+              label: 'ZipStream',
+              to: 'zipstream',
+            },
+            {
               label: 'GitHub',
-              href: 'https://github.com/archiverjs/node-archiver/',
+              href: 'https://github.com/archiverjs/',
             },
           ],
         },
