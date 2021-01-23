@@ -44,12 +44,16 @@ module.exports = {
               to: 'docs/quickstart',
             },
             {
+              label: 'Archive Formats',
+              to: 'docs/archive-formats',
+            },
+            {
               label: 'API Reference',
               to: 'docs/archiver',
             },
             {
-              label: 'Archive Formats',
-              to: 'docs/archive-formats',
+              label: 'ZipStream',
+              to: 'docs/zipstream',
             },
           ],
         },
