@@ -47,6 +47,10 @@ module.exports = {
               label: 'API Reference',
               to: 'docs/archiver',
             },
+            {
+              label: 'Archive Formats',
+              to: 'docs/archive-formats',
+            },
           ],
         },
         {
