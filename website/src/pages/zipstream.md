@@ -28,6 +28,8 @@ new ZipStream(options)
 
 - `options` - `Object`
 
+---
+
 ### entry
 
 Appends an entry given an input source (text string, buffer, or stream).
@@ -42,6 +44,8 @@ entry(source, data, callback) → {this}
 - `data` - `Object`
 - `callback` - `Function`
 
+---
+
 ### finalize
 
 ```js
@@ -53,6 +57,8 @@ Finalizes the instance and prevents further appending to the archive structure (
 ##### Parameters
 
 None
+
+---
 
 ### getBytesWritten
 
