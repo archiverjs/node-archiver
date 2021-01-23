@@ -8,32 +8,30 @@ import styles from './styles.module.css';
 
 const features = [
   {
-    title: 'Easy to Use',
+    title: 'Feature 1',
     imageUrl: 'img/logo.svg',
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        Archiver was designed ...
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
+    title: 'Feature 2',
     imageUrl: 'img/logo.svg',
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        Archiver lets you focus on ...
       </>
     ),
   },
   {
-    title: 'Powered by React',
+    title: 'Extendable',
     imageUrl: 'img/logo.svg',
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        Archiver can be extended to support different archive formats
+        while reusing the same composition API.
       </>
     ),
   },
