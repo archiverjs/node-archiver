@@ -10,11 +10,17 @@ Archiver supports the following formats out of the box.
 
 ### ZIP
 
-TBD
+The [zip-stream](https://www.npmjs.com/package/zip-stream) package is used to produce ZIP archives.
 
 ### TAR
 
-TBD
+The [tar-stream](https://www.npmjs.com/package/tar-stream) package is used to produce TAR archives.
+
+GZIP compression is also suppported.
+
+### JSON
+
+The JSON format is designed primarily for debugging and just collects and stringifys the entry data into JSON.
 
 ## Custom Formats
 
