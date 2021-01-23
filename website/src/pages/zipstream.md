@@ -26,7 +26,7 @@ new ZipStream(options)
 
 ##### Parameters
 
-- `options` - `Object`
+- `options` - Object
 
 ---
 
@@ -40,9 +40,9 @@ entry(source, data, callback) → {this}
 
 ##### Parameters
 
-- `source` - `Buffer | Stream | String`
-- `data` - `Object`
-- `callback` - `Function`
+- `source` - Buffer | Stream | String
+- `data` - Object
+- `callback` - Function
 
 ---
 
