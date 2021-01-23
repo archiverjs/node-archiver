@@ -4,7 +4,7 @@ title: "Archiver API"
 sidebar_label: "Archiver"
 ---
 
-## `Archiver` Class
+## Archiver Class
 
 ```js
 new Archiver(format, options)
