@@ -22,15 +22,13 @@ ZipStream is available on [npm](https://www.npmjs.com/package/zip-stream).
 new ZipStream(options)
 ```
 
-### Methods
-
-#### constructor
+### constructor
 
 ##### Parameters
 
 - `options` - `Object`
 
-#### `entry`
+### entry
 
 Appends an entry given an input source (text string, buffer, or stream).
 
@@ -44,7 +42,7 @@ entry(source, data, callback) → {this}
 - `data` - `Object`
 - `callback` - `Function`
 
-#### `finalize`
+### finalize
 
 ```js
 finalize() → {void}
@@ -56,7 +54,7 @@ Finalizes the instance and prevents further appending to the archive structure (
 
 None
 
-#### `getBytesWritten`
+### getBytesWritten
 
 ```js
 getBytesWritten() → {Number}
