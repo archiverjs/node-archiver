@@ -53,7 +53,7 @@ module.exports = {
             },
             {
               label: 'ZipStream',
-              to: 'docs/zipstream',
+              to: 'zipstream',
             },
           ],
         },
