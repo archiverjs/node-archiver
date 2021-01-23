@@ -155,3 +155,35 @@ This does NOT interact with filesystem and is used for programmatically creating
 - `filepath` - `String` - The symlink path (within archive).
 - `target` - `String` - The target path (within archive).
 - `mode` - `Number` - The entry permissions.
+
+
+## Format Registration
+
+### `registerFormat`
+
+```js
+registerFormat(format, module)
+```
+
+Registers a format for use with archiver.
+
+##### Parameters
+
+- `format` - `String` - The name of the format.
+- `module` - `Function` - The function for archiver to interact with.
+
+#### `module` function
+
+TBD
+
+### `isFormatRegistered`
+
+```js
+isRegisteredFormat(format)
+```
+
+Check if the format is already registered.
+
+##### Parameters
+
+- `format` - `String` - The name of the format.
