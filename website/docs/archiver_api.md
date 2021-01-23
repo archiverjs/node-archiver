@@ -172,9 +172,34 @@ Registers a format for use with archiver.
 - `format` - `String` - The name of the format.
 - `module` - `Function` - The function for archiver to interact with.
 
-#### `module` function
+###### `module`
 
-TBD
+```js
+module(options)
+```
+
+The `module` function should consist of the following:
+
+- a Readable Stream interface that contains the resulting archive data.
+- a `module.prototype.append` function.
+- a `module.prototype.finalize` function.
+
+###### `module.append`
+
+```js
+module.prototype.append(source, data, callback) {
+  // source: Buffer or Stream
+  // data: entry (meta)data
+  // callback: called when entry has been added to archive
+  callback(err, data)
+}
+```
+
+###### `module.finalize`
+
+```js
+module.prototype.finalize()
+```
 
 ### `isFormatRegistered`
 
