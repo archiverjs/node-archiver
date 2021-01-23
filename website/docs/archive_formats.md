@@ -20,4 +20,4 @@ TBD
 
 Archiver also supports the registration of custom archive formats.
 
-The [API](/docs/archiver/#registerformat) for this is rather simple at this point but may change over time.
+The [API](/docs/archiver/#format-registration) for this is rather simple at this point but may change over time.
