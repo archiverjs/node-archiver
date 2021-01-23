@@ -13,10 +13,12 @@ new Archiver(format, options)
 ### constructor
 
 ##### Parameters
-- `format` - `String` -  The archive format to use.
-- `options` - `CoreOptions | TransformOptions`
+- `format` - String -  The archive format to use.
+- `options` - CoreOptions | TransformOptions
 
-### `abort`
+---
+
+### abort
 
 ```js
 abort() → {this}
@@ -31,7 +33,9 @@ Aborts the archiving process, taking a best-effort approach, by:
 
 It will NOT drain any remaining sources.
 
-### `append`
+---
+
+### append
 
 ```js
 append(source, data) → {this}
@@ -43,10 +47,12 @@ When the instance has received, processed, and emitted the input, the entry even
 
 ##### Parameters
 
-- `source` - `Buffer | Stream | String` - The input source.
-- `data` - `EntryData`
+- `source` - Buffer | Stream | String - The input source.
+- `data` - EntryData
 
-### `directory`
+---
+
+### directory
 
 ```js
 directory(dirpath, destpath, data) → {this}
@@ -56,11 +62,13 @@ Appends a directory and its files, recursively, given its dirpath.
 
 ##### Parameters
 
-- `dirpath` - `String` - The source directory path.
-- `destpath` - `String` - The destination path within the archive.
-- `data` - `EntryData`
+- `dirpath` - String - The source directory path.
+- `destpath` - String - The destination path within the archive.
+- `data` - EntryData
 
-### `file`
+---
+
+### file
 
 ```js
 file(filepath, data) → {this}
@@ -72,10 +80,12 @@ When the instance has received, processed, and emitted the file, the entry event
 
 ##### Parameters
 
-- `filepath` - `String` - The source filepath.
-- `data` - `EntryData`
+- `filepath` - String - The source filepath.
+- `data` - EntryData
 
-### `finalize`
+---
+
+### finalize
 
 ```js
 finalize() → {Promise}
@@ -90,7 +100,9 @@ The `end`, `close` or `finish` events on the destination stream may fire right a
 
 None
 
-### `glob`
+---
+
+### glob
 
 ```js
 glob(pattern, options, data) → {this}
@@ -100,11 +112,13 @@ Appends multiple files that match a glob pattern.
 
 ##### Parameters
 
-- `pattern` - `String` - The [glob pattern](https://github.com/isaacs/minimatch) to match.
-- `options` - `Object` - See [node-readdir-glob](https://github.com/yqnn/node-readdir-glob#options).
-- `data` - `EntryData`
+- `pattern` - String - The [glob pattern](https://github.com/isaacs/minimatch) to match.
+- `options` - Object - See [node-readdir-glob](https://github.com/yqnn/node-readdir-glob#options).
+- `data` - EntryData
 
-### `pointer`
+---
+
+### pointer
 
 ```js
 pointer() → {Number}
@@ -116,7 +130,9 @@ Returns the current length (in bytes) that has been emitted.
 
 None
 
-### `setFormat`
+---
+
+### setFormat
 
 ```js
 setFormat(format) → {this}
@@ -126,9 +142,11 @@ Sets the module format name used for archiving.
 
 ##### Parameters
 
-- `format` - `String` - The name of the format.
+- `format` - String - The name of the format.
 
-### `setModule`
+---
+
+### setModule
 
 ```js
 setModule(module) → {this}
@@ -138,9 +156,11 @@ Sets the module used for archiving.
 
 ##### Parameters
 
-- `module` - `Function` - The function for archiver to interact with.
+- `module` - Function - The function for archiver to interact with.
 
-### `symlink`
+---
+
+### symlink
 
 ```js
 symlink(filepath, target, mode) → {this}
@@ -152,14 +172,14 @@ This does NOT interact with filesystem and is used for programmatically creating
 
 ##### Parameters
 
-- `filepath` - `String` - The symlink path (within archive).
-- `target` - `String` - The target path (within archive).
-- `mode` - `Number` - The entry permissions.
+- `filepath` - String - The symlink path (within archive).
+- `target` - String - The target path (within archive).
+- `mode` - Number - The entry permissions.
 
 
 ## Format Registration
 
-### `registerFormat`
+### registerFormat
 
 ```js
 registerFormat(format, module)
@@ -169,10 +189,10 @@ Registers a format for use with archiver.
 
 ##### Parameters
 
-- `format` - `String` - The name of the format.
-- `module` - `Function` - The function for archiver to interact with.
+- `format` - String - The name of the format.
+- `module` - Function - The function for archiver to interact with.
 
-###### `module`
+###### module
 
 ```js
 module(options)
@@ -184,7 +204,7 @@ The `module` function should consist of the following:
 - a `module.prototype.append` function.
 - a `module.prototype.finalize` function.
 
-###### `module.append`
+###### module.append
 
 ```js
 module.prototype.append(source, data, callback) {
@@ -195,13 +215,15 @@ module.prototype.append(source, data, callback) {
 }
 ```
 
-###### `module.finalize`
+###### module.finalize
 
 ```js
 module.prototype.finalize()
 ```
 
-### `isFormatRegistered`
+---
+
+### isFormatRegistered
 
 ```js
 isRegisteredFormat(format)
@@ -211,4 +233,4 @@ Check if the format is already registered.
 
 ##### Parameters
 
-- `format` - `String` - The name of the format.
+- `format` - String - The name of the format.
