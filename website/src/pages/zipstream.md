@@ -1,7 +1,6 @@
 ---
 id: "zipstream"
 title: "ZipStream"
-sidebar_label: "ZipStream"
 ---
 
 ZipStream is a streaming zip archive generator based on the ZipArchiveOutputStream prototype
