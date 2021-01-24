@@ -33,6 +33,10 @@ Aborts the archiving process, taking a best-effort approach, by:
 
 It will NOT drain any remaining sources.
 
+##### Parameters
+
+None
+
 ---
 
 ### append
