@@ -9,6 +9,10 @@ module.exports = {
   organizationName: 'archiverjs', // Usually your GitHub org/user name.
   projectName: 'node-archiver', // Usually your repo name.
   themeConfig: {
+    gtag: {
+      trackingID: 'UA-75847652-4',
+      anonymizeIP: true,
+    },
     navbar: {
       title: 'Archiver',
       logo: {
