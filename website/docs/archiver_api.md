@@ -21,11 +21,11 @@ new Archiver(format, options)
 
 The `options` object may include the following properties as well as all  [Stream.duplex options](https://nodejs.org/api/stream.html#stream_new_stream_duplex_options):
 
-##### Core
+##### Core Options
 
 - `statConcurrency` - Number (default 4) - Sets the number of workers used to process the internal fs stat queue.
 
-##### ZIP
+##### ZIP Options
 
 - `comment` - String - Sets the zip archive comment.
 - `forceLocalTime` - Boolean - Forces the archive to contain local file times instead of UTC.
@@ -33,7 +33,7 @@ The `options` object may include the following properties as well as all  [Strea
 - `store` - Boolean - Sets the compression method to STORE.
 - `zlib` - Object - Passed to [zlib](https://nodejs.org/api/zlib.html#zlib_class_options) to control compression.
 
-##### TAR
+##### TAR Options
 
 - `gzip` - Boolean - Compress the tar archive using gzip.
 - `gzipOptions` - Object - Passed to [zlib](https://nodejs.org/api/zlib.html#zlib_class_options) to control compression.
@@ -76,7 +76,11 @@ When the instance has received, processed, and emitted the input, the entry even
 ##### Parameters
 
 - `source` - Buffer | Stream | String - The input source.
-- `data` - EntryData
+- `data` - Object - The entry data.
+
+#### Entry Data
+
+TBD
 
 ---
 
