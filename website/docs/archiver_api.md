@@ -76,11 +76,7 @@ When the instance has received, processed, and emitted the input, the entry even
 ##### Parameters
 
 - `source` - Buffer | Stream | String - The input source.
-- `data` - Object - The entry data.
-
-#### Entry Data
-
-TBD
+- `data` - Object - [The entry data](#entry-data).
 
 ---
 
@@ -96,7 +92,7 @@ Appends a directory and its files, recursively, given its dirpath.
 
 - `dirpath` - String - The source directory path.
 - `destpath` - String - The destination path within the archive.
-- `data` - EntryData
+- `data` - Object - [The entry data](#entry-data).
 
 ---
 
@@ -113,7 +109,7 @@ When the instance has received, processed, and emitted the file, the entry event
 ##### Parameters
 
 - `filepath` - String - The source filepath.
-- `data` - EntryData
+- `data` - Object - [The entry data](#entry-data).
 
 ---
 
@@ -146,7 +142,7 @@ Appends multiple files that match a glob pattern.
 
 - `pattern` - String - The [glob pattern](https://github.com/isaacs/minimatch) to match.
 - `options` - Object - See [node-readdir-glob](https://github.com/yqnn/node-readdir-glob#options).
-- `data` - EntryData
+- `data` - Object - [The entry data](#entry-data).
 
 ---
 
@@ -207,6 +203,22 @@ This does NOT interact with filesystem and is used for programmatically creating
 - `filepath` - String - The symlink path (within archive).
 - `target` - String - The target path (within archive).
 - `mode` - Number - The entry permissions.
+
+## Entry Data
+
+The entry data object may contain the following properties:
+
+#### Core Entry Properties
+
+- `name` - String - Sets the entry name including internal path.
+- `date` - String | Date - Sets the entry date.
+- `mode` - Number - Sets the entry permissions.
+- `prefix` - String - Sets a path prefix for the entry name. Useful when working with methods like `directory` or `glob`.
+- `stats` - fs.Stats - Sets the stat data for this entry allowing for reduction of fs.stat calls.
+
+#### ZIP Entry Properties
+
+- `store` - Boolean - Sets the compression method to STORE.
 
 ## Format Registration
 
