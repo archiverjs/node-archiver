@@ -4,7 +4,7 @@
   base = "website"
   publish = "website/build"
 
-[environment]
+[build.environment]
   NODE_VERSION = "14"
 
 [[redirects]]
