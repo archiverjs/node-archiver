@@ -8,20 +8,11 @@ import styles from './styles.module.css';
 
 const features = [
   {
-    title: 'Feature 1',
+    title: 'Streaming API',
     imageUrl: 'img/logo.svg',
     description: (
       <>
-        Archiver was designed ...
-      </>
-    ),
-  },
-  {
-    title: 'Feature 2',
-    imageUrl: 'img/logo.svg',
-    description: (
-      <>
-        Archiver lets you focus on ...
+        Archiver was designed to use native node streams as a data transport.
       </>
     ),
   },
