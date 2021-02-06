@@ -14,8 +14,8 @@ new Archiver(format, options)
 
 ##### Parameters
 
-- `format` - String -  The archive format to use.
-- `options` - CoreOptions | TransformOptions
+- `format` - String - The archive format to use.
+- `options` - Object
 
 #### Options
 
@@ -35,7 +35,10 @@ The `options` object may include the following properties as well as all  [Strea
 
 ##### TAR
 
-TBD
+- `gzip` - Boolean - Compress the tar archive using gzip.
+- `gzipOptions` - Object - Passed to [zlib](https://nodejs.org/api/zlib.html#zlib_class_options) to control compression.
+
+See [tar-stream](https://www.npmjs.com/package/tar-stream) documentation for additional properties.
 
 ---
 
@@ -216,7 +219,7 @@ Registers a format for use with archiver.
 - `format` - String - The name of the format.
 - `module` - Function - The function for archiver to interact with.
 
-##### module
+#### module
 
 ```js
 module(options)
@@ -228,7 +231,7 @@ The `module` function should consist of the following:
 - a `module.prototype.append` function.
 - a `module.prototype.finalize` function.
 
-###### module.prototype.append
+##### module.prototype.append
 
 ```js
 module.prototype.append(source, data, callback) {
@@ -239,7 +242,7 @@ module.prototype.append(source, data, callback) {
 }
 ```
 
-###### module.prototype.finalize
+##### module.prototype.finalize
 
 ```js
 module.prototype.finalize() {}
