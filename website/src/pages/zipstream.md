@@ -28,6 +28,14 @@ new ZipStream(options)
 
 - `options` - Object
 
+The `options` object may contain the following properties:
+
+- `comment` - String - Sets the zip archive comment.
+- `forceLocalTime` - Boolean - Forces the archive to contain local file times instead of UTC.
+- `forceZip64` - Boolean - Forces the archive to contain ZIP64 headers.
+- `store` - Boolean - Sets the compression method to STORE.
+- `zlib` - Object - Passed to [zlib](https://nodejs.org/api/zlib.html#zlib_class_options) to control compression
+
 ---
 
 ### entry
