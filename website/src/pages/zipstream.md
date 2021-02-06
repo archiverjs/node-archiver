@@ -52,6 +52,15 @@ entry(source, data, callback) → {this}
 - `data` - Object
 - `callback` - Function
 
+The `data` may contain the following properties:
+
+- `name` - String - Sets the entry name including internal path.
+- `comment` - String - Sets the entry comment.
+- `date` - String|Date - Sets the entry date.
+- `mode` - Number - Sets the entry permissions.
+- `store` - Boolean - Sets the compression method to STORE.
+- `type` - String - Sets the entry type. Defaults to `directory` if name ends with trailing slash.
+
 ---
 
 ### finalize
