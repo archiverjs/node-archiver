@@ -250,7 +250,7 @@ The entry data object may contain the following properties:
 - `name` - *String* - Sets the entry name including internal path.
 - `date` - *String | Date* - Sets the entry date.
 - `mode` - *Number* - Sets the entry permissions.
-- `prefix` - *String* - Sets a path prefix for the entry name. Useful when working with methods like `directory` or `glob`.
+- `prefix` - *String* - Sets a path prefix for the entry name. Useful when working with methods like [directory](#directory) or [glob](#glob).
 - `stats` - *fs.Stats* - Sets the stat data for this entry allowing for reduction of fs.stat calls.
 
 #### ZIP Entry Properties
