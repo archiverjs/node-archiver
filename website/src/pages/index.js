@@ -8,7 +8,7 @@ import styles from './styles.module.css';
 
 const features = [
   {
-    title: 'Streaming API',
+    title: 'Streaming',
     description: (
       <>
         Archiver was designed to use native node streams as its data transport.
