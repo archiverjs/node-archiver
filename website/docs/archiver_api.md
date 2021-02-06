@@ -14,8 +14,8 @@ new Archiver(format, options)
 
 ##### Parameters
 
-- `format` - String - The archive format to use.
-- `options` - Object
+- `format` - *String* - The archive format to use.
+- `options` - *Object*
 
 #### Options
 
@@ -23,20 +23,20 @@ The `options` object may include the following properties as well as all  [Strea
 
 ##### Core Options
 
-- `statConcurrency` - Number (default 4) - Sets the number of workers used to process the internal fs stat queue.
+- `statConcurrency` - *Number* (default 4) - Sets the number of workers used to process the internal fs stat queue.
 
 ##### ZIP Options
 
-- `comment` - String - Sets the zip archive comment.
-- `forceLocalTime` - Boolean - Forces the archive to contain local file times instead of UTC.
-- `forceZip64` - Boolean - Forces the archive to contain ZIP64 headers.
-- `store` - Boolean - Sets the compression method to STORE.
-- `zlib` - Object - Passed to [zlib](https://nodejs.org/api/zlib.html#zlib_class_options) to control compression.
+- `comment` - *String* - Sets the zip archive comment.
+- `forceLocalTime` - *Boolean* - Forces the archive to contain local file times instead of UTC.
+- `forceZip64` - *Boolean* - Forces the archive to contain ZIP64 headers.
+- `store` - *Boolean* - Sets the compression method to STORE.
+- `zlib` - *Object* - Passed to [zlib](https://nodejs.org/api/zlib.html#zlib_class_options) to control compression.
 
 ##### TAR Options
 
-- `gzip` - Boolean - Compress the tar archive using gzip.
-- `gzipOptions` - Object - Passed to [zlib](https://nodejs.org/api/zlib.html#zlib_class_options) to control compression.
+- `gzip` - *Boolean* - Compress the tar archive using gzip.
+- `gzipOptions` - *Object* - Passed to [zlib](https://nodejs.org/api/zlib.html#zlib_class_options) to control compression.
 
 See [tar-stream](https://www.npmjs.com/package/tar-stream) documentation for additional properties.
 
@@ -75,8 +75,8 @@ When the instance has received, processed, and emitted the input, the entry even
 
 ##### Parameters
 
-- `source` - Buffer | Stream | String - The input source.
-- `data` - Object - [The entry data](#entry-data).
+- `source` - *Buffer | Stream | String* - The input source.
+- `data` - *Object* - [The entry data](#entry-data).
 
 ---
 
@@ -90,9 +90,9 @@ Appends a directory and its files, recursively, given its dirpath.
 
 ##### Parameters
 
-- `dirpath` - String - The source directory path.
-- `destpath` - String - The destination path within the archive.
-- `data` - Object - [The entry data](#entry-data).
+- `dirpath` - *String* - The source directory path.
+- `destpath` - *String* - The destination path within the archive.
+- `data` - *Object* - [The entry data](#entry-data).
 
 ---
 
@@ -108,8 +108,8 @@ When the instance has received, processed, and emitted the file, the entry event
 
 ##### Parameters
 
-- `filepath` - String - The source filepath.
-- `data` - Object - [The entry data](#entry-data).
+- `filepath` - *String* - The source filepath.
+- `data` - *Object* - [The entry data](#entry-data).
 
 ---
 
@@ -140,9 +140,9 @@ Appends multiple files that match a glob pattern.
 
 ##### Parameters
 
-- `pattern` - String - The [glob pattern](https://github.com/isaacs/minimatch) to match.
-- `options` - Object - See [node-readdir-glob](https://github.com/yqnn/node-readdir-glob#options).
-- `data` - Object - [The entry data](#entry-data).
+- `pattern` - *String* - The [glob pattern](https://github.com/isaacs/minimatch) to match.
+- `options` - *Object* - See [node-readdir-glob](https://github.com/yqnn/node-readdir-glob#options).
+- `data` - *Object* - [The entry data](#entry-data).
 
 ---
 
@@ -170,7 +170,7 @@ Sets the module format name used for archiving.
 
 ##### Parameters
 
-- `format` - String - The name of the format.
+- `format` - *String* - The name of the format.
 
 ---
 
@@ -184,7 +184,7 @@ Sets the module used for archiving.
 
 ##### Parameters
 
-- `module` - Function - The function for archiver to interact with.
+- `module` - *Function* - The function for archiver to interact with.
 
 ---
 
@@ -200,9 +200,9 @@ This does NOT interact with filesystem and is used for programmatically creating
 
 ##### Parameters
 
-- `filepath` - String - The symlink path (within archive).
-- `target` - String - The target path (within archive).
-- `mode` - Number - The entry permissions.
+- `filepath` - *String* - The symlink path (within archive).
+- `target` - *String* - The target path (within archive).
+- `mode` - *Number* - The entry permissions.
 
 ## Events
 
@@ -218,28 +218,28 @@ The `entry` event object contains the following properties:
 
 The `progress` event object contains the following properties:
 
-- `entries` - Object - An object containing the following properties:
-  - `total` - Number - The number of entries that have been appended.
-  - `processed` - Number - The number of entries that have been processed.
+- `entries` - *Object* - An object containing the following properties:
+  - `total` - *Number* - The number of entries that have been appended.
+  - `processed` - *Number* - The number of entries that have been processed.
 - `fs` - Object - An object containing the following properties:
-  - `totalBytes` - Number - The number of bytes that have been appended. Calculated asynchronously and might not be accurate: it growth while entries are added. (based on fs.Stats)
-  - `processedBytes` - Number - The number of bytes that have been processed. (based on fs.Stats)
+  - `totalBytes` - *Number* - The number of bytes that have been appended. Calculated asynchronously and might not be accurate: it growth while entries are added. (based on fs.Stats)
+  - `processedBytes` - *Number* - The number of bytes that have been processed. (based on fs.Stats)
 
 #### Event: error
 
 The `error` event object contains the following properties:
 
-- `message` - String - The message of the error.
-- `code` - String - The error code assigned to this error.
-- `data` - Object - Additional data provided for reporting or debugging (where available).
+- `message` - *String* - The message of the error.
+- `code` - *String* - The error code assigned to this error.
+- `data` - *Object* - Additional data provided for reporting or debugging (where available).
 
 #### Event: warning
 
 The `warning` event object contains the following properties:
 
-- `message` - String - The message of the error.
-- `code` - String - The error code assigned to this error.
-- `data` - Object - Additional data provided for reporting or debugging (where available).
+- `message` - *String* - The message of the error.
+- `code` - *String* - The error code assigned to this error.
+- `data` - *Object* - Additional data provided for reporting or debugging (where available).
 
 ## Entry Data
 
@@ -247,15 +247,15 @@ The entry data object may contain the following properties:
 
 #### Core Entry Properties
 
-- `name` - String - Sets the entry name including internal path.
-- `date` - String | Date - Sets the entry date.
-- `mode` - Number - Sets the entry permissions.
-- `prefix` - String - Sets a path prefix for the entry name. Useful when working with methods like `directory` or `glob`.
-- `stats` - fs.Stats - Sets the stat data for this entry allowing for reduction of fs.stat calls.
+- `name` - *String* - Sets the entry name including internal path.
+- `date` - *String | Date* - Sets the entry date.
+- `mode` - *Number* - Sets the entry permissions.
+- `prefix` - *String* - Sets a path prefix for the entry name. Useful when working with methods like `directory` or `glob`.
+- `stats` - *fs.Stats* - Sets the stat data for this entry allowing for reduction of fs.stat calls.
 
 #### ZIP Entry Properties
 
-- `store` - Boolean - Sets the compression method to STORE.
+- `store` - *Boolean* - Sets the compression method to STORE.
 
 ## Format Registration
 
@@ -269,8 +269,8 @@ Registers a format for use with archiver.
 
 ##### Parameters
 
-- `format` - String - The name of the format.
-- `module` - Function - The function for archiver to interact with.
+- `format` - *String* - The name of the format.
+- `module` - *Function* - The function for archiver to interact with.
 
 #### module
 
@@ -313,4 +313,4 @@ Check if the format is already registered.
 
 ##### Parameters
 
-- `format` - String - The name of the format.
+- `format` - *String* - The name of the format.
