@@ -218,12 +218,12 @@ The `entry` event object contains the following properties:
 
 The `progress` event object contains the following properties:
 
-- `entries` - Object
-- `entries.total` - Number - The number of entries that have been appended.
-- `entries.processed` - Number - The number of entries that have been processed.
-- `fs` - Object
-- `fs.totalBytes` - Number - The number of bytes that have been appended. Calculated asynchronously and might not be accurate: it growth while entries are added. (based on fs.Stats)
-- `fs.processedBytes` - Number - The number of bytes that have been processed. (based on fs.Stats)
+- `entries` - Object - An object containing the following properties:
+  - `total` - Number - The number of entries that have been appended.
+  - `processed` - Number - The number of entries that have been processed.
+- `fs` - Object - An object containing the following properties:
+  - `totalBytes` - Number - The number of bytes that have been appended. Calculated asynchronously and might not be accurate: it growth while entries are added. (based on fs.Stats)
+  - `processedBytes` - Number - The number of bytes that have been processed. (based on fs.Stats)
 
 #### Event: error
 
