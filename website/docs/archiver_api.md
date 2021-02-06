@@ -13,8 +13,29 @@ new Archiver(format, options)
 ### constructor
 
 ##### Parameters
+
 - `format` - String -  The archive format to use.
 - `options` - CoreOptions | TransformOptions
+
+#### Options
+
+The `options` object may include the following properties as well as all  [Stream.duplex options](https://nodejs.org/api/stream.html#stream_new_stream_duplex_options):
+
+##### Core
+
+- `statConcurrency` - Number (default 4) - Sets the number of workers used to process the internal fs stat queue.
+
+##### ZIP
+
+- `comment` - String - Sets the zip archive comment.
+- `forceLocalTime` - Boolean - Forces the archive to contain local file times instead of UTC.
+- `forceZip64` - Boolean - Forces the archive to contain ZIP64 headers.
+- `store` - Boolean - Sets the compression method to STORE.
+- `zlib` - Object - Passed to [zlib](https://nodejs.org/api/zlib.html#zlib_class_options) to control compression.
+
+##### TAR
+
+TBD
 
 ---
 
