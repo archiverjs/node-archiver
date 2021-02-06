@@ -1,4 +1,12 @@
 [Settings]
+[build]
+  command = "npm run build"
+  base = "website"
+  publish = "website/build"
+
+[build.environment]
+  NODE_VERSION = "14"
+
 [[redirects]]
   from = "/docs/*"
   to = "/:splat"
