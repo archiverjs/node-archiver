@@ -1,13 +1,13 @@
 module.exports = {
   title: 'Archiver',
-  tagline: '',
-  url: 'https://test.archiverjs.com',
+  tagline: 'A streaming interface for archive generation.',
+  url: 'https://www.archiverjs.com',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
-  organizationName: 'archiverjs', // Usually your GitHub org/user name.
-  projectName: 'node-archiver', // Usually your repo name.
+  organizationName: 'archiverjs',
+  projectName: 'node-archiver',
   themeConfig: {
     gtag: {
       trackingID: 'UA-75847652-4',
@@ -80,15 +80,11 @@ module.exports = {
       {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          // Please change this to your repo.
-          editUrl:
-            'https://github.com/archiverjs/node-archiver/edit/master/website/',
+          editUrl: 'https://github.com/archiverjs/node-archiver/edit/master/website/',
         },
         blog: {
           showReadingTime: true,
-          // Please change this to your repo.
-          editUrl:
-            'https://github.com/archiverjs/node-archiver/edit/master/website/blog/',
+          editUrl: 'https://github.com/archiverjs/node-archiver/edit/master/website/blog/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
