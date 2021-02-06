@@ -204,6 +204,20 @@ This does NOT interact with filesystem and is used for programmatically creating
 - `target` - String - The target path (within archive).
 - `mode` - Number - The entry permissions.
 
+## Events
+
+#### Event: `entry`
+
+Fires when the entry's input has been processed and appended to the archive.
+
+#### Event: `progress
+
+TBD
+
+#### Event: `warning`
+
+TBD
+
 ## Entry Data
 
 The entry data object may contain the following properties:
