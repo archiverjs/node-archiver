@@ -48,18 +48,18 @@ entry(source, data, callback) → {this}
 
 ##### Parameters
 
-- `source` - Buffer | Stream | String
-- `data` - Object
-- `callback` - Function
+- `source` - *Buffer | Stream | String* - The input source.
+- `data` - *Object* - The entry data.
+- `callback` - *Function*
 
 The `data` object may contain the following properties:
 
-- `name` - String - Sets the entry name including internal path.
-- `comment` - String - Sets the entry comment.
-- `date` - String|Date - Sets the entry date.
-- `mode` - Number - Sets the entry permissions.
-- `store` - Boolean - Sets the compression method to STORE.
-- `type` - String - Sets the entry type. Defaults to `directory` if name ends with trailing slash.
+- `name` - *String* - The entry name including internal path.
+- `comment` - *String* - The entry comment.
+- `date` - *String | Date* - The entry date.
+- `mode` - *Number* - The entry permissions.
+- `store` - *Boolean* - The compression method to STORE.
+- `type` - *String* - The entry type. Defaults to `directory` if name ends with trailing slash.
 
 ---
 
