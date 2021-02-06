@@ -9,16 +9,14 @@ import styles from './styles.module.css';
 const features = [
   {
     title: 'Streaming API',
-    imageUrl: 'img/logo.svg',
     description: (
       <>
-        Archiver was designed to use native node streams as a data transport.
+        Archiver was designed to use native node streams as its data transport.
       </>
     ),
   },
   {
     title: 'Extendable',
-    imageUrl: 'img/logo.svg',
     description: (
       <>
         Archiver can be extended to support different archive formats
