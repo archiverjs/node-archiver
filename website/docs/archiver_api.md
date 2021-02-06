@@ -206,17 +206,40 @@ This does NOT interact with filesystem and is used for programmatically creating
 
 ## Events
 
-#### Event: `entry`
+#### Event: entry
 
 Fires when the entry's input has been processed and appended to the archive.
 
-#### Event: `progress
+The `entry` event object contains the following properties:
 
-TBD
+- [Entry Data](#entry-data)
 
-#### Event: `warning`
+#### Event: progress
 
-TBD
+The `progress` event object contains the following properties:
+
+- `entries` - Object
+- `entries.total` - Number - The number of entries that have been appended.
+- `entries.processed` - Number - The number of entries that have been processed.
+- `fs` - Object
+- `fs.totalBytes` - Number - The number of bytes that have been appended. Calculated asynchronously and might not be accurate: it growth while entries are added. (based on fs.Stats)
+- `fs.processedBytes` - Number - The number of bytes that have been processed. (based on fs.Stats)
+
+#### Event: error
+
+The `error` event object contains the following properties:
+
+- `message` - String - The message of the error.
+- `code` - String - The error code assigned to this error.
+- `data` - Object - Additional data provided for reporting or debugging (where available).
+
+#### Event: warning
+
+The `warning` event object contains the following properties:
+
+- `message` - String - The message of the error.
+- `code` - String - The error code assigned to this error.
+- `data` - Object - Additional data provided for reporting or debugging (where available).
 
 ## Entry Data
 
