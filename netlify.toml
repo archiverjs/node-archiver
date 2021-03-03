@@ -13,6 +13,6 @@
 
 [[redirects]]
   from = "/zip-stream/*"
-  to = "https://zipstreamjs.netlify.com/:splat"
-  status = 200
+  to = "/zipstream:splat"
+  status = 301
   
