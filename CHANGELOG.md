@@ -1,5 +1,19 @@
 ## Changelog
 
+**5.3.0** - <small>_March 7, 2021_</small> — [Diff](https://github.com/archiverjs/node-archiver/compare/5.2.0...5.3.0)
+
+## Maintenance
+
+- Bump chai from 4.3.0 to 4.3.3 (#505)
+- Bump zip-stream from 4.0.4 to 4.1.0 (#504)
+- Bump mocha from 8.2.1 to 8.3.0 (#499)
+- Bump actions/setup-node from v2.1.4 to v2.1.5 (#500)
+- Bump tar from 6.0.5 to 6.1.0 (#487)
+- Bump chai from 4.2.0 to 4.3.0 (#496)
+- Bump tar-stream from 2.1.4 to 2.2.0 (#485)
+- Bump actions/setup-node from v2.1.3 to v2.1.4 (#483)
+- Update progress example (#384)
+
 **5.2.0** - <small>_January 6, 2021_</small> — [Diff](https://github.com/archiverjs/node-archiver/compare/5.1.0...5.2.0)
 
 ## Features
