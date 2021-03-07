@@ -256,6 +256,7 @@ The entry data object may contain the following properties:
 
 #### ZIP Entry Properties
 
+- `namePrependSlash` - *Boolean* - Prepends a forward slash to archive file paths.
 - `store` - *Boolean* - Sets the compression method to STORE.
 
 ## Format Registration
