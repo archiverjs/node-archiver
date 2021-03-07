@@ -30,6 +30,7 @@ The `options` object may include the following properties as well as all  [Strea
 - `comment` - *String* - Sets the zip archive comment.
 - `forceLocalTime` - *Boolean* - Forces the archive to contain local file times instead of UTC.
 - `forceZip64` - *Boolean* - Forces the archive to contain ZIP64 headers.
+- `namePrependSlash` - *Boolean* - Prepends a forward slash to archive file paths.
 - `store` - *Boolean* - Sets the compression method to STORE.
 - `zlib` - *Object* - Passed to [zlib](https://nodejs.org/api/zlib.html#zlib_class_options) to control compression.
 
