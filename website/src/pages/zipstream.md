@@ -33,6 +33,7 @@ The `options` object may contain the following properties:
 - `comment` - *String* - Sets the zip archive comment.
 - `forceLocalTime` - *Boolean* - Forces the archive to contain local file times instead of UTC.
 - `forceZip64` - *Boolean* - Forces the archive to contain ZIP64 headers.
+- `namePrependSlash` - *Boolean* - Prepends a forward slash to file paths.
 - `store` - *Boolean* - Sets the compression method to STORE.
 - `zlib` - *Object* - Passed to [zlib](https://nodejs.org/api/zlib.html#zlib_class_options) to control compression
 
@@ -58,6 +59,7 @@ The `data` object may contain the following properties:
 - `comment` - *String* - The entry comment.
 - `date` - *String | Date* - The entry date.
 - `mode` - *Number* - The entry permissions.
+- `namePrependSlash` - *Boolean* - Prepends a forward slash to file paths.
 - `store` - *Boolean* - The compression method to STORE.
 - `type` - *String* - The entry type. Defaults to `directory` if name ends with trailing slash.
 
