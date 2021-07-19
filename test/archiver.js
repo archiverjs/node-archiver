@@ -3,8 +3,12 @@ var fs = require('fs');
 var PassThrough = require('readable-stream').PassThrough;
 var WriteStream = fs.createWriteStream;
 
-var assert = require('chai').assert;
+var spies = require('chai-spies');
+var chai = require('chai')
+var assert = chai.assert;
 var mkdir = require('mkdirp');
+
+chai.use(spies);
 
 var helpers = require('./helpers');
 var HashStream = helpers.HashStream;
@@ -347,6 +351,28 @@ describe('archiver', function() {
           .append(null, { name: 'directory/', date: testDate })
           .finalize()
           .then(function() {
+            done()
+          })
+      });
+    });
+
+    describe('#callback function', function() {
+      var archive;
+
+      it('should call callback function', function(done) {
+        archive = archiver('json');
+        var testStream = new WriteStream('tmp/promise.json');
+
+        const noop = () => {}
+        const spy = chai.spy(noop);
+
+        archive.pipe(testStream);
+
+        archive
+          .append(testBuffer, { name: 'buffer.txt', date: testDate }, spy)
+          .finalize()
+          .then(function() {
+            chai.expect(spy).to.have.been.called();
             done()
           })
       });
