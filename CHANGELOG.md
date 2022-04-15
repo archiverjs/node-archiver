@@ -1,5 +1,9 @@
 ## Changelog
 
+**5.3.1** - <small>_April 15, 2022_</small> — [Diff](https://github.com/archiverjs/node-archiver/compare/5.3.0...5.3.1)
+
+TBD
+
 **5.3.0** - <small>_March 7, 2021_</small> — [Diff](https://github.com/archiverjs/node-archiver/compare/5.2.0...5.3.0)
 
 ## Maintenance
