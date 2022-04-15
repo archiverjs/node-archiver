@@ -2,11 +2,32 @@
 
 **5.3.1** - <small>_April 15, 2022_</small> — [Diff](https://github.com/archiverjs/node-archiver/compare/5.3.0...5.3.1)
 
-TBD
+Maintenance
+
+- Test against node v16 @ctalkington (#545)
+
+Dependency updates
+
+- Bump mocha from 8.3.0 to 9.0.2 @dependabot (#526)
+- Bump actions/setup-node from 2.1.5 to 2.2.0 @dependabot (#525)
+- Bump jsdoc from 3.6.6 to 3.6.7 @dependabot (#516)
+- Bump lodash from 4.17.19 to 4.17.21 @dependabot (#514)
+- Bump chai from 4.3.3 to 4.3.4 @dependabot (#508)
+- Bump actions/setup-node from 2.2.0 to 2.3.0 @dependabot (#528)
+- Bump mocha from 9.0.2 to 9.1.0 @dependabot (#544)
+- Bump async from 3.2.0 to 3.2.1 @dependabot (#538)
+- Bump actions/checkout from 2.3.4 to 3.0.1 @dependabot (#586)
+- Bump actions/setup-node from 2.3.0 to 3.1.1 @dependabot (#585)
+- Bump jsdoc from 3.6.7 to 3.6.10 @dependabot (#566)
+- Bump async from 3.2.1 to 3.2.3 @dependabot (#562)
+- Bump mocha from 9.1.0 to 9.2.2 @dependabot (#580)
+- Bump tar from 6.1.0 to 6.1.11 @dependabot (#546)
+- Bump chai from 4.3.4 to 4.3.6 @dependabot (#568)
+
 
 **5.3.0** - <small>_March 7, 2021_</small> — [Diff](https://github.com/archiverjs/node-archiver/compare/5.2.0...5.3.0)
 
-## Maintenance
+Maintenance
 
 - Bump chai from 4.3.0 to 4.3.3 (#505)
 - Bump zip-stream from 4.0.4 to 4.1.0 (#504)
@@ -20,11 +41,11 @@ TBD
 
 **5.2.0** - <small>_January 6, 2021_</small> — [Diff](https://github.com/archiverjs/node-archiver/compare/5.1.0...5.2.0)
 
-## Features
+Features
 
 - Finalize should always return a promise (#480)
 
-## Maintenance
+Maintenance
 
 - Fix finalize method jsdoc return type (#482)
 - Bump actions/setup-node from v2.1.2 to v2.1.3 (#479)
