@@ -5,12 +5,12 @@ name: Release Drafter
 on:
   push:
     branches:
-      - main
+      - master
   workflow_dispatch:
 
 jobs:
   update_release_draft:
-    name: Draft release
+    name: Update Release Draft
     runs-on: ubuntu-latest
     steps:
       - name: Run Release Drafter
