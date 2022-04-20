@@ -78,6 +78,12 @@ archive.directory('subdir/', false);
 // append files from a glob pattern
 archive.glob('file*.txt', {cwd:__dirname});
 
+// append a file with a callback for when the queue has been processed.
+// usefull for implementing backpressure prevention mechanisms
+archive.file("file1.txt", { name: "file4.txt" }, () => {
+  console.log("task complete, do something....");
+});
+
 // finalize the archive (ie we are done appending files but streams have to finish yet)
 // 'close', 'end' or 'finish' may be fired right after calling this method so register to them beforehand
 archive.finalize();
