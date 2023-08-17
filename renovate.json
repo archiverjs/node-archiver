@@ -1,8 +1,9 @@
-{
+ {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:base",
     "schedule:daily",
+    ":maintainLockFilesMonthly",
     ":pinDevDependencies"
   ],
   "timezone": "America/Chicago",
