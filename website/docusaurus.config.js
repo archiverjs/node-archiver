@@ -8,11 +8,7 @@ module.exports = {
   favicon: 'img/favicon.ico',
   organizationName: 'archiverjs',
   projectName: 'node-archiver',
-  themeConfig: {
-    gtag: {
-      trackingID: 'UA-75847652-4',
-      anonymizeIP: true,
-    },
+  themeConfig: { 
     navbar: {
       title: 'Archiver',
       logo: {
@@ -88,6 +84,10 @@ module.exports = {
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
+        },
+        gtag: {
+          trackingID: 'UA-75847652-4',
+          anonymizeIP: true,
         },
       },
     ],
