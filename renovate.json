@@ -9,11 +9,6 @@
   "packageRules": [
     {
       "matchManagers": ["npm", "nvm"],
-      "addLabels": ["javascript"],
-      "rangeStrategy": "pin"
-    },
-    {
-      "matchManagers": ["npm", "nvm"],
       "matchUpdateTypes": ["minor", "patch"],
       "automerge": true
     },
