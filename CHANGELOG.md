@@ -1,5 +1,23 @@
 ## Changelog
 
+**5.3.2** - <small>_August 16, 2023_</small> — [Diff](https://github.com/archiverjs/node-archiver/compare/5.3.1...5.3.2)
+
+Maintenance 
+
+- test: run tests against node 18 @yharaskrik (#637)
+
+Dependency updates
+
+- Bump release-drafter/release-drafter from 5.19.0 to 5.23.0 @dependabot (#652)
+- Bump actions/setup-node from 3.1.1 to 3.6.0 @dependabot (#638)
+- Bump chai from 4.3.6 to 4.3.7 @dependabot (#627)
+- Bump mkdirp from 1.0.4 to 2.1.5 @dependabot (#657)
+- Bump rimraf from 3.0.2 to 4.3.1 @dependabot (#660)
+- Bump tar from 6.1.11 to 6.1.13 @dependabot (#631)
+- Bump readdir-glob from 1.1.1 to 1.1.2 @dependabot (#604)
+- Bump minimatch from 3.0.4 to 3.1.2 @dependabot (#669)
+- Bump async from 3.2.3 to 3.2.4 @dependabot (#596)
+
 **5.3.1** - <small>_April 15, 2022_</small> — [Diff](https://github.com/archiverjs/node-archiver/compare/5.3.0...5.3.1)
 
 Maintenance
