@@ -39,7 +39,7 @@
   "devDependencies": {
     "archiver-jsdoc-theme": "^1.1.3",
     "chai": "^4.3.7",
-    "jsdoc": "^3.6.4",
+    "jsdoc": "^3.6.10",
     "mkdirp": "^2.1.5",
     "mocha": "^9.0.2",
     "rimraf": "^4.3.1",
