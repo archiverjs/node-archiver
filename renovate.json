@@ -11,6 +11,10 @@
   "packageRules": [
     {
       "matchManagers": ["npm", "nvm"],
+      "separateMultipleMajor": true
+    },
+    {
+      "matchManagers": ["npm", "nvm"],
       "matchUpdateTypes": ["minor", "patch"],
       "automerge": true
     },
