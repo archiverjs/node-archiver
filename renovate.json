@@ -4,7 +4,8 @@
     "config:base",
     "schedule:daily",
     ":maintainLockFilesMonthly",
-    ":pinDevDependencies"
+    ":pinDevDependencies",
+    ":semanticCommitsDisabled"
   ],
   "timezone": "America/Chicago",
   "labels": ["dependencies"],
