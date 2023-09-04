@@ -90,5 +90,3 @@ Archiver ships with out of the box support for TAR and ZIP archives.
 You can register additional formats with `registerFormat`.
 
 You can check if format already exists before to register a new one with `isRegisteredFormat`.
-
-_Formats will be changing in the future to implement a middleware approach._
