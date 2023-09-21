@@ -47,6 +47,9 @@
     "tar": "6.1.15",
     "yauzl": "2.10.0"
   },
+  "optionalDependencies": {
+    "@node-rs/crc32": "^1.1.0"
+  },
   "keywords": [
     "archive",
     "archiver",
