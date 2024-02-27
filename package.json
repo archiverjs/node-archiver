@@ -30,7 +30,7 @@
   "dependencies": {
     "archiver-utils": "^4.0.1",
     "async": "^3.2.4",
-    "buffer-crc32": "^0.2.1",
+    "buffer-crc32": "^1.0.0",
     "readable-stream": "^3.6.0",
     "readdir-glob": "^1.1.2",
     "tar-stream": "^3.0.0",
