@@ -44,7 +44,7 @@
     "mocha": "9.2.2",
     "rimraf": "4.4.1",
     "stream-bench": "0.1.2",
-    "tar": "6.1.15",
+    "tar": "6.2.0",
     "yauzl": "2.10.0"
   },
   "keywords": [
