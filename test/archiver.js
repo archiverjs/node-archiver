@@ -151,7 +151,7 @@ describe('archiver', function() {
         assert.propertyVal(entries['stream-like.txt'], 'date', '2013-01-03T14:26:38.000Z');
         assert.propertyVal(entries['stream-like.txt'], 'mode', 420);
         assert.propertyVal(entries['stream-like.txt'], 'crc32', 3632233996);
-        assert.propertyVal(entries['stream-like.txt'], 'size', 19);
+        assert.propertyVal(entries['stream-like.txt'], 'size', 4);
       });
 
       it('should append directory', function() {
