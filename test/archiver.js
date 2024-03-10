@@ -1,6 +1,7 @@
 /*global before,describe,it */
 var fs = require('fs');
 var PassThrough = require('readable-stream').PassThrough;
+var Readable = require('readable-stream').Readable;
 var WriteStream = fs.createWriteStream;
 
 var assert = require('chai').assert;
@@ -113,6 +114,7 @@ describe('archiver', function() {
         archive
           .append(testBuffer, { name: 'buffer.txt', date: testDate })
           .append(fs.createReadStream('test/fixtures/test.txt'), { name: 'stream.txt', date: testDate })
+          .append(Readable.from(['test']), { name: 'stream-like.txt', date: testDate })
           .append(null, { name: 'directory/', date: testDate })
           .finalize();
       });
@@ -140,6 +142,16 @@ describe('archiver', function() {
         assert.propertyVal(entries['stream.txt'], 'mode', 420);
         assert.propertyVal(entries['stream.txt'], 'crc32', 585446183);
         assert.propertyVal(entries['stream.txt'], 'size', 19);
+      });
+
+      it('should append stream-like source', function() {
+        assert.property(entries, 'stream-like.txt');
+        assert.propertyVal(entries['stream-like.txt'], 'name', 'stream-like.txt');
+        assert.propertyVal(entries['stream-like.txt'], 'type', 'file');
+        assert.propertyVal(entries['stream-like.txt'], 'date', '2013-01-03T14:26:38.000Z');
+        assert.propertyVal(entries['stream-like.txt'], 'mode', 420);
+        assert.propertyVal(entries['stream-like.txt'], 'crc32', 585446183);
+        assert.propertyVal(entries['stream-like.txt'], 'size', 19);
       });
 
       it('should append directory', function() {
