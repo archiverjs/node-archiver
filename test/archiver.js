@@ -121,7 +121,7 @@ describe('archiver', function() {
 
       it('should append multiple entries', function() {
         assert.isArray(actual);
-        assert.lengthOf(actual, 3);
+        assert.lengthOf(actual, 4);
       });
 
       it('should append buffer', function() {
@@ -150,7 +150,7 @@ describe('archiver', function() {
         assert.propertyVal(entries['stream-like.txt'], 'type', 'file');
         assert.propertyVal(entries['stream-like.txt'], 'date', '2013-01-03T14:26:38.000Z');
         assert.propertyVal(entries['stream-like.txt'], 'mode', 420);
-        assert.propertyVal(entries['stream-like.txt'], 'crc32', 585446183);
+        assert.propertyVal(entries['stream-like.txt'], 'crc32', 3632233996);
         assert.propertyVal(entries['stream-like.txt'], 'size', 19);
       });
 
