@@ -142,7 +142,7 @@ Appends multiple files that match a glob pattern.
 ##### Parameters
 
 - `pattern` - *String* - The [glob pattern](https://github.com/isaacs/minimatch) to match.
-- `options` - *Object* - See [node-readdir-glob](https://github.com/yqnn/node-readdir-glob#options).
+- `options` - *Object* - Options passed to [node-readdir-glob](https://github.com/yqnn/node-readdir-glob#options), plus an optional `cwd` property that sets the directory to read (defaults to `'.'`).
 - `data` - *Object* - [The entry data](#entry-data).
 
 ---
