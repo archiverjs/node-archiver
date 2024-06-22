@@ -32,7 +32,7 @@ The `options` object may include the following properties as well as all  [Strea
 - `forceZip64` - *Boolean* - Forces the archive to contain ZIP64 headers.
 - `namePrependSlash` - *Boolean* - Prepends a forward slash to archive file paths.
 - `store` - *Boolean* - Sets the compression method to STORE.
-- `zlib` - *Object* - Passed to [zlib](https://nodejs.org/api/zlib.html#zlib_class_options) to control compression.
+- `zlib` - *Object* - Passed to [zlib](https://nodejs.org/api/zlib.html#class-options) to control compression.
 
 ##### TAR Options
 
