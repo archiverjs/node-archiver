@@ -1,10 +1,10 @@
-var fs = require('fs');
+var fs = require("fs");
 
-var mkdir = require('mkdirp');
-var streamBench = require('stream-bench');
+var mkdir = require("mkdirp");
+var streamBench = require("stream-bench");
 
-var archiver = require('../../');
-var common = require('../common');
+var archiver = require("../../");
+var common = require("../common");
 
 var binaryBuffer = common.binaryBuffer;
 
@@ -30,29 +30,27 @@ if (process.argv[2]) {
   }
 }
 
-var archive = archiver('zip', {
+var archive = archiver("zip", {
   zlib: {
-    level: level
-  }
+    level: level,
+  },
 });
 
 if (file === false) {
-  mkdir.sync('tmp');
+  mkdir.sync("tmp");
 
-  file = 'tmp/20mb.dat';
+  file = "tmp/20mb.dat";
   fs.writeFileSync(file, binaryBuffer(BITS_IN_MBYTE * 20));
 }
 
-console.log('zlib level: ' + level);
+console.log("zlib level: " + level);
 
 var bench = streamBench({
   logReport: true,
   interval: 500,
-  dump: true
+  dump: true,
 });
 
 archive.pipe(bench);
 
-archive
-  .file(file, { name: 'large file' })
-  .finalize();
+archive.file(file, { name: "large file" }).finalize();

@@ -7,37 +7,37 @@ sidebar_label: "Archiver"
 ## Archiver Class
 
 ```js
-new Archiver(format, options)
+new Archiver(format, options);
 ```
 
 ### constructor
 
 ##### Parameters
 
-- `format` - *String* - The archive format to use.
-- `options` - *Object*
+- `format` - _String_ - The archive format to use.
+- `options` - _Object_
 
 #### Options
 
-The `options` object may include the following properties as well as all  [Stream.duplex options](https://nodejs.org/api/stream.html#stream_new_stream_duplex_options):
+The `options` object may include the following properties as well as all [Stream.duplex options](https://nodejs.org/api/stream.html#stream_new_stream_duplex_options):
 
 ##### Core Options
 
-- `statConcurrency` - *Number* (default 4) - Sets the number of workers used to process the internal fs stat queue.
+- `statConcurrency` - _Number_ (default 4) - Sets the number of workers used to process the internal fs stat queue.
 
 ##### ZIP Options
 
-- `comment` - *String* - Sets the zip archive comment.
-- `forceLocalTime` - *Boolean* - Forces the archive to contain local file times instead of UTC.
-- `forceZip64` - *Boolean* - Forces the archive to contain ZIP64 headers.
-- `namePrependSlash` - *Boolean* - Prepends a forward slash to archive file paths.
-- `store` - *Boolean* - Sets the compression method to STORE.
-- `zlib` - *Object* - Passed to [zlib](https://nodejs.org/api/zlib.html#zlib_class_options) to control compression.
+- `comment` - _String_ - Sets the zip archive comment.
+- `forceLocalTime` - _Boolean_ - Forces the archive to contain local file times instead of UTC.
+- `forceZip64` - _Boolean_ - Forces the archive to contain ZIP64 headers.
+- `namePrependSlash` - _Boolean_ - Prepends a forward slash to archive file paths.
+- `store` - _Boolean_ - Sets the compression method to STORE.
+- `zlib` - _Object_ - Passed to [zlib](https://nodejs.org/api/zlib.html#zlib_class_options) to control compression.
 
 ##### TAR Options
 
-- `gzip` - *Boolean* - Compress the tar archive using gzip.
-- `gzipOptions` - *Object* - Passed to [zlib](https://nodejs.org/api/zlib.html#zlib_class_options) to control compression.
+- `gzip` - _Boolean_ - Compress the tar archive using gzip.
+- `gzipOptions` - _Object_ - Passed to [zlib](https://nodejs.org/api/zlib.html#zlib_class_options) to control compression.
 
 See [tar-stream](https://www.npmjs.com/package/tar-stream) documentation for additional properties.
 
@@ -51,10 +51,10 @@ abort() → {this}
 
 Aborts the archiving process, taking a best-effort approach, by:
 
-* removing any pending queue tasks
-* allowing any active queue workers to finish
-* detaching internal module pipes
-* ending both sides of the Transform stream
+- removing any pending queue tasks
+- allowing any active queue workers to finish
+- detaching internal module pipes
+- ending both sides of the Transform stream
 
 It will NOT drain any remaining sources.
 
@@ -76,8 +76,8 @@ When the instance has received, processed, and emitted the input, the entry even
 
 ##### Parameters
 
-- `source` - *Buffer | Stream | String* - The input source.
-- `data` - *Object* - [The entry data](#entry-data).
+- `source` - _Buffer | Stream | String_ - The input source.
+- `data` - _Object_ - [The entry data](#entry-data).
 
 ---
 
@@ -91,9 +91,9 @@ Appends a directory and its files, recursively, given its dirpath.
 
 ##### Parameters
 
-- `dirpath` - *String* - The source directory path.
-- `destpath` - *String* - The destination path within the archive.
-- `data` - *Object* - [The entry data](#entry-data).
+- `dirpath` - _String_ - The source directory path.
+- `destpath` - _String_ - The destination path within the archive.
+- `data` - _Object_ - [The entry data](#entry-data).
 
 ---
 
@@ -109,8 +109,8 @@ When the instance has received, processed, and emitted the file, the entry event
 
 ##### Parameters
 
-- `filepath` - *String* - The source filepath.
-- `data` - *Object* - [The entry data](#entry-data).
+- `filepath` - _String_ - The source filepath.
+- `data` - _Object_ - [The entry data](#entry-data).
 
 ---
 
@@ -123,7 +123,6 @@ finalize() → {Promise}
 Finalizes the instance and prevents further appending to the archive structure (queue will continue til drained).
 
 The `end`, `close` or `finish` events on the destination stream may fire right after calling this method so you should set listeners beforehand to properly detect stream completion.
-
 
 ##### Parameters
 
@@ -141,9 +140,9 @@ Appends multiple files that match a glob pattern.
 
 ##### Parameters
 
-- `pattern` - *String* - The [glob pattern](https://github.com/isaacs/minimatch) to match.
-- `options` - *Object* - Options passed to [node-readdir-glob](https://github.com/yqnn/node-readdir-glob#options), plus an optional `cwd` property that sets the directory to read (defaults to `'.'`).
-- `data` - *Object* - [The entry data](#entry-data).
+- `pattern` - _String_ - The [glob pattern](https://github.com/isaacs/minimatch) to match.
+- `options` - _Object_ - Options passed to [node-readdir-glob](https://github.com/yqnn/node-readdir-glob#options), plus an optional `cwd` property that sets the directory to read (defaults to `'.'`).
+- `data` - _Object_ - [The entry data](#entry-data).
 
 ---
 
@@ -171,7 +170,7 @@ Sets the module format name used for archiving.
 
 ##### Parameters
 
-- `format` - *String* - The name of the format.
+- `format` - _String_ - The name of the format.
 
 ---
 
@@ -185,7 +184,7 @@ Sets the module used for archiving.
 
 ##### Parameters
 
-- `module` - *Function* - The function for archiver to interact with.
+- `module` - _Function_ - The function for archiver to interact with.
 
 ---
 
@@ -201,9 +200,9 @@ This does NOT interact with filesystem and is used for programmatically creating
 
 ##### Parameters
 
-- `filepath` - *String* - The symlink path (within archive).
-- `target` - *String* - The target path (within archive).
-- `mode` - *Number* - The entry permissions.
+- `filepath` - _String_ - The symlink path (within archive).
+- `target` - _String_ - The target path (within archive).
+- `mode` - _Number_ - The entry permissions.
 
 ## Events
 
@@ -219,28 +218,28 @@ The `entry` event object contains the following properties:
 
 The `progress` event object contains the following properties:
 
-- `entries` - *Object* - An object containing the following properties:
-  - `total` - *Number* - The number of entries that have been appended.
-  - `processed` - *Number* - The number of entries that have been processed.
+- `entries` - _Object_ - An object containing the following properties:
+  - `total` - _Number_ - The number of entries that have been appended.
+  - `processed` - _Number_ - The number of entries that have been processed.
 - `fs` - Object - An object containing the following properties:
-  - `totalBytes` - *Number* - The number of bytes that have been appended. Calculated asynchronously and might not be accurate: it growth while entries are added. (based on fs.Stats)
-  - `processedBytes` - *Number* - The number of bytes that have been processed. (based on fs.Stats)
+  - `totalBytes` - _Number_ - The number of bytes that have been appended. Calculated asynchronously and might not be accurate: it growth while entries are added. (based on fs.Stats)
+  - `processedBytes` - _Number_ - The number of bytes that have been processed. (based on fs.Stats)
 
 #### Event: error
 
 The `error` event object contains the following properties:
 
-- `message` - *String* - The message of the error.
-- `code` - *String* - The error code assigned to this error.
-- `data` - *Object* - Additional data provided for reporting or debugging (where available).
+- `message` - _String_ - The message of the error.
+- `code` - _String_ - The error code assigned to this error.
+- `data` - _Object_ - Additional data provided for reporting or debugging (where available).
 
 #### Event: warning
 
 The `warning` event object contains the following properties:
 
-- `message` - *String* - The message of the error.
-- `code` - *String* - The error code assigned to this error.
-- `data` - *Object* - Additional data provided for reporting or debugging (where available).
+- `message` - _String_ - The message of the error.
+- `code` - _String_ - The error code assigned to this error.
+- `data` - _Object_ - Additional data provided for reporting or debugging (where available).
 
 ## Entry Data
 
@@ -248,36 +247,36 @@ The entry data object may contain the following properties:
 
 #### Core Entry Properties
 
-- `name` - *String* - Sets the entry name including internal path.
-- `date` - *String | Date* - Sets the entry date.
-- `mode` - *Number* - Sets the entry permissions.
-- `prefix` - *String* - Sets a path prefix for the entry name. Useful when working with methods like [directory](#directory) or [glob](#glob).
-- `stats` - *fs.Stats* - Sets the stat data for this entry allowing for reduction of fs.stat calls.
+- `name` - _String_ - Sets the entry name including internal path.
+- `date` - _String | Date_ - Sets the entry date.
+- `mode` - _Number_ - Sets the entry permissions.
+- `prefix` - _String_ - Sets a path prefix for the entry name. Useful when working with methods like [directory](#directory) or [glob](#glob).
+- `stats` - _fs.Stats_ - Sets the stat data for this entry allowing for reduction of fs.stat calls.
 
 #### ZIP Entry Properties
 
-- `namePrependSlash` - *Boolean* - Prepends a forward slash to archive file paths.
-- `store` - *Boolean* - Sets the compression method to STORE.
+- `namePrependSlash` - _Boolean_ - Prepends a forward slash to archive file paths.
+- `store` - _Boolean_ - Sets the compression method to STORE.
 
 ## Format Registration
 
 ### registerFormat
 
 ```js
-registerFormat(format, module)
+registerFormat(format, module);
 ```
 
 Registers a format for use with archiver.
 
 ##### Parameters
 
-- `format` - *String* - The name of the format.
-- `module` - *Function* - The function for archiver to interact with.
+- `format` - _String_ - The name of the format.
+- `module` - _Function_ - The function for archiver to interact with.
 
 #### module
 
 ```js
-module(options)
+module(options);
 ```
 
 The `module` function should consist of the following:
@@ -308,11 +307,11 @@ module.prototype.finalize() {}
 ### isFormatRegistered
 
 ```js
-isRegisteredFormat(format)
+isRegisteredFormat(format);
 ```
 
 Check if the format is already registered.
 
 ##### Parameters
 
-- `format` - *String* - The name of the format.
+- `format` - _String_ - The name of the format.
