@@ -19,7 +19,7 @@ ZipStream is available on [npm](https://www.npmjs.com/package/zip-stream).
 ## ZipStream Class
 
 ```js
-new ZipStream(options)
+new ZipStream(options);
 ```
 
 ### constructor
@@ -30,12 +30,12 @@ new ZipStream(options)
 
 The `options` object may contain the following properties:
 
-- `comment` - *String* - Sets the zip archive comment.
-- `forceLocalTime` - *Boolean* - Forces the archive to contain local file times instead of UTC.
-- `forceZip64` - *Boolean* - Forces the archive to contain ZIP64 headers.
-- `namePrependSlash` - *Boolean* - Prepends a forward slash to archive file paths.
-- `store` - *Boolean* - Sets the compression method to STORE.
-- `zlib` - *Object* - Passed to [zlib](https://nodejs.org/api/zlib.html#zlib_class_options) to control compression
+- `comment` - _String_ - Sets the zip archive comment.
+- `forceLocalTime` - _Boolean_ - Forces the archive to contain local file times instead of UTC.
+- `forceZip64` - _Boolean_ - Forces the archive to contain ZIP64 headers.
+- `namePrependSlash` - _Boolean_ - Prepends a forward slash to archive file paths.
+- `store` - _Boolean_ - Sets the compression method to STORE.
+- `zlib` - _Object_ - Passed to [zlib](https://nodejs.org/api/zlib.html#zlib_class_options) to control compression
 
 ---
 
@@ -49,19 +49,19 @@ entry(source, data, callback) → {this}
 
 ##### Parameters
 
-- `source` - *Buffer | Stream | String* - The input source.
-- `data` - *Object* - The entry data.
-- `callback` - *Function*
+- `source` - _Buffer | Stream | String_ - The input source.
+- `data` - _Object_ - The entry data.
+- `callback` - _Function_
 
 The `data` object may contain the following properties:
 
-- `name` - *String* - The entry name including internal path.
-- `comment` - *String* - The entry comment.
-- `date` - *String | Date* - The entry date.
-- `mode` - *Number* - The entry permissions.
-- `namePrependSlash` - *Boolean* - Prepends a forward slash to archive file paths.
-- `store` - *Boolean* - The compression method to STORE.
-- `type` - *String* - The entry type. Defaults to `directory` if name ends with trailing slash.
+- `name` - _String_ - The entry name including internal path.
+- `comment` - _String_ - The entry comment.
+- `date` - _String | Date_ - The entry date.
+- `mode` - _Number_ - The entry permissions.
+- `namePrependSlash` - _Boolean_ - Prepends a forward slash to archive file paths.
+- `store` - _Boolean_ - The compression method to STORE.
+- `type` - _String_ - The entry type. Defaults to `directory` if name ends with trailing slash.
 
 ---
 
