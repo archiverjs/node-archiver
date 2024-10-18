@@ -1,5 +1,7 @@
 ## Changelog
 
+**8.0.0** - <small>_October 17, 2024_</small> — [Diff](https://github.com/archiverjs/node-archiver/compare/7.0.1...8.0.0)
+
 **7.0.1** - <small>_March 9, 2024_</small> — [Diff](https://github.com/archiverjs/node-archiver/compare/7.0.0...7.0.1)
 
 **7.0.0** - <small>_February 28, 2024_</small> — [Diff](https://github.com/archiverjs/node-archiver/compare/6.0.2...7.0.0)
