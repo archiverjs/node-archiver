@@ -1,4 +1,4 @@
-var fs = require("fs");
+var fs = require("node:fs");
 
 var mkdir = require("mkdirp");
 var streamBench = require("stream-bench");

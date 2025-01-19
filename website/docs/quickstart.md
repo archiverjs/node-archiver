@@ -13,7 +13,7 @@ Archiver is available on [npm](https://www.npmjs.com/package/archiver).
 
 ```js
 // require modules
-const fs = require("fs");
+const fs = require("node:fs");
 const archiver = require("archiver");
 
 // create a file to stream archive data to.
