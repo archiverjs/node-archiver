@@ -31,7 +31,7 @@
   "dependencies": {
     "async": "^3.2.4",
     "buffer-crc32": "^1.0.0",
-    "is-stream": "^3.0.0",
+    "is-stream": "^4.0.0",
     "lazystream": "^1.0.0",
     "normalize-path": "^3.0.0",
     "readable-stream": "^4.0.0",
