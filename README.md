@@ -13,7 +13,7 @@ npm install archiver --save
 ## Quick Start
 
 ```js
-import fs from "fs";
+import fs from "node:fs";
 import { ZipArchive } from "archiver";
 
 // create a file to stream archive data to.

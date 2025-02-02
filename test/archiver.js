@@ -7,9 +7,8 @@ import {
   symlinkSync,
   unlinkSync,
   writeFileSync,
-} from "fs";
-import { PassThrough } from "readable-stream";
-import { Readable } from "readable-stream";
+} from "node:fs";
+import { Readable } from "node:stream";
 import { assert } from "chai";
 import { mkdirp } from "mkdirp";
 import {

@@ -1,8 +1,7 @@
-import crypto from "crypto";
-import { readFileSync, WriteStream } from "fs";
-import { inherits } from "util";
-import { Stream } from "stream";
-import { Readable, Writable } from "readable-stream";
+import crypto from "node:crypto";
+import { readFileSync, WriteStream } from "node:fs";
+import { inherits } from "node:util";
+import { Stream, Readable, Writable } from "node:stream";
 
 export function adjustDateByOffset(d, offset) {
   d = d instanceof Date ? d : new Date();

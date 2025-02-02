@@ -1,7 +1,7 @@
 var archiver = require("../");
-var tmp = require("os").tmpdir();
+var tmp = require("node:os").tmpdir();
 var async = require("async");
-var fs = require("fs");
+var fs = require("node:fs");
 
 // You can change this by something bigger!
 var directory = __dirname + "/fixtures";
