@@ -48,7 +48,7 @@
     "prettier": "3.3.3",
     "rimraf": "5.0.10",
     "stream-bench": "0.1.2",
-    "tar": "6.2.1",
+    "tar": "7.4.3",
     "yauzl": "3.2.0"
   },
   "keywords": [
