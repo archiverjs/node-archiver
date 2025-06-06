@@ -45,7 +45,7 @@
     "jsdoc": "4.0.4",
     "mkdirp": "3.0.1",
     "mocha": "10.8.2",
-    "prettier": "3.3.3",
+    "prettier": "3.5.3",
     "rimraf": "5.0.10",
     "stream-bench": "0.1.2",
     "tar": "6.2.1",
