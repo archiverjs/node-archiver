@@ -35,7 +35,7 @@
     "lazystream": "^1.0.0",
     "normalize-path": "^3.0.0",
     "readable-stream": "^4.0.0",
-    "readdir-glob": "^1.1.3",
+    "readdir-glob": "^2.0.0",
     "tar-stream": "^3.0.0",
     "zip-stream": "^7.0.2"
   },
