@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out code from GitHub
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: Run Label Syncer
         uses: micnncim/action-label-syncer@v1.3.0
         env:
