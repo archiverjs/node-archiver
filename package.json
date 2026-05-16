@@ -19,6 +19,7 @@
   "exports": "./index.js",
   "files": [
     "index.js",
+    "index.d.ts",
     "lib"
   ],
   "engines": {
