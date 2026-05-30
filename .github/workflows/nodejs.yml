@@ -25,6 +25,7 @@ jobs:
       - name: npm install and test
         run: |
           npm ci
+          npm run typecheck
           npm test
         env:
           CI: true
