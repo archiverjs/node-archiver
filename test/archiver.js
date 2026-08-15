@@ -268,6 +268,34 @@ describe("archiver", function () {
         assert.property(entries, "Win/DS/level0.txt");
       });
     });
+    describe("#directory (followSymlinks)", function () {
+      var actual;
+      var archive;
+      var entries = {};
+      before(function (done) {
+        archive = new JsonArchive();
+        var testStream = new WriteStream("tmp/directory-followed.json");
+        testStream.on("close", function () {
+          actual = readJSON("tmp/directory-followed.json");
+          actual.forEach(function (entry) {
+            entries[entry.name] = entry;
+          });
+          done();
+        });
+        archive.pipe(testStream);
+        archive
+          .directory("test/fixtures/directory", "followed", {
+            followSymlinks: true,
+          })
+          .finalize();
+      });
+      it("should support followSymlinks: true option", function () {
+        assert.property(entries, "followed/subdir/level0link.txt");
+        if (!win32) {
+          assert.equal(entries["followed/subdir/level0link.txt"].type, "file");
+        }
+      });
+    });
     describe("#file", function () {
       var actual;
       var archive;
