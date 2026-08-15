@@ -189,6 +189,18 @@ describe("archiver", function () {
         assert.propertyVal(entries["directory/"], "crc32", 0);
         assert.propertyVal(entries["directory/"], "size", 0);
       });
+      it("should allow appending an entry named '\\'", function (done) {
+        var archive = new JsonArchive();
+        var stream = new WriteStream("tmp/append-backslash.json");
+        stream.on("close", function () {
+          var res = readJSON("tmp/append-backslash.json");
+          assert.equal(res[0].name, "\\");
+          assert.equal(res[0].type, "file");
+          done();
+        });
+        archive.pipe(stream);
+        archive.append("test content", { name: "\\" }).finalize();
+      });
     });
     describe("#directory", function () {
       var actual;
