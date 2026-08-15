@@ -7,7 +7,8 @@ import {
   symlinkSync,
   unlinkSync,
   writeFileSync,
-} from "fs";
+} from "node:fs";
+import process from "node:process";
 import { PassThrough } from "readable-stream";
 import { Readable } from "readable-stream";
 import { assert } from "chai";
