@@ -5,7 +5,8 @@ import {
   unlinkSync,
   writeFileSync,
   WriteStream,
-} from "fs";
+} from "node:fs";
+import process from "node:process";
 import { assert } from "chai";
 import { mkdirp } from "mkdirp";
 import tar from "tar";
