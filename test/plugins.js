@@ -256,5 +256,18 @@ describe("plugins", function () {
     it("should allow for archive comment", function () {
       assert.equal("archive comment", zipComment);
     });
+    it("should translate forceUTC option to forceLocalTime on engine", function () {
+      var zipUtc = new ZipArchive({ forceUTC: true });
+      assert.equal(zipUtc._module.options.forceLocalTime, false);
+
+      var zipLocal = new ZipArchive({ forceUTC: false });
+      assert.equal(zipLocal._module.options.forceLocalTime, true);
+
+      var zipExplicitLocal = new ZipArchive({
+        forceLocalTime: true,
+        forceUTC: true,
+      });
+      assert.equal(zipExplicitLocal._module.options.forceLocalTime, true);
+    });
   });
 });
