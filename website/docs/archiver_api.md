@@ -32,12 +32,12 @@ The `options` object may include the following properties as well as all [Stream
 - `forceZip64` - _Boolean_ - Forces the archive to contain ZIP64 headers.
 - `namePrependSlash` - _Boolean_ - Prepends a forward slash to archive file paths.
 - `store` - _Boolean_ - Sets the compression method to STORE.
-- `zlib` - _Object_ - Passed to [zlib](https://nodejs.org/api/zlib.html#zlib_class_options) to control compression.
+- `zlib` - _Object_ - Passed to [zlib](https://nodejs.org/api/zlib.html#class-options) to control compression.
 
 ##### TAR Options
 
 - `gzip` - _Boolean_ - Compress the tar archive using gzip.
-- `gzipOptions` - _Object_ - Passed to [zlib](https://nodejs.org/api/zlib.html#zlib_class_options) to control compression.
+- `gzipOptions` - _Object_ - Passed to [zlib](https://nodejs.org/api/zlib.html#class-options) to control compression.
 
 See [tar-stream](https://www.npmjs.com/package/tar-stream) documentation for additional properties.
 
