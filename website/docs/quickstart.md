@@ -12,13 +12,18 @@ Archiver is available on [npm](https://www.npmjs.com/package/archiver).
 ## Examples
 
 ```js
-// require modules
-const fs = require("fs");
-const archiver = require("archiver");
+// import modules
+import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
+import { ZipArchive } from "archiver";
+
+// ES modules have no __dirname; derive it from the module URL.
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // create a file to stream archive data to.
 const output = fs.createWriteStream(__dirname + "/example.zip");
-const archive = archiver("zip", {
+const archive = new ZipArchive({
   zlib: { level: 9 }, // Sets the compression level.
 });
 
