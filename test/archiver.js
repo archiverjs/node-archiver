@@ -18,7 +18,7 @@ import {
   UnBufferedStream,
   WriteHashStream,
 } from "./helpers/index.js";
-import { JsonArchive } from "../index.js";
+import { JsonArchive, ZipArchive } from "../index.js";
 
 var testBuffer = binaryBuffer(1024 * 16);
 var testDate = new Date("Jan 03 2013 14:26:38 GMT");
@@ -380,6 +380,44 @@ describe("archiver", function () {
     });
     describe("#errors", function () {
       var archive;
+      it("should reject finalization and end when a directory does not exist", async function () {
+        const archive = new ZipArchive();
+        const output = new PassThrough();
+        output.resume();
+        archive.pipe(output);
+        const outputFinishPromise = new Promise((resolve) => {
+          output.once("finish", resolve);
+        });
+        const errorPromise = new Promise((resolve) => {
+          archive.once("error", resolve);
+        });
+        archive.directory(
+          `tmp/missing-directory-${process.pid}-${Date.now()}`,
+          false,
+        );
+        const finalizePromise = archive.finalize().then(
+          () => null,
+          (error) => error,
+        );
+
+        const [error, finalizeError] = await Promise.all([
+          errorPromise,
+          finalizePromise,
+        ]);
+        assert.equal(error.code, "ENOENT");
+        assert.equal(finalizeError, error);
+        await outputFinishPromise;
+      });
+      it("should report ENOTDIR when a file is passed as a directory", async function () {
+        const archive = new ZipArchive();
+        const errorPromise = new Promise((resolve) => {
+          archive.once("error", resolve);
+        });
+        archive.directory("test/fixtures/test.txt", false);
+
+        const error = await errorPromise;
+        assert.equal(error.code, "ENOTDIR");
+      });
       it("should allow continue on stat failing", function (done) {
         archive = new JsonArchive();
         var testStream = new WriteStream("tmp/errors-stat.json");
