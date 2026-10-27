@@ -3,11 +3,15 @@ import {
   chmodSync,
   createReadStream,
   createWriteStream,
+  mkdtempSync,
+  rmSync,
   statSync,
   symlinkSync,
   unlinkSync,
   writeFileSync,
 } from "fs";
+import { tmpdir } from "os";
+import { join } from "path";
 import { PassThrough } from "readable-stream";
 import { Readable } from "readable-stream";
 import { assert } from "chai";
@@ -267,6 +271,79 @@ describe("archiver", function () {
       it("should handle windows path separators in prefix", function () {
         assert.property(entries, "Win/DS/level0.txt");
       });
+    });
+    describe("#directory data functions", function () {
+      let dirpath;
+      beforeEach(function () {
+        dirpath = mkdtempSync(join(tmpdir(), "archiver-directory-"));
+        writeFileSync(join(dirpath, "first.txt"), "first");
+        writeFileSync(join(dirpath, "second.txt"), "second");
+      });
+      afterEach(function () {
+        rmSync(dirpath, { recursive: true, force: true });
+      });
+      const transforms = {
+        "returning a replacement object": ({ name }) => ({
+          name: "renamed/" + name,
+        }),
+        "mutating the original object": (data) => {
+          data.name = "renamed/" + data.name;
+          return data;
+        },
+        "returning a copied object": (data) => ({
+          ...data,
+          name: "renamed/" + data.name,
+        }),
+        "skipping a match": (data) => {
+          if (data.name === "first.txt") {
+            return false;
+          }
+          return { name: "renamed/" + data.name };
+        },
+      };
+      for (const [description, transform] of Object.entries(transforms)) {
+        it("should finalize when " + description, async function () {
+          this.timeout(3000);
+          const archive = new JsonArchive();
+          const chunks = [];
+          let timer;
+          const ended = new Promise((resolve, reject) => {
+            archive.on("data", (chunk) => chunks.push(chunk));
+            archive.on("end", resolve);
+            archive.on("error", reject);
+          });
+          try {
+            archive.directory(dirpath, false, transform);
+            await Promise.race([
+              Promise.all([archive.finalize(), ended]),
+              new Promise((resolve, reject) => {
+                timer = setTimeout(() => {
+                  reject(new Error("Directory archive did not finalize"));
+                }, 1000);
+              }),
+            ]);
+            const entries = JSON.parse(Buffer.concat(chunks));
+            const expected =
+              description === "skipping a match"
+                ? ["renamed/second.txt"]
+                : ["renamed/first.txt", "renamed/second.txt"];
+            assert.deepEqual(
+              entries.map((entry) => entry.name).sort(),
+              expected,
+            );
+            for (const entry of entries) {
+              assert.equal(entry.type, "file");
+              assert.equal(
+                entry.size,
+                entry.name === "renamed/first.txt" ? 5 : 6,
+              );
+            }
+          } finally {
+            clearTimeout(timer);
+            archive.abort();
+          }
+        });
+      }
     });
     describe("#file", function () {
       var actual;
